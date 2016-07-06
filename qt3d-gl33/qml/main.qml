@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.0
 ApplicationWindow {
 	id:app
 	visible: true
-	title: qsTr("LearnOpenGL-QML")
+	title: qsTr("LearnOpenGL-Qt3D")
 	width: 800
 	height: 600 + tabBar.height
 
