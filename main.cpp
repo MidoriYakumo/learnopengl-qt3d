@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
+#include <QQuickItem>
 #include <QOpenGLContext>
 
 int main(int argc, char *argv[])
@@ -19,8 +21,12 @@ int main(int argc, char *argv[])
 
 	QSurfaceFormat::setDefaultFormat(format);
 
+	QQuickStyle::setStyle("Material");
+
 	QQmlApplicationEngine engine;
-	engine.load(QUrl(QLatin1String("qrc:/qml/main.qml")));
+	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
+	engine.rootObjects().at(0)->setProperty("title", "LearnOpenGL-Qt3D");
+	engine.rootObjects().at(0)->setProperty("qrcOn", true);
 
 	return app.exec();
 }

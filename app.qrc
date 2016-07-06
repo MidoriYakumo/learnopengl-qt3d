@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/HelloTriangle.qml</file>
+        <file>qml/HelloTriangle2.qml</file>
+        <file>qml/HelloWindow.qml</file>
+        <file>qml/ShadersInterpolated.qml</file>
+        <file>qml/ShadersUniform.qml</file>
+        <file>shared/shaders/hellotriangle.frag</file>
+        <file>shared/shaders/hellotriangle.vert</file>
+        <file>shared/shaders/phongalpha.frag</file>
+        <file>shared/shaders/phongalpha.vert</file>
+        <file>shared/shaders/plasma.frag</file>
+        <file>shared/shaders/plasma.vert</file>
+        <file>shared/shaders/shaders-interpolated.frag</file>
+        <file>shared/shaders/shaders-uniform.frag</file>
+        <file>shared/shaders/shaders-uniform.vert</file>
+        <file>shared/shaders/simple-shader.frag</file>
+        <file>shared/shaders/simple-shader.vert</file>
+        <file>qml/app.qml</file>
+        <file>qml/Examples.qml</file>
+        <file>qml/misc.js</file>
+        <file>qml/RenderSettings0.qml</file>
+        <file>qml/Scene0.qml</file>
+        <file>qml/ShaderProgram0.qml</file>
+    </qresource>
+</RCC>

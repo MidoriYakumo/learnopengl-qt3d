@@ -1,28 +1,15 @@
 import QtQuick 2.6 as QQ2
-import QtQuick.Scene3D 2.0
 
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
-import Qt3D.Input 2.0
-import Qt3D.Extras 2.0
 
-Scene3D {
-	id: scene
-	height: 600
-	width: 800
+import "misc.js" as Misc
 
+Scene0 {
 	Entity {
 		id: root
 
-		RenderSettings {
-			id: renderSettings
-			activeFrameGraph: ClearBuffers {
-				buffers: ClearBuffers.ColorDepthBuffer // MUST HAVE Depth? -> NoCulling
-				clearColor: Qt.rgba(0.2, 0.3, 0.3, 1.0)
-				RenderSurfaceSelector {
-				}
-			}
-		}
+		RenderSettings0 {}
 
 		Entity {
 			id: background
@@ -33,22 +20,12 @@ Scene3D {
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
-							renderStates: CullFace { mode: CullFace.NoCulling }
-							shaderProgram: ShaderProgram {
-								vertexShaderCode: loadSource(
-													  "file:../shared/shaders/hellotriangle.vert")
-								fragmentShaderCode: loadSource(
-														"file:../shared/shaders/hellotriangle.frag")
+							shaderProgram: ShaderProgram0 {
+								vertName: "hellotriangle"
+								fragName: "hellotriangle"
 							}
 						}
 					}
-				}
-			}
-
-
-			function copyArray(src, dst){
-				for (var i in src) {
-					dst[i] = src[i]
 				}
 			}
 
@@ -72,7 +49,7 @@ Scene3D {
 										   -0.5, -0.5, 0.0,  // Bottom Left
 										   -0.5,  0.5, 0.0   // Top Left
 										]
-								background.copyArray(vertices, vertexArray)
+								Misc.copyArray(vertices, vertexArray)
 								return vertexArray
 							})()
 						}
@@ -90,7 +67,7 @@ Scene3D {
 											0, 1, 3,  // First Triangle
 											1, 2, 3   // Second Triangle
 										]
-								background.copyArray(indices, indexArray)
+								Misc.copyArray(indices, indexArray)
 								return indexArray
 							})()
 						}

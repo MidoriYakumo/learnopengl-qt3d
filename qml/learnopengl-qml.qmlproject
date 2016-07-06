@@ -3,7 +3,7 @@
 import QmlProject 1.1
 
 Project {
-	mainFile: "main.qml"
+	mainFile: "app.qml"
 
 	/* Include .qml, .js, and image files from current directory and subdirectories */
 	QmlFiles {
@@ -13,7 +13,7 @@ Project {
 		directory: "."
 	}
 	ImageFiles {
-		directory: "."
+		directory: ["." , "../shared" ]
 	}
 	/* List of plugin directories passed to QML runtime */
 	// importPaths: [ "../exampleplugin" ]

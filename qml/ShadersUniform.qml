@@ -1,28 +1,15 @@
 import QtQuick 2.6 as QQ2
-import QtQuick.Scene3D 2.0
 
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
-import Qt3D.Input 2.0
-import Qt3D.Extras 2.0
 
-Scene3D {
-	id: scene
-	height: 600
-	width: 800
+import "misc.js" as Misc
 
+Scene0 {
 	Entity {
 		id: root
 
-		RenderSettings {
-			id: renderSettings
-			activeFrameGraph: ClearBuffers {
-				buffers: ClearBuffers.ColorDepthBuffer
-				clearColor: Qt.rgba(0.2, 0.3, 0.3, 1.0)
-				RenderSurfaceSelector {
-				}
-			}
-		}
+		RenderSettings0 {}
 
 		Entity {
 			id: background
@@ -34,18 +21,18 @@ Scene3D {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							renderStates: CullFace { mode: CullFace.NoCulling }
-							shaderProgram: ShaderProgram {
-								vertexShaderCode: loadSource(
-													  "qrc:/shared/shaders/shaders-uniform.vert")
-								fragmentShaderCode: loadSource(
-														"qrc:/shared/shaders/shaders-uniform.frag")
+							shaderProgram: ShaderProgram0 {
+								vertName: "shaders-uniform"
+								fragName: "shaders-uniform"
 							}
 						}
 					}
+
 					parameters: Parameter {
 						id: parameters
-						name: "ourColor";
+						name: "ourColor"
 						value: Qt.vector4d(0, greenValue, 0, 1)
+
 						property real greenValue: (Math.sin(timeValue) / 2.) + 0.5
 						property real timeValue
 
@@ -63,13 +50,6 @@ Scene3D {
 				}
 			}
 
-
-			function copyArray(src, dst){
-				for (var i in src) {
-					dst[i] = src[i]
-				}
-			}
-
 			GeometryRenderer {
 				id: geometry
 				geometry: Geometry {
@@ -84,7 +64,7 @@ Scene3D {
 							data: (function () {
 								var vertexArray = new Float32Array(3 * 3)
 								var vertices = [-.5, -.5, 0, .5, -.5, 0, 0, .5, 0]
-								background.copyArray(vertices, vertexArray)
+								Misc.copyArray(vertices, vertexArray)
 								return vertexArray
 							})()
 						}
