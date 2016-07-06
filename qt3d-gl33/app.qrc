@@ -1,0 +1,22 @@
+<RCC>
+	<qresource prefix="/">
+		<file>qml/HelloTriangle.qml</file>
+		<file>qml/HelloTriangle2.qml</file>
+		<file>qml/HelloWindow.qml</file>
+		<file>qml/learnopengl-qml.qmlproject</file>
+		<file>qml/main.qml</file>
+		<file>qml/ShadersInterpolated.qml</file>
+		<file>qml/ShadersUniform.qml</file>
+		<file>shared/shaders/hellotriangle.frag</file>
+		<file>shared/shaders/hellotriangle.vert</file>
+		<file>shared/shaders/phongalpha.frag</file>
+		<file>shared/shaders/phongalpha.vert</file>
+		<file>shared/shaders/plasma.frag</file>
+		<file>shared/shaders/plasma.vert</file>
+		<file>shared/shaders/shaders-interpolated.frag</file>
+		<file>shared/shaders/shaders-uniform.frag</file>
+		<file>shared/shaders/shaders-uniform.vert</file>
+		<file>shared/shaders/simple-shader.frag</file>
+		<file>shared/shaders/simple-shader.vert</file>
+	</qresource>
+</RCC>
