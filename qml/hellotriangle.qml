@@ -20,6 +20,7 @@ Scene0 {
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
+							renderStates: CullFace { mode: CullFace.NoCulling }
 							shaderProgram: ShaderProgram0 {
 								vertName: "hellotriangle"
 								fragName: "hellotriangle"

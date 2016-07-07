@@ -10,3 +10,7 @@ RESOURCES += app.qrc
 QML_IMPORT_PATH =
 
 OTHER_FILES += qml/*.qml
+
+DISTFILES += \
+    shared/shaders/textures_combined.frag \
+    shared/shaders/textures_combined.vert

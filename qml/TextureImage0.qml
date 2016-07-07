@@ -1,6 +1,6 @@
 import Qt3D.Render 2.0
 
-ShaderProgram {
+TextureImage {
 	readonly property var os2Prefix:{
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
 		"linux"		: "file:.." ,
@@ -19,11 +19,8 @@ ShaderProgram {
 	}
 
 	readonly property string prefix: testQrc()?"qrc:":os2Prefix[Qt.platform.os]
-	readonly property string shaderPath: prefix + "/shared/shaders/"
+	readonly property string texturePath: prefix + "/shared/assets/texture/"
 
-	property string vertName
-	property string fragName
-
-	vertexShaderCode: loadSource(shaderPath + vertName + ".vert")
-	fragmentShaderCode: loadSource(shaderPath + fragName + ".frag")
+	property string fileName
+	source: texturePath + fileName
 }
