@@ -12,36 +12,70 @@ Scene0 {
 		RenderSettings0 {}
 
 		Entity {
-			id: background
+			id: entity
 			components: [geometry, material]
 
 			Material {
 				id: material
 				effect: Effect {
 					techniques: Technique {
-						renderPasses: RenderPass {
-							renderStates: CullFace { mode: CullFace.NoCulling }
-							shaderProgram: ShaderProgram0 {
-								vertName: "texture"
-								fragName: "texture"
+						renderPasses: [
+							RenderPass {
+								renderStates: CullFace { mode: CullFace.NoCulling }
+								shaderProgram: ShaderProgram0 {
+									vertName: "transformations"
+									fragName: "textures_combined"
+								}
+								parameters: [
+									Parameter {
+										name: "ourTexture1"
+										value: Texture2D {
+											TextureImage0 {
+												fileName: "container.jpg"
+											}
+										}
+									},
+									Parameter {
+										name: "ourTexture2"
+										value: Texture2D {
+											TextureImage0 {
+												fileName: "awesomeface.png"
+											}
+										}
+									},
+									Parameter {
+										name: "transform"
+										value: (function(){
+											var m = Qt.matrix4x4()
+											m.translate(Qt.vector3d(.5, -.5, 0))
+											m.rotate(entity.rotation, Qt.vector3d(0, 0, 1))
+											return m
+										})()
+									}
+								]
+							},
+							RenderPass {
+								renderStates: CullFace { mode: CullFace.NoCulling }
+								shaderProgram: ShaderProgram0 {
+									vertName: "transformations"
+									fragName: "textures_combined"
+								}
+								parameters: [
+									Parameter {
+										name: "transform"
+										value: (function(){
+											var m = Qt.matrix4x4()
+											m.rotate(entity.rotation, Qt.vector3d(0, 0, 1))
+											m.translate(Qt.vector3d(.5, -.5, -.1)) // z!
+											return m
+										})()
+									}
+								]
 							}
-						}
+						]
 					}
 
-					parameters: Parameter {
-						name: "ourTexture"
-						value: Texture2D {
-							minificationFilter: Texture.Nearest
-							magnificationFilter: Texture.Nearest
-							wrapMode {
-								x: WrapMode.ClampToEdge
-								y: WrapMode.ClampToBorder
-							}
-							TextureImage0 {
-								fileName: "container.jpg"
-							}
-						}
-					}
+
 				}
 			}
 
@@ -117,6 +151,19 @@ Scene0 {
 						}
 					}
 				}
+			}
+
+			property real rotation
+
+			QQ2.NumberAnimation {
+				target: entity
+				property: "rotation"
+				duration: 360*1000/50
+				from: 0
+				to: 360
+
+				loops: QQ2.Animation.Infinite
+				running: true
 			}
 		}
 	}

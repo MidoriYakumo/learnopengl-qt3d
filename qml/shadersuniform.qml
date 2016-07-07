@@ -29,7 +29,7 @@ Scene0 {
 					}
 
 					parameters: Parameter {
-						id: parameters
+						id: ourColor
 						name: "ourColor"
 						value: Qt.vector4d(0, greenValue, 0, 1)
 
@@ -37,7 +37,7 @@ Scene0 {
 						property real timeValue
 
 						QQ2.NumberAnimation {
-							target: parameters
+							target: ourColor
 							property: "timeValue"
 							duration: Math.PI * 2000
 							from: 0

@@ -13,4 +13,6 @@ OTHER_FILES += qml/*.qml
 
 DISTFILES += \
     shared/shaders/textures_combined.frag \
-    shared/shaders/textures_combined.vert
+    shared/shaders/textures_combined.vert \
+    qml/transformations.qml \
+    shared/shaders/transformations.vert

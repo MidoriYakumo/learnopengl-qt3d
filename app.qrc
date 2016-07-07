@@ -31,5 +31,7 @@
         <file>shared/assets/texture/container.jpg</file>
         <file>shared/shaders/textures_combined.vert</file>
         <file>shared/shaders/textures_combined.frag</file>
+        <file>qml/transformations.qml</file>
+        <file>shared/shaders/transformations.vert</file>
     </qresource>
 </RCC>

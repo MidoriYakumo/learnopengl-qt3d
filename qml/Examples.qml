@@ -8,6 +8,7 @@ ListModel {
 	ListElement { text: "Shaders Interpolated"			; source: "shadersinterpolated"}
 	ListElement { text: "Texture"			; source: "texture"}
 	ListElement { text: "Textures Combined"			; source: "textures_combined"}
+	ListElement { text: "Transformations"			; source: "transformations"}
 	ListElement { text: "Exit"}
 }
 
