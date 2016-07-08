@@ -33,5 +33,10 @@
         <file>shared/shaders/textures_combined.frag</file>
         <file>qml/transformations.qml</file>
         <file>shared/shaders/transformations.vert</file>
+        <file>qml/coordinate_systems_multiple_objects.qml</file>
+        <file>qml/learnopengl-qml.qmlproject.user</file>
+        <file>qml/Box0.qml</file>
+        <file>qml/coordinate_systems.qml</file>
+        <file>shared/shaders/coordinate_systems.vert</file>
     </qresource>
 </RCC>
