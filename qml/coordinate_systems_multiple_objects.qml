@@ -3,6 +3,8 @@ import QtQuick 2.6 as QQ2
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
+import "Components"
+
 Scene0 {
 	id: scene
 	Entity {
@@ -50,7 +52,7 @@ Scene0 {
 //		]
 
 		QQ2.Component.onCompleted: {
-			var component = Qt.createComponent("Box0.qml")
+			var component = Qt.createComponent("Components/Box0.qml")
 			for (var i in cubePositions) {
 				var box = component.createObject(root)
 				var transform = Qt.createQmlObject("import Qt3D.Core 2.0;

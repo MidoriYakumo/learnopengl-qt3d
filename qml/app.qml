@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 
+import "Components"
+
 ApplicationWindow {
 	id:app
 	visible: true

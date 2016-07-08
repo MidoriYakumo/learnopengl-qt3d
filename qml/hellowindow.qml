@@ -3,6 +3,8 @@ import QtQuick 2.6
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
+import "Components"
+
 Scene0 {
 	Entity {
 		id: root

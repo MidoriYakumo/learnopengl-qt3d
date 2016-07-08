@@ -12,11 +12,6 @@
         <file>shared/shaders/simple-shader.frag</file>
         <file>shared/shaders/simple-shader.vert</file>
         <file>qml/app.qml</file>
-        <file>qml/Examples.qml</file>
-        <file>qml/misc.js</file>
-        <file>qml/RenderSettings0.qml</file>
-        <file>qml/Scene0.qml</file>
-        <file>qml/ShaderProgram0.qml</file>
         <file>qml/shadersinterpolated.qml</file>
         <file>qml/shadersuniform.qml</file>
         <file>qml/texture.qml</file>
@@ -26,7 +21,6 @@
         <file>shared/shaders/texture.frag</file>
         <file>shared/shaders/texture.vert</file>
         <file>qml/textures_combined.qml</file>
-        <file>qml/TextureImage0.qml</file>
         <file>shared/assets/texture/awesomeface.png</file>
         <file>shared/assets/texture/container.jpg</file>
         <file>shared/shaders/textures_combined.vert</file>
@@ -35,8 +29,14 @@
         <file>shared/shaders/transformations.vert</file>
         <file>qml/coordinate_systems_multiple_objects.qml</file>
         <file>qml/learnopengl-qml.qmlproject.user</file>
-        <file>qml/Box0.qml</file>
         <file>qml/coordinate_systems.qml</file>
         <file>shared/shaders/coordinate_systems.vert</file>
+        <file>qml/Components/Box0.qml</file>
+        <file>qml/Components/Examples.qml</file>
+        <file>qml/Components/misc.js</file>
+        <file>qml/Components/RenderSettings0.qml</file>
+        <file>qml/Components/Scene0.qml</file>
+        <file>qml/Components/ShaderProgram0.qml</file>
+        <file>qml/Components/TextureImage0.qml</file>
     </qresource>
 </RCC>
