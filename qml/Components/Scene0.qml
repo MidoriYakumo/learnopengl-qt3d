@@ -10,7 +10,7 @@ Scene3D {
 
 	signal unload
 
-	onUnload: {
+	onUnload: { // How to unload with InputSetting set to escape from crash?
 		focus = false
 	}
 }
