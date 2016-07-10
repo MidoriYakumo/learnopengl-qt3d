@@ -42,5 +42,20 @@
         <file>qml/camera_circle.qml</file>
         <file>qml/camera_keyboard.qml</file>
         <file>qml/camera_zoom.qml</file>
+        <file>qml/Components/RenderInputSettings0.qml</file>
+        <file>qml/Components/Camera0.qml</file>
+        <file>qml/Components/Inputs0.qml</file>
+        <file>qml/basic_lighting_specular.qml</file>
+        <file>qml/basic_lighting_diffuse.qml</file>
+        <file>qml/colors_scene.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/learnopengl-qml.qmlproject</file>
+        <file>shared/shaders/lamp.frag</file>
+        <file>shared/shaders/lighting.frag</file>
+        <file>shared/shaders/lighting_diffuse.frag</file>
+        <file>shared/shaders/lighting_diffuse.vert</file>
+        <file>shared/shaders/lighting_gouraud.frag</file>
+        <file>shared/shaders/lighting_gouraud.vert</file>
+        <file>shared/shaders/lighting_specular.frag</file>
     </qresource>
 </RCC>

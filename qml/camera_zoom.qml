@@ -25,8 +25,6 @@ Scene0 {
 			position: Qt.vector3d(0,0,3) // View
 			viewCenter: Qt.vector3d(0,0,0)
 			upVector: Qt.vector3d(0,1,0)
-
-			property vector3d frontNormalized: position.minus(viewCenter).normalized()
 		}
 
 		RenderSettings1 {
@@ -62,51 +60,57 @@ Scene0 {
 
 			onPressed: {
 				switch (event.key) {
-					case Qt.Key_W: {
-						movement.w = camera.frontNormalized
-						break
-					}
-					case Qt.Key_S: {
-						movement.s = camera.frontNormalized
-						break
-					}
-					case Qt.Key_A: {
-						movement.a = camera.frontNormalized.crossProduct(camera.upVector).normalized()
-						break
-					}
-					case Qt.Key_D: {
-						movement.d = camera.frontNormalized.crossProduct(camera.upVector).normalized()
-						break
-					}
-					case Qt.Key_Shift: {
-						movement.acc = .2
-						break
-					}
+				case Qt.Key_Control: {
+					console.log("position	= ", camera.position)
+					console.log("viewCenter	= ", camera.viewCenter)
+					console.log("front	= ", frontNormalized)
+					break
+				}
+				case Qt.Key_W: {
+					movement.w = Qt.vector3d(0, 0, 1)
+					break
+				}
+				case Qt.Key_S: {
+					movement.s = Qt.vector3d(0, 0, -1)
+					break
+				}
+				case Qt.Key_A: {
+					movement.a = Qt.vector3d(-1, 0, 0)
+					break
+				}
+				case Qt.Key_D: {
+					movement.d = Qt.vector3d(1, 0, 0)
+					break
+				}
+				case Qt.Key_Shift: {
+					movement.acc = .2
+					break
+				}
 				}
 			}
 
 			onReleased: {
 				switch (event.key) {
-					case Qt.Key_W: {
-						movement.w = movement.zero
-						break
-					}
-					case Qt.Key_S: {
-						movement.s = movement.zero
-						break
-					}
-					case Qt.Key_A: {
-						movement.a = movement.zero
-						break
-					}
-					case Qt.Key_D: {
-						movement.d = movement.zero
-						break
-					}
-					case Qt.Key_Shift: {
-						movement.acc = 1.
-						break
-					}
+				case Qt.Key_W: {
+					movement.w = movement.zero
+					break
+				}
+				case Qt.Key_S: {
+					movement.s = movement.zero
+					break
+				}
+				case Qt.Key_A: {
+					movement.a = movement.zero
+					break
+				}
+				case Qt.Key_D: {
+					movement.d = movement.zero
+					break
+				}
+				case Qt.Key_Shift: {
+					movement.acc = 1.
+					break
+				}
 				}
 			}
 		}
@@ -116,11 +120,11 @@ Scene0 {
 
 			readonly property real scale: 1e1
 			property real acc: 1.
-			property vector3d w: Qt.vector3d(0,0,0)
-			property vector3d s: Qt.vector3d(0,0,0)
-			property vector3d a: Qt.vector3d(0,0,0)
-			property vector3d d: Qt.vector3d(0,0,0)
-			property vector3d velocity: w.minus(s).plus(a).minus(d)
+			property vector3d w: zero
+			property vector3d s: zero
+			property vector3d a: zero
+			property vector3d d: zero
+			property vector3d velocity: w.plus(s).plus(a).plus(d)
 			readonly property vector3d zero: Qt.vector3d(0,0,0)
 
 			onTriggered: {

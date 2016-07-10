@@ -14,6 +14,9 @@ ListModel {
 	ListElement { text: "Camera/Orbit"					; source: "camera_circle"}
 	ListElement { text: "Camera/WASD"					; source: "camera_keyboard"}
 	ListElement { text: "Camera/FPS"					; source: "camera_zoom"}
+	ListElement { text: "Color"							; source: "colors_scene"}
+	ListElement { text: "Basic Lighting Phong-Diffuse"	; source: "basic_lighting_diffuse"}
+	ListElement { text: "Basic Lighting Phong/Gouraud"	; source: "basic_lighting_specular"}
 	ListElement { text: "Exit"}
 }
 
