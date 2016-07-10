@@ -21,7 +21,7 @@ Scene0 {
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
-							renderStates: CullFace { mode: CullFace.NoCulling }
+							renderStates: CullFace { mode: CullFace.NoCulling } // Any other alternative setting?
 							shaderProgram: ShaderProgram0 {
 								vertName: "hellotriangle"
 								fragName: "hellotriangle"

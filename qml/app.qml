@@ -59,9 +59,14 @@ ApplicationWindow {
 		id: loader
 		anchors.fill: parent
 		sourceComponent: glInfo
+
+		onLoaded: {
+			focus = true
+		}
 	}
 
 	function load(sourceName) {
+		loader.focus = false
 		loader.source = sourceName + ".qml"
 	}
 
@@ -90,10 +95,6 @@ ApplicationWindow {
 		}
 	}
 
-	signal init
-
-	Component.onCompleted: init()
-
-	title: "LearnOpenGL-QML"
-	property bool qrcOn: false
+	title: "LearnOpenGL-QML"	// Pure QML version by default
+	property bool qrcOn: false  // Load resources from file by default
 }

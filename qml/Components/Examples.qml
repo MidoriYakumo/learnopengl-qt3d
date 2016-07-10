@@ -11,6 +11,9 @@ ListModel {
 	ListElement { text: "Transformations"				; source: "transformations"}
 	ListElement { text: "Coordinate Systems"			; source: "coordinate_systems"}
 	ListElement { text: "Coordinate Systems MultiObj"	; source: "coordinate_systems_multiple_objects"}
+	ListElement { text: "Camera/Orbit"					; source: "camera_circle"}
+	ListElement { text: "Camera/WASD"					; source: "camera_keyboard"}
+	ListElement { text: "Camera/FPS"					; source: "camera_zoom"}
 	ListElement { text: "Exit"}
 }
 

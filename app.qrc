@@ -38,5 +38,12 @@
         <file>qml/Components/Scene0.qml</file>
         <file>qml/Components/ShaderProgram0.qml</file>
         <file>qml/Components/TextureImage0.qml</file>
+        <file>qml/Components/RenderSettings1.qml</file>
+        <file>qml/camera_circle.qml</file>
+        <file>qml/camera_keyboard.qml</file>
+        <file>qml/camera_zoom.qml</file>
+        <file>shared/assets/texture/12185331078.jpg</file>
+        <file>shared/assets/texture/12191869173.jpg</file>
+        <file>shared/assets/texture/fbk-kde.jpg</file>
     </qresource>
 </RCC>

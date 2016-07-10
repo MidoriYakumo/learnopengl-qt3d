@@ -7,6 +7,7 @@ import "Components"
 
 Scene0 {
 	id: scene
+
 	Entity {
 		id: root
 
@@ -17,20 +18,16 @@ Scene0 {
 			aspectRatio: scene.width/scene.height
 			nearPlane : 0.1
 			farPlane : 100.0
-			position: Qt.vector3d( 0.0, 0.0, 3.0 ) // View
+			position: Qt.vector3d(
+						  3.0 * Math.sin(root.angle * Math.PI / 60.),
+						  0.0,
+						  3.0 * Math.cos(root.angle * Math.PI / 60.) ) // View
+			viewCenter: Qt.vector3d(0,0,0)
+			upVector: Qt.vector3d(0,1,0)
 		}
 
-		RenderSettings {
-			id: renderSettings
-			activeFrameGraph: ClearBuffers {
-				buffers: ClearBuffers.ColorDepthBuffer
-				clearColor: Qt.rgba(0.2, 0.3, 0.3, 1.0)
-				RenderSurfaceSelector {
-					CameraSelector {
-						camera: camera
-					}
-				}
-			}
+		RenderSettings1 {
+			camera: camera
 		}
 
 		property var cubePositions: [
@@ -63,12 +60,13 @@ Scene0 {
 			}
 		}
 
-		Transform {
+		Transform { // Instance for fromAxisAndAngle
 			id: dummyTransform
 		}
 
 
-//		QQ2.Repeater { // Not Entity !!!
+
+//		QQ2.Repeater { // Not an Entity !!!
 //			id: repeater
 //			model: root.cubePositions
 //			delegate: Box0 {

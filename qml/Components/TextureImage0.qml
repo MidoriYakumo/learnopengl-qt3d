@@ -1,6 +1,6 @@
 import Qt3D.Render 2.0
 
-TextureImage {
+TextureImage { // only local resource(file, assets, qrc) is supported, see src/TextureImage
 	readonly property var os2Prefix:{
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
 		"linux"		: "file:.." ,

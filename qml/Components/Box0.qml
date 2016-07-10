@@ -7,6 +7,7 @@ Entity {
 	id: box
 	components: [geometry, transform, material]
 
+	property int index: 0
 	property Transform transform: Transform { }
 
 	Material {
@@ -14,7 +15,7 @@ Entity {
 		effect: Effect {
 			techniques: Technique {
 				renderPasses: RenderPass {
-					renderStates: CullFace { mode: CullFace.NoCulling }
+					renderStates: CullFace { mode: CullFace.NoCulling } // ignore normal vectors, result by tests
 					shaderProgram: ShaderProgram0 {
 						vertName: "coordinate_systems"
 						fragName: "textures_combined"
@@ -106,7 +107,7 @@ Entity {
 				count: 36
 				byteOffset: 0
 				byteStride: 5 * 4
-				name: defaultPositionAttributeName()
+				name: defaultPositionAttributeName() // see src/QAttribute
 				buffer: vertexBuffer
 			}
 

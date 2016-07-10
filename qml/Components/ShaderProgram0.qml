@@ -2,7 +2,7 @@ import Qt3D.Render 2.0
 
 ShaderProgram {
 	readonly property var os2Prefix:{
-		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
+		"android"	: "file:/sdcard/Documents/QML Projects/Examples" , // Compatibility for QML Creator
 		"linux"		: "file:.." ,
 		"osx"		: "file:.." ,
 		"unix"		: "file:.." ,
@@ -11,7 +11,7 @@ ShaderProgram {
 
 	function testQrc(){
 		try {
-			return app.qrcOn;
+			return app.qrcOn; // if app exists
 		}
 		catch (err) {
 			return false;
