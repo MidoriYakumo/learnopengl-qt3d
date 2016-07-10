@@ -9,4 +9,8 @@ Scene3D {
 	aspects: ["logic", "input"] // logic is required for inputs, result by tests
 
 	signal unload
+
+	onUnload: {
+		focus = false
+	}
 }

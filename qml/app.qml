@@ -66,7 +66,7 @@ ApplicationWindow {
 	}
 
 	function load(sourceName) {
-		loader.focus = false
+		loader.item.unload()
 		loader.source = sourceName + ".qml"
 	}
 
@@ -92,6 +92,8 @@ ApplicationWindow {
 				style: Text.Sunken
 				font.pointSize: 24
 			}
+
+			signal unload
 		}
 	}
 
