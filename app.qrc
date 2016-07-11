@@ -57,5 +57,19 @@
         <file>shared/shaders/lighting_gouraud.frag</file>
         <file>shared/shaders/lighting_gouraud.vert</file>
         <file>shared/shaders/lighting_specular.frag</file>
+        <file>qml/Components/DiffuseSpecularEmissionMapMaterial.qml</file>
+        <file>qml/Components/Material0.qml</file>
+        <file>qml/Components/RenderInputSettings1.qml</file>
+        <file>qml/lighting_maps_emission.qml</file>
+        <file>qml/lighting_maps_specular.qml</file>
+        <file>qml/materials.qml</file>
+        <file>shared/assets/texture/container2.png</file>
+        <file>shared/assets/texture/container2_specular.png</file>
+        <file>shared/assets/texture/matrix.jpg</file>
+        <file>shared/shaders/diffusemap.vert</file>
+        <file>shared/shaders/diffusespecularemmisionmap.frag</file>
+        <file>shared/shaders/diffusespecularmap.frag</file>
+        <file>shared/shaders/light.inc.frag</file>
+        <file>shared/shaders/materials.frag</file>
     </qresource>
 </RCC>
