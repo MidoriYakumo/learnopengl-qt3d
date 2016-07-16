@@ -33,16 +33,16 @@ Scene0 {
 						Parameter {
 							name: "ourTexture1"
 							value: Texture2D {
-								TextureImage0 {
-									fileName: "container.jpg"
+								TextureImage {
+									source: Misc.rootPrefix() + "/shared/assets/texture/container.jpg"
 								}
 							}
 						},
 						Parameter {
 							name: "ourTexture2"
 							value: Texture2D {
-								TextureImage0 {
-									fileName: "awesomeface.png"
+								TextureImage {
+									source: Misc.rootPrefix() + "/shared/assets/texture/awesomeface.png"
 								}
 							}
 						}

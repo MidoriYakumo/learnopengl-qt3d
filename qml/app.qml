@@ -97,6 +97,13 @@ ApplicationWindow {
 		}
 	}
 
+	FpsItem {
+		anchors.top: parent.top
+		anchors.topMargin: 8
+		anchors.left: parent.left
+		anchors.leftMargin: 8
+	}
+
 	title: "LearnOpenGL-QML"	// Pure QML version by default
 	property bool qrcOn: false  // Load resources from file by default
 }

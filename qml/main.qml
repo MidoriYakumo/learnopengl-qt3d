@@ -16,6 +16,7 @@ Item {
 	}
 
 	ComboBox {
+		id: combo
 		textRole: "text"
 		width: parent.width
 		anchors.top: parent.top
@@ -51,6 +52,13 @@ Item {
 				font.pointSize: 24
 			}
 		}
+	}
+
+	FpsItem {
+		anchors.top: parent.top
+		anchors.topMargin: 8 + combo.height
+		anchors.left: parent.left
+		anchors.leftMargin: 8
 	}
 
 	signal init

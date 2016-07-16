@@ -1,25 +1,9 @@
 import Qt3D.Render 2.0
 
+import "misc.js" as Misc
+
 ShaderProgram {
-	readonly property var os2Prefix:{
-		"android"	: "file:/sdcard/Documents/QML Projects/Examples" , // Compatibility for QML Creator
-		"linux"		: "file:.." ,
-		"osx"		: "file:.." ,
-		"unix"		: "file:.." ,
-		"windows"	: "file:.." ,
-	}
-
-	function testQrc(){
-		try {
-			return app.qrcOn; // if app exists
-		}
-		catch (err) {
-			return false;
-		}
-	}
-
-	readonly property string prefix: testQrc()?"qrc:":os2Prefix[Qt.platform.os]
-	readonly property string shaderPath: prefix + "/shared/shaders/"
+	readonly property string shaderPath: Misc.rootPrefix() + "/shared/shaders/"
 
 	property string vertName
 	property string fragName

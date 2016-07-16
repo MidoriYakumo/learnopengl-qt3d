@@ -38,8 +38,8 @@ Scene0 {
 								x: WrapMode.ClampToEdge
 								y: WrapMode.ClampToBorder
 							}
-							TextureImage0 {
-								fileName: "container.jpg"
+							TextureImage {
+								source: Misc.rootPrefix() + "/shared/assets/texture/container.jpg"
 							}
 						}
 					}

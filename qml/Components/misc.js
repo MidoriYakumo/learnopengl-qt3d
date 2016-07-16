@@ -10,13 +10,24 @@ function mix(a, b, u) {
 	return a*(1.-u)+b*u
 }
 
-/*
-function testId(n) {
+function testQrc(){
 	try {
-		return n;
+		return app.qrcOn; // if app exists
 	}
 	catch (err) {
-		return null;
+		return false;
 	}
 }
-*/
+
+function rootPrefix(){
+	var os2Prefix = {
+		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
+		// Compatibility for QML Creator
+		"linux"		: "file:.." ,
+		"osx"		: "file:.." ,
+		"unix"		: "file:.." ,
+		"windows"	: "file:.." ,
+	}
+
+	return testQrc()?"qrc:":os2Prefix[Qt.platform.os]
+}

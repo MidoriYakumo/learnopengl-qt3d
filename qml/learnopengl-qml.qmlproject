@@ -13,7 +13,11 @@ Project {
 		directory: "."
 	}
 	ImageFiles {
-		directory: ["." , "../shared" ]
+		directory: "../shared/assets"
+	}
+	ShaderFiles {
+		fileter: [ "*.vert", "*.frag" ]
+		directory: "../shared/shaders"
 	}
 	/* List of plugin directories passed to QML runtime */
 	// importPaths: [ "../exampleplugin" ]
