@@ -32,7 +32,7 @@ Scene0 {
 										name: "ourTexture1"
 										value: Texture2D {
 											TextureImage {
-												source: Misc.rootPrefix() + "/shared/assets/texture/container.jpg"
+												source: Resources.texture("container.jpg")
 											}
 										}
 									},
@@ -40,7 +40,7 @@ Scene0 {
 										name: "ourTexture2"
 										value: Texture2D {
 											TextureImage {
-												source: Misc.rootPrefix() + "/shared/assets/texture/awesomeface.png"
+												source: Resources.texture("awesomeface.png")
 											}
 										}
 									},

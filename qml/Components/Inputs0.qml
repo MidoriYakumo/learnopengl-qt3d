@@ -1,9 +1,12 @@
+import QtQuick 2.7 as QQ2
+
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 import Qt3D.Logic 2.0
 import Qt3D.Input 2.0
 import Qt3D.Extras 2.0
 
+//import "."
 import "misc.js" as Misc
 
 Entity {
@@ -14,8 +17,18 @@ Entity {
 
 	InputSettings {
 		id: inputSettings
-		// eventSource: scene // Auto, result by tests
 	}
+//	property InputSettings inputSettings: TheInputSettings
+//	QQ2.Component.onCompleted: {
+//		TheInputSettings.parent = inputs
+//	}
+//	QQ2.Component.onDestruction: {
+//		console.log("onDestruction")
+//		console.log("parent:%1, eventSource:%2".arg(TheInputSettings.parent).arg(TheInputSettings.eventSource))
+//		TheInputSettings.parent = null
+//		TheInputSettings.eventSource = null
+//	}
+
 
 	FirstPersonCameraController { camera: inputs.camera }
 

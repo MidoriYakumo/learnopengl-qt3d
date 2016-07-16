@@ -20,6 +20,6 @@ ListModel {
 	ListElement { text: "Material"						; source: "materials"}
 	ListElement { text: "Diffuse Specular Map"			; source: "lighting_maps_specular"}
 	ListElement { text: "Diffuse Specular Emission Map"	; source: "lighting_maps_emission"}
-	ListElement { text: "Exit"}
+	ListElement { text: "Exit"; }
 }
 

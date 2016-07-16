@@ -40,7 +40,7 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
-import "misc.js" as Misc
+import "."
 
 Material {
 	id: root
@@ -65,7 +65,7 @@ Material {
 				maximumAnisotropy: 16.0
 				TextureImage {
 					id: diffuseTextureImage
-					source: texturePath + diffuseName
+					source: Resources.texture(diffuseName)
 				}
 			}
 		},
@@ -82,7 +82,7 @@ Material {
 				maximumAnisotropy: 16.0
 				TextureImage {
 					id: specularTextureImage
-					source: texturePath + specularName
+					source: Resources.texture(specularName)
 				}
 			}
 		},
@@ -99,7 +99,7 @@ Material {
 				maximumAnisotropy: 16.0
 				TextureImage {
 					id: emissionTextureImage
-					source: texturePath + emissionName
+					source: Resources.texture(emissionName)
 				}
 			}
 		},
@@ -125,8 +125,6 @@ Material {
 				}
 			}
 	}
-
-	readonly property string texturePath: Misc.rootPrefix() + "/shared/assets/texture/"
 
 	property string diffuseName
 	property string specularName

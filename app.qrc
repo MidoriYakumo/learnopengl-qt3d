@@ -71,5 +71,8 @@
         <file>shared/shaders/materials.frag</file>
         <file>qml/Components/FpsItem.qml</file>
         <file>shared/assets/image/spinner.png</file>
+        <file>qml/Components/qmldir</file>
+        <file>qml/Components/Resources.qml</file>
+        <file>qml/Components/TheInputSettings.qml</file>
     </qresource>
 </RCC>

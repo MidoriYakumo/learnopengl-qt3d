@@ -3,7 +3,6 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
 
 import "Components"
-import "Components/misc.js" as Misc
 
 Item {
 	id: main
@@ -59,9 +58,7 @@ Item {
 		anchors.topMargin: 8 + combo.height
 		anchors.left: parent.left
 		anchors.leftMargin: 8
+		spinnerSource: Resources.image("spinner.png")
 	}
 
-	signal init
-
-	Component.onCompleted: init()
 }

@@ -50,19 +50,17 @@
 
 import QtQuick 2.7
 
-import "misc.js" as Misc
-
 Item {
 	id: root
 	property int frameCounter: 0
 	property int fps: 30
+	property alias spinnerSource: spinnerImage.source
 
 	width: 160
 	height: 48
 
 	Image {
 		id: spinnerImage
-		source: Misc.rootPrefix() + "/shared/assets/image/spinner.png"
 		NumberAnimation on rotation {
 			from:0
 			to: 360
@@ -84,11 +82,11 @@ Item {
 	}
 
 	Timer {
-		interval: 1000
+		interval: 500
 		repeat: true
 		running: true
 		onTriggered: {
-			fps = (fps + frameCounter * 3)/4;
+			fps = (fps + frameCounter * 3000/interval)/4;
 			frameCounter = 0;
 		}
 	}

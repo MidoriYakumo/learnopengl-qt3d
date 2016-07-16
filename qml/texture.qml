@@ -39,7 +39,7 @@ Scene0 {
 								y: WrapMode.ClampToBorder
 							}
 							TextureImage {
-								source: Misc.rootPrefix() + "/shared/assets/texture/container.jpg"
+								source: Resources.texture("container.jpg")
 							}
 						}
 					}

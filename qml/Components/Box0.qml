@@ -1,6 +1,7 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
+import "."
 import "misc.js" as Misc
 
 Entity {
@@ -28,7 +29,7 @@ Entity {
 					name: "ourTexture1"
 					value: Texture2D {
 						TextureImage {// only local resource(file, assets, qrc) is supported, see src/TextureImage
-							source: Misc.rootPrefix() + "/shared/assets/texture/container.jpg"
+							source: Resources.texture("container.jpg")
 						}
 					}
 				},
@@ -36,7 +37,7 @@ Entity {
 					name: "ourTexture2"
 					value: Texture2D {
 						TextureImage {
-							source: Misc.rootPrefix() + "/shared/assets/texture/awesomeface.png"
+							source: Resources.texture("awesomeface.png")
 						}
 					}
 				}

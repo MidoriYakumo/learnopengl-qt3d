@@ -5,7 +5,6 @@ import Qt3D.Render 2.0
 import Qt3D.Extras 2.0
 
 import "Components"
-import "Components/misc.js" as Misc
 
 Scene0 {
 	id: scene
@@ -25,8 +24,8 @@ Scene0 {
 				id: objMaterial
 
 				ambient: Qt.rgba(.2, .2, .2, 1.)
-				diffuse: Misc.rootPrefix() + "/shared/assets/texture/container2.png"
-				specular: Misc.rootPrefix() + "/shared/assets/texture/container2_specular.png"
+				diffuse: Resources.texture("container2.png")
+				specular: Resources.texture("container2_specular.png")
 			}
 		}
 
