@@ -52,19 +52,17 @@ import QtQuick 2.7
 
 Item {
 	id: root
-	property int frameCounter: 0
-	property int fps: 30
-	property alias spinnerSource: spinnerImage.source
 
-	width: 160
-	height: 48
+	property int frameCounter: 0
+	property int fps: 60
+	property alias spinnerSource: spinnerImage.source
 
 	Image {
 		id: spinnerImage
 		NumberAnimation on rotation {
 			from:0
 			to: 360
-			duration: 800
+			duration: 1000
 			loops: Animation.Infinite
 		}
 		onRotationChanged: frameCounter++;
@@ -74,10 +72,10 @@ Item {
 		anchors.left: spinnerImage.right
 		anchors.leftMargin: 8
 		anchors.verticalCenter: spinnerImage.verticalCenter
-		color: "#ffffff"
+		color: "#e3c88a"
 		style: Text.Outline
-		styleColor: "#606060"
-		font.pixelSize: 28
+		styleColor: "#68420c"
+		font.pixelSize: spinnerImage.height * .7
 		text: root.fps + " fps"
 	}
 
@@ -86,8 +84,8 @@ Item {
 		repeat: true
 		running: true
 		onTriggered: {
-			fps = (fps + frameCounter * 3000/interval)/4;
-			frameCounter = 0;
+			fps = (fps + frameCounter * 1000/interval)/2
+			frameCounter = 0
 		}
 	}
 }

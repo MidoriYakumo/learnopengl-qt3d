@@ -130,6 +130,28 @@ Entity {
 				if (debug)
 					console.log("camera.viewCenter = %1".arg(inputs.camera.viewCenter))
 			}
+
+			frameCounter++
+		}
+	}
+
+	property int fps: 60
+	property int frameCounter: 0
+
+	QQ2.Timer {
+		interval: 500
+		repeat: true
+		running: true
+
+		onTriggered: {
+			fps = (fps + frameCounter * 1000 / interval) / 2
+			try {
+				app.fps = fps
+			} catch (e) {
+
+			}
+
+			frameCounter = 0;
 		}
 	}
 }

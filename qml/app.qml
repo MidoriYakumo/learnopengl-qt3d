@@ -66,7 +66,7 @@ ApplicationWindow {
 	}
 
 	function load(sourceName) {
-		loader.item.unload()
+		//loader.item.unload()
 		loader.source = sourceName + ".qml"
 	}
 
@@ -98,7 +98,7 @@ ApplicationWindow {
 	}
 
 	FpsItem {
-		id: fps
+		id: fps2d
 		anchors.top: parent.top
 		anchors.topMargin: 8
 		anchors.left: parent.left
@@ -106,10 +106,27 @@ ApplicationWindow {
 		spinnerSource: Resources.image("spinner.png")
 	}
 
+	property int fps
+
+	Text {
+		id: fps3d
+		anchors.right: parent.right
+		anchors.rightMargin: 8
+		anchors.top: parent.top
+		anchors.topMargin: 8
+		color: "#ff3572"
+		style: Text.Outline
+		styleColor: "#7a2729"
+		font.pointSize: 18
+		text: fps+ " fps"
+	}
+
+
 	title: "LearnOpenGL-QML"	// Pure QML version by default
 	property bool qrcOn: false  // Load resources from file by default
 
 	onQrcOnChanged: {
 		Resources.qrcEnabled = qrcOn
 	}
+
 }

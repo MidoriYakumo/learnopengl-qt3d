@@ -1,2 +1,3 @@
 singleton Resources 1.0 Resources.qml
+#singleton Palette 1.0 Palette.qml
 singleton TheInputSettings 1.0 TheInputSettings.qml

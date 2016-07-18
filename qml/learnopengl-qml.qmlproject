@@ -15,7 +15,7 @@ Project {
 	ImageFiles {
 		directory: "../shared/assets"
 	}
-	ShaderFiles {
+	Files {
 		fileter: [ "*.vert", "*.frag" ]
 		directory: "../shared/shaders"
 	}
