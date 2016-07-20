@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	QQuickStyle::setStyle("Material");
 
 	QQmlApplicationEngine engine;
-	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
+	engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml")));
 	engine.rootObjects().at(0)->setProperty("title", "LearnOpenGL-Qt3D");
 	engine.rootObjects().at(0)->setProperty("qrcOn", true);
 

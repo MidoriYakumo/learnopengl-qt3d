@@ -1,4 +1,4 @@
-QT += 3dcore 3drender 3dinput 3dquick qml quick quickcontrols2 3dquickextras
+QT += 3dcore 3drender 3dinput 3dquick qml quick quickcontrols2 3dquickextras sensors charts
 
 CONFIG += c++11
 
@@ -10,3 +10,6 @@ RESOURCES += app.qrc
 QML_IMPORT_PATH =
 
 OTHER_FILES += qml/*.qml
+
+DISTFILES += \
+    qml/app-cpp.qml

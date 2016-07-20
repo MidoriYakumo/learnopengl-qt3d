@@ -107,12 +107,21 @@ ApplicationWindow {
 //	}
 
 	function updateDt(dt) {
-		fps3d.addDt(dt)
+		fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
+		fps3d.text = (fps3d.fps).toFixed(1) + " fps"
 	}
 
-	FpsLine {
+	Text {
 		id: fps3d
-		span: 2.
+		anchors.right: parent.right
+		anchors.rightMargin: 8
+		anchors.top: parent.top
+		anchors.topMargin: 8
+		color: "#ff7e91"
+		style: Text.Outline
+		styleColor: "#7a2729"
+		font.pointSize: 18
+		property real fps: 60.
 	}
 
 

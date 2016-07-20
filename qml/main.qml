@@ -54,11 +54,27 @@ Item {
 	}
 
 	FpsItem {
+		id: fps2d
 		anchors.top: parent.top
-		anchors.topMargin: 8 + combo.height
+		anchors.topMargin: 8
 		anchors.left: parent.left
 		anchors.leftMargin: 8
 		spinnerSource: Resources.image("spinner.png")
+	}
+
+	property int fps
+
+	Text {
+		id: fps3d
+		anchors.right: parent.right
+		anchors.rightMargin: 8
+		anchors.top: parent.top
+		anchors.topMargin: 8
+		color: "#ff7e91"
+		style: Text.Outline
+		styleColor: "#7a2729"
+		font.pointSize: 18
+		text: fps+ " fps"
 	}
 
 }

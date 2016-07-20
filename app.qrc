@@ -28,7 +28,6 @@
         <file>qml/transformations.qml</file>
         <file>shared/shaders/transformations.vert</file>
         <file>qml/coordinate_systems_multiple_objects.qml</file>
-        <file>qml/learnopengl-qml.qmlproject.user</file>
         <file>qml/coordinate_systems.qml</file>
         <file>shared/shaders/coordinate_systems.vert</file>
         <file>qml/Components/Box0.qml</file>
@@ -47,8 +46,6 @@
         <file>qml/basic_lighting_specular.qml</file>
         <file>qml/basic_lighting_diffuse.qml</file>
         <file>qml/colors_scene.qml</file>
-        <file>qml/main.qml</file>
-        <file>qml/learnopengl-qml.qmlproject</file>
         <file>shared/shaders/lamp.frag</file>
         <file>shared/shaders/lighting.frag</file>
         <file>shared/shaders/lighting_diffuse.frag</file>
@@ -74,5 +71,8 @@
         <file>qml/Components/qmldir</file>
         <file>qml/Components/Resources.qml</file>
         <file>qml/Components/TheInputSettings.qml</file>
+        <file>qml/test.qml</file>
+        <file>qml/Components/FpsLine.qml</file>
+        <file>qml/app-cpp.qml</file>
     </qresource>
 </RCC>

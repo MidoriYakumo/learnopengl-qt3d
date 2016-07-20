@@ -124,6 +124,10 @@ Entity {
 		property vector3d velocity: w.plus(s).plus(a).plus(d)
 		readonly property vector3d zero: Qt.vector3d(0,0,0)
 
+
+		property int cnt
+		property real adt
+
 		onTriggered: {
 			if (velocity !== zero) {
 				inputs.camera.translate(velocity.times(acc * scale * dt))
@@ -131,27 +135,18 @@ Entity {
 					console.log("camera.viewCenter = %1".arg(inputs.camera.viewCenter))
 			}
 
-			frameCounter++
-		}
-	}
-
-	property int fps: 60
-	property int frameCounter: 0
-
-	QQ2.Timer {
-		interval: 500
-		repeat: true
-		running: true
-
-		onTriggered: {
-			fps = (fps + frameCounter * 1000 / interval) / 2
 			try {
-				app.fps = fps
+				adt += dt
+				cnt++
+				if (cnt >= 3) {
+					app.updateDt(adt/cnt)
+					adt = 0
+					cnt = 0
+				}
 			} catch (e) {
 
 			}
-
-			frameCounter = 0;
 		}
+
 	}
 }
