@@ -12,7 +12,7 @@ Scene0 {
 	Entity {
 		id: root
 
-		RenderInputSettings0 {
+		RenderInputSettings1 {
 			id: settings
 		}
 

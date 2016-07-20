@@ -21,6 +21,10 @@ QtObject {
 	function texture(fn){return texturePrefix + fn}
 	readonly property string imagePrefix: prefix + "shared/assets/image/"
 	function image(fn){return imagePrefix + fn}
+	readonly property string meshPrefix: prefix + "shared/assets/mesh/"
+	function mesh(fn){return meshPrefix + fn}
+	readonly property string modelPrefix: prefix + "shared/assets/model/"
+	function model(fn){return modelPrefix + fn}
 
 	onPrefixChanged: {
 		console.log("[Resources] qrc:%1, prefix:%2".arg(qrcEnabled).arg(prefix))

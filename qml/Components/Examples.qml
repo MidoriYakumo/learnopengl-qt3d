@@ -20,6 +20,10 @@ ListModel {
 	ListElement { text: "Material"						; source: "materials"}
 	ListElement { text: "Diffuse Specular Map"			; source: "lighting_maps_specular"}
 	ListElement { text: "Diffuse Specular Emission Map"	; source: "lighting_maps_emission"}
+	ListElement { text: "Directional Light"				; source: "light_casters_directional"}
+	ListElement { text: "Spot Light(hard)"				; source: "light_casters_spotlight_hard"}
+	ListElement { text: "Multiple Lights"				; source: "multiple_lightsx"}
+	ListElement { text: "Import Models"					; source: "model"}
 
 	ListElement { text: "TEST"	; source: "test"}
 	ListElement { text: "Exit"; }

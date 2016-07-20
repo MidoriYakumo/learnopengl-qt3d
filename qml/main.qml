@@ -53,16 +53,24 @@ Item {
 		}
 	}
 
-	FpsItem {
-		id: fps2d
-		anchors.top: parent.top
-		anchors.topMargin: 8
-		anchors.left: parent.left
-		anchors.leftMargin: 8
-		spinnerSource: Resources.image("spinner.png")
-	}
+//	FpsItem {
+//		id: fps2d
+//		anchors.top: parent.top
+//		anchors.topMargin: 8
+//		anchors.left: parent.left
+//		anchors.leftMargin: 8
+//		spinnerSource: Resources.image("spinner.png")
+//	}
 
-	property int fps
+	QtObject {
+		id: app
+
+		function updateDt(dt) {
+			fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
+			fps3d.text = (fps3d.fps).toFixed(1) + " fps"
+		}
+
+	}
 
 	Text {
 		id: fps3d
@@ -74,7 +82,6 @@ Item {
 		style: Text.Outline
 		styleColor: "#7a2729"
 		font.pointSize: 18
-		text: fps+ " fps"
+		property real fps: 60.
 	}
-
 }

@@ -117,6 +117,7 @@ Material {
 
 		techniques: // OpenGL ES 2
 			Technique {
+				filterKeys: [ forward ]
 				renderPasses: RenderPass {
 					shaderProgram: ShaderProgram0 {
 						vertName: "diffusemap"
