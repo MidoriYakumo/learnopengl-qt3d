@@ -60,6 +60,7 @@ Scene0 {
 //						SceneLoader {
 //							source: Resources.model("nanosuit.obj")
 //						}', root)
+					console.log(status)
 					bot2.components = [bot2Model, bot2Transform]
 			}
 		}

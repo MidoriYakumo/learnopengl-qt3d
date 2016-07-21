@@ -115,7 +115,6 @@ ApplicationWindow {
 		span: 2.
 	}
 
-
 	title: "LearnOpenGL-QML"	// Pure QML version by default
 	property bool qrcOn: false  // Load resources from file by default
 

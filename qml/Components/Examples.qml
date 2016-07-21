@@ -24,8 +24,12 @@ ListModel {
 	ListElement { text: "Spot Light(hard)"				; source: "light_casters_spotlight_hard"}
 	ListElement { text: "Multiple Lights"				; source: "multiple_lightsx"}
 	ListElement { text: "Import Models"					; source: "model"}
+	ListElement { text: "Stencil Testing"					; source: "stencil_testing"}
 
-	ListElement { text: "TEST"	; source: "test"}
+	ListElement { text: "TEST"					; source: "test"}
+	ListElement { text: "TEST/BIGMODEL"			; source: "test_bigmodel"}
+	ListElement { text: "TEST/INSTANCED"			; source: "test_instanced"}
+	ListElement { text: "TEST/PLASMA"			; source: "test_plasma"}
 	ListElement { text: "Exit"; }
 }
 
