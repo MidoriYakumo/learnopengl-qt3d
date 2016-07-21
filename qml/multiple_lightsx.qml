@@ -28,7 +28,7 @@ Scene0 {
 			Qt.vector3d( 1.5,  0.2, -1.5),
 			Qt.vector3d(-1.3,  1.0, -1.5)
 		]
-		property var pointLightPositions: [
+		property var pointLightPositions: [ // MAX LIGHT = 8 can be applied
 			Qt.vector3d( 0.7,  0.2,  2.0),
 			Qt.vector3d( 2.3, -3.3, -4.0),
 			Qt.vector3d(-4.0,  2.0, -12.0),

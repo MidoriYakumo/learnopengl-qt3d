@@ -33,8 +33,10 @@ ListModel {
 	ListElement { text: "Glass Texture"					; source: "cubemaps_final"}
 	ListElement { text: "Geometry Shader"					; source: "geometry_shader"}
 	ListElement { text: "Instancing"					; source: "instancing"}
+	ListElement { text: "Lighting Blinn-Phong"					; source: "light_blinnphong"}
 
-	ListElement { text: "TEST"					; source: "test"}
+	ListElement { text: "TEST/BASE"					; source: "test_base"}
+	ListElement { text: "TEST/GLSL"					; source: "test_glsl"}
 	ListElement { text: "TEST/BIGMODEL"			; source: "test_bigmodel"}
 	ListElement { text: "TEST/INSTANCED"			; source: "test_instanced"}
 	ListElement { text: "TEST/PLASMA"			; source: "test_plasma"}

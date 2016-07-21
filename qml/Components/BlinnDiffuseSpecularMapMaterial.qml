@@ -41,19 +41,50 @@ import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
 Material {
-	id:root
+	id: root
+
 	property color ambient:  Qt.rgba( 0.05, 0.05, 0.05, 1.0 )
-	property color diffuse:  Qt.rgba( 0.7, 0.7, 0.7, 1.0 )
-	property color specular: Qt.rgba( 0.01, 0.01, 0.01, 1.0 )
+	property alias diffuse: diffuseTextureImage.source
+	property alias specular: specularTextureImage.source
 	property real shininess: 150.0
+	property real textureScale: 1.0
+	property bool blinn: true
 
-	property TextureCubeMap skyboxTexture
-
-	ShaderProgram0 {
-		id: gl2es2PhongShader
-		vertName: "phong"
-		fragName: "phongskybox"
-	}
+	parameters: [
+		Parameter { name: "ka"; value: Qt.vector3d(root.ambient.r, root.ambient.g, root.ambient.b) },
+		Parameter { name: "blinn"; value: root.blinn },
+		Parameter {
+			name: "diffuseTexture"
+			value: Texture2D {
+				id: diffuseTexture
+				minificationFilter: Texture.LinearMipMapLinear
+				magnificationFilter: Texture.Linear
+				wrapMode {
+					x: WrapMode.Repeat
+					y: WrapMode.Repeat
+				}
+				generateMipMaps: true
+				maximumAnisotropy: 16.0
+				TextureImage { id: diffuseTextureImage; }
+			}
+		},
+		Parameter { name: "specularTexture";
+			value: Texture2D {
+				id: specularTexture
+				minificationFilter: Texture.LinearMipMapLinear
+				magnificationFilter: Texture.Linear
+				wrapMode {
+					x: WrapMode.Repeat
+					y: WrapMode.Repeat
+				}
+				generateMipMaps: true
+				maximumAnisotropy: 16.0
+				TextureImage { id: specularTextureImage; }
+			}
+		},
+		Parameter { name: "shininess"; value: root.shininess },
+		Parameter { name: "texCoordScale"; value: textureScale }
+	]
 
 	effect: Effect {
 
@@ -63,23 +94,18 @@ Material {
 			value: "forward"
 		}
 
-		parameters: [
-			Parameter { name: "ka";   value: Qt.vector3d(root.ambient.r, root.ambient.g, root.ambient.b) },
-			Parameter { name: "kd";   value: Qt.vector3d(root.diffuse.r, root.diffuse.g, root.diffuse.b) },
-			Parameter { name: "ks";  value: Qt.vector3d(root.specular.r, root.specular.g, root.specular.b) },
-			Parameter { name: "shininess"; value: root.shininess },
-			Parameter { name: "skyboxTexture"; value: skyboxTexture}
-		]
+		ShaderProgram0 {
+			id: gl2Es2Shader
+			vertName: "diffusemap"
+			fragName: "blinndiffusespecularmap"
+		}
 
 		techniques: [
-			// ES 2 Technique
+			// OpenGL ES 2
 			Technique {
 				filterKeys: [ forward ]
-				renderPasses: RenderPass {
-					shaderProgram: gl2es2PhongShader
-				}
+				renderPasses: RenderPass { shaderProgram: gl2Es2Shader }
 			}
 		]
 	}
 }
-
