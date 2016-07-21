@@ -7,6 +7,8 @@ Entity {
 	id: chest
 	components: [cube, transform, material]
 
+	property alias ambient: material.ambient
+
 	CuboidMesh {
 		id: cube
 	}

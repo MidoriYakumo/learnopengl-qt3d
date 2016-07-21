@@ -25,6 +25,14 @@ ListModel {
 	ListElement { text: "Multiple Lights"				; source: "multiple_lightsx"}
 	ListElement { text: "Import Models"					; source: "model"}
 	ListElement { text: "Stencil Testing"					; source: "stencil_testing"}
+	ListElement { text: "Discard Blend"					; source: "blending_discard"}
+	ListElement { text: "Alpha Blend"					; source: "blending_alpha"}
+	ListElement { text: "Framebuffer"					; source: "framebuffer"}
+	ListElement { text: "Skybox"					; source: "cubemaps_skybox"}
+	ListElement { text: "Simple Glass"					; source: "cubemaps_glasscube"}
+	ListElement { text: "Glass Texture"					; source: "cubemaps_final"}
+	ListElement { text: "Geometry Shader"					; source: "geometry_shader"}
+	ListElement { text: "Instancing"					; source: "instancing"}
 
 	ListElement { text: "TEST"					; source: "test"}
 	ListElement { text: "TEST/BIGMODEL"			; source: "test_bigmodel"}

@@ -81,5 +81,40 @@
         <file>qml/test_instanced.qml</file>
         <file>qml/test_bigmodel.qml</file>
         <file>qml/test_plasma.qml</file>
+        <file>qml/Components/DiffuseAlphaMapMaterial.qml</file>
+        <file>qml/Components/DiffuseDiscardMapMaterial.qml</file>
+        <file>qml/blending_alpha.qml</file>
+        <file>qml/blending_discard.qml</file>
+        <file>qml/stencil_testing.qml</file>
+        <file>shared/shaders/diffusealphamap.frag</file>
+        <file>shared/shaders/diffusediscardmap.frag</file>
+        <file>shared/shaders/glow.frag</file>
+        <file>shared/shaders/glow.vert</file>
+        <file>qml/Components/CappingDiffuseSpecularEmissionMapMaterial.qml</file>
+        <file>qml/Components/GlassBox0.qml</file>
+        <file>qml/Components/GlassMapMaterial.qml</file>
+        <file>qml/Components/GlassPhongMaterial.qml</file>
+        <file>qml/Components/InSkyPhongMaterial.qml</file>
+        <file>qml/Components/RenderInputSettings2.qml</file>
+        <file>qml/cubemaps_final.qml</file>
+        <file>qml/cubemaps_glasscube.qml</file>
+        <file>qml/cubemaps_skybox.qml</file>
+        <file>shared/shaders/mosaic.frag</file>
+        <file>shared/shaders/passthrough.frag</file>
+        <file>shared/shaders/passthrough.vert</file>
+        <file>shared/shaders/phong.vert</file>
+        <file>shared/shaders/phongglass.frag</file>
+        <file>shared/shaders/phongskybox.frag</file>
+        <file>qml/framebuffer.qml</file>
+        <file>qml/geometry_shader.qml</file>
+        <file>shared/shaders/hair.geom</file>
+        <file>shared/shaders/hair.frag</file>
+        <file>shared/shaders/glsltest.frag</file>
+        <file>shared/shaders/glsltest.vert</file>
+        <file>shared/shaders/hair.vert</file>
+        <file>qml/instancing.qml</file>
+        <file>qml/Components/Box2.qml</file>
+        <file>shared/shaders/instancing.vert</file>
+        <file>shared/shaders/checkboard.frag</file>
     </qresource>
 </RCC>

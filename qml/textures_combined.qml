@@ -2,6 +2,7 @@ import QtQuick 2.6 as QQ2
 
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
+import Qt3D.Input 2.0
 
 import "Components"
 import "Components/misc.js" as Misc
@@ -11,6 +12,23 @@ Scene0 {
 		id: root
 
 		RenderSettings0 {}
+
+		InputSettings {}
+
+		KeyboardDevice {
+			id: keyboardDevice
+		}
+
+		KeyboardHandler {
+			focus: true
+			onSpacePressed: {
+				root.srgb = !root.srgb
+				console.log(root.srgb)
+			}
+			sourceDevice: keyboardDevice
+		}
+
+		property bool srgb: false
 
 		Entity {
 			id: background
@@ -33,6 +51,7 @@ Scene0 {
 						Parameter {
 							name: "ourTexture1"
 							value: Texture2D {
+								format: root.srgb?Texture.SRGB8:Texture.Automatic // WTF ???
 								TextureImage {
 									source: Resources.texture("container.jpg")
 								}
@@ -41,6 +60,7 @@ Scene0 {
 						Parameter {
 							name: "ourTexture2"
 							value: Texture2D {
+								format: root.srgb?Texture.SRGB8_Alpha8:Texture.Automatic
 								TextureImage {
 									source: Resources.texture("awesomeface.png")
 								}

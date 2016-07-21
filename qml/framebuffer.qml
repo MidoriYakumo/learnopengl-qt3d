@@ -18,6 +18,18 @@ Scene0 {
 
 		RenderSettings {
 			id: renderSettings
+
+			property Texture2D framebuffer: Texture2D {
+				id: framebuffer
+				width: scene.width
+				height: scene.height
+				format: Texture.RGBA32F
+
+
+				onNodeDestroyed: console.log("Texture2D onNodeDestroyed")
+			}
+
+
 			activeFrameGraph: Viewport {
 				RenderSurfaceSelector {
 					CameraSelector {
@@ -29,21 +41,27 @@ Scene0 {
 							RenderPassFilter {
 								matchAny: FilterKey { name: "pass"; value: "material" }
 							}
-//							RenderStateSet {
-//								renderStates: [
-//									CullFace { mode: CullFace.Back },
-//									StencilTest {
-//										front {
-//											stencilFunction: StencilTestArguments.Always
-//											referenceValue: 1; comparisonMask: 0xff
-//										}
-//										back {
-//											stencilFunction: StencilTestArguments.Always
-//											referenceValue: 1; comparisonMask: 0xff
-//										}
-//									}
-//								]
-//							}
+						}
+
+
+						RenderTargetSelector {
+							// W/Adreno-ES20(17579): <validate_render_targets:454>: GL_INVALID_OPERATION
+							ClearBuffers {
+								buffers: ClearBuffers.ColorDepthBuffer
+								clearColor: "transparent"
+								RenderPassFilter {
+									matchAny: FilterKey { name: "pass"; value: "material" }
+								}
+							}
+							target: RenderTarget {
+								attachments: [
+									RenderTargetOutput {
+										attachmentPoint : RenderTargetOutput.Color0
+										texture : framebuffer
+										onNodeDestroyed: console.log("RenderTargetOutput onNodeDestroyed")
+									}
+								]
+							}
 						}
 
 						ClearBuffers {
@@ -81,7 +99,48 @@ Scene0 {
 		}
 
 		Entity {
-			id: chest
+			id: plane
+			components: [planeMesh, planeTransform, planeMaterial]
+
+			PlaneMesh{ id: planeMesh }
+
+			Transform {
+				id: planeTransform
+				rotation: fromAxisAndAngle(Qt.vector3d(1., 0., 0.), 90)
+			}
+
+			PhongMaterial {
+				id: planeMaterialx
+				diffuse: "white"
+			}
+
+			Material {
+				id: planeMaterial
+				effect: Effect {
+					techniques: Technique {
+						filterKeys: FilterKey {
+							name: "renderingStyle"
+							value: "forward"
+						}
+						renderPasses: RenderPass {
+							shaderProgram: ShaderProgram0 {
+									vertName: "passthrough"
+									fragName: "mosaic"
+								}
+						}
+					}
+
+					parameters: Parameter {
+							name: "texture"
+							value: framebuffer
+					}
+
+				}
+			}
+		}
+
+		Entity {
+			id: cube1
 			components: [cube, cubeMaterial, cubeTransform]
 
 			CappingDiffuseSpecularEmissionMapMaterial {

@@ -130,6 +130,8 @@ ApplicationWindow {
 
 	onQrcOnChanged: {
 		Resources.qrcEnabled = qrcOn
+
+		load("instancing")
 	}
 
 }
