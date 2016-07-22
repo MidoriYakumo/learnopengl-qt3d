@@ -61,6 +61,8 @@
         <file>shared/shaders/materials.frag</file>
         <file>qml/Components/qmldir</file>
         <file>qml/Components/Resources.qml</file>
+        <file>qml/Components/FpsLine.qml</file>
+        <file>qml/app.qml</file>
         <file>qml/app-cpp.qml</file>
         <file>qml/Components/Box1.qml</file>
         <file>qml/Components/PointLight0.qml</file>

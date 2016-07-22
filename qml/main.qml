@@ -19,7 +19,7 @@ Item {
 		textRole: "text"
 		width: parent.width
 		anchors.top: parent.top
-		model: Examples { }
+		model: Examples
 		currentIndex: -1
 		onCurrentIndexChanged: load(model.get(currentIndex).source)
 	}

@@ -1,3 +1,5 @@
+pragma Singleton
+
 import QtQuick 2.7
 
 ListModel {
@@ -24,22 +26,24 @@ ListModel {
 	ListElement { text: "Spot Light(hard)"				; source: "light_casters_spotlight_hard"}
 	ListElement { text: "Multiple Lights"				; source: "multiple_lightsx"}
 	ListElement { text: "Import Models"					; source: "model"}
-	ListElement { text: "Stencil Testing"					; source: "stencil_testing"}
+	ListElement { text: "Stencil Testing"				; source: "stencil_testing"}
 	ListElement { text: "Discard Blend"					; source: "blending_discard"}
 	ListElement { text: "Alpha Blend"					; source: "blending_alpha"}
 	ListElement { text: "Framebuffer"					; source: "framebuffer"}
-	ListElement { text: "Skybox"					; source: "cubemaps_skybox"}
+	ListElement { text: "Skybox"						; source: "cubemaps_skybox"}
 	ListElement { text: "Simple Glass"					; source: "cubemaps_glasscube"}
 	ListElement { text: "Glass Texture"					; source: "cubemaps_final"}
-	ListElement { text: "Geometry Shader"					; source: "geometry_shader"}
+	ListElement { text: "Geometry Shader"				; source: "geometry_shader"}
 	ListElement { text: "Instancing"					; source: "instancing"}
-	ListElement { text: "Lighting Blinn-Phong"					; source: "light_blinnphong"}
+	ListElement { text: "Lighting Blinn-Phong"			; source: "light_blinnphong"}
 
-	ListElement { text: "TEST/BASE"					; source: "test_base"}
-	ListElement { text: "TEST/GLSL"					; source: "test_glsl"}
-	ListElement { text: "TEST/BIGMODEL"			; source: "test_bigmodel"}
-	ListElement { text: "TEST/INSTANCED"			; source: "test_instanced"}
-	ListElement { text: "TEST/PLASMA"			; source: "test_plasma"}
+	ListElement { text: "TEST/BASE"						; source: "test_base"}
+	ListElement { text: "TEST/GLSL"						; source: "test_glsl"}
+	ListElement { text: "TEST/BIGMODEL"					; source: "test_bigmodel"}
+	ListElement { text: "TEST/INSTANCED"				; source: "test_instanced"}
+	ListElement { text: "TEST/PLASMA"					; source: "test_plasma"}
 	ListElement { text: "Exit"; }
+	
+	Component.onCompleted: console.log("In total %1 samples.".arg(count-1))
 }
 

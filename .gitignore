@@ -52,7 +52,7 @@ Thumbs.db
 *.sln
 *.suo
 *.vcproj
-*vcproj.*.*.user
+*.user
 *.ncb
 *.sdf
 *.opensdf

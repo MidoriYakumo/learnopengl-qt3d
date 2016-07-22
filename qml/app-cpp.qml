@@ -12,8 +12,9 @@ ApplicationWindow {
 	height: 600 + header.height
 
 	header: ComboBox {
+		id: combobox
 		textRole: "text"
-		model: Examples { }
+		model: Examples
 		currentIndex: -1
 		onCurrentIndexChanged: {
 			if (currentIndex === model.count - 1) Qt.quit()
@@ -35,7 +36,7 @@ ApplicationWindow {
 		ListView {
 			anchors.fill: parent
 			currentIndex: -1
-			model: Examples { }
+			model: Examples
 			delegate: ItemDelegate {
 				width: parent.width
 				text: model.text
@@ -130,8 +131,25 @@ ApplicationWindow {
 
 	onQrcOnChanged: {
 		Resources.qrcEnabled = qrcOn
-
-//		load("instancing")
 	}
 
+	Component.onCompleted: {
+		var args = Qt.application.arguments
+		//var arg = args[args.length - 1]
+		var arg = args[1]
+		if (arg.search('.+\.qml')<0) {
+			console.log("arg=%1".arg(arg))
+			if (parseInt(arg)>=0) {
+				combobox.currentIndex = parseInt(arg)
+			} else {
+				for (var i=0;i<Examples.count;i++) {
+					var e = Examples.get(i)
+					if (e.text.search(arg)>=0 || e.source.search(arg)>=0) {
+						combobox.currentIndex = i
+						break
+					}
+				}
+			}
+		}
+	}
 }

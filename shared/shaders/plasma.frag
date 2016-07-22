@@ -1,17 +1,19 @@
 //#version 150
 
-uniform vec2 winsize;
-uniform float time;
+#define FP highp
 
-float displacement(vec3 p)
+uniform FP vec2 winsize;
+uniform FP float time;
+
+FP float displacement(FP vec3 p)
 {
-	float cosT = cos(time);
-	float sinT = sin(time);
+	FP float cosT = cos(time);
+	FP float sinT = sin(time);
 
-	mat2 mat = mat2(cosT, -sinT, sinT, cosT);
+	FP mat2 mat = mat2(cosT, -sinT, sinT, cosT);
 	p.xz *= mat;
 	p.xy *= mat;
-	vec3 q = 1.75 * p;
+	FP vec3 q = 1.75 * p;
 
 	return length(p + vec3(sinT)) *
 		   log(length(p) + 1.0) +
@@ -20,21 +22,21 @@ float displacement(vec3 p)
 
 void main()
 {
-	vec3 color;
-	float d = 2.5;
-	vec2 screenPos = gl_FragCoord.xy / winsize.xy - vec2(0.6, 0.4);
-	vec3 pos = normalize(vec3(screenPos, -1.0));
-	float sinT = sin(time) * 0.2;
+	FP vec3 color;
+	FP float d = 2.5;
+	FP vec2 screenPos = gl_FragCoord.xy / winsize.xy - vec2(0.6, 0.4);
+	FP vec3 pos = normalize(vec3(screenPos, -1.0));
+	FP float sinT = sin(time) * 0.2;
 
 	// compute plasma color
 	for (int i = 0; i < 8; ++i) {
-		vec3 p = vec3(0.0, 0.0, 5.0) + pos * d;
+		FP vec3 p = vec3(0.0, 0.0, 5.0) + pos * d;
 
-		float positionFactor = displacement(p);
+		FP float positionFactor = displacement(p);
 		d += min(positionFactor, 1.0);
 
-		float clampFactor =  clamp((positionFactor- displacement(p + 0.1)) * 0.5, -0.1, 1.0);
-		vec3 l = vec3(0.2 * sinT, 0.35, 0.4) + vec3(5.0, 2.5, 3.25) * clampFactor;
+		FP float clampFactor =  clamp((positionFactor- displacement(p + 0.1)) * 0.5, -0.1, 1.0);
+		FP vec3 l = vec3(0.2 * sinT, 0.35, 0.4) + vec3(5.0, 2.5, 3.25) * clampFactor;
 		color = (color + (1.0 - smoothstep(0.0, 2.5, positionFactor)) * 0.7) * l;
 	}
 
