@@ -16,13 +16,25 @@ Compiled version, context set to GL3.3/GLES, can run on Android
 
 ![](ss/ss-qt3d-android.png)
 
+notes
 ===
+
+Main qml file for qmlscene/binary/QmlCreator
 
 * app.qml: main window with line chart FPS display
 
 * app-cpp.qml: main window with text FPS display
 
 * main.qml: QuickItem as root + text FPS display
+
+You can lauch one sample with a keyword like:
+
+* qmlscene skybox app.qml
+* ./learnopengl-qt3d geometry
+
+**Some large assets from the website is downloaded by qmake script(*nix compatible), connection is required at the first build or after updated. See assets.pri for details**
+
+**leanopengl uses a little different lighting model from Qt3D default model, to rendering models for a better result, please slightly modify the ka, kd in mtl files**
 
 Examples
 ===
