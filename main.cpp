@@ -10,14 +10,18 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 
 	QSurfaceFormat format;
-	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
-		format.setVersion(3, 3);
+	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) { // Learn OpenGL Only
+		format.setVersion(4, 3);
 		format.setProfile(QSurfaceFormat::CoreProfile);
-	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) {}
+	}
 
-	format.setDepthBufferSize(24);
-	format.setStencilBufferSize(8);
+	format.setAlphaBufferSize(8);
+	format.setDepthBufferSize(8);
+	format.setRenderableType(QSurfaceFormat::OpenGL);
 	format.setSamples(4);
+	format.setStencilBufferSize(8);
+	format.setSwapBehavior(QSurfaceFormat::TripleBuffer);
+	format.setSwapInterval(1);
 
 	QSurfaceFormat::setDefaultFormat(format);
 
@@ -27,7 +31,9 @@ int main(int argc, char *argv[])
 	engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml"))); // if qtcharts crashes the program
 // 	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
 	engine.rootObjects().at(0)->setProperty("title", "LearnOpenGL-Qt3D");
+#ifndef NO_ASSETS
 	engine.rootObjects().at(0)->setProperty("qrcOn", true);
+#endif
 
 	return app.exec();
 }

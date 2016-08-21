@@ -137,15 +137,17 @@ ApplicationWindow {
 		var args = Qt.application.arguments
 		//var arg = args[args.length - 1]
 		var arg = args[1]
-		if (arg.search('.+\.qml')<0) {
+		if (arg && arg.search('.+\.qml')<0) {
 			console.log("arg=%1".arg(arg))
 			if (parseInt(arg)>=0) {
 				combobox.currentIndex = parseInt(arg)
 			} else {
+				arg = arg.toLowerCase()
 				for (var i=0;i<Examples.count;i++) {
 					var e = Examples.get(i)
-					if (e.text.search(arg)>=0 || e.source.search(arg)>=0) {
+					if (e.text.toLowerCase().search(arg)>=0 || e.source.search(arg)>=0) {
 						combobox.currentIndex = i
+						console.log("match=%1.qml".arg(e.source))
 						break
 					}
 				}

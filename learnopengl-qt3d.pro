@@ -12,7 +12,14 @@ QML_IMPORT_PATH =
 
 OTHER_FILES += qml/*.qml
 
-DISTFILES += \
-	qml/app-cpp.qml
+DISTFILES += shared
 
-include(assets.pri)
+# Do not distribute with assets
+CONFIG += no_assets
+
+unix:!contains(CONFIG, no_assets) {
+	include(assets.pri)
+} else {
+	DEFINES += NO_ASSETS
+	message(no_assets on)
+}
