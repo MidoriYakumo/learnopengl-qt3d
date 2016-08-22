@@ -1,8 +1,8 @@
 # Hello Window
 
-**Scene3D** is the QtQuick component to bride QtQuick and Qt3D, Scene3D is a QQuickItem, its Component3D children can be rendered in the 3D scene.
+**Scene3D** is the QtQuick component to bridge QtQuick and Qt3D, Scene3D is a QQuickItem, its Component3D children can be rendered in the 3D scene.
 
-There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2]())
+There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2](https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2))
 
 1. Qt3DQuickWindow + Component3D components for pure Qt3D app:
 
@@ -116,7 +116,7 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
     }
 	```
 	
-	That's how our application start with.
+	That's how our application starts with.
 	
 hellowindow
 ===
