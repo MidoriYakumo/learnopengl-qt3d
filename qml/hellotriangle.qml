@@ -4,7 +4,7 @@ import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
 import "Components"
-import "Components/misc.js" as Misc
+import "Components/utils.js" as Utils
 
 Scene0 {
 	Entity {
@@ -45,7 +45,7 @@ Scene0 {
 							data: (function buildBuffer(){
 								var vertexArray = new Float32Array(3 * 3);
 								var vertices = [-.5, -.5, 0, .5, -.5, 0, 0, .5, 0]
-								Misc.copyArray(vertices, vertexArray)
+								Utils.copyArray(vertices, vertexArray)
 								return vertexArray;
 							})()
 						}

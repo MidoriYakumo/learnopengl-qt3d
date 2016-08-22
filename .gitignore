@@ -71,6 +71,8 @@ Thumbs.db
 *.dll
 *.exe
 
+*.backup
+*.bak
 .directory
 build-*/
 */build-*/

@@ -4,6 +4,7 @@ import QtQuick 2.7
 
 ListModel {
 	ListElement { text: "Hello Window"					; source: "hellowindow"}
+	ListElement { text: "Hello Window 2"				; source: "hellowindow2"}
 	ListElement { text: "Hello Triangle"				; source: "hellotriangle"}
 	ListElement { text: "Hello Triangle 2 Wireframe"	; source: "hellotriangle2"}
 	ListElement { text: "Shaders Uniform"				; source: "shadersuniform"}

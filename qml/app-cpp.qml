@@ -98,15 +98,6 @@ ApplicationWindow {
 		}
 	}
 
-//	FpsItem {
-//		id: fps2d
-//		anchors.top: parent.top
-//		anchors.topMargin: 8
-//		anchors.left: parent.left
-//		anchors.leftMargin: 8
-//		spinnerSource: Resources.image("spinner.png")
-//	}
-
 	function updateDt(dt) {
 		fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
 		fps3d.text = (fps3d.fps).toFixed(1) + " fps"

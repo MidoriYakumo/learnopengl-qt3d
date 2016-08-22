@@ -10,7 +10,11 @@ Scene3D {
 
 	Entity {
 		RenderSettings {
-			activeFrameGraph: Viewport {
+			activeFrameGraph: ClearBuffers {
+				buffers: ClearBuffers.ColorBuffer
+				clearColor: Qt.rgba(0.2, 0.3, 0.3, 1.0)
+				RenderSurfaceSelector {
+				}
 			}
 		}
 	}
