@@ -2,7 +2,7 @@
 
 **Scene3D** is the QtQuick component to bridge QtQuick and Qt3D, Scene3D is a QQuickItem, its Component3D children can be rendered in the 3D scene.
 
-There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2](https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2))
+There are several ways to create Qt3D scene ([https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2](https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2))
 
 1. Qt3DQuickWindow + Component3D components for pure Qt3D app:
 
@@ -11,10 +11,10 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
 	view.setSource(QUrl("qrc:/main.qml"));
 	view.show();
 	```
-	
+
 	Input is auto captured by default for Qt3DQuickWindow.
 	Where main.qml starts with root entity:
-	
+
 	```qml
 	Entity {
       id: sceneRoot
@@ -30,9 +30,9 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
     view.setSource(QUrl("qrc:/main.qml"));
     view.show();
 	```
-	
+
 	Where main.qml starts with QQuickItem:
-	
+
 	```qml
 	Item {
       id: view
@@ -54,15 +54,15 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
     format.setDepthBufferSize(24);
     format.setStencilBufferSize(8);
     format.setSamples(4);
-    
+
     QQuickView view;
     view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.setSource(QUrl("qrc:/main.qml"));
     view.show();
 	```
-	
+
 	Where main.qml starts with QQuickItem, advance GL context is available:
-	
+
 	```qml
 	Item {
       id: view
@@ -83,7 +83,7 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
 	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
 		format.setVersion(4, 3);
 		format.setProfile(QSurfaceFormat::CoreProfile);
-	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) { 
+	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) {
 		format.setVersion(2, 0);
 	}
 
@@ -96,13 +96,13 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
 	format.setSwapInterval(0);
 
 	QSurfaceFormat::setDefaultFormat(format);
-	
+
 	QQmlApplicationEngine engine;
  	engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 	```
-	
+
 	Where main.qml starts with Window, advance GL context is available:
-	
+
 	```qml
 	ApplicationWindow {
       id: app
@@ -115,9 +115,9 @@ There are several ways to create Qt3D scene, ([https://forum.qt.io/topic/68781/s
       }
     }
 	```
-	
+
 	That's how our application starts with.
-	
+
 hellowindow
 ===
 

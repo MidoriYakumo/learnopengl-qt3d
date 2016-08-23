@@ -1,10 +1,7 @@
-import QtQuick 2.6 as QQ2
-
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
 import "Components"
-import "Components/utils.js" as Utils
 
 Scene0 {
 	Entity {
@@ -13,23 +10,7 @@ Scene0 {
 		RenderSettings0 {}
 
 		Entity {
-			id: background
-			components: [geometry, material]
-
-			Material {
-				id: material
-				effect: Effect {
-					techniques: Technique {
-						renderPasses: RenderPass {
-							renderStates: CullFace { mode: CullFace.NoCulling } // Any other alternative setting?
-							shaderProgram: ShaderProgram0 {
-								vertName: "hellotriangle"
-								fragName: "hellotriangle"
-							}
-						}
-					}
-				}
-			}
+            id: plane
 
 			GeometryRenderer {
 				id: geometry
@@ -39,7 +20,7 @@ Scene0 {
 						vertexBaseType: Attribute.Float
 						vertexSize: 3
 						count: 3
-						name: defaultPositionAttributeName()
+                        name: "position"
 						buffer: Buffer {
 							type: Buffer.VertexBuffer
 							data: (function buildBuffer(){
@@ -51,8 +32,23 @@ Scene0 {
 						}
 					}
 				}
-
 			}
+
+            Material {
+                id: material
+                effect: Effect {
+                    techniques: Technique {
+                        renderPasses: RenderPass {
+                            shaderProgram: ShaderProgram {
+                                vertexShaderCode: loadSource(Resources.shader("hellotriangle.vert"))
+                                fragmentShaderCode: loadSource(Resources.shader("hellotriangle.frag"))
+                            }
+                        }
+                    }
+                }
+            }
+
+            components: [geometry, material]
 		}
 	}
 }
