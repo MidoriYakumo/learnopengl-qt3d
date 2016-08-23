@@ -4,11 +4,11 @@ Qt3D version of http://learnopengl.com/ examples, currently works with Qt5.7
 
 **Just want to see how OpenGL works in Qt3D undocumented libs~**
 
-Pure QML version, use qmlscene to run with default OpenGL Context (GLES2.0 compatible)
+Pure QML version, use qmlscene to run with default OpenGL Context
 
 ![](doc/img/ss-qml.png)
 
-Compiled version, context set to GL3.3
+Compiled version, context set to GL4.3/GLES3.0
 
 ![](doc/img/ss-qt3d-desktop.png)
 
@@ -35,4 +35,5 @@ You can lauch one sample with a keyword like:
 Examples
 ===
 
-* [Hello Window](doc/Hello-Window.md) : works
+1. [Hello Window](doc/Hello-Window.md) : works
+1. [Hello Triangle](doc/Hello-Triangle.md) : works
