@@ -39,6 +39,6 @@ Item {
 
 	onShaderPrefixChanged: {
 		console.log("[Resources] isGLES2: %1, isGL33Core: %2.".arg(isGLES2).arg(isGL33Core),
-					(!(isGLES2||isGL33Core))?" WARNING: UNCOMPATIBLE CONTEXT!":"")
+					(!(isGLES2||isGL33Core))?" WARNING: Assuming ES20":"")
 	}
 }

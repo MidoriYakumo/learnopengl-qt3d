@@ -20,7 +20,7 @@ Scene0 {
 						vertexBaseType: Attribute.Float
 						vertexSize: 3
 						count: 3
-                        name: "position"
+						name: "position" // Auto picked up for boundingPositionAttribute
 						buffer: Buffer {
 							type: Buffer.VertexBuffer
 							data: (function buildBuffer(){

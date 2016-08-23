@@ -3,7 +3,6 @@ import Qt3D.Render 2.0
 import "."
 
 ShaderProgram {
-
 	property string vertName: "passthrough"
 	property string fragName: "checkboard"
 

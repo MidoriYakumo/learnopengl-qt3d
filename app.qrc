@@ -10,8 +10,11 @@
         <file>qml/Components/utils.js</file>
         <file>qml/Components/Scene0.qml</file>
         <file>qml/Components/RenderSettings0.qml</file>
+        <file>qml/hellowindow2.qml</file>
+        <file>qml/hellotriangle2.qml</file>
+        <file>shared/shaders/es20/hellotriangle.frag</file>
+        <file>shared/shaders/es20/hellotriangle.vert</file>
         <file>shared/shaders/gl33/hellotriangle.frag</file>
         <file>shared/shaders/gl33/hellotriangle.vert</file>
-        <file>qml/hellowindow2.qml</file>
     </qresource>
 </RCC>
