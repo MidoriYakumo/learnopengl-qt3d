@@ -1,137 +1,100 @@
-# Hello Window
+# Hello Triangle
 
-**Scene3D** is the QtQuick component to bridge QtQuick and Qt3D, Scene3D is a QQuickItem, its Component3D children can be rendered in the 3D scene.
+Any Qt3D renderable Entity is assembled with three parts:
 
-There are several ways to create Qt3D scene ([https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2](https://forum.qt.io/topic/68781/scene3d-vs-qt3dquickwindow-pictures-differ/2))
+> vertices, transforms, shaders
 
-1. Qt3DQuickWindow + Component3D components for pure Qt3D app:
+in qml code:
 
-	```c++
-	Qt3DExtras::Quick::Qt3DQuickWindow view;
-	view.setSource(QUrl("qrc:/main.qml"));
-	view.show();
-	```
+```qml
+Entity {
 
-	Input is auto captured by default for Qt3DQuickWindow.
-	Where main.qml starts with root entity:
-
-	```qml
-	Entity {
-      id: sceneRoot
-      ...
-    }
-	```
-
-2. QQuickView with QtQuick default GL context + Scene3D:
-
-	```c++
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
-    view.show();
-	```
-
-	Where main.qml starts with QQuickItem:
-
-	```qml
-	Item {
-      id: view
-      ...
-      Scene3D {
-        id: scene
-      }
-    }
-	```
-
-3. QQuickView with different GL context + Scene3D:
-
-	```c++
-	QSurfaceFormat format;
-    if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
-        format.setVersion(3, 3);
-        format.setProfile(QSurfaceFormat::CoreProfile);
-    }
-    format.setDepthBufferSize(24);
-    format.setStencilBufferSize(8);
-    format.setSamples(4);
-
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
-    view.show();
-	```
-
-	Where main.qml starts with QQuickItem, advance GL context is available:
-
-	```qml
-	Item {
-      id: view
-      ...
-      Scene3D {
-      	id: scene
-        ...
-		/* GL33 Shaders*/
-        ...
-      }
-    }
-	```
-
-4. QQmlApplicationEngine with different GL context + Scene3D:
-
-	```c++
-	QSurfaceFormat format;
-	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
-		format.setVersion(4, 3);
-		format.setProfile(QSurfaceFormat::CoreProfile);
-	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) {
-		format.setVersion(2, 0);
+	GeometryRenderer {
+		id: geometry
 	}
+	
+	Transform {
+		id: transform
+	}
+	
+	Material {
+		id: material
+	}
+    
+	components: [geometry, transform, material]
+}
+```
 
-	format.setAlphaBufferSize(0);
-	format.setDepthBufferSize(0);
-	format.setRenderableType(QSurfaceFormat::OpenGL);
-	format.setSamples(4);
-	format.setStencilBufferSize(0);
-	format.setSwapBehavior(QSurfaceFormat::TripleBuffer);
-	format.setSwapInterval(0);
+There is no z-order or render order for unassembled entities, thus any following style works:
 
-	QSurfaceFormat::setDefaultFormat(format);
+```qml
+GeometryRenderer {
+	id: geometry
+}
 
-	QQmlApplicationEngine engine;
- 	engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-	```
+Transform {
+	id: transform
+}
 
-	Where main.qml starts with Window, advance GL context is available:
+Material {
+	id: material
+}
+    
+Entity {
+	components: [geometry, transform, material]
+}
+```
 
-	```qml
-	ApplicationWindow {
-      id: app
-      ...
-      Scene3D {
-      	id: scene
-        ...
-		/* GL33 Shaders*/
-        ...
-      }
-    }
-	```
+```qml
 
-	That's how our application starts with.
+Transform {
+	id: transform
+}
 
-hellowindow
+Material {
+	id: material
+}
+
+Entity {
+	
+	GeometryRenderer {
+		id: geometry
+	}
+    
+	components: [geometry, transform, material]
+}
+```
+
+Flow
+---
+```
+GeometryRenderer <- Geometry <- Attribute <- Buffer <- vertices
+      |                             |          |           |
+      V                             ------------------------
+Transform  ------------------------------------>    |
+      |                                             |
+      V                                             V
+Material -> Effect -> Technique -> RenderPass -> ShaderProgram
+```
+
+hellotriangle
 ===
 
-1. Use QSurfaceFormat to set global GL context:
+1. Use ShaderProgram to link shader program flow:
 
-	![](img/hellowindow.0.png)
+	![](img/hellotriangle.0.png)
 
-2. Set a Viewport to activeFrameGraph making render flow complete:
+2. Use Attribute to bind VBO
 
-	![](img/hellowindow.1.png)
+	![](img/hellotriangle.1.png)
+	
+3. Entity.components assmbles vertices and shader programs, RenderPass set the render flow (using default settings)
 
-hellowindow2
+	![](img/hellotriangle.2.png)
+
+hellotriangle2
 ===
 
-1. Viewport is a FrameGraphNode, ClearBuffers is another one with clearbuffer setting, **note buffers is usually set to ClearBuffers.ColorDepthBuffer even no depth order in your scene (see [Hello-Triangle](Hello-Triangle.md))**:
+1. Corresponding...:
 
-	![](img/hellowindow2.0.png)
+	![](img/hellotriangle2.0.png)

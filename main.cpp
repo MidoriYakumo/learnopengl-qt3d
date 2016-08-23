@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 		format.setVersion(4, 3);
 		format.setProfile(QSurfaceFormat::CoreProfile);
 	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) { // Learn OpenGLES??
-		format.setVersion(2, 0);
+		format.setVersion(3, 0);
 	}
 
 	format.setAlphaBufferSize(0);

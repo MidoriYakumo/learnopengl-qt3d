@@ -6,6 +6,7 @@ Item {
 
 	readonly property var os2Prefix: {
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
+		// "android"	: "assets://" ,
 		// Compatibility for QML Creator
 		"linux"		: "file:.." ,
 		"osx"		: "file:.." ,
@@ -14,14 +15,16 @@ Item {
 	}
 
 	property bool qrcEnabled: false
-	property bool isGLES2: (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.profile==2)
+	property bool fallbackToES30: true & false
+	property bool isGLES30: (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.profile==2)
+	property bool isGLES20: !isGLES30 && (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.profile==2)
 	property bool isGL33Core: ((OpenGLInfo.majorVersion>3)||
 							  (OpenGLInfo.majorVersion==3)&&(OpenGLInfo.minorVersion>=3))&&
 							  (OpenGLInfo.profile==1)
 
 	property string prefix: (qrcEnabled?"qrc:":os2Prefix[Qt.platform.os])+ "/"
 
-	readonly property string shaderPrefix: prefix + "shared/shaders/" + (isGL33Core?"gl33/":"es20/")
+	readonly property string shaderPrefix: prefix + "shared/shaders/" + (isGL33Core?"gl33/":(isGLES30||fallbackToES30)?"es30/":"es20/")
 	function shader(fn){return shaderPrefix + fn}
 
 	readonly property string texturePrefix: prefix + "shared/assets/texture/"
@@ -38,7 +41,7 @@ Item {
 	}
 
 	onShaderPrefixChanged: {
-		console.log("[Resources] isGLES2: %1, isGL33Core: %2.".arg(isGLES2).arg(isGL33Core),
-					(!(isGLES2||isGL33Core))?" WARNING: Assuming ES20":"")
+		console.log("[Resources] isGL33Core: %1, isGLES30: %2, isGLES20: %3.".arg(isGL33Core).arg(isGLES30).arg(isGLES20),
+					(!(isGL33Core||isGLES30||isGLES20))?" WARNING: Assuming "+(fallbackToES30?"GLES30":"GLES20"):"")
 	}
 }
