@@ -16,5 +16,14 @@
         <file>shared/shaders/gl33/hellotriangle.vert</file>
         <file>shared/shaders/es30/hellotriangle.frag</file>
         <file>shared/shaders/es30/hellotriangle.vert</file>
+        <file>qml/shaders-uniform.qml</file>
+        <file>qml/Components/TriangleGeometry0.qml</file>
+        <file>qml/shaders-interpolated.qml</file>
+        <file>shared/shaders/gl33/shaders-interpolated.frag</file>
+        <file>shared/shaders/gl33/shaders-uniform.frag</file>
+        <file>shared/shaders/gl33/shaders-uniform.vert</file>
+        <file>shared/shaders/es30/shaders-interpolated.frag</file>
+        <file>shared/shaders/es30/shaders-uniform.frag</file>
+        <file>shared/shaders/es30/shaders-uniform.vert</file>
     </qresource>
 </RCC>

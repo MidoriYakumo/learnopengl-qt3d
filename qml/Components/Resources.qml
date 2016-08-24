@@ -2,7 +2,7 @@ pragma Singleton
 
 import QtQuick 2.7
 
-Item {
+Item { // This is the global resource router
 
 	readonly property var os2Prefix: {
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
@@ -15,7 +15,8 @@ Item {
 	}
 
 	property bool qrcEnabled: false
-	property bool fallbackToES30: true & false
+	property bool fallbackToES30: true
+								  & false
 	property bool isGLES30: (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.profile==2)
 	property bool isGLES20: !isGLES30 && (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.profile==2)
 	property bool isGL33Core: ((OpenGLInfo.majorVersion>3)||

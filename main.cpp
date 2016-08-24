@@ -30,13 +30,20 @@ int main(int argc, char *argv[])
 	QQuickStyle::setStyle("Material");
 
 	QQmlApplicationEngine engine;
-    engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml"))); // If qtcharts crashes the program
-// 	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
-	engine.rootObjects().at(0)->setProperty("title", "LearnOpenGL-Qt3D");
 
-#ifndef NO_ASSETS
+#ifndef NO_APP_QRC
+	engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml"))); // If qtcharts crashes the program
+// 	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
+#else
+	engine.load(QUrl(QLatin1String("file:../qml/app-cpp.qml")));
+// 	engine.load(QUrl(QLatin1String("file:../qml/app.qml")));
+#endif
+
+#ifndef NO_ASSETS_QRC
 	engine.rootObjects().at(0)->setProperty("qrcOn", true);
 #endif
+
+	engine.rootObjects().at(0)->setProperty("title", "LearnOpenGL-Qt3D");
 
 	return app.exec();
 }

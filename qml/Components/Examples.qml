@@ -7,8 +7,14 @@ ListModel {
 	ListElement { text: "Hello Window 2"				; source: "hellowindow2"}
 	ListElement { text: "Hello Triangle"				; source: "hellotriangle"}
 	ListElement { text: "Hello Triangle 2 Wireframe"	; source: "hellotriangle2"}
-	ListElement { text: "Shaders Uniform"				; source: "shadersuniform"}
-	ListElement { text: "Shaders Interpolated"			; source: "shadersinterpolated"}
+//	ListElement { text: "Hello Triangle X1"				; source: "hello-triangle-exercise1"}
+//	ListElement { text: "Hello Triangle X2"				; source: "hello-triangle-exercise2"}
+//	ListElement { text: "Hello Triangle X3"				; source: "hello-triangle-exercise3"}
+	ListElement { text: "Shaders Uniform"				; source: "shaders-uniform"}
+	ListElement { text: "Shaders Interpolated"			; source: "shaders-interpolated"}
+//	ListElement { text: "Shaders X1"					; source: "shaders-exercise1"}
+//	ListElement { text: "Shaders X2"					; source: "shaders-exercise2"}
+//	ListElement { text: "Shaders X3"					; source: "shaders-exercise3"}
 	ListElement { text: "Texture"						; source: "texture"}
 	ListElement { text: "Textures Combined"				; source: "textures_combined"}
 	ListElement { text: "Transformations"				; source: "transformations"}

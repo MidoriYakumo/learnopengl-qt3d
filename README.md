@@ -12,7 +12,7 @@ Compiled version, context set to GL4.3/GLES3.0
 
 ![](doc/img/ss-qt3d-desktop.png)
 
-notes
+Notes
 ===
 
 Main qml file for qmlscene/binary/QmlCreator

@@ -12,15 +12,15 @@ Entity {
 	GeometryRenderer {
 		id: geometry
 	}
-	
+
 	Transform {
 		id: transform
 	}
-	
+
 	Material {
 		id: material
 	}
-    
+
 	components: [geometry, transform, material]
 }
 ```
@@ -39,7 +39,7 @@ Transform {
 Material {
 	id: material
 }
-    
+
 Entity {
 	components: [geometry, transform, material]
 }
@@ -56,11 +56,11 @@ Material {
 }
 
 Entity {
-	
+
 	GeometryRenderer {
 		id: geometry
 	}
-    
+
 	components: [geometry, transform, material]
 }
 ```
@@ -87,7 +87,7 @@ hellotriangle
 2. Use Attribute to bind VBO
 
 	![](img/hellotriangle.1.png)
-	
+
 3. Entity.components assmbles vertices and shader programs, RenderPass set the render flow (using default settings)
 
 	![](img/hellotriangle.2.png)
@@ -98,3 +98,14 @@ hellotriangle2
 1. Corresponding...:
 
 	![](img/hellotriangle2.0.png)
+
+hello-triangle-exercise1
+===
+
+hello-triangle-exercise2
+===
+You can generate 2 different geometry, bind two entities with them and the same material
+
+hello-triangle-exercise3
+===
+loadSource returns QByteArray, you need toString() and then manipulate the string in javascript
