@@ -14,7 +14,7 @@ Scene0 {
 
 			GeometryRenderer {
 				id: geometry
-				// Commenting this option will result in filling polygons
+				// #TRYIT: Commenting this option will result in filling polygons
 				primitiveType: GeometryRenderer.LineLoop // Currently linewidth=1 only
 				geometry: Geometry {
 					Attribute {

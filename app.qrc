@@ -10,7 +10,6 @@
         <file>qml/Components/utils.js</file>
         <file>qml/Components/Scene0.qml</file>
         <file>qml/Components/RenderSettings0.qml</file>
-        <file>qml/hellowindow2.qml</file>
         <file>qml/hellotriangle2.qml</file>
         <file>shared/shaders/gl33/hellotriangle.frag</file>
         <file>shared/shaders/gl33/hellotriangle.vert</file>
@@ -25,5 +24,15 @@
         <file>shared/shaders/es30/shaders-interpolated.frag</file>
         <file>shared/shaders/es30/shaders-uniform.frag</file>
         <file>shared/shaders/es30/shaders-uniform.vert</file>
+        <file>qml/textures_combined.qml</file>
+        <file>qml/textures2.qml</file>
+        <file>shared/shaders/es30/texture.vert</file>
+        <file>shared/shaders/es30/texture2.frag</file>
+        <file>shared/shaders/es30/textures_combined.frag</file>
+        <file>shared/shaders/es30/textures_combined.vert</file>
+        <file>shared/shaders/gl33/texture.vert</file>
+        <file>shared/shaders/gl33/texture2.frag</file>
+        <file>shared/shaders/gl33/textures_combined.frag</file>
+        <file>shared/shaders/gl33/textures_combined.vert</file>
     </qresource>
 </RCC>

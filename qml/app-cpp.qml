@@ -128,7 +128,7 @@ ApplicationWindow {
 		var args = Qt.application.arguments
 		//var arg = args[args.length - 1]
 		var arg = args[1]
-		if (!/.+\.qml$/.test(arg)) {
+		if (arg && !/.+\.qml$/.test(arg)) {
 			console.log("arg=%1".arg(arg))
 			if (parseInt(arg)>=0) {
 				combobox.currentIndex = parseInt(arg)

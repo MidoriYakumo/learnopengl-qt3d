@@ -1,14 +1,15 @@
 # learnopengl-qt3d
 
-Qt3D version of http://learnopengl.com/ examples, currently works with Qt5.7
+Qt3D version of http://learnopengl.com/ examples, currently works with Qt5.7.
+I created this repo aiming to understand how Qt3D works.
 
-**Just want to see how OpenGL works in Qt3D undocumented libs~**
+![](doc/img/ss-qt3d-desktop.gif)
 
-Pure QML version, use qmlscene to run with default OpenGL Context
+Pure QML version, use qmlscene to run with default OpenGL Context:
 
 ![](doc/img/ss-qml.png)
 
-Compiled version, context set to GL4.3/GLES3.0
+Compiled version, context set to GL4.3/GLES3.0:
 
 ![](doc/img/ss-qt3d-desktop.png)
 
@@ -40,3 +41,4 @@ Examples
 1. [Hello Window](doc/Hello-Window.md) : works
 1. [Hello Triangle](doc/Hello-Triangle.md) : works
 1. [Shaders](doc/Shaders.md) : works
+1. [Texture](doc/Texture.md) : works

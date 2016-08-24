@@ -4,7 +4,7 @@ import QtQuick 2.7
 
 ListModel {
 	ListElement { text: "Hello Window"					; source: "hellowindow"}
-	ListElement { text: "Hello Window 2"				; source: "hellowindow2"}
+//	ListElement { text: "Hello Window 2"				; source: "hellowindow2"}
 	ListElement { text: "Hello Triangle"				; source: "hellotriangle"}
 	ListElement { text: "Hello Triangle 2 Wireframe"	; source: "hellotriangle2"}
 //	ListElement { text: "Hello Triangle X1"				; source: "hello-triangle-exercise1"}
@@ -15,8 +15,13 @@ ListModel {
 //	ListElement { text: "Shaders X1"					; source: "shaders-exercise1"}
 //	ListElement { text: "Shaders X2"					; source: "shaders-exercise2"}
 //	ListElement { text: "Shaders X3"					; source: "shaders-exercise3"}
-	ListElement { text: "Texture"						; source: "texture"}
+//	ListElement { text: "Textures"						; source: "textures"}
+	ListElement { text: "Textures 2"					; source: "textures2"}
 	ListElement { text: "Textures Combined"				; source: "textures_combined"}
+//	ListElement { text: "Textures X1"					; source: "textures-exercise1"}
+//	ListElement { text: "Textures X2"					; source: "textures-exercise2"}
+//	ListElement { text: "Textures X3"					; source: "textures-exercise3"}
+//	ListElement { text: "Textures X4"					; source: "textures-exercise4"}
 	ListElement { text: "Transformations"				; source: "transformations"}
 	ListElement { text: "Coordinate Systems"			; source: "coordinate_systems"}
 	ListElement { text: "Coordinate Systems MultiObj"	; source: "coordinate_systems_multiple_objects"}
