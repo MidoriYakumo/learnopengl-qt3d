@@ -3,7 +3,7 @@
 Qt3D version of http://learnopengl.com/ examples, currently works with Qt5.7.
 I created this repo aiming to understand how Qt3D works.
 
-![](doc/img/ss-qt3d-desktop.gif)
+![](doc/img/sc-qt3d-desktop.gif)
 
 Pure QML version, use qmlscene to run with default OpenGL Context:
 
