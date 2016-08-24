@@ -1,8 +1,6 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
-import "."
-
 GeometryRenderer {
 	id: geometry
 	geometry: Geometry {
@@ -16,16 +14,11 @@ GeometryRenderer {
 			name: "position"
 			buffer: Buffer {
 				type: Buffer.VertexBuffer
-				data: (function buildBuffer(){
-					var vertexArray = new Float32Array(3 * 3);
-					var vertices = [
+				data: Float32Array([
 						-0.5, -0.5, 0.0, // Left
 						 0.5, -0.5, 0.0, // Right
 						 0.0,  0.5, 0.0  // Top
-					]
-					Utils.copyArray(vertices, vertexArray)
-					return vertexArray;
-				})()
+					])
 			}
 		}
 	}

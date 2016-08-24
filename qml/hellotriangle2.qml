@@ -26,17 +26,12 @@ Scene0 {
 						name: "position"
 						buffer: Buffer {
 							type: Buffer.VertexBuffer
-							data: (function buildBuffer(){
-								var vertexArray = new Float32Array(3 * 4);
-								var vertices = [
+							data: Float32Array([
 									0.5,  0.5, 0.0,  // Top Right
 									0.5, -0.5, 0.0,  // Bottom Right
 								   -0.5, -0.5, 0.0,  // Bottom Left
 								   -0.5,  0.5, 0.0   // Top Left
-								]
-								Utils.copyArray(vertices, vertexArray)
-								return vertexArray;
-							})()
+								])
 						}
 					}
 					Attribute {
@@ -46,15 +41,10 @@ Scene0 {
 						count: 6
 						buffer: Buffer {
 							type: Buffer.IndexBuffer
-							data: (function () {
-								var indexArray = new Uint16Array(3 * 2)
-								var indices = [
+							data: Uint16Array([
 									0, 1, 3,  // First Triangle
 									1, 2, 3   // Second Triangle
-								]
-								Utils.copyArray(indices, indexArray)
-								return indexArray
-							})()
+								])
 						}
 					}
 					boundingVolumePositionAttribute: position // Manual setting positionAttribute
