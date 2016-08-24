@@ -12,6 +12,8 @@ Compiled version, context set to GL4.3/GLES3.0
 
 ![](doc/img/ss-qt3d-desktop.png)
 
+![](doc/img/ss-qt3d-android.png)
+
 Notes
 ===
 
@@ -37,3 +39,4 @@ Examples
 
 1. [Hello Window](doc/Hello-Window.md) : works
 1. [Hello Triangle](doc/Hello-Triangle.md) : works
+1. [Shaders](doc/Shaders.md) : works

@@ -23,8 +23,9 @@ Scene0 {
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
+							renderStates: CullFace { mode: CullFace.NoCulling }
 							shaderProgram: ShaderProgram0 {
-								vertName: "shaders-uniform"
+								vertName: "shaders-exercise1"
 								fragName: "shaders-uniform"
 							}
 						}
@@ -36,6 +37,7 @@ Scene0 {
 
 						property real greenValue: (Math.sin(time.value) / 2.) + 0.5
 					}
+
 				}
 			}
 
