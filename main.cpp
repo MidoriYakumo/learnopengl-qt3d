@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	format.setSamples(4);
 	format.setStencilBufferSize(0);
 	format.setSwapBehavior(QSurfaceFormat::TripleBuffer);
-	format.setSwapInterval(0);
+	format.setSwapInterval(0); // For full speed
 
 	QSurfaceFormat::setDefaultFormat(format);
 

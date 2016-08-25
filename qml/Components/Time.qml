@@ -21,7 +21,7 @@ Item {
 		counter ++
 		if (counter >= 60) {
 			counter = 0
-			console.log("[Time] +1s: %1 %2".arg(value).arg(parseInt(new Date().getTime())))
+			console.log("[Time] +1s: %1 %2".arg(value).arg(new Date().getTime() % 10000))
 		}
 
 		//console.log("[Time] %1".arg(value))
