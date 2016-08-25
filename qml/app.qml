@@ -1,3 +1,8 @@
+/*
+* This is the start up QML for qmlscene
+* QtCharts may crash the application in non-default context
+*/
+
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
