@@ -15,4 +15,15 @@ Item {
 		loops: Animation.Infinite
 		running: true
 	}
+
+	property int counter: 0
+	onValueChanged: {
+		counter ++
+		if (counter >= 60) {
+			counter = 0
+			console.log("[Time] +1s: %1 %2".arg(value).arg(parseInt(new Date().getTime())))
+		}
+
+		//console.log("[Time] %1".arg(value))
+	}
 }
