@@ -16,6 +16,7 @@ ChartView {
 	property int hMargin: 6
 
 	property real span: pri.span
+	property int maxFps: 120
 
 	onSpanChanged: {
 		if (span < 0.1)
@@ -38,6 +39,9 @@ ChartView {
 		pri.t = t
 		avgSer.append(t - pri.span, pri.avg)
 		avgSer.append(t, pri.avg)
+
+		// Math.max(...arr) for ES6
+		yAxis.max = (pri.avg + 1) * 1.2
 	}
 
 	QtObject {
@@ -70,7 +74,7 @@ ChartView {
 	ValueAxis {
 		id: yAxis
 		min: 0
-		max: 60
+		max: root.maxFps
 		labelsColor: "white"
 		minorGridVisible: false
 		minorTickCount: 0

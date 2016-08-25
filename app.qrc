@@ -34,5 +34,10 @@
         <file>shared/shaders/gl33/texture2.frag</file>
         <file>shared/shaders/gl33/textures_combined.frag</file>
         <file>shared/shaders/gl33/textures_combined.vert</file>
+        <file>shared/shaders/gl33/transformations.vert</file>
+        <file>shared/shaders/es30/transformations.vert</file>
+        <file>qml/transformations.qml</file>
+        <file>qml/Components/TextureRectangleGeometry0.qml</file>
+        <file>qml/Components/Time.qml</file>
     </qresource>
 </RCC>

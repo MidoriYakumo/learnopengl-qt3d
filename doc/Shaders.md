@@ -17,25 +17,25 @@ parameters: [
 }
 ```
 
-shader-uniform
+[shader-uniform](../qml/shader-uniform.qml)
 ===
 
 1. Uniform binding:
 
 	![](img/shader-uniform.0.png)
 
-shader-interpolated
+[shader-interpolated](../qml/shader-interpolated.qml)
 ===
 
 1. Setup size, count, offset, stride for one vertex buffer with several attributes:
 
 	![](img/shader-interpolated.0.png)
 
-shader-exercise1
+[shader-exercise1](../qml/shader-exercise1.qml)
 ===
 
-shader-exercise2
+[shader-exercise2](../qml/shader-exercise2.qml)
 ===
 
-shader-exercise3
+[shader-exercise3](../qml/shader-exercise3.qml)
 ===

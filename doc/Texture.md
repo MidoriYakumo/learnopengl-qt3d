@@ -17,29 +17,29 @@ Parameter {
 }
 ```
 
-textures
+[textures](../qml/textures.qml)
 ===
 
 1. Control and adjust texture details in Texture:
 
 	![](img/textures.0.png)
 
-textures2
+[textures2](../qml/textures2.qml)
 ===
 
-textures_combined
+[textures_combined](../qml/textures_combined.qml)
 ===
 
-textures-exercise1
+[textures-exercise1](../qml/textures-exercise1.qml)
 ===
 
-textures-exercise2
+[textures-exercise2](../qml/textures-exercise2.qml)
 ===
 
-textures-exercise3
+[textures-exercise3](../qml/textures-exercise3.qml)
 ===
 
-textures-exercise4
+[textures-exercise4](../qml/textures-exercise4.qml)
 ===
 This exercise need more knowledge of Qt3D input system.
 

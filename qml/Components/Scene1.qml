@@ -5,6 +5,5 @@ Scene3D {
 	height: 600
 	width: 800
 
-	focus: true // as InputSettings.eventSource, see examples/controls
-	aspects: ["input"]
+	aspects: ["logic"] // For FPS indicator
 }

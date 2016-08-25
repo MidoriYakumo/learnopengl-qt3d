@@ -5,11 +5,13 @@ import Qt3D.Render 2.0
 
 import "Components"
 
-Scene0 {
+Scene1 {
 	Entity {
 		id: root
 
 		RenderSettings0 {}
+
+		FrameSwap {}
 
 		Entity {
 			id: plane

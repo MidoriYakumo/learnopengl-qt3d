@@ -118,7 +118,7 @@ There are several ways to create Qt3D scene ([https://forum.qt.io/topic/68781/sc
 
 	That's how our application starts with.
 
-hellowindow
+[hellowindow](../qml/hellowindow.qml)
 ===
 
 1. Use QSurfaceFormat to set global GL context:
@@ -129,7 +129,7 @@ hellowindow
 
 	![](img/hellowindow.1.png)
 
-hellowindow2
+[hellowindow2](../qml/hellowindow2.qml)
 ===
 
 1. Viewport is a FrameGraphNode, ClearBuffers is another one with clearbuffer setting, **note buffers is usually set to ClearBuffers.ColorDepthBuffer even no depth order in your scene (see [Hello-Triangle](Hello-Triangle.md))**:

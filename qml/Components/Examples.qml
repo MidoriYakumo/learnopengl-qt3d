@@ -23,6 +23,8 @@ ListModel {
 //	ListElement { text: "Textures X3"					; source: "textures-exercise3"}
 //	ListElement { text: "Textures X4"					; source: "textures-exercise4"}
 	ListElement { text: "Transformations"				; source: "transformations"}
+//	ListElement { text: "Transformations X1"			; source: "transformations-exercise1"}
+//	ListElement { text: "Transformations X2"			; source: "transformations-exercise2"}
 	ListElement { text: "Coordinate Systems"			; source: "coordinate_systems"}
 	ListElement { text: "Coordinate Systems MultiObj"	; source: "coordinate_systems_multiple_objects"}
 	ListElement { text: "Camera/Orbit"					; source: "camera_circle"}

@@ -77,7 +77,7 @@ Transform  ------------------------------------>    |
 Material -> Effect -> Technique -> RenderPass -> ShaderProgram
 ```
 
-hellotriangle
+[hellotriangle](../qml/hellotriangle.qml)
 ===
 
 1. Use ShaderProgram to link shader program flow:
@@ -92,20 +92,20 @@ hellotriangle
 
 	![](img/hellotriangle.2.png)
 
-hellotriangle2
+[hellotriangle2](../qml/hellotriangle2.qml)
 ===
 
 1. Corresponding...:
 
 	![](img/hellotriangle2.0.png)
 
-hello-triangle-exercise1
+[hello-triangle-exercise1](../qml/hello-triangle-exercise1.qml)
 ===
 
-hello-triangle-exercise2
+[hello-triangle-exercise2](../qml/hello-triangle-exercise2.qml)
 ===
 You can generate 2 different geometry, bind two entities with them and the same material
 
-hello-triangle-exercise3
+[hello-triangle-exercise3](../qml/hello-triangle-exercise3.qml)
 ===
 loadSource returns QByteArray, you need toString() and then manipulate the string in javascript
