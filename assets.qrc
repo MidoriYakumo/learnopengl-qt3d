@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/">
+        <file>shared/assets/model/arm_dif.png</file>
+        <file>shared/assets/model/arm_showroom_ddn.png</file>
+        <file>shared/assets/model/arm_showroom_spec.png</file>
+        <file>shared/assets/model/body_dif.png</file>
+        <file>shared/assets/model/body_showroom_ddn.png</file>
+        <file>shared/assets/model/body_showroom_spec.png</file>
+        <file>shared/assets/model/glass_ddn.png</file>
+        <file>shared/assets/model/glass_dif.png</file>
+        <file>shared/assets/model/hand_dif.png</file>
+        <file>shared/assets/model/hand_showroom_ddn.png</file>
+        <file>shared/assets/model/hand_showroom_spec.png</file>
+        <file>shared/assets/model/helmet_diff.png</file>
+        <file>shared/assets/model/helmet_showroom_ddn.png</file>
+        <file>shared/assets/model/helmet_showroom_spec.png</file>
+        <file>shared/assets/model/leg_dif.png</file>
+        <file>shared/assets/model/leg_showroom_ddn.png</file>
+        <file>shared/assets/model/leg_showroom_spec.png</file>
+        <file>shared/assets/model/nanosuit.mtl</file>
+        <file>shared/assets/texture/awesomeface.png</file>
+        <file>shared/assets/texture/container.jpg</file>
+        <file>shared/assets/texture/container2.png</file>
+        <file>shared/assets/texture/container2_specular.png</file>
+        <file>shared/assets/texture/matrix.jpg</file>
+        <file>shared/assets/model/nanosuit.obj</file>
+        <file>shared/assets/texture/skybox/skybox_negx.jpg</file>
+        <file>shared/assets/texture/skybox/skybox_negy.jpg</file>
+        <file>shared/assets/texture/skybox/skybox_negz.jpg</file>
+        <file>shared/assets/texture/skybox/skybox_posx.jpg</file>
+        <file>shared/assets/texture/skybox/skybox_posy.jpg</file>
+        <file>shared/assets/texture/skybox/skybox_posz.jpg</file>
+        <file>shared/assets/texture/blending_transparent_window.png</file>
+        <file>shared/assets/texture/grass.png</file>
+        <file>shared/assets/model/planet.mtl</file>
+        <file>shared/assets/model/planet_Quom1200.png</file>
+        <file>shared/assets/model/Rock-Texture-Surface.jpg</file>
+        <file>shared/assets/model/rock.mtl</file>
+        <file>shared/assets/model/planet.obj</file>
+        <file>shared/assets/model/rock.obj</file>
+    </qresource>
+</RCC>

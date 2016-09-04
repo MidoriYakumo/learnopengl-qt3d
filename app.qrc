@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/app-cpp.qml</file>
+        <file>qml/hellotriangle.qml</file>
+        <file>qml/hellowindow.qml</file>
+        <file>qml/Components/Examples.qml</file>
+        <file>qml/Components/qmldir</file>
+        <file>qml/Components/Resources.qml</file>
+        <file>qml/Components/ShaderProgram0.qml</file>
+        <file>qml/Components/utils.js</file>
+        <file>qml/Components/Scene0.qml</file>
+        <file>qml/Components/RenderSettings0.qml</file>
+        <file>qml/hellotriangle2.qml</file>
+        <file>shared/shaders/gl33/hellotriangle.frag</file>
+        <file>shared/shaders/gl33/hellotriangle.vert</file>
+        <file>shared/shaders/es30/hellotriangle.frag</file>
+        <file>shared/shaders/es30/hellotriangle.vert</file>
+        <file>qml/shaders-uniform.qml</file>
+        <file>qml/Components/TriangleGeometry0.qml</file>
+        <file>qml/shaders-interpolated.qml</file>
+        <file>shared/shaders/gl33/shaders-interpolated.frag</file>
+        <file>shared/shaders/gl33/shaders-uniform.frag</file>
+        <file>shared/shaders/gl33/shaders-uniform.vert</file>
+        <file>shared/shaders/es30/shaders-interpolated.frag</file>
+        <file>shared/shaders/es30/shaders-uniform.frag</file>
+        <file>shared/shaders/es30/shaders-uniform.vert</file>
+        <file>qml/textures_combined.qml</file>
+        <file>qml/textures2.qml</file>
+        <file>shared/shaders/es30/texture.vert</file>
+        <file>shared/shaders/es30/texture2.frag</file>
+        <file>shared/shaders/es30/textures_combined.frag</file>
+        <file>shared/shaders/es30/textures_combined.vert</file>
+        <file>shared/shaders/gl33/texture.vert</file>
+        <file>shared/shaders/gl33/texture2.frag</file>
+        <file>shared/shaders/gl33/textures_combined.frag</file>
+        <file>shared/shaders/gl33/textures_combined.vert</file>
+        <file>shared/shaders/gl33/transformations.vert</file>
+        <file>shared/shaders/es30/transformations.vert</file>
+        <file>qml/transformations.qml</file>
+        <file>qml/Components/TextureRectangleGeometry0.qml</file>
+        <file>qml/Components/Time.qml</file>
+    </qresource>
+</RCC>
