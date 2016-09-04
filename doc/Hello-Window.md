@@ -17,63 +17,63 @@ There are several ways to create Qt3D scene ([https://forum.qt.io/topic/68781/sc
 
 	```qml
 	Entity {
-      id: sceneRoot
-      ...
-    }
+		id: sceneRoot
+		...
+	}
 	```
 
 2. QQuickView with QtQuick default GL context + Scene3D:
 
 	```c++
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
-    view.show();
+	QQuickView view;
+	view.setResizeMode(QQuickView::SizeRootObjectToView);
+	view.setSource(QUrl("qrc:/main.qml"));
+	view.show();
 	```
 
 	Where main.qml starts with QQuickItem:
 
 	```qml
 	Item {
-      id: view
-      ...
-      Scene3D {
-        id: scene
-      }
-    }
+		id: view
+		...
+		Scene3D {
+		id: scene
+		}
+	}
 	```
 
 3. QQuickView with different GL context + Scene3D:
 
 	```c++
 	QSurfaceFormat format;
-    if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
-        format.setVersion(3, 3);
-        format.setProfile(QSurfaceFormat::CoreProfile);
-    }
-    format.setDepthBufferSize(24);
-    format.setStencilBufferSize(8);
-    format.setSamples(4);
+	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) {
+		format.setVersion(3, 3);
+		format.setProfile(QSurfaceFormat::CoreProfile);
+	}
+	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
+	format.setSamples(4);
 
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
-    view.show();
+	QQuickView view;
+	view.setResizeMode(QQuickView::SizeRootObjectToView);
+	view.setSource(QUrl("qrc:/main.qml"));
+	view.show();
 	```
 
 	Where main.qml starts with QQuickItem, advance GL context is available:
 
 	```qml
 	Item {
-      id: view
-      ...
-      Scene3D {
-      	id: scene
-        ...
+		id: view
+		...
+		Scene3D {
+			id: scene
+		...
 		/* GL33 Shaders*/
-        ...
-      }
-    }
+		...
+		}
+	}
 	```
 
 4. QQmlApplicationEngine with different GL context + Scene3D:
@@ -105,15 +105,15 @@ There are several ways to create Qt3D scene ([https://forum.qt.io/topic/68781/sc
 
 	```qml
 	ApplicationWindow {
-      id: app
-      ...
-      Scene3D {
-      	id: scene
-        ...
+		id: app
+		...
+		Scene3D {
+			id: scene
+		...
 		/* GL33 Shaders*/
-        ...
-      }
-    }
+		...
+		}
+	}
 	```
 
 	That's how our application starts with.

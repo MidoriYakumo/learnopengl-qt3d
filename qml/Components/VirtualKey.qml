@@ -14,7 +14,7 @@ Button {
 	focusPolicy: Qt.NoFocus
 	onClicked: {
 		target.focus = true
-		if (targetHandler) {
+		if (text && targetHandler) {
 			var t = text
 			t[0] = t[0].toLowerCase()
 			targetHandler[t+"Pressed"]()

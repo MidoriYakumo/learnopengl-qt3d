@@ -28,6 +28,9 @@ ListModel {
 	ListElement { text: "Coordinate Systems"			; source: "coordinate_systems"}
 	ListElement { text: "Coordinate With Depth"			; source: "coordinate_systems_with_depth"}
 	ListElement { text: "Coordinate Systems MultiObj"	; source: "coordinate_systems_multiple_objects"}
+//	ListElement { text: "Coordinate Systems X1"			; source: "coordinate_systems-exercise1"}
+//	ListElement { text: "Coordinate Systems X2"			; source: "coordinate_systems-exercise2"}
+//	ListElement { text: "Coordinate Systems X3"			; source: "coordinate_systems-exercise3"}
 	ListElement { text: "Camera/Orbit"					; source: "camera_circle"}
 	ListElement { text: "Camera/WASD"					; source: "camera_keyboard"}
 	ListElement { text: "Camera/FPS"					; source: "camera_zoom"}
