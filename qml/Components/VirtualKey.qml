@@ -13,6 +13,7 @@ Button {
 
 	focusPolicy: Qt.NoFocus
 	onClicked: {
+		target.focus = false
 		target.focus = true
 		if (text && targetHandler) {
 			var t = text

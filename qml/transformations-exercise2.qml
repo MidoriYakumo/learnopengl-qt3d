@@ -28,6 +28,7 @@ Item {
 			}
 
 			KeyboardHandler {
+				id: keyboardHandler
 				focus: true
 				sourceDevice: keyboardDevice
 				onSpacePressed: time.running = !time.running
@@ -129,6 +130,7 @@ Item {
 
 	VirtualKeys {
 		target: scene
+		targetHandler: keyboardHandler
 		showPad: false
 		keys: [
 			{text:"Space", key:Qt.Key_Space}

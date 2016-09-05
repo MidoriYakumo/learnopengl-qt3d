@@ -54,6 +54,7 @@ QQ2.Item {
 					Return to toggle the usage of Qt3D Transform
 				*/
 
+				id: keyboardHandler
 				focus: true
 				onSpacePressed: {
 					root.enableDepthTest = !root.enableDepthTest
@@ -266,6 +267,7 @@ QQ2.Item {
 
 	VirtualKeys {
 		target: scene
+		targetHandler: keyboardHandler
 		showPad: false
 		keys: [
 			{text:"Space", key:Qt.Key_Space},

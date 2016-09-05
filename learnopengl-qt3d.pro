@@ -1,4 +1,4 @@
-QT += qml quick quickcontrols2 3dcore 3drender 3dinput 3dlogic 3dquick 3dquickextras
+QT += qml quick quickcontrols2 3dcore 3drender 3dinput 3dlogic 3dquick 3dquickextras testlib
 #sensors charts
 
 CONFIG += c++11

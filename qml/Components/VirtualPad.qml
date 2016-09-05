@@ -114,7 +114,13 @@ Canvas {
 		onPressed: {
 			posX = mouseX
 			posY = mouseY
-			trigger.start()
+			if (detectRegion()) {
+				mouse.accepted = true
+				trigger.start()
+			} else {
+				mouse.accepted = false
+			}
+
 		}
 
 		onPositionChanged: {
@@ -125,6 +131,12 @@ Canvas {
 		onReleased: {
 			trigger.stop()
 			root.direction = 0
+		}
+
+		onEntered: {
+			posX = mouseX
+			posY = mouseY
+			trigger.start()
 		}
 
 		onExited: {
@@ -139,8 +151,10 @@ Canvas {
 
 			onTriggered: {
 				root.direction = mouse.detectRegion()
-				if (root.direction)
+				if (root.direction) {
+					target.focus = false
 					target.focus = true
+				}
 				if (root.targetHandler) {
 					switch (root.direction) {
 					case 1:
