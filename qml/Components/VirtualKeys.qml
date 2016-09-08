@@ -2,10 +2,12 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 Item  {
+	id: vKeys
+
 	anchors.fill: parent
 	visible: true //["android", "ios"].indexOf(Qt.platform.os)>=0
 
-	property alias target: row.target
+	property Item target: scene
 	property var targetHandler: null
 	property bool showPad: true
 	property var keys:[
@@ -15,10 +17,6 @@ Item  {
 	]
 
 	Row {
-		id: row
-
-		property Item target: scene
-
 		anchors.bottom: parent.bottom
 		anchors.horizontalCenter: parent.horizontalCenter
 		anchors.horizontalCenterOffset: showPad?virtualpad.width/2:0
@@ -28,8 +26,8 @@ Item  {
 		Repeater {
 			model: keys
 			delegate: VirtualKey {
-				target: parent.target
-				targetHandler: parent.targetHandler
+				target: vKeys.target
+				targetHandler: vKeys.targetHandler
 				text: modelData.text
 				key: modelData.key
 			}
@@ -43,11 +41,11 @@ Item  {
 		anchors.bottom: parent.bottom
 		anchors.left: parent.left
 		anchors.margins: 8
-		target: parent.target
-		targetHandler: parent.targetHandler
+		target: vKeys.target
+		targetHandler: vKeys.targetHandler
 	}
 
 	Component.onCompleted: {
-		console.log("VirtualKeys.targetHandler:", targetHandler)
+		console.log("VirtualKeys.targetHandler:", vKeys.targetHandler)
 	}
 }

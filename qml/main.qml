@@ -81,7 +81,7 @@ Item {
 		id: fps3d
 		anchors.right: parent.right
 		anchors.rightMargin: 8
-		anchors.top: parent.top
+		anchors.top: combo.bottom
 		anchors.topMargin: 8
 		color: "#ff7e91"
 		style: Text.Outline

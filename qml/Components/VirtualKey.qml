@@ -17,8 +17,8 @@ Button {
 		target.focus = true
 		if (text && targetHandler) {
 			var t = text
-			t[0] = t[0].toLowerCase()
-			targetHandler[t+"Pressed"]()
+			t = t.setCharAt(0, t[0].toLowerCase())
+			targetHandler[t+"Pressed"](null)
 		} else {
 			if (text && text.length == 1) {
 				KeyEventSource.keyClickChar(text, modifier, -1)

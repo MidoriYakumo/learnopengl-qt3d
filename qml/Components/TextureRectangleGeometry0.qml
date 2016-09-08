@@ -48,9 +48,9 @@ GeometryRenderer {
 			buffer: Buffer {
 				type: Buffer.IndexBuffer
 				data: Uint16Array([
-						0, 1, 3,  // First Triangle
-						1, 2, 3   // Second Triangle
-					])
+					0, 1, 3,  // First Triangle
+					1, 2, 3   // Second Triangle
+				])
 			}
 		}
 	}
@@ -59,11 +59,11 @@ GeometryRenderer {
 		id: vertexBuffer
 		type: Buffer.VertexBuffer
 		data: Float32Array([
-				// Positions	  // Colors		// Texture Coords
-				 0.5,  0.5, 0.0,   1.0, 0.0, 0.0,   1.0, 1.0, // Top Right
-				 0.5, -0.5, 0.0,   0.0, 1.0, 0.0,   1.0, 0.0, // Bottom Right
-				-0.5, -0.5, 0.0,   0.0, 0.0, 1.0,   0.0, 0.0, // Bottom Left
-				-0.5,  0.5, 0.0,   1.0, 1.0, 0.0,   0.0, 1.0  // Top Left
-			])
+			// Positions	  // Colors		// Texture Coords
+			 0.5,  0.5, 0.0,   1.0, 0.0, 0.0,   1.0, 1.0, // Top Right
+			 0.5, -0.5, 0.0,   0.0, 1.0, 0.0,   1.0, 0.0, // Bottom Right
+			-0.5, -0.5, 0.0,   0.0, 0.0, 1.0,   0.0, 0.0, // Bottom Left
+			-0.5,  0.5, 0.0,   1.0, 1.0, 0.0,   0.0, 1.0  // Top Left
+		])
 	}
 }

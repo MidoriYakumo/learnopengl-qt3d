@@ -12,7 +12,7 @@ Canvas {
 	property var targetHandler: parent.targetHandler
 
 	property int direction
-	property /*KeyEvent*/var dummy
+	property /*KeyEvent*/var dummy: null
 	property int arrowSize: height/10
 	property color buttonColor: /*"#80e0e0e0"*/"#e0e0e0"
 	property color accentColor: "#e91f67"
