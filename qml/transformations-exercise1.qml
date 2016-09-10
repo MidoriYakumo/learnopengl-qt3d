@@ -5,6 +5,7 @@ import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 
 import "Components"
+import "VirtualKey"
 
 Item {
 	height: 600
@@ -112,9 +113,13 @@ Item {
 	VirtualKeys {
 		target: scene
 		targetHandler: keyboardHandler
-		showPad: false
-		keys: [
-			{text:"Space", key:Qt.Key_Space}
-		]
+		enablePad: false
+		enableGameButtons: false
+		color: "transparent"
+		centerItem: RowKeys {
+			keys: [
+				{text:"Space", key:Qt.Key_Space}
+			]
+		}
 	}
 }

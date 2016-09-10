@@ -5,6 +5,7 @@ import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 
 import "Components"
+import "VirtualKey"
 
 QQ2.Item {
 	height: 600
@@ -239,7 +240,8 @@ QQ2.Item {
 
 	VirtualKeys {
 		target: scene
-		showPad: true
+		enableGameButtons: false
+		color: "transparent"
 	}
 }
 

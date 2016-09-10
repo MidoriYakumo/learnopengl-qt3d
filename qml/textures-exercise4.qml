@@ -5,6 +5,7 @@ import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 
 import "Components"
+import "VirtualKey"
 
 Item {
 	height: 600
@@ -187,8 +188,10 @@ Item {
 		}
 	}
 
-	VirtualKeys { // My virtual key/pad for mobile devices
+	VirtualKeys {
 		target: scene
-		// targetHandler: keyboardHandler // direct mode
+		targetHandler: keyboardHandler
+		enableGameButtons: false
+		color: "transparent"
 	}
 }

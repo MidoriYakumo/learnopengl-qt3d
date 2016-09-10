@@ -1,10 +1,8 @@
 singleton 	Resources 	1.0 	Resources.qml
 singleton 	Examples 	1.0 	Examples.qml
 
-singleton 	KeyEventSource 	1.0 	KeyEventSource.qml
-
 #singleton 	Palette 	1.0 	Palette.qml
 #singleton 	TheInputSettings 	1.0 	TheInputSettings.qml
 
 Utils 	1.0 	utils.js
-Mod 	1.0		mod.js
+#Mod 	1.0		mod.js

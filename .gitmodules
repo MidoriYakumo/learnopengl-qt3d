@@ -1,0 +1,3 @@
+[submodule "qmlvirtualkey"]
+	path = qmlvirtualkey
+	url = https://github.com/MidoriYakumo/qmlvirtualkey
