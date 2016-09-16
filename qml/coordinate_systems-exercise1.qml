@@ -207,15 +207,15 @@ QQ2.Item {
 								},
 								Parameter {
 									name: "view"
-									value: (function(){
+									value: {
 										var m = Qt.matrix4x4()
 										m.translate(0, 0, -3)
 										return m
-									})()
+									}
 								},
 								Parameter {
 									name: "projection"
-									value: (function(){
+									value: {
 										var zNear = .1
 										var zFar = 100.
 										var h = Math.tan(root.fov * Math.PI / 360) * zNear
@@ -228,7 +228,7 @@ QQ2.Item {
 										m.m43 = -1
 										m.m34 = -2 * zNear * zFar / (zFar - zNear)
 										return m
-									})()
+									}
 								}
 							]
 						}

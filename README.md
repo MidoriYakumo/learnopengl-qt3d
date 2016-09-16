@@ -44,3 +44,4 @@ Examples
 1. [Texture](doc/Texture.md) : works
 1. [Transformations](doc/Transformations.md) : works
 1. [Coordinate Systems](doc/Coordinate-Systems.md) : works
+1. [Camera](doc/Camera.md) : works, extra quaternion version fps controller not available yet

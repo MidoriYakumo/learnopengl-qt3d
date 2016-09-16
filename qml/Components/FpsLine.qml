@@ -85,7 +85,7 @@ ChartView {
 
 	LineSeries {
 		id: avgSer
-		useOpenGL : true
+//		useOpenGL : true
 		color: "#00E2FF"
 		width: 4
 		axisX: xAxis
@@ -94,7 +94,7 @@ ChartView {
 
 	LineSeries {
 		id: ser
-		useOpenGL : true
+//		useOpenGL : true
 		color: "#ff7e91"
 		width: 3
 		axisX: xAxis

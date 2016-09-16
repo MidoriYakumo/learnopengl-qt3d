@@ -17,7 +17,7 @@ ApplicationWindow {
 
 	header: ComboBox {
 		id: combobox
-		activeFocusOnTab: false
+		focusPolicy: Qt.NoFocus
 		textRole: "text"
 		model: Examples
 		currentIndex: -1

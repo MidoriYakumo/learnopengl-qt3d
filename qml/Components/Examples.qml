@@ -31,9 +31,12 @@ ListModel {
 //	ListElement { text: "Coordinate Systems X1"			; source: "coordinate_systems-exercise1"}
 //	ListElement { text: "Coordinate Systems X2"			; source: "coordinate_systems-exercise2"}
 //	ListElement { text: "Coordinate Systems X3"			; source: "coordinate_systems-exercise3"}
-	ListElement { text: "Camera/Orbit"					; source: "camera_circle"}
-	ListElement { text: "Camera/WASD"					; source: "camera_keyboard"}
-	ListElement { text: "Camera/FPS"					; source: "camera_zoom"}
+	ListElement { text: "Camera The Orbit"				; source: "camera_circle"}
+//	ListElement { text: "Camera The Keyboard"			; source: "camera_keyboard"}
+	ListElement { text: "Camera The Keyboard With dt"	; source: "camera_keyboard_dt"}
+	ListElement { text: "Camera FPS-Style"				; source: "camera_zoom"}
+//	ListElement { text: "Camera X1"						; source: "camera-exercise1"}
+//	ListElement { text: "Camera X2"						; source: "camera-exercise2"}
 	ListElement { text: "Color"							; source: "colors_scene"}
 	ListElement { text: "Basic Lighting Phong-Diffuse"	; source: "basic_lighting_diffuse"}
 	ListElement { text: "Basic Lighting Phong/Gouraud"	; source: "basic_lighting_specular"}

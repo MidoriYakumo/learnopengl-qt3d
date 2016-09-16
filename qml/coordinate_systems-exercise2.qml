@@ -199,16 +199,16 @@ QQ2.Item {
 								},
 								Parameter {
 									name: "view"
-									value: (function(){
+									value: {
 										var m = Qt.matrix4x4()
 										m.rotate(time.value % 360 * 180 / Math.PI, Qt.vector3d(0, 1, 0))
 										m.translate(3*Math.sin(time.value), 0, -3*Math.cos(time.value))
 										return m
-									})()
+									}
 								},
 								Parameter {
 									name: "projection"
-									value: (function(){
+									value: {
 										var fov = 45
 										var aspect = scene.width / scene.height
 										var zNear = .1
@@ -223,7 +223,7 @@ QQ2.Item {
 										m.m43 = -1
 										m.m34 = -2 * zNear * zFar / (zFar - zNear)
 										return m
-									})()
+									}
 								}
 							]
 						}

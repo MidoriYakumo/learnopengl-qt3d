@@ -16,11 +16,15 @@ Item {
 		id: loader
 		anchors.fill: parent
 		sourceComponent: glInfo
+
+		onLoaded: {
+			focus = true
+		}
 	}
 
 	ComboBox {
 		id: combo
-		activeFocusOnTab: false
+		focusPolicy: Qt.NoFocus
 		textRole: "text"
 		width: parent.width
 		anchors.top: parent.top

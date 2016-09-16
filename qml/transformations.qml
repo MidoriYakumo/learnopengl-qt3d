@@ -91,12 +91,12 @@ Item {
 						},
 						Parameter {
 							name: "transform"
-							value: (function(){ // We need to pass a matrix4x4
+							value: { // We need to pass a matrix4x4
 								var m = Qt.matrix4x4()
 								m.translate(Qt.vector3d(.5, -.5, 0))
 								m.rotate(time.value % 360 * 50, Qt.vector3d(0, 0, 1))
 								return m
-							})()
+							}
 
 							Time {
 								id: time

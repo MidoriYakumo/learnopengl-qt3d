@@ -171,11 +171,11 @@ QQ2.Item {
 
 					id: transform
 
-					matrix: (function(){ // modelMatrix
+					matrix: { // modelMatrix
 						var m = Qt.matrix4x4()
 						m.rotate(time.value % 360 * 50, Qt.vector3d(.5, 1, 0))
 						return m
-					})()
+					}
 
 					Time {
 						id: time
@@ -230,15 +230,15 @@ QQ2.Item {
 									},
 									Parameter {
 										name: "view"
-										value: (function(){
+										value: {
 											var m = Qt.matrix4x4()
 											m.translate(0, 0, -3)
 											return m
-										})()
+										}
 									},
 									Parameter {
 										name: "projection"
-										value: (function(){
+										value: {
 											var fov = 45
 											var aspect = scene.width / scene.height
 											var zNear = .1
@@ -253,7 +253,7 @@ QQ2.Item {
 											m.m43 = -1
 											m.m34 = -2 * zNear * zFar / (zFar - zNear)
 											return m
-										})()
+										}
 									}
 								]
 							}

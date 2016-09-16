@@ -39,5 +39,17 @@
         <file>qml/transformations.qml</file>
         <file>qml/Components/TextureRectangleGeometry0.qml</file>
         <file>qml/Components/Time.qml</file>
+        <file>qml/Components/TextureCube0.qml</file>
+        <file>qml/Components/RenderSettings1.qml</file>
+        <file>qml/camera_keyboard_dt.qml</file>
+        <file>qml/camera_circle.qml</file>
+        <file>shared/shaders/es30/coordinate_systems_qt3d_transform.vert</file>
+        <file>shared/shaders/es30/coordinate_systems.vert</file>
+        <file>shared/shaders/gl33/coordinate_systems_qt3d_transform.vert</file>
+        <file>shared/shaders/gl33/coordinate_systems.vert</file>
+        <file>qml/camera_zoom.qml</file>
+        <file>qml/coordinate_systems.qml</file>
+        <file>qml/coordinate_systems_multiple_objects.qml</file>
+        <file>qml/coordinate_systems_with_depth.qml</file>
     </qresource>
 </RCC>

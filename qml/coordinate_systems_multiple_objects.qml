@@ -180,15 +180,15 @@ Scene0 {
 							},
 							Parameter {
 								name: "view"
-								value: (function(){
+								value: {
 									var m = Qt.matrix4x4()
 									m.translate(0, 0, -3)
 									return m
-								})()
+								}
 							},
 							Parameter {
 								name: "projection"
-								value: (function(){
+								value: {
 									var fov = 45
 									var aspect = scene.width / scene.height
 									var zNear = .1
@@ -203,7 +203,7 @@ Scene0 {
 									m.m43 = -1
 									m.m34 = -2 * zNear * zFar / (zFar - zNear)
 									return m
-								})()
+								}
 							}
 						]
 					}
