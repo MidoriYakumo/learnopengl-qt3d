@@ -133,11 +133,11 @@ Entity {
 						},
 						Parameter {
 							name: "view"
-							value: viewMatrix
+							value: cube.viewMatrix
 						},
 						Parameter {
 							name: "projection"
-							value: projectionMatrix
+							value: cube.projectionMatrix
 						}
 					]
 				}

@@ -3,6 +3,7 @@ import QtQuick 2.7 as QQ2
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 import Qt3D.Input 2.0
+import Qt3D.Extras 2.0
 
 import "Components"
 import "VirtualKey"
@@ -57,9 +58,6 @@ QQ2.Item {
 					case Qt.Key_Right:
 						root.keys.right = true
 						break
-					case Qt.Key_Space: // Bonus: jump!
-						camera.ySpeed /*+*/= 3.
-						break
 					}
 				}
 
@@ -90,18 +88,29 @@ QQ2.Item {
 			}
 
 			MouseDevice {
+				/*
+					MouseDevice wraps mouse input devices
+					If you are using Qt3D logic to bind input event with object data(position, angle ...)
+					sensitivity is multiplied automatically and internally
+				*/
+
 				id: mouseDevice
 				sensitivity: 0.5 / Units.dp
 			}
 
 			MouseHandler {
+				/*
+					MouseHandler, the Qt3D version of MouseArea
+					the default event variable is mouse and wheel
+				*/
+
 				id: mouseHandler
 				sourceDevice: mouseDevice
 
 				property int posX
 				property int posY
 
-				onPressAndHold: {
+				onPressAndHold: { // onPressd not works, weird!
 					posX = mouse.x
 					posY = mouse.y
 				}
@@ -133,9 +142,7 @@ QQ2.Item {
 
 			FrameSwap {
 				property real cameraSpeed: 5.
-
 				onTriggered: {
-					var y = camera.position.y
 					if (root.keys.up)
 						camera.position = camera.position.plus(
 							camera.frontVector.times(cameraSpeed * dt))
@@ -148,16 +155,6 @@ QQ2.Item {
 					if (root.keys.left)
 						camera.position = camera.position.minus(
 							camera.rightVector.times(cameraSpeed * dt))
-
-					camera.position.y = y + camera.ySpeed * dt
-					if (camera.position.y>0.)
-						camera.ySpeed -= dt * 9.8
-					else {
-						if (camera.position.y<0.)
-							camera.position.y = 0.
-						camera.ySpeed = 0.
-					}
-
 				}
 			}
 
@@ -167,7 +164,6 @@ QQ2.Item {
 				property real yaw: 0
 				property real pitch: 0
 				property real fieldOfView: 45
-				property real ySpeed: 0.
 
 				property vector3d position: "0,0,3"
 				property vector3d viewCenter: position.plus(frontVector)
@@ -201,32 +197,110 @@ QQ2.Item {
 				}
 			}
 
-			property var cubePositions: [
-				Qt.vector3d( 0.0,  0.0,  0.0),
-				Qt.vector3d( 2.0,  5.0, -15.0),
-				Qt.vector3d(-1.5, -2.2, -2.5),
-				Qt.vector3d(-3.8, -2.0, -12.3),
-				Qt.vector3d( 2.4, -0.4, -3.5),
-				Qt.vector3d(-1.7,  3.0, -7.5),
-				Qt.vector3d( 1.3, -2.0, -2.5),
-				Qt.vector3d( 1.5,  2.0, -2.5),
-				Qt.vector3d( 1.5,  0.2, -1.5),
-				Qt.vector3d(-1.3,  1.0, -1.5)
-			]
+			property bool useQtCameraAndMesh: false
 
-			NodeInstantiator {
-				model: root.cubePositions
-				delegate: TextureCube0 {
-					transform: Transform {
-						translation: modelData
-						rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+			property color objectColor: "coral"
+			property color lightColor: "white"
+
+			Cube0 {
+				id: geometry
+			}
+
+			CuboidMesh {
+				id: mesh
+			}
+
+			Entity {
+				id: object
+				components: [root.useQtCameraAndMesh?mesh:geometry,
+					objectTransform, objectMaterial
+				]
+
+				Transform {
+					id: objectTransform
+				}
+
+				Material {
+					id: objectMaterial
+					effect: Effect {
+						techniques: Technique {
+							renderPasses: RenderPass {
+								shaderProgram: ShaderProgram0 {
+									vertName: "coordinate_systems_qt3d_transform"
+									fragName: "lighting"
+								}
+								parameters: [
+									Parameter {
+										name: "view"
+										value: camera.viewMatrix
+									},
+									Parameter {
+										name: "projection"
+										value: camera.projectionMatrix
+									},
+									Parameter {
+										name: "objectColor"
+										value: Qt.vector3d(
+											root.objectColor.r,
+											root.objectColor.g,
+											root.objectColor.b
+										)
+									},
+									Parameter {
+										name: "lightColor"
+										value: Qt.vector3d(
+											root.lightColor.r,
+											root.lightColor.g,
+											root.lightColor.b
+										)
+									}
+								]
+							}
+						}
 					}
-					viewMatrix: camera.viewMatrix
-					projectionMatrix: camera.projectionMatrix
 				}
 			}
 
+			Entity {
+				id: lamp
+				components: [root.useQtCameraAndMesh?mesh:geometry,
+					lampTransform, lampMaterial
+				]
 
+				Transform {
+					id: lampTransform
+					translation: Qt.vector3d(1.2, 1.0, 2.0)
+					scale: .2 // Use scale to decrease lamp size
+				}
+
+				Material {
+					id: lampMaterial
+					effect: Effect {
+						techniques: Technique {
+							renderPasses: RenderPass {
+								shaderProgram: ShaderProgram0 {
+									vertName: "coordinate_systems_qt3d_transform"
+									fragName: "shaders-uniform"
+								}
+								parameters: [
+									Parameter {
+										name: "view"
+										value: camera.viewMatrix
+									},
+									Parameter {
+										name: "projection"
+										value: camera.projectionMatrix
+									},
+									Parameter {
+										name: "ourColor"
+										value: root.lightColor
+									}
+								]
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -234,11 +308,6 @@ QQ2.Item {
 		target: scene
 		enableGameButtons: false
 		color: "transparent"
-		centerItem: RowKeys {
-			keys: [
-				{text:"Space", key:Qt.Key_Space}
-			]
-		}
 	}
 }
 

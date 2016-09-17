@@ -35,6 +35,8 @@ You can lauch one sample with a keyword like:
 
 **leanopengl uses a little different lighting model from Qt3D default model, to rendering models for a better result, please slightly modify the ka, kd in mtl files**
 
+You can now run qmltestrunner under qml/tests to see all the examples and generate screenshots.
+
 Examples
 ===
 

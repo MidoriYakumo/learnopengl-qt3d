@@ -37,7 +37,7 @@ ListModel {
 	ListElement { text: "Camera FPS-Style"				; source: "camera_zoom"}
 //	ListElement { text: "Camera X1"						; source: "camera-exercise1"}
 //	ListElement { text: "Camera X2"						; source: "camera-exercise2"}
-	ListElement { text: "Color"							; source: "colors_scene"}
+	ListElement { text: "Colors"						; source: "colors_scene"}
 	ListElement { text: "Basic Lighting Phong-Diffuse"	; source: "basic_lighting_diffuse"}
 	ListElement { text: "Basic Lighting Phong/Gouraud"	; source: "basic_lighting_specular"}
 	ListElement { text: "Material"						; source: "materials"}
