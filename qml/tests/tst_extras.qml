@@ -1,4 +1,3 @@
-
 import QtQuick 2.7
 import QtTest 1.1
 
@@ -13,6 +12,7 @@ Loader {
 	focus: true
 
 	property var scene: null
+	property var vkeys: null
 
 	TestCase {
 		name: "LearnOpenGL.QML.extras"
@@ -26,6 +26,14 @@ Loader {
 				return t["aspects"]
 			})[0]
 			verify(scene)
+			var vkeyss = null
+			vkeyss = Utils.getElementByCriteria(loader, function(t){
+				return t["target"] === scene
+			})
+			if (vkeyss.length) {
+				vkeys = vkeyss[0]
+				vkeys.active = true
+			}
 		}
 
 		function afterTest(name, delay) {

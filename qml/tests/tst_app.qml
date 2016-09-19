@@ -1,4 +1,3 @@
-
 import QtQuick 2.7
 import QtTest 1.1
 
@@ -14,6 +13,7 @@ Loader {
 
 	property var combo: null
 	property var scene: null
+	property var vkeys: null
 
 	onStatusChanged: {
 		if (status == Loader.Ready) {
@@ -36,6 +36,14 @@ Loader {
 				return t["aspects"]
 			})[0]
 			verify(scene)
+			var vkeyss = null
+			vkeyss = Utils.getElementByCriteria(appLoader.item, function(t){
+				return t["target"] === scene
+			})
+			if (vkeyss.length) {
+				vkeys = vkeyss[0]
+				vkeys.active = true
+			}
 		}
 
 		function afterTest(idx, delay) {

@@ -119,13 +119,13 @@ QQ2.Item {
 					var sensitivity = mouseDevice.sensitivity
 					if (mouse.modifiers & Qt.ShiftModifier)
 						sensitivity *= .1
-					var yaw = camera.yaw + (mouse.x - posX) * sensitivity
-					var pitch = camera.pitch + (mouse.y - posY) * sensitivity
+					var yaw = ourCamera.yaw + (mouse.x - posX) * sensitivity
+					var pitch = ourCamera.pitch + (mouse.y - posY) * sensitivity
 
 					pitch = (pitch>89.)?89.:(pitch<-89.)?-89.:pitch
 
-					camera.yaw = yaw
-					camera.pitch = pitch
+					ourCamera.yaw = yaw
+					ourCamera.pitch = pitch
 
 					posX = mouse.x
 					posY = mouse.y
@@ -134,9 +134,9 @@ QQ2.Item {
 				onWheel: {
 					var d = wheel.angleDelta.y * 1e-3
 					if (d>0)
-						camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d)
+						ourCamera.fieldOfView = Utils.mix(ourCamera.fieldOfView, 1., d)
 					else
-						camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d)
+						ourCamera.fieldOfView = Utils.mix(ourCamera.fieldOfView, 45., -d)
 				}
 			}
 
@@ -144,22 +144,22 @@ QQ2.Item {
 				property real cameraSpeed: 5.
 				onTriggered: {
 					if (root.keys.up)
-						camera.position = camera.position.plus(
-							camera.frontVector.times(cameraSpeed * dt))
+						ourCamera.position = ourCamera.position.plus(
+							ourCamera.frontVector.times(cameraSpeed * dt))
 					if (root.keys.down)
-						camera.position = camera.position.minus(
-							camera.frontVector.times(cameraSpeed * dt))
+						ourCamera.position = ourCamera.position.minus(
+							ourCamera.frontVector.times(cameraSpeed * dt))
 					if (root.keys.right)
-						camera.position = camera.position.plus(
-							camera.rightVector.times(cameraSpeed * dt))
+						ourCamera.position = ourCamera.position.plus(
+							ourCamera.rightVector.times(cameraSpeed * dt))
 					if (root.keys.left)
-						camera.position = camera.position.minus(
-							camera.rightVector.times(cameraSpeed * dt))
+						ourCamera.position = ourCamera.position.minus(
+							ourCamera.rightVector.times(cameraSpeed * dt))
 				}
 			}
 
 			Entity {
-				id: camera
+				id: ourCamera
 
 				property real yaw: 0
 				property real pitch: 0
@@ -197,12 +197,27 @@ QQ2.Item {
 				}
 			}
 
+			Camera {
+				id: qtCamera
+
+				projectionType: CameraLens.PerspectiveProjection
+				fieldOfView: 45  // Projection
+				aspectRatio: scene.width/scene.height
+				nearPlane : 0.1
+				farPlane : 100.0
+				position: Qt.vector3d(0,0,3) // View
+				viewCenter: Qt.vector3d(0,0,0)
+				upVector: Qt.vector3d(0,1,0)
+			}
+
 			property bool useQtCameraAndMesh: false
+
+			property Entity camera: useQtCameraAndMesh?qtCamera:ourCamera
 
 			property color objectColor: "coral"
 			property color lightColor: "white"
 
-			Cube0 {
+			TextureCubeGeometry0 {
 				id: geometry
 			}
 
@@ -232,11 +247,11 @@ QQ2.Item {
 								parameters: [
 									Parameter {
 										name: "view"
-										value: camera.viewMatrix
+										value: ourCamera.viewMatrix
 									},
 									Parameter {
 										name: "projection"
-										value: camera.projectionMatrix
+										value: ourCamera.projectionMatrix
 									},
 									Parameter {
 										name: "objectColor"
@@ -285,11 +300,11 @@ QQ2.Item {
 								parameters: [
 									Parameter {
 										name: "view"
-										value: camera.viewMatrix
+										value: ourCamera.viewMatrix
 									},
 									Parameter {
 										name: "projection"
-										value: camera.projectionMatrix
+										value: ourCamera.projectionMatrix
 									},
 									Parameter {
 										name: "ourColor"
@@ -308,6 +323,11 @@ QQ2.Item {
 		target: scene
 		enableGameButtons: false
 		color: "transparent"
+		centerItem: RowKeys {
+			keys: [
+				{text:"Space", key:Qt.Key_Space}
+			]
+		}
 	}
 }
 
