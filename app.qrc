@@ -51,5 +51,22 @@
         <file>qml/coordinate_systems.qml</file>
         <file>qml/coordinate_systems_multiple_objects.qml</file>
         <file>qml/coordinate_systems_with_depth.qml</file>
+        <file>qml/colors_scene.qml</file>
+        <file>shared/shaders/gl33/lighting.frag</file>
+        <file>shared/shaders/es30/lighting.frag</file>
+        <file>qml/VirtualKey/GameButtons.qml</file>
+        <file>qml/VirtualKey/InputEventSource.qml</file>
+        <file>qml/VirtualKey/qmldir</file>
+        <file>qml/VirtualKey/RowKeys.qml</file>
+        <file>qml/VirtualKey/Units.qml</file>
+        <file>qml/VirtualKey/utils.js</file>
+        <file>qml/VirtualKey/VirtualKey.qml</file>
+        <file>qml/VirtualKey/VirtualKeys.qml</file>
+        <file>qml/VirtualKey/VirtualPad.qml</file>
+        <file>qml/Components/FrameSwap.qml</file>
+        <file>qml/Components/Scene1.qml</file>
+        <file>qml/Components/Scene2.qml</file>
+        <file>qml/Components/Scene3.qml</file>
+        <file>qml/Components/TextureCubeGeometry0.qml</file>
     </qresource>
 </RCC>

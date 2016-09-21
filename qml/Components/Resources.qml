@@ -14,31 +14,38 @@ Item { // This is the global resource router
 		"windows"	: "file:.." ,
 	}
 
-	property bool qrcEnabled: false
+	property bool appRcEnabled: false
+	property bool assetsRcEnabled: false
+
+	property string appPrefix: (appRcEnabled?"qrc:":os2Prefix[Qt.platform.os])+ "/"
+	property string assetsPrefix: (assetsRcEnabled?"qrc:":os2Prefix[Qt.platform.os])+ "/"
+
 	property bool fallbackToES30: true
 								  & false
-	property bool isGLES30: (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.renderableType==2)
-	property bool isGLES20: !isGLES30 && (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.renderableType==2)
+	property bool isGLES30: !isGL33Core && (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.renderableType!==1)
+	property bool isGLES20: !isGLES30 && (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.renderableType!==1)
 	property bool isGL33Core: ((OpenGLInfo.majorVersion>3)||
-							  (OpenGLInfo.majorVersion==3)&&(OpenGLInfo.minorVersion>=3))&&
-							  (OpenGLInfo.renderableType==1)
+							  (OpenGLInfo.majorVersion===3)&&(OpenGLInfo.minorVersion>=3))&&
+							  (OpenGLInfo.renderableType!==2)
 
-	property string prefix: (qrcEnabled?"qrc:":os2Prefix[Qt.platform.os])+ "/"
-
-	readonly property string shaderPrefix: prefix + "shared/shaders/" + (isGL33Core?"gl33/":(isGLES30||fallbackToES30)?"es30/":"es20/")
+	readonly property string shaderPrefix: appPrefix + "shared/shaders/" + (isGL33Core?"gl33/":(isGLES30||fallbackToES30)?"es30/":"es20/")
 	function shader(fn){return shaderPrefix + fn}
 
-	readonly property string texturePrefix: prefix + "shared/assets/texture/"
+	readonly property string texturePrefix: assetsPrefix + "shared/assets/texture/"
 	function texture(fn){return texturePrefix + fn}
-	readonly property string imagePrefix: prefix + "shared/assets/image/"
+	readonly property string imagePrefix: assetsPrefix + "shared/assets/image/"
 	function image(fn){return imagePrefix + fn}
-	readonly property string meshPrefix: prefix + "shared/assets/mesh/"
+	readonly property string meshPrefix: assetsPrefix + "shared/assets/mesh/"
 	function mesh(fn){return meshPrefix + fn}
-	readonly property string modelPrefix: prefix + "shared/assets/model/"
+	readonly property string modelPrefix: assetsPrefix + "shared/assets/model/"
 	function model(fn){return modelPrefix + fn}
 
-	onPrefixChanged: {
-		console.log("[Resources] qrc:%1, prefix:%2".arg(qrcEnabled).arg(prefix))
+	onAppPrefixChanged: {
+		console.log("[Resources] app:%1:%2".arg(appRcEnabled).arg(appPrefix))
+	}
+
+	onAssetsPrefixChanged: {
+		console.log("[Resources] assets:%1:%2".arg(assetsRcEnabled).arg(assetsPrefix))
 	}
 
 	onShaderPrefixChanged: {

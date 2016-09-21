@@ -117,7 +117,7 @@ ApplicationWindow {
 	property bool qrcOn: false  // Load resources from file by default
 
 	onQrcOnChanged: {
-		Resources.qrcEnabled = qrcOn
+		Resources.appRcEnabled = qrcOn
 	}
 
 	Component.onCompleted: {

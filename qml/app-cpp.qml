@@ -123,10 +123,15 @@ ApplicationWindow {
 
 
 	title: "LearnOpenGL-QML"	// Pure QML version by default
-	property bool qrcOn: false  // Load resources from file by default
+	property bool qrcAppOn: false
+	property bool qrcAssetsOn: false
 
-	onQrcOnChanged: {
-		Resources.qrcEnabled = qrcOn
+	onQrcAppOnChanged: {
+		Resources.appRcEnabled = qrcAppOn
+	}
+
+	onQrcAssetsOnChanged: {
+		Resources.assetsRcEnabled = qrcAssetsOn
 	}
 
 	Component.onCompleted: {
