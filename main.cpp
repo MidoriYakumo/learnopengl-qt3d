@@ -27,7 +27,11 @@ int main(int argc, char *argv[]) {
 
   QSurfaceFormat::setDefaultFormat(format);
 
+#ifdef Q_OS_WIN
+  QQuickStyle::setStyle("Universal");
+#else
   QQuickStyle::setStyle("Material");
+#endif
 
   QQmlApplicationEngine engine;
 

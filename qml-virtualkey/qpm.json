@@ -1,0 +1,22 @@
+{
+  "name": "com.github.midoriyakumo.qmlvirtualkey",
+  "description": "Pure QML in-app virtual key/keyboard/pad",
+  "author": {
+    "name": "MidoriYakumo",
+    "email": "macrobull.acg.0@gmail.com"
+  },
+  "repository": {
+    "type": "GITHUB",
+    "url": "git@github.com:MidoriYakumo/qml-virtualkey.git"
+  },
+  "version": {
+	"label": "0.1.1",
+    "revision": "",
+    "fingerprint": ""
+  },
+  "dependencies": [
+  ],
+  "license": "MIT",
+  "pri_filename": "com_github_midoriyakumo_qmlvirtualkey.pri",
+  "webpage": ""
+}

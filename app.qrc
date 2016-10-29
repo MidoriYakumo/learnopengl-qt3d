@@ -68,5 +68,9 @@
         <file>qml/Components/Scene2.qml</file>
         <file>qml/Components/Scene3.qml</file>
         <file>qml/Components/TextureCubeGeometry0.qml</file>
+        <file>qml/VirtualKey/InputEventDefer.qml</file>
+        <file>qml/VirtualKey/MutitouchDispatcher.qml</file>
+        <file>qml/VirtualKey/TouchVisualRipple.qml</file>
+        <file>qml/VirtualKey/VirtualKeyboard.qml</file>
     </qresource>
 </RCC>

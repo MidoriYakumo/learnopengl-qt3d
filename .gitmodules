@@ -1,3 +1,3 @@
-[submodule "qmlvirtualkey"]
-	path = qmlvirtualkey
-	url = https://github.com/MidoriYakumo/qmlvirtualkey
+[submodule "qml-virtualkey"]
+	path = qml-virtualkey
+	url = git@github.com:MidoriYakumo/qml-virtualkey.git

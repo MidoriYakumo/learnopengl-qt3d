@@ -134,9 +134,9 @@ QQ2.Item {
 				onWheel: {
 					var d = wheel.angleDelta.y * 1e-3
 					if (d>0)
-						ourCamera.fieldOfView = Utils.mix(ourCamera.fieldOfView, 1., d)
+						camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d)
 					else
-						ourCamera.fieldOfView = Utils.mix(ourCamera.fieldOfView, 45., -d)
+						camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d)
 				}
 			}
 
@@ -144,17 +144,17 @@ QQ2.Item {
 				property real cameraSpeed: 5.
 				onTriggered: {
 					if (root.keys.up)
-						ourCamera.position = ourCamera.position.plus(
-							ourCamera.frontVector.times(cameraSpeed * dt))
+						camera.position = camera.position.plus(
+							camera.frontVector.times(cameraSpeed * dt))
 					if (root.keys.down)
-						ourCamera.position = ourCamera.position.minus(
-							ourCamera.frontVector.times(cameraSpeed * dt))
+						camera.position = camera.position.minus(
+							camera.frontVector.times(cameraSpeed * dt))
 					if (root.keys.right)
-						ourCamera.position = ourCamera.position.plus(
-							ourCamera.rightVector.times(cameraSpeed * dt))
+						camera.position = camera.position.plus(
+							camera.rightVector.times(cameraSpeed * dt))
 					if (root.keys.left)
-						ourCamera.position = ourCamera.position.minus(
-							ourCamera.rightVector.times(cameraSpeed * dt))
+						camera.position = camera.position.minus(
+							camera.rightVector.times(cameraSpeed * dt))
 				}
 			}
 
