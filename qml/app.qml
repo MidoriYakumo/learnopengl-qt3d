@@ -6,7 +6,6 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
-import QtQuick.Controls.Material 2.0
 
 import "Components"
 
@@ -15,13 +14,19 @@ ApplicationWindow {
 	visible: true
 	width: 800
 	height: 600 + header.height
+	title: "LearnOpenGL-QML"	// Pure QML version by default
+
+	property bool qrcAppOn: false
+	property bool qrcAssetsOn: false
 
 	header: ComboBox {
 		id: combobox
+		opacity: height/20
 		focusPolicy: Qt.NoFocus
 		textRole: "text"
 		model: Examples
 		currentIndex: -1
+
 		onCurrentIndexChanged: {
 			if (currentIndex === model.count - 1) Qt.quit()
 			load(model.get(currentIndex).source)
@@ -47,6 +52,7 @@ ApplicationWindow {
 				width: parent.width
 				text: model.text
 				highlighted: ListView.isCurrentItem
+
 				onClicked: {
 					if (model.text === "Exit")
 						Qt.quit()
@@ -56,7 +62,6 @@ ApplicationWindow {
 						drawer.close()
 					}
 				}
-
 			}
 		}
 
@@ -72,9 +77,9 @@ ApplicationWindow {
 		}
 	}
 
-	function load(sourceName) {
-		//loader.item.unload()
-		loader.source = sourceName + ".qml"
+	FpsLine {
+		id: fps3d
+		span: 2.
 	}
 
 	Component {
@@ -84,7 +89,7 @@ ApplicationWindow {
 			Text {
 				color: "white"
 				anchors.centerIn: parent
-				text: "OpenGL %1.%2 %3 Render %4".arg(
+				text: "Open%4 %1.%2 %3".arg(
 					OpenGLInfo.majorVersion).arg(
 					OpenGLInfo.minorVersion).arg({
 						0: "NoProfile",
@@ -99,25 +104,24 @@ ApplicationWindow {
 				style: Text.Sunken
 				font.pointSize: 24
 			}
-
-			signal unload
 		}
+	}
+
+	function load(sourceName) {
+		//loader.item.unload()
+		loader.source = sourceName + ".qml"
 	}
 
 	function updateDt(dt) {
 		fps3d.addDt(dt)
 	}
 
-	FpsLine {
-		id: fps3d
-		span: 2.
+	onQrcAppOnChanged: {
+		Resources.appRcEnabled = qrcAppOn
 	}
 
-	title: "LearnOpenGL-QML"	// Pure QML version by default
-	property bool qrcOn: false  // Load resources from file by default
-
-	onQrcOnChanged: {
-		Resources.appRcEnabled = qrcOn
+	onQrcAssetsOnChanged: {
+		Resources.assetsRcEnabled = qrcAssetsOn
 	}
 
 	Component.onCompleted: {

@@ -15,44 +15,34 @@ ChartView {
 	property int vMargin: 6
 	property int hMargin: 6
 
-	property real span: pri.span
+	property real span: d.span
 	property int maxFps: 60
 
-	onSpanChanged: {
-		if (span < 0.1)
-			pri.span = 0.1
-		else if (span > 60)
-			pri.span = 60
-		else
-			pri.span = span
-		span = pri.span
-	}
-
 	function addDt(dt) {
-		var t = pri.t + dt
+		var t = d.t + dt
 		ser.append(t, 1. / dt)
-		while (ser.at(1).x < t - pri.span) {
+		while (ser.at(1).x < t - d.span) {
 			ser.remove(0)
 		}
-		pri.avg = (ser.count - 1) / (t - ser.at(0).x)
+		d.avg = (ser.count - 1) / (t - ser.at(0).x)
 		avgSer.clear()
-		pri.t = t
-		avgSer.append(t - pri.span, pri.avg)
-		avgSer.append(t, pri.avg)
+		d.t = t
+		avgSer.append(t - d.span, d.avg)
+		avgSer.append(t, d.avg)
 
 		// Math.max(...arr) for ES6
-		yAxis.max = (pri.avg + 1) * 1.2
+		yAxis.max = (d.avg + 1) * 1.2
 	}
 
 	QtObject {
-		id: pri
+		id: d
 		property real t: 0.
 		property real span: 2.
 		property real avg: 0.
 	}
 
-//	animationDuration: 100
-//	animationOptions: ChartView.GridAxisAnimations
+	//	animationDuration: 100
+	//	animationOptions: ChartView.GridAxisAnimations
 	animationOptions: ChartView.NoAnimation
 	backgroundColor: "#a0008000"
 	backgroundRoundness: 0
@@ -66,8 +56,8 @@ ChartView {
 
 	ValueAxis {
 		id: xAxis
-		min: pri.t - pri.span
-		max: pri.t
+		min: d.t - d.span
+		max: d.t
 		visible: false
 	}
 
@@ -111,9 +101,18 @@ ChartView {
 		y: 8
 		color: "white"
 		font.pixelSize: 16
-		text: pri.avg.toFixed(1) + "fps"
+		text: d.avg.toFixed(1) + "fps"
 		smooth: false
 		antialiasing: false
 	}
 
+	onSpanChanged: {
+		if (span < 0.1)
+			d.span = 0.1
+		else if (span > 60)
+			d.span = 60
+		else
+			d.span = span
+		span = d.span
+	}
 }

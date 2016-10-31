@@ -20,12 +20,12 @@ CONFIG += no_assets
 	RESOURCES += app.qrc
 } else {
 	DEFINES += NO_APP_QRC
-	message(no_app/qml on)
+	message(app.qrc not included.)
 }
 
 unix:!contains(CONFIG, no_assets) {
 	include(assets.pri)
 } else {
 	DEFINES += NO_ASSETS_QRC
-	message(no_assets on)
+	message(assets.qrc not included.)
 }

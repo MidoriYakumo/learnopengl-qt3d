@@ -1,6 +1,6 @@
 # learnopengl-qt3d
 
-Qt3D version of http://learnopengl.com/ examples, currently works with Qt5.7.
+Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.7.
 I created this repo aiming to understand how Qt3D works.
 
 ![](doc/img/sc-qt3d-desktop.gif)

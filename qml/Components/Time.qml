@@ -10,19 +10,8 @@ Item {
 		return new Date().getTime()/1000.
 	}
 
-	onRunningChanged: {
-		if (running) {
-			dummy.offset += time.getTime()
-			anime.running = running
-		}
-		else {
-			anime.running = running
-			dummy.offset -= time.getTime()
-		}
-	}
-
 	QtObject {
-		id: dummy
+		id: d
 
 		property real offset: 0
 		property real value
@@ -33,9 +22,20 @@ Item {
 		}
 	}
 
+	onRunningChanged: {
+		if (running) {
+			d.offset += time.getTime()
+			anime.running = running
+		}
+		else {
+			anime.running = running
+			d.offset -= time.getTime()
+		}
+	}
+
 	NumberAnimation {
 		id: anime
-		target: dummy
+		target: d
 		property: "value"
 		duration: 1000
 		from: 0

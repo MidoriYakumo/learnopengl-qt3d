@@ -12,6 +12,16 @@ Item {
 	id: main
 	anchors.fill: parent
 
+	QtObject {
+		id: app
+
+		function updateDt(dt) {
+			fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
+			fps3d.text = (fps3d.fps).toFixed(1) + " fps"
+		}
+
+	}
+
 	Loader {
 		id: loader
 		anchors.fill: parent
@@ -30,11 +40,33 @@ Item {
 		anchors.top: parent.top
 		model: Examples
 		currentIndex: -1
-		onCurrentIndexChanged: load(model.get(currentIndex).source)
+
+		onCurrentIndexChanged: {
+			load(model.get(currentIndex).source)
+		}
 	}
 
-	function load(sourceName) {
-		loader.source = sourceName + ".qml"
+	//	FpsItem {
+	//		id: fps2d
+	//		anchors.top: parent.top
+	//		anchors.topMargin: 8
+	//		anchors.left: parent.left
+	//		anchors.leftMargin: 8
+	//		spinnerSource: Resources.image("spinner.png")
+	//	}
+
+	Text {
+		id: fps3d
+		anchors.right: parent.right
+		anchors.rightMargin: 8
+		anchors.top: combo.bottom
+		anchors.topMargin: 8
+		color: "#ff7e91"
+		style: Text.Outline
+		styleColor: "#7a2729"
+		font.pointSize: 18
+
+		property real fps: 60.
 	}
 
 	Component {
@@ -44,7 +76,7 @@ Item {
 			Text {
 				color: "white"
 				anchors.centerIn: parent
-				text: "OpenGL %1.%2 %3 Render %4".arg(
+				text: "Open%4 %1.%2 %3".arg(
 					OpenGLInfo.majorVersion).arg(
 					OpenGLInfo.minorVersion).arg({
 						0: "NoProfile",
@@ -62,35 +94,8 @@ Item {
 		}
 	}
 
-//	FpsItem {
-//		id: fps2d
-//		anchors.top: parent.top
-//		anchors.topMargin: 8
-//		anchors.left: parent.left
-//		anchors.leftMargin: 8
-//		spinnerSource: Resources.image("spinner.png")
-//	}
-
-	QtObject {
-		id: app
-
-		function updateDt(dt) {
-			fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
-			fps3d.text = (fps3d.fps).toFixed(1) + " fps"
-		}
-
+	function load(sourceName) {
+		loader.source = sourceName + ".qml"
 	}
 
-	Text {
-		id: fps3d
-		anchors.right: parent.right
-		anchors.rightMargin: 8
-		anchors.top: combo.bottom
-		anchors.topMargin: 8
-		color: "#ff7e91"
-		style: Text.Outline
-		styleColor: "#7a2729"
-		font.pointSize: 18
-		property real fps: 60.
-	}
 }
