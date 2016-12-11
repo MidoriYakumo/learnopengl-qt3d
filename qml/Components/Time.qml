@@ -7,7 +7,7 @@ Item {
 	property bool running: anime.running
 
 	function getTime(){
-		return new Date().getTime()/1000.
+		return new Date().getTime()/1000.;
 	}
 
 	QtObject {
@@ -17,19 +17,19 @@ Item {
 		property real value
 
 		onValueChanged: {
-			time.value = time.getTime() - offset
-			//console.log("time.valueChanged", value, time.value)
+			time.value = time.getTime() - offset;
+			//console.log("time.valueChanged", value, time.value);
 		}
 	}
 
 	onRunningChanged: {
 		if (running) {
-			d.offset += time.getTime()
-			anime.running = running
+			d.offset += time.getTime();
+			anime.running = running;
 		}
 		else {
-			anime.running = running
-			d.offset -= time.getTime()
+			anime.running = running;
+			d.offset -= time.getTime();
 		}
 	}
 

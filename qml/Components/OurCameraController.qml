@@ -149,47 +149,45 @@ Entity {
 		onTriggered: {
 			if (upMove.active)
 				root.camera.position = root.camera.position.plus(
-					root.camera.frontVector.times(d.cameraSpeed * dt))
+						root.camera.frontVector.times(d.cameraSpeed * dt));
 			if (downMove.active)
 				root.camera.position = root.camera.position.minus(
-					root.camera.frontVector.times(d.cameraSpeed * dt))
+						root.camera.frontVector.times(d.cameraSpeed * dt));
 			if (rightMove.active)
 				root.camera.position = root.camera.position.plus(
-					root.camera.rightVector.times(d.cameraSpeed * dt))
+						root.camera.rightVector.times(d.cameraSpeed * dt));
 			if (leftMove.active)
 				root.camera.position = root.camera.position.minus(
-					root.camera.rightVector.times(d.cameraSpeed * dt))
+						root.camera.rightVector.times(d.cameraSpeed * dt));
 
 			var yaw, pitch
 			// ensure relative drags, not click starts
 			if (d.lookActionActived && lookAction.active) {
-				yaw = root.camera.yaw + xAxis.value
-				pitch = root.camera.pitch - yAxis.value
-
-				pitch = (pitch>89.)?89.:(pitch<-89.)?-89.:pitch
-
-				root.camera.yaw = yaw
-				root.camera.pitch = pitch
+				yaw = root.camera.yaw + xAxis.value;
+				pitch = root.camera.pitch - yAxis.value;
+				pitch = (pitch>89.)?89.:(pitch<-89.)?-89.:pitch;
+				root.camera.yaw = yaw;
+				root.camera.pitch = pitch;
 			}
-			d.lookActionActived = lookAction.active
+			d.lookActionActived = lookAction.active;
 
 			if (d.orbitActionActived && orbitAction.active) {
 			}
-			d.orbitActionActived = orbitAction.active
+			d.orbitActionActived = orbitAction.active;
 
 			if (d.moveActionActived && moveAction.active) {
 				root.camera.position = root.camera.position.plus(
-					root.camera.upVector.times(-yAxis.value)).plus(
-					root.camera.rightVector.times(-xAxis.value))
+						root.camera.upVector.times(-yAxis.value)).plus(
+						root.camera.rightVector.times(-xAxis.value));
 			}
-			d.moveActionActived = moveAction.active
+			d.moveActionActived = moveAction.active;
 
 			if (d.wAxisValue != 0) {
 				if (d.wAxisValue>0)
-					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 1., d.wAxisValue)
+					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 1., d.wAxisValue);
 				else
-					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 180., -d.wAxisValue)
-				d.wAxisValue = 0
+					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 180., -d.wAxisValue);
+				d.wAxisValue = 0;
 			}
 		}
 	}

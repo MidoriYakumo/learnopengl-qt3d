@@ -9,7 +9,7 @@
 //}
 
 function mix(a, b, u) {
-	return a*(1.-u)+b*u
+	return a*(1.-u)+b*u;
 }
 
 

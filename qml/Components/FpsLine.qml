@@ -9,29 +9,29 @@ ChartView {
 		top: vMargin
 		right: hMargin
 	}
-	height: 92
 	width: 160
+	height: 92
 
-	property int vMargin: 6
 	property int hMargin: 6
+	property int vMargin: 6
 
 	property real span: d.span
 	property int maxFps: 60
 
 	function addDt(dt) {
-		var t = d.t + dt
-		ser.append(t, 1. / dt)
+		var t = d.t + dt;
+		ser.append(t, 1. / dt);
 		while (ser.at(1).x < t - d.span) {
-			ser.remove(0)
+			ser.remove(0);
 		}
-		d.avg = (ser.count - 1) / (t - ser.at(0).x)
-		avgSer.clear()
-		d.t = t
-		avgSer.append(t - d.span, d.avg)
-		avgSer.append(t, d.avg)
+		d.avg = (ser.count - 1) / (t - ser.at(0).x);
+		avgSer.clear();
+		d.t = t;
+		avgSer.append(t - d.span, d.avg);
+		avgSer.append(t, d.avg);
 
 		// Math.max(...arr) for ES6
-		yAxis.max = (d.avg + 1) * 1.2
+		yAxis.max = (d.avg + 1) * 1.2;
 	}
 
 	QtObject {
@@ -108,11 +108,11 @@ ChartView {
 
 	onSpanChanged: {
 		if (span < 0.1)
-			d.span = 0.1
+			d.span = 0.1;
 		else if (span > 60)
-			d.span = 60
+			d.span = 60;
 		else
-			d.span = span
-		span = d.span
+			d.span = span;
+		span = d.span;
 	}
 }

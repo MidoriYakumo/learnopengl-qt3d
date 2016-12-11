@@ -13,12 +13,12 @@ FrameAction {
 
 	onTriggered: {
 		try {
-			d.adt += dt
-			d.cnt++
+			d.adt += dt;
+			d.cnt++;
 			if (d.cnt >= 3) {
-				app.updateDt(d.adt/d.cnt)
-				d.adt = 0
-				d.cnt = 0
+				app.updateDt(d.adt/d.cnt);
+				d.adt = 0;
+				d.cnt = 0;
 			}
 		} catch (e) {
 
