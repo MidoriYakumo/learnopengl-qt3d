@@ -72,5 +72,7 @@
         <file>qml/VirtualKey/MutitouchDispatcher.qml</file>
         <file>qml/VirtualKey/TouchVisualRipple.qml</file>
         <file>qml/VirtualKey/VirtualKeyboard.qml</file>
+        <file>shared/shaders/es30/lighting.vert</file>
+        <file>shared/shaders/gl33/lighting.vert</file>
     </qresource>
 </RCC>

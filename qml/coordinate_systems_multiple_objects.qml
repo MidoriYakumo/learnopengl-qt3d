@@ -200,8 +200,9 @@ Scene0 {
 									m.m11 = zNear / w
 									m.m22 = zNear / h
 									m.m33 = - (zNear + zFar) / (zFar - zNear)
-									m.m43 = -1
 									m.m34 = -2 * zNear * zFar / (zFar - zNear)
+									m.m43 = -1
+									m.m44 = 0
 									return m
 								}
 							}

@@ -8,10 +8,8 @@ import "VirtualKey"
 
 Scene2 {
 	id: scene
-
-	overlay: VirtualKeys {
+	children: VirtualKeys {
 		target: scene
-		parent: target
 		enableGameButtons: false
 		color: "transparent"
 		centerItem: RowKeys {
@@ -30,6 +28,7 @@ Scene2 {
 
 		OurCameraController {
 			camera: root.camera
+			mouseSensitivity: 0.5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -44,8 +43,6 @@ Scene2 {
 			onSpacePressed: {
 				root.useQtCameraAndMesh = !root.useQtCameraAndMesh
 				console.log("useQtCameraAndMesh:", root.useQtCameraAndMesh)
-				console.log(ourCamera.projectionMatrix)
-				console.log(qtCamera.projectionMatrix)
 			}
 		}
 
@@ -71,6 +68,7 @@ Scene2 {
 				m.lookAt(position, viewCenter, upVector)
 				return m
 			}
+
 			property matrix4x4 projectionMatrix: {
 				var aspect = scene.width / scene.height
 				var zNear = .1
@@ -82,8 +80,9 @@ Scene2 {
 				m.m11 = zNear / w
 				m.m22 = zNear / h
 				m.m33 = - (zNear + zFar) / (zFar - zNear)
-				m.m43 = -1
 				m.m34 = -2 * zNear * zFar / (zFar - zNear)
+				m.m43 = -1
+				m.m44 = 0
 				return m
 			}
 		}
@@ -110,7 +109,6 @@ Scene2 {
 
 		TextureCubeGeometry0 {
 			id: geometry
-			useQtAttributeName: root.useQtCameraAndMesh
 		}
 
 		CuboidMesh {
@@ -119,9 +117,6 @@ Scene2 {
 
 		Entity {
 			id: object
-			components: [root.useQtCameraAndMesh?mesh:geometry,
-				objectTransform, objectMaterial
-			]
 
 			Transform {
 				id: objectTransform
@@ -133,16 +128,16 @@ Scene2 {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
-								vertName: "coordinate_systems_qt3d_transform"
+								vertName: "lighting"
 								fragName: "lighting"
 							}
 							parameters: [
 								Parameter {
-									name: "view"
+									name: "viewMatrix"
 									value: root.camera.viewMatrix
 								},
 								Parameter {
-									name: "projection"
+									name: "projectionMatrix"
 									value: root.camera.projectionMatrix
 								},
 								Parameter {
@@ -166,13 +161,14 @@ Scene2 {
 					}
 				}
 			}
+
+			components: [root.useQtCameraAndMesh?mesh:geometry,
+				objectTransform, objectMaterial
+			]
 		}
 
 		Entity {
 			id: lamp
-			components: [root.useQtCameraAndMesh?mesh:geometry,
-				lampTransform, lampMaterial
-			]
 
 			Transform {
 				id: lampTransform
@@ -186,16 +182,16 @@ Scene2 {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
-								vertName: "coordinate_systems_qt3d_transform"
+								vertName: "lighting"
 								fragName: "shaders-uniform"
 							}
 							parameters: [
 								Parameter {
-									name: "view"
+									name: "viewMatrix"
 									value: root.camera.viewMatrix
 								},
 								Parameter {
-									name: "projection"
+									name: "projectionMatrix"
 									value: root.camera.projectionMatrix
 								},
 								Parameter {
@@ -207,6 +203,10 @@ Scene2 {
 					}
 				}
 			}
+
+			components: [root.useQtCameraAndMesh?mesh:geometry,
+				lampTransform, lampMaterial
+			]
 		}
 	}
 }

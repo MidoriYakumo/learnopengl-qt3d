@@ -22,11 +22,11 @@ Item { // This is the global resource router
 
 	property bool fallbackToES30: true
 								  & false
-	property bool isGLES30: !isGL33Core && (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.renderableType!==1)
+	property bool isGLES30: (OpenGLInfo.majorVersion>=3)&&(OpenGLInfo.renderableType!==1)
 	property bool isGLES20: !isGLES30 && (OpenGLInfo.majorVersion>=2)&&(OpenGLInfo.renderableType!==1)
 	property bool isGL33Core: ((OpenGLInfo.majorVersion>3)||
 							  (OpenGLInfo.majorVersion===3)&&(OpenGLInfo.minorVersion>=3))&&
-							  (OpenGLInfo.renderableType!==2)
+							  (OpenGLInfo.renderableType==1)
 
 	readonly property string shaderPrefix: appPrefix + "shared/shaders/" + (isGL33Core?"gl33/":(isGLES30||fallbackToES30)?"es30/":"es20/")
 	function shader(fn){return shaderPrefix + fn}

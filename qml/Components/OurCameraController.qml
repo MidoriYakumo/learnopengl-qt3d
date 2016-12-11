@@ -1,22 +1,55 @@
+import Qt3D.Core 2.0
+import Qt3D.Render 2.0
+import Qt3D.Input 2.0
 import Qt3D.Logic 2.0
 
-FrameAction {
-	id: frameSwap
+Entity {
+	id: root
 
-	property int cnt
-	property real adt
+	property Entity camera
+	property alias mouseSensitivity: mouseDevice.sensitivity // 0.5 / Units.dp
 
-	onTriggered: {
-		try {
-			adt += dt
-			cnt++
-			if (cnt >= 3) {
-				app.updateDt(adt/cnt)
-				adt = 0
-				cnt = 0
+	KeyboardDevice {
+		id: keyboardDevice
+	}
+
+	MouseDevice {
+		id: mouseDevice
+	}
+
+	LogicalDevice {
+		enabled: true
+		actions: Action {
+			id: mouseClick
+			ActionInput {
+				sourceDevice: mouseDevice
+				buttons: [MouseEvent.LeftButton]
 			}
-		} catch (e) {
+		}
+		axes: [
+			Axis {
+				id: xAxis
+				AnalogAxisInput {
+					sourceDevice: mouseDevice
+					axis: MouseDevice.X
+				}
+			},
+			Axis {
+				id: yAxis
+				AnalogAxisInput {
+					sourceDevice: mouseDevice
+					axis: MouseDevice.Y
+				}
+			}
+		]
+	}
 
+	FrameSwap {
+		onTriggered: {
+			if (mouseClick.active) {
+				root.camera.panAboutViewCenter(xAxis.value * -1e2 * dt)
+				root.camera.tiltAboutViewCenter(yAxis.value * -1e2 * dt)
+			}
 		}
 	}
 }

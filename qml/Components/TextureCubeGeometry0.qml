@@ -1,8 +1,6 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
-import "."
-
 GeometryRenderer {
 	id: geometry
 	geometry: Geometry {
@@ -16,7 +14,7 @@ GeometryRenderer {
 			count: 36
 			byteOffset: 0
 			byteStride: 4 * 5
-			name: "position"
+			name: defaultPositionAttributeName()
 			buffer: vertexBuffer
 		}
 
@@ -27,7 +25,7 @@ GeometryRenderer {
 			count: 36
 			byteOffset: 4 * 3
 			byteStride: 4 * 5
-			name: "texCoord"
+			name: defaultTextureCoordinateAttributeName()
 			buffer: vertexBuffer
 		}
 	}
