@@ -40,6 +40,9 @@ You can now run qmltestrunner under qml/tests to see all the examples and genera
 Examples
 ===
 
+Getting started
+---
+
 1. [Hello Window](doc/Hello-Window.md) : works
 1. [Hello Triangle](doc/Hello-Triangle.md) : works
 1. [Shaders](doc/Shaders.md) : works
@@ -47,3 +50,8 @@ Examples
 1. [Transformations](doc/Transformations.md) : works
 1. [Coordinate Systems](doc/Coordinate-Systems.md) : works
 1. [Camera](doc/Camera.md) : works, extra quaternion version fps controller not available yet
+
+Lighting
+---
+
+1. [Colors](doc/Colors.md) : works

@@ -22,11 +22,18 @@ Scene2 {
 	Entity {
 		id: root
 
-		RenderSettings1 {}
+		RenderSettings2 {
+			/*
+				new clear buffer color and Qt camera support:
+				mvp matrix is calculated by Qt renderer
+			*/
+
+			camera: qtCamera
+		}
 
 		InputSettings {}
 
-		OurCameraController {
+		OurCameraController { // Our camera controller via Qt3D Logic
 			camera: root.camera
 			mouseSensitivity: 0.5 / Units.dp
 		}
@@ -89,6 +96,20 @@ Scene2 {
 
 		Camera {
 			id: qtCamera
+			/*
+				The Camera type, generate view and projection matrix for our shaders,
+				it works much similar with our camera implementation.
+			*/
+
+			property real yaw: 0
+			property real pitch: 0
+
+			property vector3d frontVector: Qt.vector3d(
+				Math.cos(pitch * Math.PI / 180.) * Math.sin(yaw * Math.PI / 180.),
+				-Math.sin(pitch * Math.PI / 180.),
+				-Math.cos(pitch * Math.PI / 180.) * Math.cos(yaw * Math.PI / 180.)
+			)
+			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
 
 			projectionType: CameraLens.PerspectiveProjection
 			fieldOfView: 45  // Projection
@@ -96,23 +117,34 @@ Scene2 {
 			nearPlane : 0.1
 			farPlane : 100.0
 			position: "0,0,3"// View
-			viewCenter: "0,0,0"
+			viewCenter: position.plus(frontVector)
 			upVector: "0,1,0"
 		}
 
 		property bool useQtCameraAndMesh: false
 
 		property Entity camera: useQtCameraAndMesh?qtCamera:ourCamera
+		property GeometryRenderer geometry: useQtCameraAndMesh?qtGeometry:ourGeometry
 
 		property color objectColor: "coral"
 		property color lightColor: "white"
 
 		TextureCubeGeometry0 {
-			id: geometry
+			id: ourGeometry
 		}
 
 		CuboidMesh {
-			id: mesh
+			/*
+				There are several types in Qt3D.Extras helps us generating meshes of
+				base shapes, to be noticed that the names of attributes passed to shaders,
+				are something like defaultPositionAttributeName() ... . As the result,
+				some modifications in our shaders are required.
+
+				Source: qt3d/src/extras/geometries/qcuboidmesh.cpp
+				Refer: qthelp://org.qt-project.qt3d.570/qt3d/qt3drender-qattribute.html
+			*/
+
+			id: qtGeometry
 		}
 
 		Entity {
@@ -162,9 +194,7 @@ Scene2 {
 				}
 			}
 
-			components: [root.useQtCameraAndMesh?mesh:geometry,
-				objectTransform, objectMaterial
-			]
+			components: [root.geometry, objectTransform, objectMaterial]
 		}
 
 		Entity {
@@ -172,8 +202,8 @@ Scene2 {
 
 			Transform {
 				id: lampTransform
-				translation: Qt.vector3d(1.2, 1.0, 2.0)
-				scale: .2 // Use scale to decrease lamp size
+				translation: "1.2, 1.0, 2.0"
+				scale: .2 // Use scaling to decrease lamp size
 			}
 
 			Material {
@@ -183,7 +213,7 @@ Scene2 {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
 								vertName: "lighting"
-								fragName: "shaders-uniform"
+								fragName: "shaders-uniform" // pure color light source
 							}
 							parameters: [
 								Parameter {
@@ -204,9 +234,7 @@ Scene2 {
 				}
 			}
 
-			components: [root.useQtCameraAndMesh?mesh:geometry,
-				lampTransform, lampMaterial
-			]
+			components: [root.geometry, lampTransform, lampMaterial]
 		}
 	}
 }

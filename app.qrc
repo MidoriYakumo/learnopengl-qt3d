@@ -74,5 +74,7 @@
         <file>qml/VirtualKey/VirtualKeyboard.qml</file>
         <file>shared/shaders/es30/lighting.vert</file>
         <file>shared/shaders/gl33/lighting.vert</file>
+        <file>qml/Components/OurCameraController.qml</file>
+        <file>qml/Components/RenderSettings2.qml</file>
     </qresource>
 </RCC>
