@@ -48,8 +48,8 @@ Scene2 {
 			focus: true
 
 			onSpacePressed: {
-				root.useQtCameraAndMesh = !root.useQtCameraAndMesh
-				console.log("useQtCameraAndMesh:", root.useQtCameraAndMesh)
+				root.useQtCameraAndMesh = !root.useQtCameraAndMesh;
+				console.log("useQtCameraAndMesh:", root.useQtCameraAndMesh);
 			}
 		}
 
@@ -64,33 +64,33 @@ Scene2 {
 			property vector3d viewCenter: position.plus(frontVector)
 			property vector3d upVector: "0,1,0"
 			property vector3d frontVector: Qt.vector3d(
-				Math.cos(pitch * Math.PI / 180.) * Math.sin(yaw * Math.PI / 180.),
-				-Math.sin(pitch * Math.PI / 180.),
-				-Math.cos(pitch * Math.PI / 180.) * Math.cos(yaw * Math.PI / 180.)
+					 Math.cos(pitch * Math.PI / 180.) * Math.sin(yaw * Math.PI / 180.),
+					-Math.sin(pitch * Math.PI / 180.),
+					-Math.cos(pitch * Math.PI / 180.) * Math.cos(yaw * Math.PI / 180.)
 			)
 			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
 
 			property matrix4x4 viewMatrix: {
-				var m = Qt.matrix4x4()
-				m.lookAt(position, viewCenter, upVector)
-				return m
+				var m = Qt.matrix4x4();
+				m.lookAt(position, viewCenter, upVector);
+				return m;
 			}
 
 			property matrix4x4 projectionMatrix: {
-				var aspect = scene.width / scene.height
-				var zNear = .1
-				var zFar = 100.
-				var h = Math.tan(fieldOfView * Math.PI / 360) * zNear
-				var w = h * aspect
+				var aspect = scene.width / scene.height;
+				var zNear = .1;
+				var zFar = 100.;
+				var h = Math.tan(fieldOfView * Math.PI / 360) * zNear;
+				var w = h * aspect;
 
-				var m = Qt.matrix4x4()
-				m.m11 = zNear / w
-				m.m22 = zNear / h
-				m.m33 = - (zNear + zFar) / (zFar - zNear)
-				m.m34 = -2 * zNear * zFar / (zFar - zNear)
-				m.m43 = -1
-				m.m44 = 0
-				return m
+				var m = Qt.matrix4x4();
+				m.m11 = zNear / w;
+				m.m22 = zNear / h;
+				m.m33 = - (zNear + zFar) / (zFar - zNear);
+				m.m34 = -2 * zNear * zFar / (zFar - zNear);
+				m.m43 = -1;
+				m.m44 = 0;
+				return m;
 			}
 		}
 
@@ -105,9 +105,9 @@ Scene2 {
 			property real pitch: 0
 
 			property vector3d frontVector: Qt.vector3d(
-				Math.cos(pitch * Math.PI / 180.) * Math.sin(yaw * Math.PI / 180.),
-				-Math.sin(pitch * Math.PI / 180.),
-				-Math.cos(pitch * Math.PI / 180.) * Math.cos(yaw * Math.PI / 180.)
+					 Math.cos(pitch * Math.PI / 180.) * Math.sin(yaw * Math.PI / 180.),
+					-Math.sin(pitch * Math.PI / 180.),
+					-Math.cos(pitch * Math.PI / 180.) * Math.cos(yaw * Math.PI / 180.)
 			)
 			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
 

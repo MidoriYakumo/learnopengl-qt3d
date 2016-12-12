@@ -76,7 +76,7 @@ Scene0 {
 							// ShaderCodes are bytes! We need javascript strings!
 							vertexShaderCode: loadSource(Resources.shader("hellotriangle.vert"))
 							fragmentShaderCode: loadSource(Resources.shader("hellotriangle.frag"))
-								.toString().replace(".5","1.").replace(".2", "0.")
+									.toString().replace(".5","1.").replace(".2", "0.")
 						}
 					}
 				}

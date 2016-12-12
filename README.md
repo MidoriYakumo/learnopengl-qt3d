@@ -55,3 +55,4 @@ Lighting
 ---
 
 1. [Colors](doc/Colors.md) : works
+1. [Basic Lighting](doc/Basic-Lighting.md) : in progress

@@ -8,18 +8,20 @@ FrameAction {
 		id: d
 
 		property int cnt
-		property real adt
+		property real accdt
 	}
 
 	onTriggered: {
 		try {
-			d.adt += dt;
-			d.cnt++;
-			if (d.cnt >= 3) {
-				app.updateDt(d.adt/d.cnt);
-				d.adt = 0;
-				d.cnt = 0;
+			var accdt = d.accdt + dt;
+			var cnt = d.cnt + 1;
+			if (cnt >= 3) {
+				app.updateDt(accdt/cnt); // throw
+				accdt = 0;
+				cnt = 0;
 			}
+			d.accdt = accdt;
+			d.cnt = cnt;
 		} catch (e) {
 
 		}

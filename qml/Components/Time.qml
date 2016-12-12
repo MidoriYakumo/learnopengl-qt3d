@@ -14,7 +14,7 @@ Item {
 		id: d
 
 		property real offset: 0
-		property real value
+		property real value  // event driver
 
 		onValueChanged: {
 			time.value = time.getTime() - offset;

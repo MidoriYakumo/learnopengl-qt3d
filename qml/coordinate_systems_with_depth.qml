@@ -64,19 +64,19 @@ Scene2 {
 			id: keyboardHandler
 			focus: true
 			onSpacePressed: {
-				root.enableDepthTest = !root.enableDepthTest
+				root.enableDepthTest = !root.enableDepthTest;
 				if (root.enableDepthTest) {
-					renderStateSet.renderStates = [root.storeDepthTest]
+					renderStateSet.renderStates = [root.storeDepthTest];
 				} else {
-					root.storeDepthTest = renderStateSet.renderStates[0]
-					renderStateSet.renderStates = []
+					root.storeDepthTest = renderStateSet.renderStates[0];
+					renderStateSet.renderStates = [];
 				}
 
-				console.log("enableDepthTest:", root.enableDepthTest)
+				console.log("enableDepthTest:", root.enableDepthTest);
 			}
 			onReturnPressed: {
-				root.useQtTransform = !root.useQtTransform
-				console.log("useQtTransform:", root.useQtTransform)
+				root.useQtTransform = !root.useQtTransform;
+				console.log("useQtTransform:", root.useQtTransform);
 			}
 			sourceDevice: keyboardDevice
 		}
@@ -178,9 +178,9 @@ Scene2 {
 				id: transform
 
 				matrix: { // modelMatrix
-					var m = Qt.matrix4x4()
-					m.rotate(time.value % 360 * 50, Qt.vector3d(.5, 1, 0))
-					return m
+					var m = Qt.matrix4x4();
+					m.rotate(time.value % 360 * 50, Qt.vector3d(.5, 1, 0));
+					return m;
 				}
 
 				Time {
@@ -237,29 +237,29 @@ Scene2 {
 								Parameter {
 									name: "view"
 									value: {
-										var m = Qt.matrix4x4()
-										m.translate(0, 0, -3)
-										return m
+										var m = Qt.matrix4x4();
+										m.translate(0, 0, -3);
+										return m;
 									}
 								},
 								Parameter {
 									name: "projection"
 									value: {
-										var fov = 45
-										var aspect = scene.width / scene.height
-										var zNear = .1
-										var zFar = 100.
-										var h = Math.tan(fov * Math.PI / 360) * zNear
-										var w = h * aspect
+										var fov = 45;
+										var aspect = scene.width / scene.height;
+										var zNear = .1;
+										var zFar = 100.;
+										var h = Math.tan(fov * Math.PI / 360) * zNear;
+										var w = h * aspect;
 
-										var m = Qt.matrix4x4()
-										m.m11 = zNear / w
-										m.m22 = zNear / h
-										m.m33 = - (zNear + zFar) / (zFar - zNear)
-										m.m34 = -2 * zNear * zFar / (zFar - zNear)
-										m.m43 = -1
-										m.m44 = 0
-										return m
+										var m = Qt.matrix4x4();
+										m.m11 = zNear / w;
+										m.m22 = zNear / h;
+										m.m33 = - (zNear + zFar) / (zFar - zNear);
+										m.m34 = -2 * zNear * zFar / (zFar - zNear);
+										m.m43 = -1;
+										m.m44 = 0;
+										return m;
 									}
 								}
 							]

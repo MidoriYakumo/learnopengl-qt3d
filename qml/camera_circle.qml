@@ -24,27 +24,27 @@ Scene1 {
 			property vector3d upVector: "0,1,0"
 
 			property matrix4x4 viewMatrix: {
-				var m = Qt.matrix4x4()
+				var m = Qt.matrix4x4();
 				// Use Qt lookAt, reference: qthelp://org.qt-project.qtgui.570/qtgui/qmatrix4x4.html#lookAt
-				m.lookAt(position, viewCenter, upVector)
-				return m
+				m.lookAt(position, viewCenter, upVector);
+				return m;
 			}
 			property matrix4x4 projectionMatrix: {
-				var fov = 45
-				var aspect = scene.width / scene.height
-				var zNear = .1
-				var zFar = 100.
-				var h = Math.tan(fov * Math.PI / 360) * zNear
-				var w = h * aspect
+				var fov = 45;
+				var aspect = scene.width / scene.height;
+				var zNear = .1;
+				var zFar = 100.;
+				var h = Math.tan(fov * Math.PI / 360) * zNear;
+				var w = h * aspect;
 
-				var m = Qt.matrix4x4()
-				m.m11 = zNear / w
-				m.m22 = zNear / h
-				m.m33 = - (zNear + zFar) / (zFar - zNear)
-				m.m34 = -2 * zNear * zFar / (zFar - zNear)
-				m.m43 = -1
-				m.m44 = 0
-				return m
+				var m = Qt.matrix4x4();
+				m.m11 = zNear / w;
+				m.m22 = zNear / h;
+				m.m33 = - (zNear + zFar) / (zFar - zNear);
+				m.m34 = -2 * zNear * zFar / (zFar - zNear);
+				m.m43 = -1;
+				m.m44 = 0;
+				return m;
 			}
 		}
 

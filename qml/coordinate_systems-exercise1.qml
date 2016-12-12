@@ -39,20 +39,20 @@ Scene3 {
 		KeyboardHandler {
 			focus: true
 			onUpPressed: {
-				root.fov = Utils.mix(root.fov, 0, 0.1)
-				console.log("fov:", root.fov)
+				root.fov = Utils.mix(root.fov, 0, 0.1);
+				console.log("fov:", root.fov);
 			}
 			onDownPressed: {
-				root.fov = Utils.mix(root.fov, 180, 0.1)
-				console.log("fov:", root.fov)
+				root.fov = Utils.mix(root.fov, 180, 0.1);
+				console.log("fov:", root.fov);
 			}
 			onLeftPressed: {
-				root.aspectRatio = Utils.mix(root.aspectRatio, 1e-1, 0.1)
-				console.log("aspectRatio:", root.aspectRatio)
+				root.aspectRatio = Utils.mix(root.aspectRatio, 1e-1, 0.1);
+				console.log("aspectRatio:", root.aspectRatio);
 			}
 			onRightPressed: {
-				root.aspectRatio = Utils.mix(root.aspectRatio, 1e1, 0.1)
-				console.log("aspectRatio:", root.aspectRatio)
+				root.aspectRatio = Utils.mix(root.aspectRatio, 1e1, 0.1);
+				console.log("aspectRatio:", root.aspectRatio);
 			}
 			sourceDevice: keyboardDevice
 		}
@@ -206,27 +206,27 @@ Scene3 {
 							Parameter {
 								name: "view"
 								value: {
-									var m = Qt.matrix4x4()
-									m.translate(0, 0, -3)
-									return m
+									var m = Qt.matrix4x4();
+									m.translate(0, 0, -3);
+									return m;
 								}
 							},
 							Parameter {
 								name: "projection"
 								value: {
-									var zNear = .1
-									var zFar = 100.
-									var h = Math.tan(root.fov * Math.PI / 360) * zNear
-									var w = h * root.aspectRatio
+									var zNear = .1;
+									var zFar = 100.;
+									var h = Math.tan(root.fov * Math.PI / 360) * zNear;
+									var w = h * root.aspectRatio;
 
-									var m = Qt.matrix4x4()
-									m.m11 = zNear / w
-									m.m22 = zNear / h
-									m.m33 = - (zNear + zFar) / (zFar - zNear)
-									m.m34 = -2 * zNear * zFar / (zFar - zNear)
-									m.m43 = -1
-									m.m44 = 0
-									return m
+									var m = Qt.matrix4x4();
+									m.m11 = zNear / w;
+									m.m22 = zNear / h;
+									m.m33 = - (zNear + zFar) / (zFar - zNear);
+									m.m34 = -2 * zNear * zFar / (zFar - zNear);
+									m.m43 = -1;
+									m.m44 = 0;
+									return m;
 								}
 							}
 						]

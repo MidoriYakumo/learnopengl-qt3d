@@ -16,8 +16,8 @@ Item {
 		id: app
 
 		function updateDt(dt) {
-			fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
-			fps3d.text = (fps3d.fps).toFixed(1) + " fps"
+			fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8;
+			fps3d.text = (fps3d.fps).toFixed(1) + " fps";
 		}
 
 	}
@@ -28,7 +28,7 @@ Item {
 		sourceComponent: glInfo
 
 		onLoaded: {
-			focus = true
+			focus = true;
 		}
 	}
 
@@ -42,7 +42,7 @@ Item {
 		currentIndex: -1
 
 		onCurrentIndexChanged: {
-			load(model.get(currentIndex).source)
+			load(model.get(currentIndex).source);
 		}
 	}
 
@@ -95,7 +95,6 @@ Item {
 	}
 
 	function load(sourceName) {
-		loader.source = sourceName + ".qml"
+		loader.source = sourceName + ".qml";
 	}
-
 }

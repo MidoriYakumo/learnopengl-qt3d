@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtCharts 2.1
 
 ChartView {
-	id: root
+	id: app // name it with app in scene to display fps without QML/GL window
 	anchors.top: parent.top
 	anchors.right: parent.right
 	anchors.margins: {
@@ -16,22 +16,26 @@ ChartView {
 	property int vMargin: 6
 
 	property real span: d.span
-	property int maxFps: 60
+	property int  maxFps: 60
+	property real maxMargin: 0.25
 
-	function addDt(dt) {
+	function updateDt(dt) {
 		var t = d.t + dt;
+
 		ser.append(t, 1. / dt);
 		while (ser.at(1).x < t - d.span) {
 			ser.remove(0);
 		}
-		d.avg = (ser.count - 1) / (t - ser.at(0).x);
-		avgSer.clear();
+
 		d.t = t;
+		d.avg = (ser.count - 1) / (t - ser.at(0).x);
+
+		avgSer.clear();
 		avgSer.append(t - d.span, d.avg);
 		avgSer.append(t, d.avg);
 
 		// Math.max(...arr) for ES6
-		yAxis.max = (d.avg + 1) * 1.2;
+		yAxis.max = (d.avg + 1) * (1. + maxMargin);
 	}
 
 	QtObject {
@@ -64,7 +68,7 @@ ChartView {
 	ValueAxis {
 		id: yAxis
 		min: 0
-		max: root.maxFps
+		max: app.maxFps
 		labelsColor: "white"
 		minorGridVisible: false
 		minorTickCount: 0
@@ -97,7 +101,7 @@ ChartView {
 
 	Text {
 		id: realtime
-		x: root.plotArea.x - 3
+		x: app.plotArea.x - 3
 		y: 8
 		color: "white"
 		font.pixelSize: 16
@@ -113,6 +117,7 @@ ChartView {
 			d.span = 60;
 		else
 			d.span = span;
+
 		span = d.span;
 	}
 }

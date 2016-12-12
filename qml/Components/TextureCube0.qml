@@ -6,7 +6,7 @@ import "."
 Entity {
 	id: cube
 
-	property Transform transform: Transform { }
+	property Transform transform: Transform {} // default: origin
 
 	property matrix4x4 viewMatrix: Qt.matrix4x4()
 	property matrix4x4 projectionMatrix: Qt.matrix4x4()

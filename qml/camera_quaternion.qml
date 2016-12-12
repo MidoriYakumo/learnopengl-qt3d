@@ -36,23 +36,23 @@ Scene2 {
 				case Qt.key_W:
 				case 'W'.charCodeAt(0):
 				case Qt.Key_Up:
-					root.keys.up = true
-					break
+					root.keys.up = true;
+					break;
 				case Qt.key_S:
 				case 'S'.charCodeAt(0):
 				case Qt.Key_Down:
-					root.keys.down = true
-					break
+					root.keys.down = true;
+					break;
 				case Qt.key_A:
 				case 'A'.charCodeAt(0):
 				case Qt.Key_Left:
-					root.keys.left = true
-					break
+					root.keys.left = true;
+					break;
 				case Qt.key_D:
 				case 'D'.charCodeAt(0):
 				case Qt.Key_Right:
-					root.keys.right = true
-					break
+					root.keys.right = true;
+					break;
 				}
 			}
 			onReleased: {
@@ -60,23 +60,23 @@ Scene2 {
 				case Qt.key_W:
 				case 'W'.charCodeAt(0):
 				case Qt.Key_Up:
-					root.keys.up = false
-					break
+					root.keys.up = false;
+					break;
 				case Qt.key_S:
 				case 'S'.charCodeAt(0):
 				case Qt.Key_Down:
-					root.keys.down = false
-					break
+					root.keys.down = false;
+					break;
 				case Qt.key_A:
 				case 'A'.charCodeAt(0):
 				case Qt.Key_Left:
-					root.keys.left = false
-					break
+					root.keys.left = false;
+					break;
 				case Qt.key_D:
 				case 'D'.charCodeAt(0):
 				case Qt.Key_Right:
-					root.keys.right = false
-					break
+					root.keys.right = false;
+					break;
 				}
 			}
 		}
@@ -94,28 +94,28 @@ Scene2 {
 			property int posY
 
 			onPressAndHold: {
-				posX = mouse.x
-				posY = mouse.y
+				posX = mouse.x;
+				posY = mouse.y;
 			}
 
 			onPositionChanged: {
-				var sensitivity = mouseDevice.sensitivity
+				var sensitivity = mouseDevice.sensitivity;
 				if (mouse.modifiers & Qt.ShiftModifier)
-					sensitivity *= .1
+					sensitivity *= .1;
 
-				console.log(camera.frontQuaternion * 1, camera.frontQuaternion.times(1)) // Not work yet
-				console.log(dummyTransform.fromAxisAndAngle(Qt.vector3d(1, 0, 0), 1))
+				console.log(camera.frontQuaternion * 1, camera.frontQuaternion.times(1)); // Not work yet
+				console.log(dummyTransform.fromAxisAndAngle(Qt.vector3d(1, 0, 0), 1));
 
-				posX = mouse.x
-				posY = mouse.y
+				posX = mouse.x;
+				posY = mouse.y;
 			}
 
 			onWheel: {
-				var d = wheel.angleDelta.y * 1e-3
+				var d = wheel.angleDelta.y * 1e-3;
 				if (d>0)
-					camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d)
+					camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d);
 				else
-					camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d)
+					camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d);
 			}
 
 			Transform {
@@ -128,16 +128,16 @@ Scene2 {
 			onTriggered: {
 				if (root.keys.up)
 					camera.position = camera.position.plus(
-						camera.frontVector.times(cameraSpeed * dt))
+						camera.frontVector.times(cameraSpeed * dt));
 				if (root.keys.down)
 					camera.position = camera.position.minus(
-						camera.frontVector.times(cameraSpeed * dt))
+						camera.frontVector.times(cameraSpeed * dt));
 				if (root.keys.right)
 					camera.position = camera.position.plus(
-						camera.rightVector.times(cameraSpeed * dt))
+						camera.rightVector.times(cameraSpeed * dt));
 				if (root.keys.left)
 					camera.position = camera.position.minus(
-						camera.rightVector.times(cameraSpeed * dt))
+						camera.rightVector.times(cameraSpeed * dt));
 			}
 		}
 
@@ -156,25 +156,25 @@ Scene2 {
 			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
 
 			property matrix4x4 viewMatrix: {
-				var m = Qt.matrix4x4()
-				m.lookAt(position, viewCenter, upVector)
-				return m
+				var m = Qt.matrix4x4();
+				m.lookAt(position, viewCenter, upVector);
+				return m;
 			}
 			property matrix4x4 projectionMatrix: {
-				var aspect = scene.width / scene.height
-				var zNear = .1
-				var zFar = 100.
-				var h = Math.tan(fieldOfView * Math.PI / 360) * zNear
-				var w = h * aspect
+				var aspect = scene.width / scene.height;
+				var zNear = .1;
+				var zFar = 100.;
+				var h = Math.tan(fieldOfView * Math.PI / 360) * zNear;
+				var w = h * aspect;
 
-				var m = Qt.matrix4x4()
-				m.m11 = zNear / w
-				m.m22 = zNear / h
-				m.m33 = - (zNear + zFar) / (zFar - zNear)
-				m.m34 = -2 * zNear * zFar / (zFar - zNear)
-				m.m43 = -1
-				m.m44 = 0
-				return m
+				var m = Qt.matrix4x4();
+				m.m11 = zNear / w;
+				m.m22 = zNear / h;
+				m.m33 = - (zNear + zFar) / (zFar - zNear);
+				m.m34 = -2 * zNear * zFar / (zFar - zNear);
+				m.m43 = -1;
+				m.m44 = 0;
+				return m;
 			}
 		}
 

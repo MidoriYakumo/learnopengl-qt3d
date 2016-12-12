@@ -26,15 +26,16 @@ ApplicationWindow {
 		model: Examples
 		currentIndex: -1
 
-		onCurrentIndexChanged: {
-			if (currentIndex === model.count - 1) Qt.quit()
-			load(model.get(currentIndex).source)
-		}
-
 		Behavior on height {
 			NumberAnimation {
 				duration: 200
 			}
+		}
+
+		onCurrentIndexChanged: {
+			if (currentIndex === model.count - 1)
+				Qt.quit();
+			load(model.get(currentIndex).source);
 		}
 	}
 
@@ -54,11 +55,11 @@ ApplicationWindow {
 
 				onClicked: {
 					if (model.text === "Exit")
-						Qt.quit()
+						Qt.quit();
 					else {
-						app.header.height = 0
-						load(model.source)
-						drawer.close()
+						app.header.height = 0;
+						load(model.source);
+						drawer.close();
 					}
 				}
 			}
@@ -72,7 +73,7 @@ ApplicationWindow {
 		sourceComponent: glInfo
 
 		onLoaded: {
-			focus = true
+			focus = true;
 		}
 	}
 
@@ -116,39 +117,39 @@ ApplicationWindow {
 	}
 
 	function load(sourceName) {
-		//loader.item.unload()
-		loader.source = sourceName + ".qml"
+		//loader.item.unload();
+		loader.source = sourceName + ".qml";
 	}
 
 	function updateDt(dt) {
-		fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8
-		fps3d.text = (fps3d.fps).toFixed(1) + " fps"
+		fps3d.fps =  (fps3d.fps * 7 + 1./dt) / 8;
+		fps3d.text = (fps3d.fps).toFixed(1) + " fps";
 	}
 
 	onQrcAppOnChanged: {
-		Resources.appRcEnabled = qrcAppOn
+		Resources.appRcEnabled = qrcAppOn;
 	}
 
 	onQrcAssetsOnChanged: {
-		Resources.assetsRcEnabled = qrcAssetsOn
+		Resources.assetsRcEnabled = qrcAssetsOn;
 	}
 
 	Component.onCompleted: {
-		var args = Qt.application.arguments
-		//var arg = args[args.length - 1]
-		var arg = args[1]
+		var args = Qt.application.arguments;
+		//var arg = args[args.length - 1];
+		var arg = args[1];
 		if (arg && !/.+\.qml$/.test(arg)) {
-			console.log("arg=%1".arg(arg))
+			console.log("arg=%1".arg(arg));
 			if (parseInt(arg)>=0) {
-				combobox.currentIndex = parseInt(arg)
+				combobox.currentIndex = parseInt(arg);
 			} else {
-				arg = arg.toLowerCase()
+				arg = arg.toLowerCase();
 				for (var i=0;i<Examples.count;i++) {
-					var e = Examples.get(i)
+					var e = Examples.get(i);
 					if (e.text.toLowerCase().search(arg)>=0 || e.source.search(arg)>=0) {
-						combobox.currentIndex = i
-						console.log("match=%1.qml".arg(e.source))
-						break
+						combobox.currentIndex = i;
+						console.log("match=%1.qml".arg(e.source));
+						break;
 					}
 				}
 			}

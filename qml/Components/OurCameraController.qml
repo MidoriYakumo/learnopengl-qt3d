@@ -48,7 +48,7 @@ Entity {
 		sourceDevice: mouseDevice
 
 		onWheel:{
-			d.wAxisValue = wheel.angleDelta.y * 1e-3 * d.fineScale
+			d.wAxisValue = wheel.angleDelta.y * 1e-3 * d.fineScale;
 		}
 	}
 
@@ -147,27 +147,25 @@ Entity {
 
 	FrameSwap {
 		onTriggered: {
-			if (upMove.active)
-				root.camera.position = root.camera.position.plus(
-						root.camera.frontVector.times(d.cameraSpeed * dt));
-			if (downMove.active)
-				root.camera.position = root.camera.position.minus(
-						root.camera.frontVector.times(d.cameraSpeed * dt));
-			if (rightMove.active)
-				root.camera.position = root.camera.position.plus(
-						root.camera.rightVector.times(d.cameraSpeed * dt));
-			if (leftMove.active)
-				root.camera.position = root.camera.position.minus(
-						root.camera.rightVector.times(d.cameraSpeed * dt));
+			var position = root.camera.position;
+			var yaw = root.camera.yaw;
+			var pitch = root.camera.pitch;
+			var fov = root.camera.fieldOfView;
 
-			var yaw, pitch
+			if (upMove.active)
+				position = position.plus(root.camera.frontVector.times(d.cameraSpeed * dt));
+			if (downMove.active)
+				position = position.minus(root.camera.frontVector.times(d.cameraSpeed * dt));
+			if (rightMove.active)
+				position = position.plus(root.camera.rightVector.times(d.cameraSpeed * dt));
+			if (leftMove.active)
+				position = position.minus(root.camera.rightVector.times(d.cameraSpeed * dt));
+
 			// ensure relative drags, not click starts
 			if (d.lookActionActived && lookAction.active) {
-				yaw = root.camera.yaw + xAxis.value;
-				pitch = root.camera.pitch - yAxis.value;
+				yaw += xAxis.value;
+				pitch -= yAxis.value;
 				pitch = (pitch>89.)?89.:(pitch<-89.)?-89.:pitch;
-				root.camera.yaw = yaw;
-				root.camera.pitch = pitch;
 			}
 			d.lookActionActived = lookAction.active;
 
@@ -176,7 +174,7 @@ Entity {
 			d.orbitActionActived = orbitAction.active;
 
 			if (d.moveActionActived && moveAction.active) {
-				root.camera.position = root.camera.position.plus(
+				position = position.plus(
 						root.camera.upVector.times(-yAxis.value)).plus(
 						root.camera.rightVector.times(-xAxis.value));
 			}
@@ -184,11 +182,16 @@ Entity {
 
 			if (d.wAxisValue != 0) {
 				if (d.wAxisValue>0)
-					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 1., d.wAxisValue);
+					fov = Utils.mix(fov, 1., d.wAxisValue);
 				else
-					root.camera.fieldOfView = Utils.mix(root.camera.fieldOfView, 180., -d.wAxisValue);
+					fov = Utils.mix(fov, 180., -d.wAxisValue);
 				d.wAxisValue = 0;
 			}
+
+			root.camera.position = position;
+			root.camera.yaw = yaw;
+			root.camera.pitch = pitch;
+			root.camera.fieldOfView = fov;
 		}
 	}
 }
