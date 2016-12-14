@@ -35,14 +35,18 @@ int main(int argc, char *argv[]) {
 
   QQmlApplicationEngine engine;
 
-#ifndef NO_APP_QRC
-  engine.load(QUrl(QLatin1String(
-	  "qrc:/qml/app-cpp.qml"))); // If qtcharts crashes the program
-  // 	engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
-  engine.rootObjects().at(0)->setProperty("qrcAppOn", true);
+#ifdef NO_APP_QRC
+#ifdef Q_OS_ANDROID
+  engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app-cpp.qml")));
+  //engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app.qml")));
 #else
   engine.load(QUrl(QLatin1String("file:../qml/app-cpp.qml")));
-// 	engine.load(QUrl(QLatin1String("file:../qml/app.qml")));
+  //engine.load(QUrl(QLatin1String("file:../qml/app.qml"))); // QtCharts crashes the program
+#endif
+#else
+  engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml")));
+  //engine.load(QUrl(QLatin1String("qrc:/qml/app.qml"))); // QtCharts crashes the program
+  engine.rootObjects().at(0)->setProperty("qrcAppOn", true);
 #endif
 
 #ifndef NO_ASSETS_QRC

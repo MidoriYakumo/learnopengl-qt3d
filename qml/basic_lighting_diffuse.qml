@@ -37,36 +37,37 @@ Scene2 {
 			focus: true
 
 			onSpacePressed: {
-				root.makeTransformHomo = !root.makeTransformHomo;
-				console.log("makeTransformHomo:", root.makeTransformHomo);
+				root.enableNormalRecalculate = !root.enableNormalRecalculate;
+				console.log("enableNormalRecalculate:", root.enableNormalRecalculate);
 			}
 
 			onReturnPressed: {
-				root.makeCubeRotate = !root.makeCubeRotate;
-				console.log("makeCubeRotate:", root.makeCubeRotate);
+				root.cuboidNonUniformScaled = !root.cuboidNonUniformScaled;
+				console.log("cuboidNonUniformScaled:", root.cuboidNonUniformScaled);
 			}
 		}
 
-		property bool makeTransformHomo: true
-		property bool makeCubeRotate: false
+		property bool enableNormalRecalculate: true
+		property bool cuboidNonUniformScaled: false
 
 		property vector3d lightPos: "1.2, 1.0, 2.0"
 		property color lightColor: "white"
 		property color objectColor: "coral"
 
-		CuboidMesh {
-			id: mesh
-		}
 
 		Entity {
 			id: object
 
-			Transform {
-				id: objectTransform
-				// //#TRYIT: Uncomment this and toggle makeTransformHomo
-				rotation: root.makeCubeRotate?
-						fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 60):
-						Qt.quaternion(0,0,0,0)
+			NonUniformScaledCuboidMesh0 {
+				id: objectMesh
+				fixNormal: root.enableNormalRecalculate
+				matrix: root.cuboidNonUniformScaled?
+						Qt.matrix4x4(
+								Math.random(), Math.random(), Math.random(), Math.random(),
+								Math.random(), Math.random(), Math.random(), Math.random(),
+								Math.random(), Math.random(), Math.random(), Math.random(),
+								0, 0, 0, 1):
+						Qt.matrix4x4()
 			}
 
 			Material {
@@ -75,7 +76,7 @@ Scene2 {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
-								vertName: root.makeTransformHomo?"basic_lighting":"basic_lighting_no_normal_fix"
+								vertName: "basic_lighting"
 								fragName: "basic_lighting_diffuse"
 							}
 							parameters: [
@@ -105,11 +106,15 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, objectTransform, objectMaterial]
+			components: [objectMesh, objectMaterial]
 		}
 
 		Entity {
 			id: lamp
+
+			CuboidMesh {
+				id: lampMesh
+			}
 
 			Transform {
 				id: lampTransform
@@ -137,7 +142,7 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, lampTransform, lampMaterial]
+			components: [lampMesh, lampTransform, lampMaterial]
 		}
 	}
 }

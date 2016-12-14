@@ -52,4 +52,4 @@ RESOURCES += assets.qrc
 	}
 }
 
-message(all extra assets checked)
+message(assets checking passed)
