@@ -5,27 +5,25 @@
 #include <QQuickStyle>
 
 int main(int argc, char *argv[]) {
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling); // Good for QuickControls, bad for canvas items
-  QGuiApplication app(argc, argv);
-
   QSurfaceFormat format;
   if (QOpenGLContext::openGLModuleType() ==
 	  QOpenGLContext::LibGL) { // Learn OpenGL
 	format.setVersion(4, 3);
 	format.setProfile(QSurfaceFormat::CoreProfile);
+	format.setSamples(4);
   } else if (QOpenGLContext::openGLModuleType() ==
 			 QOpenGLContext::LibGLES) { // Learn OpenGLES??
 	format.setVersion(3, 0);
+	format.setSamples(0);
   }
-
   format.setAlphaBufferSize(0);
   format.setDepthBufferSize(0);
-  format.setSamples(4);
   format.setStencilBufferSize(0);
   format.setSwapBehavior(QSurfaceFormat::TripleBuffer);
   format.setSwapInterval(0); // Full speed rendering
 
   QSurfaceFormat::setDefaultFormat(format);
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling); // Good for QuickControls, bad for canvas items
 
 #ifdef Q_OS_WIN
   QQuickStyle::setStyle("Universal");
@@ -33,6 +31,7 @@ int main(int argc, char *argv[]) {
   QQuickStyle::setStyle("Material");
 #endif
 
+  QGuiApplication app(argc, argv);
   QQmlApplicationEngine engine;
 
 #ifdef NO_APP_QRC
