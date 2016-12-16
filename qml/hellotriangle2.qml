@@ -18,6 +18,7 @@ Scene0 {
 				primitiveType: GeometryRenderer.LineLoop // Currently linewidth=1 only
 				geometry: Geometry {
 					// Now we have two attributes
+					boundingVolumePositionAttribute: position // Manually set bounding volume
 
 					Attribute {
 						id: position
@@ -36,6 +37,7 @@ Scene0 {
 							])
 						}
 					}
+
 					Attribute {
 						attributeType: Attribute.IndexAttribute
 						vertexBaseType: Attribute.UnsignedShort
@@ -49,7 +51,6 @@ Scene0 {
 							])
 						}
 					}
-					boundingVolumePositionAttribute: position // Manually set bounding volume
 				}
 			}
 

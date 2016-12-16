@@ -20,5 +20,7 @@ Project {
 		directory: "../shared/shaders"
 	}
 	/* List of plugin directories passed to QML runtime */
-	// importPaths: [ "../exampleplugin" ]
+	importPaths: [
+		"../qml-virtualkey"
+	]
 }

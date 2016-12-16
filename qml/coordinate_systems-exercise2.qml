@@ -2,8 +2,9 @@ import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 
+import VirtualKey 1.0
+
 import "Components"
-import "VirtualKey"
 
 Scene2 {
 	id: scene

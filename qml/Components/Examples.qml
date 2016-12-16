@@ -40,6 +40,9 @@ ListModel {
 	ListElement { text: "Colors"						; source: "colors_scene"}
 	ListElement { text: "Basic Lighting Phong-Diffuse"	; source: "basic_lighting_diffuse"}
 	ListElement { text: "Basic Lighting Phong/Gouraud"	; source: "basic_lighting_specular"}
+//	ListElement { text: "Basic Lighting X1"				; source: "basic_lighting-exercise1"}
+//	ListElement { text: "Basic Lighting X2"				; source: "basic_lighting-exercise2"}
+//	ListElement { text: "Basic Lighting X3"				; source: "basic_lighting-exercise3"}
 	ListElement { text: "Material"						; source: "materials"}
 	ListElement { text: "Diffuse Specular Map"			; source: "lighting_maps_specular"}
 	ListElement { text: "Diffuse Specular Emission Map"	; source: "lighting_maps_emission"}

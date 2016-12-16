@@ -13,11 +13,6 @@ Scene2 {
 		target: scene
 		enableGameButtons: false
 		color: "transparent"
-		centerItem: RowKeys {
-			keys: [
-				{text:"Space", key:Qt.Key_Space}
-			]
-		}
 	}
 
 	Entity {
@@ -28,23 +23,6 @@ Scene2 {
 
 			mouseSensitivity: 0.5 / Units.dp
 		}
-
-		KeyboardDevice {
-			id: keyboardDevice
-		}
-
-		KeyboardHandler {
-			id: keyboardHandler
-			sourceDevice: keyboardDevice
-			focus: true
-
-			onSpacePressed: {
-				root.useGouraudShader = !root.useGouraudShader;
-				console.log("useGouraudShader:", root.useGouraudShader);
-			}
-		}
-
-		property bool useGouraudShader: false
 
 		property vector3d lightPos: "1.2, 1.0, 2.0"
 		property vector3d viewPos: renderInputSettings.camera.position
@@ -68,12 +46,8 @@ Scene2 {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
-								vertName: root.useGouraudShader?
-										"basic_lighting_gouraud":
-										"basic_lighting"
-								fragName: root.useGouraudShader?
-										"shaders-interpolated":
-										"basic_lighting"
+								vertName: "basic_lighting-exercise2"
+								fragName: "basic_lighting-exercise2"
 							}
 							parameters: [
 								Parameter {

@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
 
   QGuiApplication app(argc, argv);
   QQmlApplicationEngine engine;
+  engine.addImportPath(QLatin1String("qrc:/com/github/midoriyakumo"));
 
 #ifdef NO_APP_QRC
 #ifdef Q_OS_ANDROID

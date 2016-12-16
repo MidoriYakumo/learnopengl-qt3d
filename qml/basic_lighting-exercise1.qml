@@ -46,10 +46,21 @@ Scene2 {
 
 		property bool useGouraudShader: false
 
-		property vector3d lightPos: "1.2, 1.0, 2.0"
+		property vector3d lightPos: Qt.vector3d(
+			Math.cos(time.v1)*Math.cos(time.v2)*2.0,
+			Math.cos(time.v1)*Math.sin(time.v2)*2.0,
+			Math.sin(time.v1)*2.0
+		)
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"
 		property color objectColor: "coral"
+
+		Time {
+			id: time
+
+			property real v1: value * 0.8
+			property real v2: value * 1.2
+		}
 
 		CuboidMesh {
 			id: mesh
