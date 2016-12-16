@@ -1,4 +1,3 @@
-
 #version 330 core
 
 layout (location = 0) in vec3 vertexPosition;
@@ -31,14 +30,14 @@ void main()
 	// Diffuse
 	vec3 norm = normalize(normal);
 	vec3 lightDir = normalize(lightPos - position);
-	float diff = max(dot(norm, lightDir), 0.0);
+	float diff = max(dot(norm, lightDir), 0.0f);
 	vec3 diffuse = diff * lightColor;
 
 	// Specular
 	float specularStrength = 1.0f; // This is set higher to better show the effect of Gouraud shading
 	vec3 viewDir = normalize(viewPos - position);
 	vec3 reflectDir = reflect(-lightDir, norm);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 32);
 	vec3 specular = specularStrength * spec * lightColor;
 
 	lightingColor = ambient + diffuse + specular;

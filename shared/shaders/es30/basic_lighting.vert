@@ -1,9 +1,13 @@
+#version 300 es
+#undef lowp
+#undef mediump
+#undef highp
 
-attribute vec3 vertexPosition;
-attribute vec3 vertexNormal;
+in vec3 vertexPosition;
+in vec3 vertexNormal;
 
-varying vec3 normal;
-varying vec3 fragPos;
+out vec3 normal;
+out vec3 fragPos;
 
 uniform mat4 mvp;
 uniform mat3 modelNormalMatrix;

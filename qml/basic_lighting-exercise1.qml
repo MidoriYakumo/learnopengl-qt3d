@@ -58,8 +58,8 @@ Scene2 {
 		Time {
 			id: time
 
-			property real v1: value * 0.8
-			property real v2: value * 1.2
+			property real v1: value * 1.234
+			property real v2: value * 1.345
 		}
 
 		CuboidMesh {

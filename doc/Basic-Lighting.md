@@ -4,9 +4,12 @@ Basic Lighting
 [basic_lighting_diffuse](../qml/basic_lighting_diffuse.qml)
 -----------------------------------------------------------
 
+Type NonUniformScaledCuboidMesh0 displays how normal fixing affect the shading result,
+by calculation in Javascript.
+
 > Tips:
 >
-> -	modelNormalMatrix = mat3(transpose(inverse(modelMatrix))) * normalMatrix
+> -	Qt3D uniform modelNormalMatrix = mat3(transpose(inverse(modelMatrix))) * normalMatrix
 
 [basic_lighting_specular](../qml/basic_lighting_specular.qml)
 -------------------------------------------------------------

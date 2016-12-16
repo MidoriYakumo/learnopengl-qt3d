@@ -73,5 +73,9 @@
         <file>shared/shaders/gl33/basic_lighting.vert</file>
         <file>shared/shaders/gl33/basic_lighting_diffuse.frag</file>
         <file>shared/shaders/gl33/basic_lighting_gouraud.vert</file>
+        <file>shared/shaders/es30/basic_lighting.frag</file>
+        <file>shared/shaders/es30/basic_lighting.vert</file>
+        <file>shared/shaders/es30/basic_lighting_diffuse.frag</file>
+        <file>shared/shaders/es30/basic_lighting_gouraud.vert</file>
     </qresource>
 </RCC>

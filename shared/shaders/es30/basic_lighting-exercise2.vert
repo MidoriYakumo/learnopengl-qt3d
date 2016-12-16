@@ -1,7 +1,10 @@
-#version 330 core
+#version 300 es
+#undef lowp
+#undef mediump
+#undef highp
 
-layout (location = 0) in vec3 vertexPosition;
-layout (location = 1) in vec3 vertexNormal;
+in vec3 vertexPosition;
+in vec3 vertexNormal;
 
 out vec3 normal;
 out vec3 fragPosition;
@@ -16,8 +19,8 @@ uniform vec3 lightPos; // We now define the uniform in the vertex shader and pas
 
 void main()
 {
-	gl_Position = mvp * vec4(vertexPosition, 1.0f);
+	gl_Position = mvp * vec4(vertexPosition, 1.);
 	normal = modelViewNormalMatrix * vertexNormal;
-	fragPosition = vec3(modelViewMatrix * vec4(vertexPosition, 1.0f));
-	lightPosition = vec3(viewMatrix * vec4(lightPos, 1.0f)); // Transform world-space light position to view-space light position
+	fragPosition = vec3(modelViewMatrix * vec4(vertexPosition, 1.));
+	lightPosition = vec3(viewMatrix * vec4(lightPos, 1.)); // Transform world-space light position to view-space light position
 }

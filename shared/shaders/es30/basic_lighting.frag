@@ -1,6 +1,14 @@
+#version 300 es
+#undef lowp
+#undef mediump
+#undef highp
 
-varying vec3 normal;
-varying vec3 fragPos;
+precision lowp float;
+
+in vec3 normal;
+in vec3 fragPos;
+
+out vec4 color;
 
 uniform vec3 lightPos;
 uniform vec3 viewPos;
@@ -27,5 +35,5 @@ void main()
 	vec3 specular = specularStrength * spec * lightColor;
 
 	vec3 result = (ambient + diffuse + specular) * objectColor;
-	gl_FragColor = vec4(result, 1.);
+	color = vec4(result, 1.);
 }

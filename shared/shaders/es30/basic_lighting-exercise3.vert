@@ -1,9 +1,12 @@
+#version 300 es
+#undef lowp
+#undef mediump
+#undef highp
 
-attribute vec3 vertexPosition;
-attribute vec3 vertexNormal;
-attribute vec2 vertexTexCoord;
+in vec3 vertexPosition;
+in vec3 vertexNormal;
 
-varying vec3 ourColor;
+out vec3 lightingColor; // Resulting color from lighting calculations
 
 uniform mat4 mvp;
 uniform mat3 modelNormalMatrix;
@@ -16,6 +19,10 @@ uniform vec3 objectColor;
 
 void main()
 {
+	gl_Position = mvp * vec4(vertexPosition, 1.);
+
+	// Gouraud Shading
+	// ------------------------
 	vec3 position = vec3(modelMatrix * vec4(vertexPosition, 1.));
 	vec3 normal = modelNormalMatrix * vertexNormal;
 
@@ -30,12 +37,11 @@ void main()
 	vec3 diffuse = diff * lightColor;
 
 	// Specular
-	float specularStrength = .5;
+	float specularStrength = 1.; // This is set higher to better show the effect of Gouraud shading
 	vec3 viewDir = normalize(viewPos - position);
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.), 32.);
 	vec3 specular = specularStrength * spec * lightColor;
 
-	ourColor = (ambient + diffuse + specular) * objectColor;
-	gl_Position = mvp * vec4(vertexPosition, 1.);
+	lightingColor = ambient + diffuse + specular;
 }
