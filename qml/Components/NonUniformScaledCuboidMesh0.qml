@@ -1,6 +1,8 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
+import "."
+
 GeometryRenderer {
 	id: mesh
 
@@ -84,6 +86,13 @@ GeometryRenderer {
 			]);
 
 			var i, idx, iStart, p;
+			// var m = Qt.matrix4x4(mesh.matrix); // BUG?
+			var m = Qt.matrix4x4(
+				mesh.matrix.m11, mesh.matrix.m12, mesh.matrix.m13, 0,
+				mesh.matrix.m21, mesh.matrix.m22, mesh.matrix.m23, 0,
+				mesh.matrix.m31, mesh.matrix.m32, mesh.matrix.m33, 0,
+				0, 0, 0, 1
+			);
 
 			for (i=0;i<36;i++) {
 				idx = i*6;
@@ -93,24 +102,10 @@ GeometryRenderer {
 				buffer[idx+0] = p.x;
 				buffer[idx+1] = p.y;
 				buffer[idx+2] = p.z;
-			}
 
-			if (!mesh.fixNormal) {
-				for (i=0;i<36;i++) {
-					idx = i*6;
-
+				if (mesh.fixNormal) {
 					p = Qt.vector3d(buffer[idx+3], buffer[idx+4], buffer[idx+5]);
-					p = mesh.matrix.times(p);
-					buffer[idx+3] = p.x;
-					buffer[idx+4] = p.y;
-					buffer[idx+5] = p.z;
-				}
-			} else {
-				for (i=0;i<36;i++) {
-					idx = i*6;
-
-					p = Qt.vector3d(buffer[idx+3], buffer[idx+4], buffer[idx+5]);
-					p = mesh.matrix.inverted().transposed().times(p);
+					p = m.inverted().transposed().times(p).normalized();
 					buffer[idx+3] = p.x;
 					buffer[idx+4] = p.y;
 					buffer[idx+5] = p.z;

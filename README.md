@@ -1,7 +1,7 @@
-# learnopengl-qt3d
+learnopengl-qt3d
+================
 
-Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.7.
-I created this repo aiming to understand how Qt3D works.
+Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.7. I created this repo aiming to understand how Qt3D works.
 
 ![](doc/img/sc-qt3d-desktop.gif)
 
@@ -15,44 +15,47 @@ Compiled version, context set to GL4.3/GLES3.0:
 
 ![](doc/img/ss-qt3d-android.png)
 
+How to launch
+-------------
+
+learnopengl-qt3d can be launched from either qmlscene or compiled binary file.
+
+Main qml file for qmlscene/binary/QmlCreator:
+
+-	app.qml: main window with line chart FPS display
+
+-	app-cpp.qml: main window with text FPS display
+
+-	main.qml: QuickItem as root + text FPS display
+
+With one keyword as arguments can specify the sample to be launched:
+
+-	qmlscene skybox app.qml
+-	./learnopengl-qt3d geometry
+
 Notes
-===
+-----
 
-Main qml file for qmlscene/binary/QmlCreator
+-	Some large assets from the website is downloaded by qmake script(*nix only), connection is required at the first build or after updated. Use **CONFIG += no_assets** to skip and enable local filesystem routing(may lead to crash). See [main.cpp](./main.cpp), [assets.pri](./assets.pri), [Resources.qml](./qml/Components/Resources.qml) for details.
 
-* app.qml: main window with line chart FPS display
+-	**leanopengl uses a little different lighting model from Qt3D default model, to rendering models for a better result, please slightly modify the ka, kd in mtl files**
 
-* app-cpp.qml: main window with text FPS display
+-	run qmltestrunner under qml/tests to perform unit tests or to generate screenshots.
 
-* main.qml: QuickItem as root + text FPS display
+Content
+-------
 
-You can lauch one sample with a keyword like:
+### Getting started
 
-* qmlscene skybox app.qml
-* ./learnopengl-qt3d geometry
+1.	[Hello Window](doc/Hello-Window.md) : works
+2.	[Hello Triangle](doc/Hello-Triangle.md) : works
+3.	[Shaders](doc/Shaders.md) : works
+4.	[Texture](doc/Texture.md) : works
+5.	[Transformations](doc/Transformations.md) : works
+6.	[Coordinate Systems](doc/Coordinate-Systems.md) : works
+7.	[Camera](doc/Camera.md) : works, extra quaternion version fps controller not available yet
 
-**Some large assets from the website is downloaded by qmake script(*nix only), connection is required at the first build or after updated. Use CONFIG += no_assets to skip. See assets.pri for details**
+### Lighting
 
-**leanopengl uses a little different lighting model from Qt3D default model, to rendering models for a better result, please slightly modify the ka, kd in mtl files**
-
-You can now run qmltestrunner under qml/tests to see all the examples and generate screenshots.
-
-Examples
-===
-
-Getting started
----
-
-1. [Hello Window](doc/Hello-Window.md) : works
-1. [Hello Triangle](doc/Hello-Triangle.md) : works
-1. [Shaders](doc/Shaders.md) : works
-1. [Texture](doc/Texture.md) : works
-1. [Transformations](doc/Transformations.md) : works
-1. [Coordinate Systems](doc/Coordinate-Systems.md) : works
-1. [Camera](doc/Camera.md) : works, extra quaternion version fps controller not available yet
-
-Lighting
----
-
-1. [Colors](doc/Colors.md) : works
-1. [Basic Lighting](doc/Basic-Lighting.md) : in progress
+1.	[Colors](doc/Colors.md) : works
+2.	[Basic Lighting](doc/Basic-Lighting.md) : in progress

@@ -3,8 +3,9 @@ import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 import Qt3D.Extras 2.0
 
+import VirtualKey 1.0
+
 import "Components"
-import "VirtualKey"
 
 Scene2 {
 	id: scene
@@ -124,13 +125,13 @@ Scene2 {
 		property bool useQtCameraAndMesh: false
 
 		property Entity camera: useQtCameraAndMesh?qtCamera:ourCamera
-		property GeometryRenderer geometry: useQtCameraAndMesh?qtGeometry:ourGeometry
+		property GeometryRenderer geometry: useQtCameraAndMesh?qtMesh:ourMesh
 
 		property color objectColor: "coral"
 		property color lightColor: "white"
 
-		TextureCubeGeometry0 {
-			id: ourGeometry
+		TextureCubeMesh0 {
+			id: ourMesh
 		}
 
 		CuboidMesh {
@@ -144,7 +145,7 @@ Scene2 {
 				Refer: qthelp://org.qt-project.qt3d.570/qt3d/qt3drender-qattribute.html
 			*/
 
-			id: qtGeometry
+			id: qtMesh
 		}
 
 		Entity {

@@ -18,7 +18,7 @@ Scene1 {
 		Entity {
 			id: plane
 
-			TriangleGeometry0 {
+			TrianglePlane0 {
 				id: geometry
 			}
 

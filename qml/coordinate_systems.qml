@@ -14,7 +14,7 @@ Scene0 {
 		Entity {
 			id: plane
 
-			TextureRectangleGeometry0 {
+			TextureRectanglePlane0 {
 				id: geometry
 			}
 

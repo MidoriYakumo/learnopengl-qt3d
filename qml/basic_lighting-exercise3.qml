@@ -44,7 +44,7 @@ Scene2 {
 			}
 		}
 
-		property bool useGouraudShader: false
+		property bool useGouraudShader: true
 
 		property vector3d lightPos: "1.2, 1.0, 2.0"
 		property vector3d viewPos: renderInputSettings.camera.position
@@ -69,10 +69,10 @@ Scene2 {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
 								vertName: root.useGouraudShader?
-										"basic_lighting_gouraud":
+										"basic_lighting-exercise3":
 										"basic_lighting"
 								fragName: root.useGouraudShader?
-										"shaders-interpolated":
+										"basic_lighting-exercise3":
 										"basic_lighting"
 							}
 							parameters: [

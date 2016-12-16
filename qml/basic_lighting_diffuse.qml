@@ -3,8 +3,9 @@ import Qt3D.Render 2.0
 import Qt3D.Input 2.0
 import Qt3D.Extras 2.0
 
+import VirtualKey 1.0
+
 import "Components"
-import "VirtualKey"
 
 Scene2 {
 	id: scene
@@ -59,14 +60,21 @@ Scene2 {
 			id: object
 
 			NonUniformScaledCuboidMesh0 {
+				/*
+					As Qt ignores non-uniform scaling, vetices is needed to be
+					processed to display the difference with or without normal
+					fix.
+				*/
+
 				id: objectMesh
 				fixNormal: root.enableNormalRecalculate
 				matrix: root.cuboidNonUniformScaled?
 						Qt.matrix4x4(
-								Math.random(), Math.random(), Math.random(), Math.random(),
-								Math.random(), Math.random(), Math.random(), Math.random(),
-								Math.random(), Math.random(), Math.random(), Math.random(),
-								0, 0, 0, 1):
+							Math.random() + .2, Math.random(), Math.random(), Math.random()*2-1,
+							Math.random(), Math.random() + .2, Math.random(), Math.random()*2-1,
+							Math.random(), Math.random(), Math.random() + .2, Math.random()*2-1,
+							0, 0, 0, 1
+						):
 						Qt.matrix4x4()
 			}
 

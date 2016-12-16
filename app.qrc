@@ -16,7 +16,6 @@
         <file>shared/shaders/es30/hellotriangle.frag</file>
         <file>shared/shaders/es30/hellotriangle.vert</file>
         <file>qml/shaders-uniform.qml</file>
-        <file>qml/Components/TriangleGeometry0.qml</file>
         <file>qml/shaders-interpolated.qml</file>
         <file>shared/shaders/gl33/shaders-interpolated.frag</file>
         <file>shared/shaders/gl33/shaders-uniform.frag</file>
@@ -37,7 +36,6 @@
         <file>shared/shaders/gl33/transformations.vert</file>
         <file>shared/shaders/es30/transformations.vert</file>
         <file>qml/transformations.qml</file>
-        <file>qml/Components/TextureRectangleGeometry0.qml</file>
         <file>qml/Components/Time.qml</file>
         <file>qml/Components/TextureCube0.qml</file>
         <file>qml/Components/RenderSettings1.qml</file>
@@ -54,27 +52,26 @@
         <file>qml/colors_scene.qml</file>
         <file>shared/shaders/gl33/lighting.frag</file>
         <file>shared/shaders/es30/lighting.frag</file>
-        <file>qml/VirtualKey/GameButtons.qml</file>
-        <file>qml/VirtualKey/InputEventSource.qml</file>
-        <file>qml/VirtualKey/qmldir</file>
-        <file>qml/VirtualKey/RowKeys.qml</file>
-        <file>qml/VirtualKey/Units.qml</file>
-        <file>qml/VirtualKey/utils.js</file>
-        <file>qml/VirtualKey/VirtualKey.qml</file>
-        <file>qml/VirtualKey/VirtualKeys.qml</file>
-        <file>qml/VirtualKey/VirtualPad.qml</file>
         <file>qml/Components/FrameSwap.qml</file>
         <file>qml/Components/Scene1.qml</file>
         <file>qml/Components/Scene2.qml</file>
         <file>qml/Components/Scene3.qml</file>
-        <file>qml/Components/TextureCubeGeometry0.qml</file>
-        <file>qml/VirtualKey/InputEventDefer.qml</file>
-        <file>qml/VirtualKey/MutitouchDispatcher.qml</file>
-        <file>qml/VirtualKey/TouchVisualRipple.qml</file>
-        <file>qml/VirtualKey/VirtualKeyboard.qml</file>
         <file>shared/shaders/es30/lighting.vert</file>
         <file>shared/shaders/gl33/lighting.vert</file>
         <file>qml/Components/OurCameraController.qml</file>
         <file>qml/Components/RenderSettings2.qml</file>
+        <file>qml/Components/FpsLine.qml</file>
+        <file>qml/Components/NonUniformScaledCuboidMesh0.qml</file>
+        <file>qml/Components/OurCamera.qml</file>
+        <file>qml/Components/RenderInputSettings0.qml</file>
+        <file>qml/Components/TextureCubeMesh0.qml</file>
+        <file>qml/Components/TextureRectanglePlane0.qml</file>
+        <file>qml/Components/TrianglePlane0.qml</file>
+        <file>qml/basic_lighting_diffuse.qml</file>
+        <file>qml/basic_lighting_specular.qml</file>
+        <file>shared/shaders/gl33/basic_lighting.frag</file>
+        <file>shared/shaders/gl33/basic_lighting.vert</file>
+        <file>shared/shaders/gl33/basic_lighting_diffuse.frag</file>
+        <file>shared/shaders/gl33/basic_lighting_gouraud.vert</file>
     </qresource>
 </RCC>
