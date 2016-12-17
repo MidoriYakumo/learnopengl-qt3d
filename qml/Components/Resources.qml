@@ -29,16 +29,16 @@ Item { // This is the global resource router
 							   (OpenGLInfo.renderableType==1)
 
 	readonly property string shaderPrefix: appPrefix + "shared/shaders/" + (isGL33Core?"gl33/":(isGLES30||fallbackToES30)?"es30/":"es20/")
-	function shader(fn){return shaderPrefix + fn}
+	function shader(fn){return shaderPrefix + fn;}
 
 	readonly property string texturePrefix: assetsPrefix + "shared/assets/texture/"
-	function texture(fn){return texturePrefix + fn}
+	function texture(fn){return texturePrefix + fn;}
 	readonly property string imagePrefix: assetsPrefix + "shared/assets/image/"
-	function image(fn){return imagePrefix + fn}
+	function image(fn){return imagePrefix + fn;}
 	readonly property string meshPrefix: assetsPrefix + "shared/assets/mesh/"
-	function mesh(fn){return meshPrefix + fn}
+	function mesh(fn){return meshPrefix + fn;}
 	readonly property string modelPrefix: assetsPrefix + "shared/assets/model/"
-	function model(fn){return modelPrefix + fn}
+	function model(fn){return modelPrefix + fn;}
 
 	onAppPrefixChanged: {
 		console.log("[Resources] app:%1:%2".arg(appRcEnabled).arg(appPrefix));

@@ -25,7 +25,6 @@ Scene2 {
 		}
 
 		property vector3d lightPos: "1.2, 1.0, 2.0"
-		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"
 		property color objectColor: "coral"
 
@@ -53,10 +52,6 @@ Scene2 {
 								Parameter {
 									name: "lightPos"
 									value: root.lightPos
-								},
-								Parameter {
-									name: "viewPos"
-									value: root.viewPos
 								},
 								Parameter {
 									name: "lightColor"
