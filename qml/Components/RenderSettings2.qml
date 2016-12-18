@@ -13,6 +13,8 @@ RenderSettings {
 				/*
 					CameraSelector gives viewport information so that
 					renderer can calculate projectionMatrix for Qt3D Camera
+
+					RenderState.DepthTest ???
 				*/
 
 				camera: renderSettings.camera

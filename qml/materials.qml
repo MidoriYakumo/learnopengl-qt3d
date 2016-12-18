@@ -14,48 +14,71 @@ import "Components"
 Scene2 {
 	id: scene
 	children: [
-		Button {
+		ComboBox {
+			id: materialSelector
 			anchors.bottom: parent.bottom
 			anchors.right: parent.right
 			anchors.rightMargin: Units.dp * 16
 			anchors.bottomMargin: Units.dp * 12
+			textRole: "name"
+			displayText: currentIndex>=0?currentText.setCharAt(0, currentText[0].toUpperCase()):"Materials"
 
-			property bool enabled: progressBar.value === 1
+			property real defaultLeftPadding
 
-			text: "Materials"
-			contentItem.visible: enabled
-
-			XmlListModel {
-				id: materialDataModel
+			model: XmlListModel {
 				source: "http://devernay.free.fr/cours/opengl/materials.html"
-				query: "/html/body/table/tbody/tr"
+				namespaceDeclarations: 'declare default element namespace "http://www.w3.org/1999/xhtml";'
+				query: "/html/body/table//tr[position()>1]"
 
-				XmlRole { name: "td"; query: "td/string()" }
+				XmlRole { name: "name"; query: "td[1]/string()"; isKey: true }
+				XmlRole { name: "ambr"; query: "td[2]/number()" }
+				XmlRole { name: "ambg"; query: "td[3]/number()" }
+				XmlRole { name: "ambb"; query: "td[4]/number()" }
+				XmlRole { name: "difr"; query: "td[5]/number()" }
+				XmlRole { name: "difg"; query: "td[6]/number()" }
+				XmlRole { name: "difb"; query: "td[7]/number()" }
+				XmlRole { name: "specr"; query: "td[8]/number()" }
+				XmlRole { name: "specg"; query: "td[9]/number()" }
+				XmlRole { name: "specb"; query: "td[10]/number()" }
+				XmlRole { name: "shininess"; query: "td[11]/number()" }
+
+				onProgressChanged: {
+					if (progress >= 1) {
+						hideBusy.start();
+					}
+				}
 			}
+//			delegate:
 
 			BusyIndicator {
 				id: busyIndicator
-				anchors.fill: parent
-				anchors.margins: parent.padding / 2
+				height: parent.implicitHeight
+				width: height
+				anchors.left: parent.left
 
-				visible: progressBar.value === 0
+				opacity: (materialSelector.leftPadding - materialSelector.defaultLeftPadding) / width
 			}
 
-			ProgressBar {
-				id: progressBar
-				anchors.fill: parent
-				anchors.margins: parent.padding / 2
-
-				visible: value > 0 && value < 1 &&
-						materialDataModel.status == XmlListModel.Loading
-				value: materialDataModel.progress
+			NumberAnimation {
+				id: hideBusy
+				target: materialSelector
+				property: "leftPadding"
+				duration: 400
+				to: materialSelector.defaultLeftPadding
+				easing.type: Easing.InOutQuad
 			}
 
-			onClicked: {
-				if (!enabled)
-					return;
+			onCurrentIndexChanged: {
+				var m = model.get(currentIndex);
+				root.material.ambient = Qt.vector3d(m.ambr, m.ambg, m.ambb);
+				root.material.diffuse = Qt.vector3d(m.difr, m.difg, m.difb);
+				root.material.specular = Qt.vector3d(m.specr, m.specg, m.specb);
+				root.material.shininess = m.shininess * 128;
+			}
 
-				console.log(materialDataModel.count)
+			Component.onCompleted: {
+				defaultLeftPadding = leftPadding;
+				leftPadding = busyIndicator.width;
 			}
 		},
 		VirtualKeys {
@@ -76,17 +99,14 @@ Scene2 {
 
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor
-
-		Entity {
-			id: material
-
+		property var material: QtObject {
 			property vector3d ambient: "1.0, 0.5, 0.31"
 			property vector3d diffuse: "1.0, 0.5, 0.31"
 			property vector3d specular: "0.5, 0.5, 0.5"
 			property real shininess: 32.0
 		}
 
-		Entity {
+		QtObject {
 			id: light
 
 			property vector3d position: "1.2, 1.0, 2.0"
@@ -123,19 +143,19 @@ Scene2 {
 								},
 								Parameter {
 									name: "material.ambient"
-									value: material.ambient
+									value: root.material.ambient
 								},
 								Parameter {
 									name: "material.diffuse"
-									value: material.diffuse
+									value: root.material.diffuse
 								},
 								Parameter {
 									name: "material.specular"
-									value: material.specular
+									value: root.material.specular
 								},
 								Parameter {
 									name: "material.shininess"
-									value: material.shininess
+									value: root.material.shininess
 								},
 								Parameter {
 									name: "light.position"
@@ -183,9 +203,7 @@ Scene2 {
 							parameters: [
 								Parameter {
 									name: "ourColor"
-									value: light.ambient.times(.3).plus(
-										light.diffuse.times(.4)).plus(
-										light.specular.times(.3))
+									value: root.lightColor
 								}
 							]
 						}
