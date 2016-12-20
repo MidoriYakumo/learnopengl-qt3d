@@ -16,10 +16,10 @@ Scene2 {
 	children: [
 		ComboBox {
 			id: materialSelector
-			anchors.bottom: parent.bottom
-			anchors.right: parent.right
-			anchors.rightMargin: Units.dp * 16
-			anchors.bottomMargin: Units.dp * 12
+			anchors.top: parent.top
+			anchors.left: parent.left
+			anchors.topMargin: Units.dp * 16
+			anchors.leftMargin: Units.dp * 12
 			focusPolicy: Qt.NoFocus
 			textRole: "name"
 			displayText: currentIndex>=0?
