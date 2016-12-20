@@ -20,8 +20,11 @@ Scene2 {
 			anchors.right: parent.right
 			anchors.rightMargin: Units.dp * 16
 			anchors.bottomMargin: Units.dp * 12
+			focusPolicy: Qt.NoFocus
 			textRole: "name"
-			displayText: currentIndex>=0?currentText.setCharAt(0, currentText[0].toUpperCase()):"Materials"
+			displayText: currentIndex>=0?
+					currentText.setCharAt(0, currentText[0].toUpperCase()):
+					"Materials"
 
 			property real defaultLeftPadding
 
@@ -48,7 +51,58 @@ Scene2 {
 					}
 				}
 			}
-//			delegate:
+			delegate: MenuItem {
+				text: model.name.setCharAt(0, model.name[0].toUpperCase())
+				leftPadding: rightPadding + thumbSize
+
+				property real thumbSize: height - topPadding*2
+
+				Rectangle {
+					x: parent.rightPadding / 2
+					y: parent.topPadding
+					height: parent.thumbSize
+					width: parent.thumbSize
+
+					property real dotSize: parent.thumbSize/2
+					property real sparkSize: 1./model.shininess
+
+					Rectangle {
+						x: 0
+						y: 0
+						width: parent.dotSize
+						height: parent.dotSize
+						radius: parent.sparkSize
+						color: Qt.rgba(model.ambr, model.ambg, model.ambb, 1.)
+					}
+
+					Rectangle {
+						x: parent.dotSize
+						y: 0
+						width: parent.dotSize
+						height: parent.dotSize
+						radius: parent.sparkSize
+						color: Qt.rgba(model.difr, model.difg, model.difb, 1.)
+					}
+
+					Rectangle {
+						x: 0
+						y: parent.dotSize
+						width: parent.dotSize
+						height: parent.dotSize
+						radius: parent.sparkSize
+						color: Qt.rgba(model.specr, model.specg, model.specb, 1.)
+					}
+
+					Rectangle {
+						x: parent.dotSize
+						y: parent.dotSize
+						width: parent.dotSize
+						height: parent.dotSize
+						radius: parent.sparkSize
+						color: Qt.rgba(model.ambr, model.ambg, model.ambb, 1.)
+					}
+				}
+			}
 
 			BusyIndicator {
 				id: busyIndicator
@@ -79,12 +133,18 @@ Scene2 {
 			Component.onCompleted: {
 				defaultLeftPadding = leftPadding;
 				leftPadding = busyIndicator.width;
+				implicitWidth = width;
 			}
 		},
 		VirtualKeys {
 			target: scene
 			enableGameButtons: false
 			color: "transparent"
+			centerItem: RowKeys {
+				keys: [
+					{text:"Space", key:Qt.Key_Space}
+				]
+			}
 		}
 	]
 
@@ -96,6 +156,23 @@ Scene2 {
 
 			mouseSensitivity: 0.5 / Units.dp
 		}
+
+		KeyboardDevice {
+			id: keyboardDevice
+		}
+
+		KeyboardHandler {
+			id: keyboardHandler
+			sourceDevice: keyboardDevice
+			focus: true
+
+			onSpacePressed: {
+				root.useQtMaterial = !root.useQtMaterial;
+				console.log("useQtMaterial:", root.useQtMaterial);
+			}
+		}
+
+		property bool useQtMaterial: false
 
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor
@@ -128,7 +205,7 @@ Scene2 {
 			}
 
 			Material {
-				id: objectMaterial
+				id: ourMaterial
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
@@ -179,11 +256,40 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, objectTransform, objectMaterial]
+			PhongMaterial {
+				/*
+					Phong material in Qt3D.Extras, Qt PointLight is required to work with
+					The model is different with learnopengl.com
+					Src: Src/qt3d/src/quick3d/imports/extras/defaults/qml/PhongMaterial.qml
+				*/
+
+				id: qtMaterial
+				ambient: Qt.rgba(root.material.ambient.x, root.material.ambient.y,
+					root.material.ambient.z, 1.)
+				diffuse: Qt.rgba(root.material.diffuse.x, root.material.diffuse.y,
+					root.material.diffuse.z, 1.)
+				specular: Qt.rgba(root.material.specular.x, root.material.specular.y,
+					root.material.specular.z, 1.)
+				shininess: root.material.shininess
+			}
+
+			components: [mesh, objectTransform, root.useQtMaterial?qtMaterial:ourMaterial]
 		}
 
 		Entity {
-			id: lamp
+			id: renderLamp
+
+			PointLight {
+				/*
+					Point light from Qt3D.Render, one of the lighting types supported internally in Qt3D
+					Can be assembled with other nodes into one entity
+					Src: Src/qt3d/src/render/lights/qpointlight.h
+				*/
+
+				id: qtLamp
+				color: root.lightColor
+				intensity: 1
+			}
 
 			Transform {
 				id: lampTransform
@@ -211,7 +317,7 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, lampTransform, lampMaterial]
+			components: [mesh, qtLamp, lampTransform, lampMaterial]
 		}
 
 		SequentialAnimation {
@@ -221,22 +327,37 @@ Scene2 {
 				target: root
 				property: "lightColor"
 				duration: 2000
-				from: "red"
 				to: "green"
 			}
 			ColorAnimation {
 				target: root
 				property: "lightColor"
 				duration: 2000
-				from: "green"
+				to: "grey"
+			}
+			ColorAnimation {
+				target: root
+				property: "lightColor"
+				duration: 2000
 				to: "blue"
 			}
 			ColorAnimation {
 				target: root
 				property: "lightColor"
 				duration: 2000
-				from: "blue"
+				to: "white"
+			}
+			ColorAnimation {
+				target: root
+				property: "lightColor"
+				duration: 2000
 				to: "red"
+			}
+			ColorAnimation {
+				target: root
+				property: "lightColor"
+				duration: 2000
+				to: "black"
 			}
 		}
 	}

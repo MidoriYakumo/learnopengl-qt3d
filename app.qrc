@@ -55,14 +55,11 @@
         <file>qml/Components/FrameSwap.qml</file>
         <file>qml/Components/Scene1.qml</file>
         <file>qml/Components/Scene2.qml</file>
-        <file>qml/Components/Scene3.qml</file>
         <file>shared/shaders/es30/lighting.vert</file>
         <file>shared/shaders/gl33/lighting.vert</file>
         <file>qml/Components/OurCameraController.qml</file>
         <file>qml/Components/RenderSettings2.qml</file>
-        <file>qml/Components/FpsLine.qml</file>
         <file>qml/Components/NonUniformScaledCuboidMesh0.qml</file>
-        <file>qml/Components/OurCamera.qml</file>
         <file>qml/Components/RenderInputSettings0.qml</file>
         <file>qml/Components/TextureCubeMesh0.qml</file>
         <file>qml/Components/TextureRectanglePlane0.qml</file>
@@ -77,5 +74,8 @@
         <file>shared/shaders/es30/basic_lighting.vert</file>
         <file>shared/shaders/es30/basic_lighting_diffuse.frag</file>
         <file>shared/shaders/es30/basic_lighting_gouraud.vert</file>
+        <file>qml/materials.qml</file>
+        <file>shared/shaders/es30/materials.frag</file>
+        <file>shared/shaders/gl33/materials.frag</file>
     </qresource>
 </RCC>
