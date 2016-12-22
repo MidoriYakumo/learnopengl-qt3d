@@ -18,8 +18,8 @@ Scene2 {
 			id: materialSelector
 			anchors.top: parent.top
 			anchors.left: parent.left
-			anchors.topMargin: Units.dp * 16
-			anchors.leftMargin: Units.dp * 12
+			anchors.topMargin: 8
+			anchors.leftMargin: 8
 			focusPolicy: Qt.NoFocus
 			textRole: "name"
 			displayText: currentIndex>=0?
@@ -57,7 +57,7 @@ Scene2 {
 
 				property real thumbSize: height - topPadding*2
 
-				Rectangle {
+				Item {
 					x: parent.rightPadding / 2
 					y: parent.topPadding
 					height: parent.thumbSize
@@ -128,6 +128,8 @@ Scene2 {
 				root.material.diffuse = Qt.vector3d(m.difr, m.difg, m.difb);
 				root.material.specular = Qt.vector3d(m.specr, m.specg, m.specb);
 				root.material.shininess = m.shininess * 128;
+				light.ambient = Qt.vector3d(1,1,1);
+				light.diffuse = Qt.vector3d(1,1,1);
 			}
 
 			Component.onCompleted: {
