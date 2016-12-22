@@ -113,6 +113,8 @@ ApplicationWindow {
 				style: Text.Sunken
 				font.pointSize: 24
 			}
+
+			AssetCheck {}
 		}
 	}
 

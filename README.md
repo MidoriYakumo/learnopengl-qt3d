@@ -59,5 +59,5 @@ Content
 
 1.	[Colors](doc/Colors.md) : works
 2.	[Basic Lighting](doc/Basic-Lighting.md) : works
-3.	[Materials](docs/Materials.md) : works
-4.	[Lighting-maps](docs/Lighting-maps.md) : in progress 
+3.	[Materials](doc/Materials.md) : works
+4.	[Lighting-maps](doc/Lighting-maps.md) : in progress 

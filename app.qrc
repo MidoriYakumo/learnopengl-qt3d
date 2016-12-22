@@ -77,5 +77,7 @@
         <file>qml/materials.qml</file>
         <file>shared/shaders/es30/materials.frag</file>
         <file>shared/shaders/gl33/materials.frag</file>
+        <file>qml/Components/AssetCheck.qml</file>
+        <file>qml/Components/OurCamera.qml</file>
     </qresource>
 </RCC>
