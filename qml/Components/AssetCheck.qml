@@ -60,6 +60,10 @@ PathView {
 		opacity: PathView.iconOpactiy
 		fillMode: Image.PreserveAspectFit
 		source: modelData
+//		asynchronous: true // #BUG: fail to parse url scheme
+		autoTransform: false
+//		cache: false // #BUG: failCount += 3
+		mipmap: false
 
 		Label {
 			id: pathInfo
@@ -75,12 +79,12 @@ PathView {
 		}
 
 		onStatusChanged: {
+			console.log(source)
 			if (status == Image.Ready ||
 				status == Image.Null && source === "") {
 				pathInfo.visible = false;
 			} else {
 				control.failCount++;
-				console.log(111)
 				grabToImage(function(result) {
 					var path = modelData.replace("file://", "");
 					path = path.replace("file:", "");
@@ -134,7 +138,7 @@ PathView {
 			property: "currentIndex"
 			duration: 200 * control.count
 			from: 0
-			to: control.count - 3
+			to: control.count - 4
 			easing.type: Easing.InOutQuad
 		}
 		NumberAnimation {
