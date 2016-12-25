@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/app-cpp.qml</file>
         <file>qml/hellotriangle.qml</file>
         <file>qml/hellowindow.qml</file>
         <file>qml/Components/Examples.qml</file>
@@ -79,5 +78,7 @@
         <file>shared/shaders/gl33/materials.frag</file>
         <file>qml/Components/AssetCheck.qml</file>
         <file>qml/Components/OurCamera.qml</file>
+        <file>qml/app.qml</file>
+        <file>qml/Components/FpsLine.qml</file>
     </qresource>
 </RCC>

@@ -1,8 +1,7 @@
-#include <QGuiApplication>
 #include <QOpenGLContext>
-#include <QQmlApplicationEngine>
-#include <QQuickItem>
 #include <QQuickStyle>
+#include <QApplication> // QtChars require QtWidgets QApplication ... interesting
+#include <QQmlApplicationEngine>
 
 int main(int argc, char *argv[]) {
   QSurfaceFormat format;
@@ -31,21 +30,18 @@ int main(int argc, char *argv[]) {
   QQuickStyle::setStyle("Material");
 #endif
 
-  QGuiApplication app(argc, argv);
+  QApplication app(argc, argv);
   QQmlApplicationEngine engine;
   engine.addImportPath(QLatin1String("qrc:/com/github/midoriyakumo"));
 
 #ifdef NO_APP_QRC
 #ifdef Q_OS_ANDROID
-  engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app-cpp.qml")));
-  //engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app.qml")));
+  engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app.qml")));
 #else
-  engine.load(QUrl(QLatin1String("file:../qml/app-cpp.qml")));
-  //engine.load(QUrl(QLatin1String("file:../qml/app.qml"))); // QtCharts crashes the program
+  engine.load(QUrl(QLatin1String("file:../qml/app.qml")));
 #endif
 #else
-  engine.load(QUrl(QLatin1String("qrc:/qml/app-cpp.qml")));
-  //engine.load(QUrl(QLatin1String("qrc:/qml/app.qml"))); // QtCharts crashes the program
+  engine.load(QUrl(QLatin1String("qrc:/qml/app.qml")));
   engine.rootObjects().at(0)->setProperty("qrcAppOn", true);
 #endif
 

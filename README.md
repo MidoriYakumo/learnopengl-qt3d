@@ -24,7 +24,7 @@ Main qml file for qmlscene/binary/QmlCreator:
 
 -	app.qml: main window with line chart FPS display
 
--	app-cpp.qml: main window with text FPS display
+-	app-testfps.qml: main window with text FPS display
 
 -	main.qml: QuickItem as root + text FPS display
 

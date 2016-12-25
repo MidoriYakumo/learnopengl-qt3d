@@ -17,7 +17,7 @@ ChartView {
 
 	property real span: d.span
 	property int  maxFps: 60
-	property real maxMargin: 0.25
+	property real maxMargin: 0.5
 
 	function updateDt(dt) {
 		var t = d.t + dt;
@@ -48,7 +48,7 @@ ChartView {
 	//	animationDuration: 100
 	//	animationOptions: ChartView.GridAxisAnimations
 	animationOptions: ChartView.NoAnimation
-	backgroundColor: "#a0008000"
+	backgroundColor: "#801b813e"
 	backgroundRoundness: 0
 	margins.top: 0
 	margins.bottom: 0
@@ -102,7 +102,7 @@ ChartView {
 	Text {
 		id: realtime
 		x: app.plotArea.x - 3
-		y: 8
+		y: app.height - 16 - 12
 		color: "white"
 		font.pixelSize: 16
 		text: d.avg.toFixed(1) + "fps"

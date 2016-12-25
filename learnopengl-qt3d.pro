@@ -1,7 +1,6 @@
 include(qml-virtualkey/com_github_midoriyakumo_qmlvirtualkey.pri)
 
-QT += qml quick quickcontrols2 3dcore 3drender 3dinput 3dlogic 3dquick 3dquickextras testlib
-#sensors charts
+QT = quick quickcontrols2 charts
 
 CONFIG += c++11
 

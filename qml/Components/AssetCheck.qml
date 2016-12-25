@@ -132,14 +132,17 @@ PathView {
 	}
 
 	SequentialAnimation {
+		/*
+			This animation is accelerated with OpenGL context interval = 0
+		*/
+
 		id: roll
 		NumberAnimation {
 			target: control
 			property: "currentIndex"
-			duration: 200 * control.count
+			duration: 250 * control.count
 			from: 0
 			to: control.count - 4
-			easing.type: Easing.InOutQuad
 		}
 		NumberAnimation {
 			target: result
