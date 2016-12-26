@@ -21,6 +21,8 @@ ApplicationWindow {
 
 	header: ComboBox {
 		id: combobox
+		background.y: 0  // disable extra background (since 5.8)
+		background.height: height
 		opacity: height/20
 		focusPolicy: Qt.NoFocus
 		textRole: "text"
@@ -29,7 +31,7 @@ ApplicationWindow {
 
 		Behavior on height {
 			NumberAnimation {
-				duration: 200
+				duration: 400
 			}
 		}
 

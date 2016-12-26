@@ -16,7 +16,7 @@ Scene2 {
 		color: "transparent"
 		centerItem: RowKeys {
 			keys: [
-				{text:"Space", key:Qt.Key_Space}
+				{text:"Space", key:Qt.Key_Space},
 			]
 		}
 	}

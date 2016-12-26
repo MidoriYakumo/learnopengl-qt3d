@@ -106,21 +106,33 @@ Scene2 {
 
 			BusyIndicator {
 				id: busyIndicator
-				height: parent.implicitHeight
-				width: height
 				anchors.left: parent.left
+				anchors.top: parent.top
+				anchors.bottom: parent.bottom
+				anchors.margins: parent.padding/2
+				width: height
 
-				opacity: (materialSelector.leftPadding - materialSelector.defaultLeftPadding) / width
 			}
 
-			NumberAnimation {
+			ParallelAnimation {
 				id: hideBusy
-				target: materialSelector
-				property: "leftPadding"
-				duration: 400
-				to: materialSelector.defaultLeftPadding
-				easing.type: Easing.InOutQuad
+
+				NumberAnimation {
+					target: materialSelector
+					property: "leftPadding"
+					duration: 400
+					to: materialSelector.defaultLeftPadding
+					easing.type: Easing.InOutQuad
+				}
+
+				NumberAnimation {
+					target: busyIndicator
+					property: "opacity"
+					duration: 400
+					to: 0
+				}
 			}
+
 
 			onCurrentIndexChanged: {
 				var m = model.get(currentIndex);
@@ -134,7 +146,7 @@ Scene2 {
 
 			Component.onCompleted: {
 				defaultLeftPadding = leftPadding;
-				leftPadding = busyIndicator.width;
+				leftPadding = padding + busyIndicator.width;
 				implicitWidth = width;
 			}
 		},
@@ -144,7 +156,7 @@ Scene2 {
 			color: "transparent"
 			centerItem: RowKeys {
 				keys: [
-					{text:"Space", key:Qt.Key_Space}
+					{text:"Space", key:Qt.Key_Space},
 				]
 			}
 		}

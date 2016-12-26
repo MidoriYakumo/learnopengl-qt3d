@@ -44,6 +44,7 @@ ListModel {
 //	ListElement { text: "Basic Lighting X2"				; source: "basic_lighting-exercise2"}
 //	ListElement { text: "Basic Lighting X3"				; source: "basic_lighting-exercise3"}
 	ListElement { text: "Materials"						; source: "materials"}
+	ListElement { text: "Diffuse Map"					; source: "lighting_maps_diffuse"}
 	ListElement { text: "Diffuse Specular Map"			; source: "lighting_maps_specular"}
 	ListElement { text: "Diffuse Specular Emission Map"	; source: "lighting_maps_emission"}
 	ListElement { text: "Directional Light"				; source: "light_casters_directional"}

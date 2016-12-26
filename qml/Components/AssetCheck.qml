@@ -51,7 +51,7 @@ PathView {
 		Resources.model("arm_showroom_spec.png"),
 		Resources.model("arm_showroom_ddn.png"),
 		Resources.model("arm_dif.png"),
-		"", "", ""
+		"", "", "",
 	]
 
 	delegate: Image{
@@ -137,6 +137,7 @@ PathView {
 		*/
 
 		id: roll
+
 		NumberAnimation {
 			target: control
 			property: "currentIndex"
@@ -144,6 +145,7 @@ PathView {
 			from: 0
 			to: control.count - 4
 		}
+
 		NumberAnimation {
 			target: result
 			property: "opacity"
@@ -151,6 +153,7 @@ PathView {
 			to: 1
 			easing.type: Easing.InOutQuad
 		}
+
 		NumberAnimation {
 			target: control
 			property: "opacity"

@@ -55,7 +55,7 @@ Scene0 {
 							data: Float32Array([
 								-0.5, -0.5, 0.0, // Left
 								 0.5, -0.5, 0.0, // Right
-								 0.0,  0.5, 0.0  // Top
+								 0.0,  0.5, 0.0, // Top
 							]) // Need a C++ array, Javascript Float32Array helps
 						}
 					}

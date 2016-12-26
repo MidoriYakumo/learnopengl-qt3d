@@ -13,7 +13,7 @@ Scene2 {
 		color: "transparent"
 		centerItem: RowKeys {
 			keys: [
-				{text:"Space", key:Qt.Key_Space}
+				{text:"Space", key:Qt.Key_Space},
 			]
 		}
 	}
@@ -215,7 +215,7 @@ Scene2 {
 			Qt.vector3d( 1.3, -2.0, -2.5),
 			Qt.vector3d( 1.5,  2.0, -2.5),
 			Qt.vector3d( 1.5,  0.2, -1.5),
-			Qt.vector3d(-1.3,  1.0, -1.5)
+			Qt.vector3d(-1.3,  1.0, -1.5),
 		]
 
 		NodeInstantiator {

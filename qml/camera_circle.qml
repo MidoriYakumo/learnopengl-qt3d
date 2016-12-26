@@ -58,7 +58,7 @@ Scene1 {
 			Qt.vector3d( 1.3, -2.0, -2.5),
 			Qt.vector3d( 1.5,  2.0, -2.5),
 			Qt.vector3d( 1.5,  0.2, -1.5),
-			Qt.vector3d(-1.3,  1.0, -1.5)
+			Qt.vector3d(-1.3,  1.0, -1.5),
 		]
 
 		NodeInstantiator {

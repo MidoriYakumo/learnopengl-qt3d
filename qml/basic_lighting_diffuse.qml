@@ -16,7 +16,7 @@ Scene2 {
 		centerItem: RowKeys {
 			keys: [
 				{text:"Space", key:Qt.Key_Space},
-				{text:"Return", key:Qt.Key_Return}
+				{text:"Return", key:Qt.Key_Return},
 			]
 		}
 	}

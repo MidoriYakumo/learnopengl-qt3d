@@ -66,6 +66,10 @@ Thumbs.db
 # Python byte code
 *.pyc
 
+# Compiled QML
+*.qmlc
+*.jsc
+
 # Binaries
 # --------
 *.dll

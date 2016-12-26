@@ -60,7 +60,7 @@ Scene0 {
 							type: Buffer.IndexBuffer
 							data: Uint16Array([
 								0, 1, 3,  // First Triangle
-								1, 2, 3   // Second Triangle
+								1, 2, 3,  // Second Triangle
 							])
 						}
 					}
@@ -74,7 +74,7 @@ Scene0 {
 						 0.5,  0.5, 0.0,   1.0, 0.0, 0.0,   2.0, 2.0, // Top Right
 						 0.5, -0.5, 0.0,   0.0, 1.0, 0.0,   2.0, 0.0, // Bottom Right
 						-0.5, -0.5, 0.0,   0.0, 0.0, 1.0,   0.0, 0.0, // Bottom Left
-						-0.5,  0.5, 0.0,   1.0, 1.0, 0.0,   0.0, 2.0  // Top Left
+						-0.5,  0.5, 0.0,   1.0, 1.0, 0.0,   0.0, 2.0, // Top Left
 					])
 				}
 			}

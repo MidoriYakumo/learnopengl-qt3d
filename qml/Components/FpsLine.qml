@@ -10,13 +10,12 @@ ChartView {
 		right: hMargin
 	}
 	width: 160
-	height: 92
+	height: 94
 
 	property int hMargin: 6
 	property int vMargin: 6
 
 	property real span: d.span
-	property int  maxFps: 60
 	property real maxMargin: 0.5
 
 	function updateDt(dt) {
@@ -68,20 +67,27 @@ ChartView {
 	ValueAxis {
 		id: yAxis
 		min: 0
-		max: app.maxFps
+		max: 60
 		labelsColor: "white"
+		tickCount: 4
 		minorGridVisible: false
 		minorTickCount: 0
 		shadesVisible: false
 		labelsFont.pixelSize: 18
-		labelFormat: "%2.0f"
+		labelFormat: "%2d"
+
+//		Behavior on max {  // may impact fps
+//			NumberAnimation {
+//				duration: 400
+//			}
+//		}
 	}
 
 	LineSeries {
 		id: avgSer
 //		useOpenGL : true
 		color: "#00E2FF"
-		width: 4
+		width: 5
 		axisX: xAxis
 		axisY: yAxis
 	}
@@ -101,8 +107,8 @@ ChartView {
 
 	Text {
 		id: realtime
-		x: app.plotArea.x - 3
-		y: app.height - 16 - 12
+		x: app.plotArea.x - 4
+		y: app.height - 30
 		color: "white"
 		font.pixelSize: 16
 		text: d.avg.toFixed(1) + "fps"
