@@ -52,7 +52,7 @@ Scene2 {
 				}
 			}
 			delegate: MenuItem {
-				text: model.name.setCharAt(0, model.name[0].toUpperCase())
+				text: name.setCharAt(0, name[0].toUpperCase())
 				leftPadding: rightPadding + thumbSize
 
 				property real thumbSize: height - topPadding*2
@@ -64,7 +64,7 @@ Scene2 {
 					width: parent.thumbSize
 
 					property real dotSize: parent.thumbSize/2
-					property real sparkSize: 1./model.shininess
+					property real sparkSize: 1./shininess
 
 					Rectangle {
 						x: 0
@@ -72,7 +72,7 @@ Scene2 {
 						width: parent.dotSize
 						height: parent.dotSize
 						radius: parent.sparkSize
-						color: Qt.rgba(model.ambr, model.ambg, model.ambb, 1.)
+						color: Qt.rgba(ambr, ambg, ambb, 1.)
 					}
 
 					Rectangle {
@@ -81,7 +81,7 @@ Scene2 {
 						width: parent.dotSize
 						height: parent.dotSize
 						radius: parent.sparkSize
-						color: Qt.rgba(model.difr, model.difg, model.difb, 1.)
+						color: Qt.rgba(difr, difg, difb, 1.)
 					}
 
 					Rectangle {
@@ -90,7 +90,7 @@ Scene2 {
 						width: parent.dotSize
 						height: parent.dotSize
 						radius: parent.sparkSize
-						color: Qt.rgba(model.specr, model.specg, model.specb, 1.)
+						color: Qt.rgba(specr, specg, specb, 1.)
 					}
 
 					Rectangle {
@@ -99,7 +99,7 @@ Scene2 {
 						width: parent.dotSize
 						height: parent.dotSize
 						radius: parent.sparkSize
-						color: Qt.rgba(model.ambr, model.ambg, model.ambb, 1.)
+						color: Qt.rgba(ambr, ambg, ambb, 1.)
 					}
 				}
 			}

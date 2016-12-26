@@ -25,6 +25,8 @@ Scene2 {
 		id: root
 
 		RenderInputSettings0 {
+			id: renderInputSettings
+
 			mouseSensitivity: 0.5 / Units.dp
 		}
 
@@ -48,6 +50,11 @@ Scene2 {
 
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"
+		property var material: QtObject {
+			property string diffuse: Resources.texture("container2.png")
+			property vector3d specular: "0.5, 0.5, 0.5"
+			property real shininess: 64.0
+		}
 
 		QtObject {
 			id: light
@@ -76,8 +83,8 @@ Scene2 {
 					techniques: Technique {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
-								vertName: "basic_lighting"
-								fragName: "materials"
+								vertName: "lighting_maps"
+								fragName: "lighting_maps_diffuse"
 							}
 							parameters: [
 								Parameter {
@@ -85,12 +92,12 @@ Scene2 {
 									value: root.viewPos
 								},
 								Parameter {
-									name: "material.ambient"
-									value: root.material.ambient
-								},
-								Parameter {
 									name: "material.diffuse"
-									value: root.material.diffuse
+									value: Texture2D {
+										TextureImage {
+											source: root.material.diffuse
+										}
+									}
 								},
 								Parameter {
 									name: "material.specular"
@@ -122,7 +129,7 @@ Scene2 {
 				}
 			}
 
-			PhongMaterial {
+			DiffuseMapMaterial {
 				/*
 					Phong material in Qt3D.Extras, Qt PointLight is required to work with
 					The model is different with learnopengl.com
@@ -130,10 +137,8 @@ Scene2 {
 				*/
 
 				id: qtMaterial
-				ambient: Qt.rgba(root.material.ambient.x, root.material.ambient.y,
-					root.material.ambient.z, 1.)
-				diffuse: Qt.rgba(root.material.diffuse.x, root.material.diffuse.y,
-					root.material.diffuse.z, 1.)
+				ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
+				diffuse: root.material.diffuse
 				specular: Qt.rgba(root.material.specular.x, root.material.specular.y,
 					root.material.specular.z, 1.)
 				shininess: root.material.shininess
@@ -143,15 +148,9 @@ Scene2 {
 		}
 
 		Entity {
-			id: renderLamp
+			id: lamp
 
 			PointLight {
-				/*
-					Point light from Qt3D.Render, one of the lighting types supported internally in Qt3D
-					Can be assembled with other nodes into one entity
-					Src: Src/qt3d/src/render/lights/qpointlight.h
-				*/
-
 				id: qtLamp
 				color: root.lightColor
 				intensity: 1

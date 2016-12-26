@@ -35,7 +35,7 @@ ApplicationWindow {
 		}
 
 		onCurrentIndexChanged: {
-			if (currentIndex === model.count - 1)
+			if (currentIndex === count - 1)
 				Qt.quit();
 			load(model.get(currentIndex).source);
 		}
@@ -56,11 +56,11 @@ ApplicationWindow {
 				highlighted: ListView.isCurrentItem
 
 				onClicked: {
-					if (model.text === "Exit")
+					if (text === "Exit")
 						Qt.quit();
 					else {
 						app.header.height = 0;
-						load(model.source);
+						load(source);
 						drawer.close();
 					}
 				}

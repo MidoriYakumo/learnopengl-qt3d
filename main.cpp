@@ -4,6 +4,14 @@
 #include <QQmlApplicationEngine>
 
 int main(int argc, char *argv[]) {
+
+#ifdef Q_OS_WIN
+	QQuickStyle::setStyle("Universal");
+#else
+	QQuickStyle::setStyle("Material");
+#endif
+
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling); // Good for QuickControls, bad for canvas items
 	QApplication app(argc, argv); // Opengl dynamic module require create app first
 
 	QSurfaceFormat format;
@@ -24,13 +32,6 @@ int main(int argc, char *argv[]) {
 	format.setSwapInterval(0); // Full speed rendering
 
 	QSurfaceFormat::setDefaultFormat(format);
-	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling); // Good for QuickControls, bad for canvas items
-
-#ifdef Q_OS_WIN
-	QQuickStyle::setStyle("Universal");
-#else
-	QQuickStyle::setStyle("Material");
-#endif
 
 	QQmlApplicationEngine engine;
 	engine.addImportPath(QLatin1String("qrc:/com/github/midoriyakumo"));

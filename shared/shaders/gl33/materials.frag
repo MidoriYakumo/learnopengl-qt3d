@@ -20,7 +20,6 @@ in vec3 fragPos;
 
 out vec4 color;
 
-uniform vec3 lightPos;
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light;
