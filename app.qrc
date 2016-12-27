@@ -80,5 +80,10 @@
         <file>qml/Components/OurCamera.qml</file>
         <file>qml/app.qml</file>
         <file>qml/Components/FpsLine.qml</file>
+        <file>qml/lighting_maps_specular.qml</file>
+        <file>shared/shaders/es30/lighting_maps.vert</file>
+        <file>shared/shaders/es30/lighting_maps_specular.frag</file>
+        <file>shared/shaders/gl33/lighting_maps_specular.frag</file>
+        <file>shared/shaders/gl33/lighting_maps.vert</file>
     </qresource>
 </RCC>

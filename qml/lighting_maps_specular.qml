@@ -51,7 +51,7 @@ Scene2 {
 		property color lightColor: "white"
 		property var material: QtObject {
 			property string diffuse: Resources.texture("container2.png")
-			property vector3d specular: "0.5, 0.5, 0.5"
+			property string specular: Resources.texture("container2_specular.png")
 			property real shininess: 64.0
 		}
 
@@ -83,7 +83,7 @@ Scene2 {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
 								vertName: "lighting_maps"
-								fragName: "lighting_maps_diffuse"
+								fragName: "lighting_maps_specular"
 							}
 							parameters: [
 								Parameter {
@@ -100,7 +100,11 @@ Scene2 {
 								},
 								Parameter {
 									name: "material.specular"
-									value: root.material.specular
+									value: Texture2D {
+										TextureImage {
+											source: root.material.specular
+										}
+									}
 								},
 								Parameter {
 									name: "material.shininess"
@@ -128,19 +132,18 @@ Scene2 {
 				}
 			}
 
-			DiffuseMapMaterial {
+			DiffuseSpecularMapMaterial {
 				/*
-					Phong material with diffuse map in Qt3D.Extras,
+					Phong material with diffuse and specular map in Qt3D.Extras,
 					Qt PointLight is required to work with
 					The model is different with learnopengl.com
-					Src: Src/qt3d/src/quick3d/imports/extras/defaults/qml/DiffuseMapMaterial.qml
+					Src: Src/qt3d/src/quick3d/imports/extras/defaults/qml/DiffuseSpecularMapMaterial.qml
 				*/
 
 				id: qtMaterial
 				ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
 				diffuse: root.material.diffuse
-				specular: Qt.rgba(root.material.specular.x, root.material.specular.y,
-					root.material.specular.z, 1.)
+				specular: root.material.specular
 				shininess: root.material.shininess
 			}
 
