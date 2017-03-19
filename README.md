@@ -1,7 +1,7 @@
 learnopengl-qt3d
 ================
 
-Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.7. I created this repo aiming to understand how Qt3D works.
+Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.8. I created this repo aiming to understand how Qt3D works.
 
 ![](doc/img/sc-qt3d-desktop.gif)
 
@@ -28,7 +28,7 @@ Main qml file for qmlscene/binary/QmlCreator:
 
 -	main.qml: QuickItem as root + text FPS display
 
-With one keyword as arguments can specify the sample to be launched:
+With one keyword as arguments you can specify the sample to be launched:
 
 -	qmlscene skybox app.qml
 -	./learnopengl-qt3d geometry
@@ -36,7 +36,7 @@ With one keyword as arguments can specify the sample to be launched:
 Notes
 -----
 
--	Some large assets from the website is downloaded by qmake script(*nix only), connection is required at the first build or after updated. Use **CONFIG += no_assets** to skip and enable local filesystem routing(may lead to crash). See [main.cpp](./main.cpp), [assets.pri](./assets.pri), [Resources.qml](./qml/Components/Resources.qml) for details.
+-	Some large assets from the website is downloaded by qmake script(\*nix only), connection is required at the first build or after updated. Use **CONFIG += no_assets** to skip and enable local filesystem routing(may lead to crash). See [main.cpp](./main.cpp), [assets.pri](./assets.pri), [Resources.qml](./qml/Components/Resources.qml) for details.
 
 -	**leanopengl uses a little different lighting model from Qt3D default model, to rendering models for a better result, please slightly modify the ka, kd in mtl files**
 

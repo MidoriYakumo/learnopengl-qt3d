@@ -85,5 +85,6 @@
         <file>shared/shaders/es30/lighting_maps_specular.frag</file>
         <file>shared/shaders/gl33/lighting_maps_specular.frag</file>
         <file>shared/shaders/gl33/lighting_maps.vert</file>
+        <file>qml/Components/geo.js</file>
     </qresource>
 </RCC>

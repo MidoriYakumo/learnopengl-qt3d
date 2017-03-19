@@ -1,4 +1,3 @@
-import QtQuick 2.7
 import QtQuick.Scene3D 2.0
 
 Scene3D {

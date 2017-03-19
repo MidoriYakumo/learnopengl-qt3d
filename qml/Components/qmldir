@@ -5,4 +5,4 @@ singleton 	Examples 	1.0 	Examples.qml
 #singleton 	TheInputSettings 	1.0 	TheInputSettings.qml
 
 Utils 	1.0 	utils.js
-#Mod 	1.0		mod.js
+Geo 	1.0		geo.js

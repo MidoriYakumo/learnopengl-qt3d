@@ -96,7 +96,7 @@ Scene2 {
 			property int posX
 			property int posY
 
-			onPressAndHold: {
+			onPressed: {
 				posX = mouse.x;
 				posY = mouse.y;
 			}

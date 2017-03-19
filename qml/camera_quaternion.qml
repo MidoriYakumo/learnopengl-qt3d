@@ -94,7 +94,7 @@ Scene2 {
 			property int posX
 			property int posY
 
-			onPressAndHold: {
+			onPressed: {
 				posX = mouse.x;
 				posY = mouse.y;
 			}
@@ -104,7 +104,7 @@ Scene2 {
 				if (mouse.modifiers & Qt.ShiftModifier)
 					sensitivity *= .1;
 
-				console.log(camera.frontQuaternion * 1, camera.frontQuaternion.times(1)); // Not work yet
+				console.log(camera.frontQuaternion.times(1)); // Not work yet
 				console.log(dummyTransform.fromAxisAndAngle(Qt.vector3d(1, 0, 0), 1));
 
 				posX = mouse.x;
@@ -152,8 +152,8 @@ Scene2 {
 			property vector3d position: "0,0,3"
 			property vector3d viewCenter: position.plus(frontVector)
 			property vector3d upVector: "0,1,0"
-			property quaternion frontQuaternion: Qt.quaternion(0, 0, 0, -1)
-			property vector3d frontVector: Qt.vector3d(frontQuaternion.x, frontQuaternion.y, frontQuaternion.z)
+			property var frontQuaternion: new Geo.Quaternion(0, 0, 0, -1)
+			property vector3d frontVector: frontQuaternion.vector().toQtType()
 			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
 
 			property matrix4x4 viewMatrix: {

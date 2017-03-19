@@ -79,7 +79,7 @@ PathView {
 		}
 
 		onStatusChanged: {
-			console.log(source)
+// 			console.log(source)
 			if (status == Image.Ready ||
 				status == Image.Null && source === "") {
 				pathInfo.visible = false;

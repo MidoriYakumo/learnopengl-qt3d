@@ -78,7 +78,7 @@ Thumbs.db
 *.backup
 *.bak
 .directory
-build-*/
-*/build-*/
+build/
 shared/assets/model/
 shared/assets/texture/skybox/
+qml/tests/screenshots

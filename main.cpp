@@ -1,9 +1,10 @@
+#include <QApplication> // QtCharts require QtWidgets QApplication ... interesting
 #include <QOpenGLContext>
-#include <QQuickStyle>
-#include <QApplication> // QtChars require QtWidgets QApplication ... interesting
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
 
 #ifdef Q_OS_WIN
 	QQuickStyle::setStyle("Universal");
@@ -15,15 +16,13 @@ int main(int argc, char *argv[]) {
 	QApplication app(argc, argv); // Opengl dynamic module require create app first
 
 	QSurfaceFormat format;
-	if (QOpenGLContext::openGLModuleType() ==
-		QOpenGLContext::LibGL) { // Learn OpenGL
-	format.setVersion(4, 3);
-	format.setProfile(QSurfaceFormat::CoreProfile);
-	format.setSamples(4);
-	} else if (QOpenGLContext::openGLModuleType() ==
-			 QOpenGLContext::LibGLES) { // Learn OpenGLES??
-	format.setVersion(3, 0);
-	format.setSamples(0);
+	if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGL) { // Learn OpenGL
+		format.setVersion(4, 3);
+		format.setProfile(QSurfaceFormat::CoreProfile);
+		format.setSamples(4);
+	} else if (QOpenGLContext::openGLModuleType() == QOpenGLContext::LibGLES) { // Learn OpenGLES??
+		format.setVersion(3, 0);
+		format.setSamples(0);
 	}
 	format.setAlphaBufferSize(0);
 	format.setDepthBufferSize(0);

@@ -1,5 +1,5 @@
 /*
-* This is the start up QML for compiled version
+* This is the start up QML for qmlscene/compiled version
 */
 
 import QtQuick 2.7
@@ -114,6 +114,10 @@ ApplicationWindow {
 				styleColor: "#8b8b8b"
 				style: Text.Sunken
 				font.pointSize: 24
+
+				onTextChanged: {
+					Resources.setGlInfo(OpenGLInfo);
+				}
 			}
 
 			AssetCheck {}

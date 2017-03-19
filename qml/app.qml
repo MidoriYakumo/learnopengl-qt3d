@@ -1,5 +1,5 @@
 /*
-* This is the start up QML for qmlscene
+* This is the start up QML for qmlscene/compiled version
 * QtCharts may crash the application in non-default context
 */
 
@@ -106,6 +106,10 @@ ApplicationWindow {
 				styleColor: "#8b8b8b"
 				style: Text.Sunken
 				font.pointSize: 24
+
+				onTextChanged: {
+					Resources.setGlInfo(OpenGLInfo);
+				}
 			}
 
 			AssetCheck {}
