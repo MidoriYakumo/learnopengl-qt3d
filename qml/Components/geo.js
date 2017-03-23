@@ -45,141 +45,141 @@ var Matrix4x4 = function(
 }
 
 var Quaternion = function(w, x, y, z) {
-	this.w = w | 0;
-	this.x = x | 0;
-	this.y = y | 0;
-	this.z = z | 0;
+	this.w = w || 0;
+	this.x = x || 0;
+	this.y = y || 0;
+	this.z = z || 0;
 }
 
-Object.defineProperty(Vector2D, "x", {
+Object.defineProperty(Vector2D.prototype, "x", {
 	get: function () { return this._.x; },
 	set: function (x) { this._.x = x; },
 });
 
-Object.defineProperty(Vector2D, "y", {
+Object.defineProperty(Vector2D.prototype, "y", {
 	get: function () { return this._.y; },
 	set: function (y) { this._.y = y; },
 });
 
-Object.defineProperty(Vector2D, "r", {
+Object.defineProperty(Vector2D.prototype, "r", {
 	get: function () { return Math.sqrt(this._.x*this._.x+this._.y*this._.y); },
 });
 
-Object.defineProperty(Vector2D, "theta", {
+Object.defineProperty(Vector2D.prototype, "theta", {
 	get: function () { return Math.atan2(this._.y, this._.x); },
 });
 
-Object.defineProperty(Vector3D, "x", {
+Object.defineProperty(Vector3D.prototype, "x", {
 	get: function () { return this._.x; },
 	set: function (x) { this._.x = x; },
 });
 
-Object.defineProperty(Vector3D, "y", {
+Object.defineProperty(Vector3D.prototype, "y", {
 	get: function () { return this._.y; },
 	set: function (y) { this._.y = y; },
 });
 
-Object.defineProperty(Vector3D, "z", {
+Object.defineProperty(Vector3D.prototype, "z", {
 	get: function () { return this._.z; },
 	set: function (z) { this._.z = z; },
 });
 
-Object.defineProperty(Vector4D, "x", {
+Object.defineProperty(Vector4D.prototype, "x", {
 	get: function () { return this._.x; },
 	set: function (x) { this._.x = x; },
 });
 
-Object.defineProperty(Vector4D, "y", {
+Object.defineProperty(Vector4D.prototype, "y", {
 	get: function () { return this._.y; },
 	set: function (y) { this._.y = y; },
 });
 
-Object.defineProperty(Vector4D, "z", {
+Object.defineProperty(Vector4D.prototype, "z", {
 	get: function () { return this._.z; },
 	set: function (z) { this._.z = z; },
 });
 
-Object.defineProperty(Vector4D, "w", {
+Object.defineProperty(Vector4D.prototype, "w", {
 	get: function () { return this._.w; },
 	set: function (w) { this._.w = w; },
 });
 
-Object.defineProperty(Matrix4x4, "m11", {
+Object.defineProperty(Matrix4x4.prototype, "m11", {
 	get: function () { return this._.m11; },
 	set: function (m11) { this._.m11 = m11; },
 });
 
-Object.defineProperty(Matrix4x4, "m12", {
+Object.defineProperty(Matrix4x4.prototype, "m12", {
 	get: function () { return this._.m12; },
 	set: function (m12) { this._.m12 = m12; },
 });
 
-Object.defineProperty(Matrix4x4, "m13", {
+Object.defineProperty(Matrix4x4.prototype, "m13", {
 	get: function () { return this._.m13; },
 	set: function (m13) { this._.m13 = m13; },
 });
 
-Object.defineProperty(Matrix4x4, "m14", {
+Object.defineProperty(Matrix4x4.prototype, "m14", {
 	get: function () { return this._.m14; },
 	set: function (m14) { this._.m14 = m14; },
 });
 
-Object.defineProperty(Matrix4x4, "m21", {
+Object.defineProperty(Matrix4x4.prototype, "m21", {
 	get: function () { return this._.m21; },
 	set: function (m21) { this._.m21 = m21; },
 });
 
-Object.defineProperty(Matrix4x4, "m22", {
+Object.defineProperty(Matrix4x4.prototype, "m22", {
 	get: function () { return this._.m22; },
 	set: function (m22) { this._.m22 = m22; },
 });
 
-Object.defineProperty(Matrix4x4, "m23", {
+Object.defineProperty(Matrix4x4.prototype, "m23", {
 	get: function () { return this._.m23; },
 	set: function (m23) { this._.m23 = m23; },
 });
 
-Object.defineProperty(Matrix4x4, "m24", {
+Object.defineProperty(Matrix4x4.prototype, "m24", {
 	get: function () { return this._.m24; },
 	set: function (m24) { this._.m24 = m24; },
 });
 
-Object.defineProperty(Matrix4x4, "m31", {
+Object.defineProperty(Matrix4x4.prototype, "m31", {
 	get: function () { return this._.m31; },
 	set: function (m31) { this._.m31 = m31; },
 });
 
-Object.defineProperty(Matrix4x4, "m32", {
+Object.defineProperty(Matrix4x4.prototype, "m32", {
 	get: function () { return this._.m32; },
 	set: function (m32) { this._.m32 = m32; },
 });
 
-Object.defineProperty(Matrix4x4, "m33", {
+Object.defineProperty(Matrix4x4.prototype, "m33", {
 	get: function () { return this._.m33; },
 	set: function (m33) { this._.m33 = m33; },
 });
 
-Object.defineProperty(Matrix4x4, "m34", {
+Object.defineProperty(Matrix4x4.prototype, "m34", {
 	get: function () { return this._.m34; },
 	set: function (m34) { this._.m34 = m34; },
 });
 
-Object.defineProperty(Matrix4x4, "m41", {
+Object.defineProperty(Matrix4x4.prototype, "m41", {
 	get: function () { return this._.m41; },
 	set: function (m41) { this._.m41 = m41; },
 });
 
-Object.defineProperty(Matrix4x4, "m42", {
+Object.defineProperty(Matrix4x4.prototype, "m42", {
 	get: function () { return this._.m42; },
 	set: function (m42) { this._.m42 = m42; },
 });
 
-Object.defineProperty(Matrix4x4, "m43", {
+Object.defineProperty(Matrix4x4.prototype, "m43", {
 	get: function () { return this._.m43; },
 	set: function (m43) { this._.m43 = m43; },
 });
 
-Object.defineProperty(Matrix4x4, "m44", {
+Object.defineProperty(Matrix4x4.prototype, "m44", {
 	get: function () { return this._.m44; },
 	set: function (m44) { this._.m44 = m44; },
 });
@@ -233,8 +233,8 @@ Vector2D.prototype.randomUnit = function() {
 
 Vector2D.prototype.fromArray = function(array) {
 	if (Array.isArray(array)) {
-		this._.x = array[0] | 0;
-		this._.y = array[1] | 0;
+		this._.x = array[0] || 0;
+		this._.y = array[1] || 0;
 	}
 
 	return this;
@@ -257,10 +257,7 @@ Vector2D.prototype.minus = function(b) {
 }
 
 Vector2D.prototype.times = function(b) {
-	if (Number.isFinite(b))
-		return new Point2D(this._.x * b, this._.y * b);
-	else
-		return new Point2D(this._.x * b.x, this._.y * b.y);
+	return new Vector2D(this._.x * b, this._.y * b);
 }
 
 Vector2D.prototype.dotProduct = function(b) {
@@ -280,7 +277,7 @@ Vector2D.prototype.length = function() {
 }
 
 Vector2D.prototype.area = function(b) {
-	return Math.abs(this.cross(b));
+	return Math.abs(this.crossProduct(b));
 }
 
 Vector2D.prototype.normalized = function(b) {
@@ -310,6 +307,58 @@ Vector2D.prototype.toQtType = function() {
 	return this._
 }
 
+Vector3D.prototype.clone = function() {
+	return new Vector3D(this._.x, this._.y, this._.z);
+}
+
+Vector3D.prototype.zero = function() {
+	return zero2(this._.x) && zero2(this._.y) && zero2(this._.z);
+}
+
+Vector3D.prototype.plus = function(b) {
+	return new Vector3D(this._.x + b.x, this._.y + b.y, this._.z + b.z);
+}
+
+Vector3D.prototype.minus = function(b) {
+	return new Vector3D(this._.x - b.x, this._.y - b.y, this._.z - b.z);
+}
+
+Vector3D.prototype.times = function(b) {
+	return new Vector3D(this._.x * b, this._.y * b, this._.z * b);
+}
+
+Vector3D.prototype.dotProduct = function(b) {
+	return this._.x * b.x + this._.y * b.y + this._.z * b.z;
+}
+
+Vector3D.prototype.crossProduct = function(b) {
+	return new Vector3D(
+		this._.y * b.z - this._.z * b.y,
+		this._.z * b.x - this._.x * b.z,
+		this._.x * b.y - this._.y * b.x
+	);
+}
+
+Vector3D.prototype.length2 = function() {
+	return this.dotProduct(this);
+}
+
+Vector3D.prototype.length = function() {
+	return Math.sqrt(this.length2());
+}
+
+Vector3D.prototype.area = function(b) {
+	return this.crossProduct(b).length();
+}
+
+Vector3D.prototype.normalized = function(b) {
+	var l = this.length();
+	if (zero2(l))
+		return clone();
+	else
+		return this.times(1. / l);
+}
+
 Vector3D.prototype.toQtType = function() {
 	return this._
 }
@@ -320,6 +369,10 @@ Vector4D.prototype.toQtType = function() {
 
 Matrix4x4.prototype.toQtType = function() {
 	return this._
+}
+
+Quaternion.prototype.clone = function() {
+	return new Quaternion(this.w, this.x, this.y, this.z);
 }
 
 Quaternion.prototype.fromWAndVector = function(ow, ov) {
@@ -338,18 +391,17 @@ Quaternion.prototype.rotationTo = function(from, to) {
 
 	if (zero2(d)) {
 		axis = Qt.vector3d(1, 0, 0).crossProduct(vf);
-		if (zero2(axis.length()))
+		if (zero2(axis.length2()))
 			axis = Qt.vector3d(0, 1, 0).crossProduct(vf);
 		axis = axis.normalized();
 
-		this.fromWAndVector(0, axis);
+		return this.fromWAndVector(0, axis);
 	}
 
 	d = Math.sqrt(d * 2);
-	axis = vf.crossProduct(vt).times(1./d);
+	axis = vf.crossProduct(vt).times(1. / d);
 
-	this.fromWAndVector(d / 2, axis);
-	return this;
+	return this.fromWAndVector(d / 2, axis);
 }
 
 Quaternion.prototype.isIdentity = function() {
@@ -412,12 +464,15 @@ Quaternion.prototype.dotProduct = function(b) {
 }
 
 Quaternion.prototype.rotated = function(from) {
-	return this.times(new Quaternion(0, from)).times(conjugated()).vector();
+	return this.times(new Quaternion(0, from.x, from.y, from.z)).times(this.conjugated()).vector();
 }
 
 
-var v = new Quaternion().rotationTo(Qt.vector3d(1,0,0), Qt.vector3d(0,1,0));
+var v = new Quaternion().rotationTo(Qt.vector3d(0,0,-1), Qt.vector3d(0,0,-1));
+console.log(v, v.rotated(Qt.vector3d(0,0,-1)));
 console.log(v.toMatrix());
+//v = new Quaternion().rotationTo(new Vector3D(1,0,0), new Vector3D(0,1,0));
+//console.log(v.toMatrix());
 
 var Matrix3x3 = function (
 	m11, m12, m13,

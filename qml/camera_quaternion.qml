@@ -100,12 +100,16 @@ Scene2 {
 			}
 
 			onPositionChanged: {
-				var sensitivity = mouseDevice.sensitivity;
+				var sensitivity = mouseDevice.sensitivity * 0.1;
 				if (mouse.modifiers & Qt.ShiftModifier)
 					sensitivity *= .1;
 
-				console.log(camera.frontQuaternion.times(1)); // Not work yet
-				console.log(dummyTransform.fromAxisAndAngle(Qt.vector3d(1, 0, 0), 1));
+				var v1 = camera.frontVector;
+				var v2 = camera.frontVector.plus(
+					camera.upVector.times((posY - mouse.y)*sensitivity)).plus(
+					camera.rightVector.times((mouse.x - posX)*sensitivity));
+				var rot = new Geo.Quaternion().rotationTo(v1, v2);
+				camera.quaternion = camera.quaternion.times(rot);
 
 				posX = mouse.x;
 				posY = mouse.y;
@@ -117,10 +121,6 @@ Scene2 {
 					camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d);
 				else
 					camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d);
-			}
-
-			Transform {
-				id: dummyTransform
 			}
 		}
 
@@ -145,19 +145,21 @@ Scene2 {
 		Entity {
 			id: camera
 
-			property real yaw: 0
-			property real pitch: 0
 			property real fieldOfView: 45
 
+			property var quaternion: new Geo.Quaternion(1, 0, 0, 0)
 			property vector3d position: "0,0,3"
 			property vector3d viewCenter: position.plus(frontVector)
 			property vector3d upVector: "0,1,0"
-			property var frontQuaternion: new Geo.Quaternion(0, 0, 0, -1)
-			property vector3d frontVector: frontQuaternion.vector().toQtType()
-			property vector3d rightVector: frontVector.crossProduct(upVector).normalized()
+			property vector3d frontVector: quaternion.rotated(Qt.vector3d(0, 0, -1)).toQtType()
+			property vector3d rightVector: frontVector.crossProduct(upVector)
 
 			property matrix4x4 viewMatrix: {
 				var m = Qt.matrix4x4();
+//				m.m14 = -position.x;
+//				m.m24 = -position.y;
+//				m.m34 = -position.z;
+//				m = quaternion.toMatrix().toQtType().times(m);
 				m.lookAt(position, viewCenter, upVector);
 				return m;
 			}
