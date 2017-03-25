@@ -18,6 +18,10 @@ function zero3(x) {
 	return Math.abs(x) <= EPS3;
 }
 
+function clamp(v, l, h) {
+	return (v<l)?l:(v>h)?h:v;
+}
+
 var Vector2D = function(x, y) {
 	this._ = Qt.vector2d(x, y);
 }
@@ -283,7 +287,7 @@ Vector2D.prototype.area = function(b) {
 Vector2D.prototype.normalized = function(b) {
 	var l = this.length();
 	if (zero2(l))
-		return clone();
+		return this.clone();
 	else
 		return this.times(1. / l);
 }
@@ -354,7 +358,7 @@ Vector3D.prototype.area = function(b) {
 Vector3D.prototype.normalized = function(b) {
 	var l = this.length();
 	if (zero2(l))
-		return clone();
+		return this.clone();
 	else
 		return this.times(1. / l);
 }
@@ -454,6 +458,8 @@ Quaternion.prototype.times = function(b) {
 	var ry = qq - yy + (this.w - this.x) * (b.y + b.z);
 	var rz = qq - zz + (this.z + this.y) * (b.w - b.x);
 
+	rw = clamp(rw, 0, 1); // precision !
+
 	return new Quaternion(rw, rx, ry, rz);
 }
 
@@ -464,15 +470,17 @@ Quaternion.prototype.dotProduct = function(b) {
 }
 
 Quaternion.prototype.rotated = function(from) {
-	return this.times(new Quaternion(0, from.x, from.y, from.z)).times(this.conjugated()).vector();
+	return this.times(new Quaternion().fromWAndVector(0, from))
+		.times(this.conjugated()).vector()
+		.normalized().times(from.length());
 }
 
+//////////////// test ///////////////////////
 
-var v = new Quaternion().rotationTo(Qt.vector3d(0,0,-1), Qt.vector3d(0,0,-1));
-console.log(v, v.rotated(Qt.vector3d(0,0,-1)));
-console.log(v.toMatrix());
-//v = new Quaternion().rotationTo(new Vector3D(1,0,0), new Vector3D(0,1,0));
-//console.log(v.toMatrix());
+var v;
+
+v = new Quaternion().rotationTo(Qt.vector3d(0,0,-1), Qt.vector3d(0,1,0.75));
+console.log(v, v.rotated(Qt.vector3d(0,0,0)), v.toMatrix());
 
 var Matrix3x3 = function (
 	m11, m12, m13,
