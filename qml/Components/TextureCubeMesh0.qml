@@ -14,7 +14,9 @@ GeometryRenderer {
 			count: 36
 			byteOffset: 0
 			byteStride: 4 * 5
-			name: defaultPositionAttributeName()
+			name: typeof defaultPositionAttributeName === "function" ?
+					  defaultPositionAttributeName():
+					  defaultPositionAttributeName // Qt5.8 ???
 			buffer: vertexBuffer
 		}
 
@@ -25,7 +27,9 @@ GeometryRenderer {
 			count: 36
 			byteOffset: 4 * 3
 			byteStride: 4 * 5
-			name: defaultTextureCoordinateAttributeName()
+			name: typeof defaultTextureCoordinateAttributeName === "function" ?
+					  defaultTextureCoordinateAttributeName():
+					  defaultTextureCoordinateAttributeName // Qt5.8 ???
 			buffer: vertexBuffer
 		}
 	}

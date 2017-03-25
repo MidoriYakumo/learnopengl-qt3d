@@ -19,10 +19,13 @@ Loader {
 		name: "LearnOpenGL.QML.extras"
 		when: windowShown
 
-		function beforeTest(name) {
-			loader.source = "../" + name +".qml";
+		function initTestCase() {
 			Resources.appPrefix = "file:../../";
 			Resources.assetsPrefix = "file:../../";
+		}
+
+		function beforeTest(name) {
+			loader.source = "../" + name +".qml";
 			scene = null;
 			scene = Utils.getElementByCriteria(loader, function(t){
 				return t.hasOwnProperty("aspects");
@@ -215,6 +218,30 @@ Loader {
 			beforeTest("camera-exercise2");
 			randomFly();
 			afterTest("camera-exercise2", 0);
+		}
+
+		function test_basic_lighting_exercise1(){
+			beforeTest("basic_lighting-exercise1");
+			randomFly();
+			afterTest("basic_lighting-exercise1", 0);
+		}
+
+		function test_basic_lighting_exercise2(){
+			beforeTest("basic_lighting-exercise2");
+			randomFly();
+			afterTest("basic_lighting-exercise2", 0);
+		}
+
+		function test_basic_lighting_exercise3(){
+			beforeTest("basic_lighting-exercise3");
+			randomFly();
+			afterTest("basic_lighting-exercise3", 0);
+		}
+
+		function test_lighting_maps_diffuse(){
+			beforeTest("lighting_maps_diffuse");
+			randomFly();
+			afterTest("lighting_maps_diffuse", 0);
 		}
 	}
 }

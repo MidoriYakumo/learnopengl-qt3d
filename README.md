@@ -53,7 +53,7 @@ Content
 4.	[Texture](doc/Texture.md) : works
 5.	[Transformations](doc/Transformations.md) : works
 6.	[Coordinate Systems](doc/Coordinate-Systems.md) : works
-7.	[Camera](doc/Camera.md) : works, extra quaternion version fps controller not available yet
+7.	[Camera](doc/Camera.md) : works
 
 ### Lighting
 

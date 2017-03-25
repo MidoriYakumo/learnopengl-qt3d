@@ -104,12 +104,13 @@ Scene2 {
 				if (mouse.modifiers & Qt.ShiftModifier)
 					sensitivity *= .1;
 
+				// perform rotation on two axis (ie. pitch and yaw)
 				var rx = new Geo.Quaternion(1, 0, (posX - mouse.x)*sensitivity, 0);
 				var ry = new Geo.Quaternion(1, (posY - mouse.y)*sensitivity, 0, 0);
 				camera.qx = camera.qx.times(rx);
 				camera.qy = camera.qy.times(ry);
 
-				console.log(camera.quaternion, camera.quaternion.toMatrix());
+				//console.log(camera.quaternion);
 
 				posX = mouse.x;
 				posY = mouse.y;
@@ -149,13 +150,17 @@ Scene2 {
 
 			property var qx: new Geo.Quaternion(1, 0, 0, 0)
 			property var qy: new Geo.Quaternion(1, 0, 0, 0)
-			property var quaternion: qx.times(qy)
+			property var quaternion: qx.times(qy) // combined pitch after yaw
 			property vector3d position: "0,0,3"
 
 			property vector3d frontVector: quaternion.rotated(Qt.vector3d(0,0,-1)).toQtType()
 			property vector3d rightVector: quaternion.rotated(Qt.vector3d(1,0,0)).toQtType()
 
 			property matrix4x4 viewMatrix: {
+				/*
+					The lookAt transform for quaternion
+				*/
+
 				var translation = Qt.matrix4x4();
 				translation.m14 = -position.x;
 				translation.m24 = -position.y;

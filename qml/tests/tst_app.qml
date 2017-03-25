@@ -28,11 +28,14 @@ Loader {
 		name: "LearnOpenGL.QML.app"
 		when: windowShown
 
+		function initTestCase() {
+			Resources.appPrefix = "file:../../";
+			Resources.assetsPrefix = "file:../../";
+		}
+
 		function beforeTest(idx) {
 			verify(combo);
 			combo.currentIndex = idx;
-			Resources.appPrefix = "file:../../";
-			Resources.assetsPrefix = "file:../../";
 			scene = null;
 			scene = Utils.getElementByCriteria(appLoader.item, function(t){
 				return t.hasOwnProperty("aspects");
@@ -211,5 +214,39 @@ Loader {
 			afterTest(idx, 0);
 		}
 
+		function test_basic_lighting_diffuse(){
+			var idx = 15;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
+
+		function test_basic_lighting_specular(){
+			var idx = 16;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
+
+		function test_materials(){
+			var idx = 17;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
+
+		function test_lighting_maps_specular(){
+			var idx = 18;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
+
+//		function test_lighting_maps_emission(){
+//			var idx = 19;
+//			beforeTest(idx);
+//			randomFly();
+//			afterTest(idx, 0);
+//		}
 	}
 }

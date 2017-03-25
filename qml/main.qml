@@ -92,7 +92,13 @@ Item {
 				styleColor: "#8b8b8b"
 				style: Text.Sunken
 				font.pointSize: 24
+
+				onTextChanged: {
+					Resources.setGlInfo(OpenGLInfo);
+				}
 			}
+
+			AssetCheck {}
 		}
 	}
 

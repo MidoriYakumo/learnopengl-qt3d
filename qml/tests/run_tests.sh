@@ -1,3 +1,3 @@
 rm -rf screenshots
 mkdir screenshots
-qmltestrunner
+qmltestrunner -import ../../qml-virtualkey
