@@ -111,7 +111,7 @@ Scene2 {
 				anchors.bottom: parent.bottom
 				anchors.margins: parent.padding/2
 				width: height
-
+				padding: 12 // Qt 5.9
 			}
 
 			ParallelAnimation {
@@ -146,8 +146,8 @@ Scene2 {
 
 			Component.onCompleted: {
 				defaultLeftPadding = leftPadding;
-				leftPadding = padding + busyIndicator.width;
-				implicitWidth = width;
+				leftPadding += busyIndicator.width - busyIndicator.padding;
+				width += busyIndicator.width - busyIndicator.padding;
 			}
 		},
 		VirtualKeys {

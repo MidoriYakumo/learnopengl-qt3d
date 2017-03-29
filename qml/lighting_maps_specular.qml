@@ -49,9 +49,19 @@ Scene2 {
 
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"
-		property var material: QtObject {
-			property string diffuse: Resources.texture("container2.png")
-			property string specular: Resources.texture("container2_specular.png")
+		property Entity material: Entity {
+			property Texture2D diffuseMap: Texture2D {
+				TextureImage {
+					source: Resources.texture("container2.png")
+				}
+			}
+
+			property Texture2D specularMap: Texture2D {
+				TextureImage {
+					source: Resources.texture("container2_specular.png")
+				}
+			}
+
 			property real shininess: 64.0
 		}
 
@@ -92,19 +102,11 @@ Scene2 {
 								},
 								Parameter {
 									name: "material.diffuse"
-									value: Texture2D {
-										TextureImage {
-											source: root.material.diffuse
-										}
-									}
+									value: root.material.diffuseMap
 								},
 								Parameter {
 									name: "material.specular"
-									value: Texture2D {
-										TextureImage {
-											source: root.material.specular
-										}
-									}
+									value: root.material.specularMap
 								},
 								Parameter {
 									name: "material.shininess"
@@ -142,8 +144,8 @@ Scene2 {
 
 				id: qtMaterial
 				ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
-				diffuse: root.material.diffuse
-				specular: root.material.specular
+				diffuse: root.material.diffuseMap
+				specular: root.material.specularMap
 				shininess: root.material.shininess
 			}
 
