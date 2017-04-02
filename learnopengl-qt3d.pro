@@ -14,8 +14,8 @@ OTHER_FILES += qml/*.qml
 DISTFILES += shared
 
 # Do not distribute with assets
-#CONFIG += no_assets
-CONFIG += no_app
+CONFIG += no_assets
+#CONFIG += no_app
 
 !contains(CONFIG, no_app) {
 	RESOURCES += app.qrc

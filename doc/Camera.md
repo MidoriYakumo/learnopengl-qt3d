@@ -11,7 +11,7 @@ Read the examples and documents to unleash your power.
 
 > Tips:
 >
-> -	Hey, quaternion in QML sucks!
+> -	Hey, quaternion in QML sucks! I have ported one copy of my javascript geometry library in geo.js for convenience.
 > -	The Qt3D internal Camera type will be introduced in the next article.
 
 [camera_circle](../qml/camera_circle.qml)
@@ -43,7 +43,26 @@ Use MouseHandler the way you do to MouseArea, modifiers can be passed into mouse
 [camera_quaternion](../qml/camera_quaternion.qml)
 -------------------------------------------------
 
-Oh I can not invoke QQuaternion methods to do calculations now...
+To keep upVector up you need to decompose rotation into two axes(yaw and pitch):
+
+```javascript
+	qx = qx.times(rx);
+	qy = qy.times(ry);
+	quaternion = qx.times(qy)
+```
+
+It is more easy to create rotation in quaternion and there is difference with Euler angle, for example you no longer need to **lookAt**! 
+
+```javascript
+	var translation = Qt.matrix4x4();
+	translation.m14 = -position.x;
+	translation.m24 = -position.y;
+	translation.m34 = -position.z;
+	viewMatrix = quaternion.conjugated().toMatrix()
+		.toQtType().times(translation);
+```
+
+Try and you can tell it.
 
 [camera-exercise1](../qml/camera-exercise1.qml)
 -----------------------------------------------

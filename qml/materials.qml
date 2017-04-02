@@ -109,9 +109,8 @@ Scene2 {
 				anchors.left: parent.left
 				anchors.top: parent.top
 				anchors.bottom: parent.bottom
-				anchors.margins: parent.padding/2
+				anchors.margins: 4
 				width: height
-				padding: 12 // Qt 5.9
 			}
 
 			ParallelAnimation {

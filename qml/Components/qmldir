@@ -1,8 +1,25 @@
-singleton 	Resources 	1.0 	Resources.qml
-singleton 	Examples 	1.0 	Examples.qml
 
-#singleton 	Palette 	1.0 	Palette.qml
-#singleton 	TheInputSettings 	1.0 	TheInputSettings.qml
-
-Utils 	1.0 	utils.js
-Geo 	1.0		geo.js
+AssetCheck                  AssetCheck.qml
+singleton Examples          Examples.qml
+FpsLine                     FpsLine.qml
+FrameSwap                   FrameSwap.qml
+Geo                         geo.js
+NonUniformScaledCuboidMesh0 NonUniformScaledCuboidMesh0.qml
+OurCameraController         OurCameraController.qml
+OurCamera                   OurCamera.qml
+RenderInputSettings0        RenderInputSettings0.qml
+RenderSettings0             RenderSettings0.qml
+RenderSettings1             RenderSettings1.qml
+RenderSettings2             RenderSettings2.qml
+singleton Resources         Resources.qml
+Scene0                      Scene0.qml
+Scene1                      Scene1.qml
+Scene2                      Scene2.qml
+Scene3                      Scene3.qml
+ShaderProgram0              ShaderProgram0.qml
+TextureCube0                TextureCube0.qml
+TextureCubeMesh0            TextureCubeMesh0.qml
+TextureRectanglePlane0      TextureRectanglePlane0.qml
+Time                        Time.qml
+TrianglePlane0              TrianglePlane0.qml
+Utils                       utils.js

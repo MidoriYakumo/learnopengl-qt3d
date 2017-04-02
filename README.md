@@ -7,9 +7,15 @@ Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works
 
 Pure QML version, use qmlscene to run with default OpenGL Context:
 
+~~**Try it with Qt5.7+:**~~
+
+```shell
+	qmlscene -I https://raw.githubusercontent.com/MidoriYakumo/qml-virtualkey/master/ https://raw.githubusercontent.com/MidoriYakumo/learnopengl-qt3d/master/qml/app.qml
+```
+
 ![](doc/img/ss-qml.png)
 
-Compiled version, context set to GL4.3/GLES3.0:
+Compiled version, context set to GL4.3(Desktop)/GLES3.0(Mobile):
 
 ![](doc/img/ss-qt3d-desktop.png)
 
@@ -23,8 +29,6 @@ learnopengl-qt3d can be launched from either qmlscene or compiled binary file.
 Main qml file for qmlscene/binary/QmlCreator:
 
 -	app.qml: main window with line chart FPS display
-
--	app-testfps.qml: main window with text FPS display
 
 -	main.qml: QuickItem as root + text FPS display
 

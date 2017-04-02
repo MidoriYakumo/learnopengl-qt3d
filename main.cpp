@@ -39,7 +39,6 @@ int main(int argc, char* argv[])
 #ifdef Q_OS_ANDROID
 	engine.load(QUrl(QLatin1String("file:/sdcard/Documents/QML Projects/Examples/LearnOpenGL/app.qml")));
 #else
-	//	engine.load(QUrl(QLatin1String("file:../qml/app.qml"))); // Qt 5.9 ???
 	engine.load(QUrl(QLatin1String("../qml/app.qml")));
 #endif
 #else
