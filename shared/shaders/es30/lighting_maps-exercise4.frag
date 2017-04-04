@@ -7,7 +7,8 @@ precision lowp float;
 
 struct Material {
 	sampler2D diffuse;
-	vec3 specular;
+	sampler2D specular;
+	sampler2D emission;
 	float shininess;
 };
 
@@ -19,12 +20,13 @@ struct Light {
 	vec3 specular;
 };
 
-in vec3 normal;
-in vec3 fragPos;
-in vec2 texCoord;
+varying vec3 normal;
+varying vec3 fragPos;
+varying vec2 texCoord;
 
 out vec4 color;
 
+uniform float time;
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light;
@@ -44,8 +46,13 @@ void main()
 	vec3 viewDir = normalize(viewPos - fragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.), material.shininess);
-	vec3 specular = light.specular * (spec * material.specular);
+	vec3 specColor = vec3(texture(material.specular, texCoord));
+	vec3 specular = light.specular * spec * specColor;
 
-	vec3 result = ambient + diffuse + specular;
-	color = vec4(result, 1.);
+	// Emission
+	vec3 emission = length(specColor) < 1e-2 ?
+		vec3(texture(material.emission, texCoord + vec2(0., time))) : vec3(0.);
+
+	vec3 result = ambient + diffuse + specular + emission;
+	gl_FragColor = vec4(result, 1.);
 }

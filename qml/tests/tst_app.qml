@@ -241,12 +241,5 @@ Loader {
 			randomFly();
 			afterTest(idx, 0);
 		}
-
-//		function test_lighting_maps_emission(){
-//			var idx = 19;
-//			beforeTest(idx);
-//			randomFly();
-//			afterTest(idx, 0);
-//		}
 	}
 }

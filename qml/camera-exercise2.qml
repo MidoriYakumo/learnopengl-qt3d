@@ -9,7 +9,7 @@ Scene2 {
 	id: scene
 	children: VirtualKeys {
 		target: scene
-		enableGameButtons: false
+		gameButtonsEnabled: false
 		color: "transparent"
 	}
 
@@ -120,9 +120,9 @@ Scene2 {
 			onWheel: {
 				var d = wheel.angleDelta.y * 1e-3;
 				if (d>0)
-					camera.fieldOfView = Utils.mix(camera.fieldOfView, 1., d);
+					camera.fieldOfView = Geo.mix(camera.fieldOfView, 1., d);
 				else
-					camera.fieldOfView = Utils.mix(camera.fieldOfView, 45., -d);
+					camera.fieldOfView = Geo.mix(camera.fieldOfView, 45., -d);
 			}
 		}
 

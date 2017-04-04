@@ -182,9 +182,9 @@ Entity {
 
 			if (d.wAxisValue != 0) {
 				if (d.wAxisValue>0)
-					fov = Utils.mix(fov, 1., d.wAxisValue);
+					fov = Geo.mix(fov, 1., d.wAxisValue);
 				else
-					fov = Utils.mix(fov, 180., -d.wAxisValue);
+					fov = Geo.mix(fov, 180., -d.wAxisValue);
 				d.wAxisValue = 0;
 			}
 

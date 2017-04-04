@@ -14,7 +14,7 @@ GeometryRenderer {
 			name: "position"
 			buffer: Buffer {
 				type: Buffer.VertexBuffer
-				data: Float32Array([
+				data: new Float32Array([
 					-0.5, -0.5, 0.0, // Left
 					 0.5, -0.5, 0.0, // Right
 					 0.0,  0.5, 0.0, // Top

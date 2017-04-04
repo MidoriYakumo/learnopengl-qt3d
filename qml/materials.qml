@@ -51,6 +51,7 @@ Scene2 {
 					}
 				}
 			}
+
 			delegate: MenuItem {
 				text: name.setCharAt(0, name[0].toUpperCase())
 				leftPadding: rightPadding + thumbSize
@@ -106,11 +107,10 @@ Scene2 {
 
 			BusyIndicator {
 				id: busyIndicator
-				anchors.left: parent.left
+				width: height
 				anchors.top: parent.top
 				anchors.bottom: parent.bottom
 				anchors.margins: 4
-				width: height
 			}
 
 			ParallelAnimation {
@@ -145,13 +145,14 @@ Scene2 {
 
 			Component.onCompleted: {
 				defaultLeftPadding = leftPadding;
-				leftPadding += busyIndicator.width - busyIndicator.padding;
-				width += busyIndicator.width - busyIndicator.padding;
+				var dw = busyIndicator.width - busyIndicator.padding * 2;
+				leftPadding += dw;
+				width += dw;
 			}
 		},
 		VirtualKeys {
 			target: scene
-			enableGameButtons: false
+			gameButtonsEnabled: false
 			color: "transparent"
 			centerItem: RowKeys {
 				keys: [

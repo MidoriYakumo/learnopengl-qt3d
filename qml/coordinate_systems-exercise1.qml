@@ -10,7 +10,7 @@ Scene3 {
 	id: scene
 	children: VirtualKeys {
 		target: scene
-		enableGameButtons: false
+		gameButtonsEnabled: false
 		color: "transparent"
 	}
 
@@ -40,19 +40,19 @@ Scene3 {
 		KeyboardHandler {
 			focus: true
 			onUpPressed: {
-				root.fov = Utils.mix(root.fov, 0, 0.1);
+				root.fov = Geo.mix(root.fov, 0, 0.1);
 				console.log("fov:", root.fov);
 			}
 			onDownPressed: {
-				root.fov = Utils.mix(root.fov, 180, 0.1);
+				root.fov = Geo.mix(root.fov, 180, 0.1);
 				console.log("fov:", root.fov);
 			}
 			onLeftPressed: {
-				root.aspectRatio = Utils.mix(root.aspectRatio, 1e-1, 0.1);
+				root.aspectRatio = Geo.mix(root.aspectRatio, 1e-1, 0.1);
 				console.log("aspectRatio:", root.aspectRatio);
 			}
 			onRightPressed: {
-				root.aspectRatio = Utils.mix(root.aspectRatio, 1e1, 0.1);
+				root.aspectRatio = Geo.mix(root.aspectRatio, 1e1, 0.1);
 				console.log("aspectRatio:", root.aspectRatio);
 			}
 			sourceDevice: keyboardDevice
@@ -116,7 +116,7 @@ Scene3 {
 			Buffer {
 				id: vertexBuffer
 				type: Buffer.VertexBuffer
-				data: Float32Array([
+				data: new Float32Array([
 				  -0.5, -0.5, -0.5,  0.0, 0.0,
 				   0.5, -0.5, -0.5,  1.0, 0.0,
 				   0.5,  0.5, -0.5,  1.0, 1.0,

@@ -10,16 +10,16 @@ import "Components"
 
 Scene2 {
 	id: scene
-	children: VirtualKeys {
-		target: scene
-		enableGameButtons: false
-		color: "transparent"
-		centerItem: RowKeys {
-			keys: [
-				{text:"Space", key:Qt.Key_Space},
-			]
+	children: [
+		VirtualKeys {
+			target: scene
+			gameButtonsEnabled: false
+			color: "transparent"
+		},
+		Time {
+			id: time
 		}
-	}
+	]
 
 	Entity {
 		id: root
@@ -29,23 +29,6 @@ Scene2 {
 
 			mouseSensitivity: 0.5 / Units.dp
 		}
-
-		KeyboardDevice {
-			id: keyboardDevice
-		}
-
-		KeyboardHandler {
-			id: keyboardHandler
-			sourceDevice: keyboardDevice
-			focus: true
-
-			onSpacePressed: {
-				root.useQtMaterial = !root.useQtMaterial;
-				console.log("useQtMaterial:", root.useQtMaterial);
-			}
-		}
-
-		property bool useQtMaterial: false
 
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"
@@ -58,7 +41,15 @@ Scene2 {
 
 			property Texture2D specularMap: Texture2D {
 				TextureImage {
-					source: Resources.texture("lighting_maps_specular_color.png")
+					source: Resources.texture("container2_specular.png")
+				}
+			}
+
+			property Texture2D emissionMap: Texture2D {
+				wrapMode.y: WrapMode.Repeat
+
+				TextureImage {
+					source: Resources.texture("matrix.jpg")
 				}
 			}
 
@@ -93,9 +84,13 @@ Scene2 {
 						renderPasses: RenderPass {
 							shaderProgram: ShaderProgram0 {
 								vertName: "lighting_maps"
-								fragName: "lighting_maps_specular"
+								fragName: "lighting_maps-exercise4"
 							}
 							parameters: [
+								Parameter {
+									name: "time"
+									value: time.value
+								},
 								Parameter {
 									name: "viewPos"
 									value: root.viewPos
@@ -107,6 +102,10 @@ Scene2 {
 								Parameter {
 									name: "material.specular"
 									value: root.material.specularMap
+								},
+								Parameter {
+									name: "material.emission"
+									value: root.material.emissionMap
 								},
 								Parameter {
 									name: "material.shininess"
@@ -134,32 +133,11 @@ Scene2 {
 				}
 			}
 
-			DiffuseSpecularMapMaterial {
-				/*
-					Phong material with diffuse and specular map in Qt3D.Extras,
-					Qt PointLight is required to work with
-					The model is different with learnopengl.com
-					Src: Src/qt3d/src/quick3d/imports/extras/defaults/qml/DiffuseSpecularMapMaterial.qml
-				*/
-
-				id: qtMaterial
-				ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
-				diffuse: root.material.diffuseMap
-				specular: root.material.specularMap
-				shininess: root.material.shininess
-			}
-
-			components: [mesh, objectTransform, root.useQtMaterial?qtMaterial:ourMaterial]
+			components: [mesh, objectTransform, ourMaterial]
 		}
 
 		Entity {
 			id: lamp
-
-			PointLight {
-				id: qtLamp
-				color: root.lightColor
-				intensity: 1
-			}
 
 			Transform {
 				id: lampTransform
@@ -187,7 +165,7 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, qtLamp, lampTransform, lampMaterial]
+			components: [mesh, lampTransform, lampMaterial]
 		}
 	}
 }

@@ -22,6 +22,10 @@ function clamp(v, l, h) {
 	return (v<l)?l:(v>h)?h:v;
 }
 
+function mix(a, b, u) {
+	return a*(1.-u)+b*u;
+}
+
 var Vector2D = function(x, y) {
 	this._ = Qt.vector2d(x, y);
 }
@@ -476,11 +480,6 @@ Quaternion.prototype.rotated = function(from) {
 }
 
 //////////////// test ///////////////////////
-
-var v;
-
-//v = new Quaternion().rotationTo(Qt.vector3d(0,0,-1), Qt.vector3d(0,1,0.75));
-//console.log(v, v.rotated(Qt.vector3d(0,0,0)), v.toMatrix());
 
 var Matrix3x3 = function (
 	m11, m12, m13,

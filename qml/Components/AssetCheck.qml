@@ -20,6 +20,7 @@ PathView {
 	model: [
 		"", "", "",
 		Resources.texture("matrix.jpg"),
+		Resources.texture("lighting_maps_specular_color.png"),
 		Resources.texture("grass.png"),
 		Resources.texture("container2.png"),
 		Resources.texture("container2_specular.png"),

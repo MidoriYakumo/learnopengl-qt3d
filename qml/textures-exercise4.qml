@@ -32,7 +32,7 @@ Scene0 {
 	children: VirtualKeys {
 		target: scene
 		targetHandler: keyboardHandler
-		enableGameButtons: false
+		gameButtonsEnabled: false
 		color: "transparent"
 	}
 
@@ -57,8 +57,8 @@ Scene0 {
 		KeyboardHandler {
 			id: keyboardHandler
 			focus: true
-			onUpPressed: root.mixValue = Utils.mix(root.mixValue, 1., .1)
-			onDownPressed: root.mixValue = Utils.mix(root.mixValue, 0., .1)
+			onUpPressed: root.mixValue = Geo.mix(root.mixValue, 1., .1)
+			onDownPressed: root.mixValue = Geo.mix(root.mixValue, 0., .1)
 			sourceDevice: keyboardDevice
 		}
 
@@ -122,7 +122,7 @@ Scene0 {
 				Buffer {
 					id: vertexBuffer
 					type: Buffer.VertexBuffer
-					data: Float32Array([
+					data: new Float32Array([
 						// Positions	  // Colors		// Texture Coords
 						 0.5,  0.5, 0.0,   1.0, 0.0, 0.0,   1.0, 1.0, // Top Right
 						 0.5, -0.5, 0.0,   0.0, 1.0, 0.0,   1.0, 0.0, // Bottom Right

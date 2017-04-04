@@ -23,7 +23,7 @@ Scene0 {
 						name: "position"
 						buffer: Buffer {
 							type: Buffer.VertexBuffer
-							data: Float32Array([
+							data: new Float32Array([
 								// First triangle
 								-0.9, -0.5, 0.0,  // Left
 								-0.0, -0.5, 0.0,  // Right

@@ -11,8 +11,8 @@ Scene2 {
 	children: VirtualKeys {
 		target: scene
 		targetHandler: keyboardHandler
-		enablePad: false
-		enableGameButtons: false
+		padEnabled: false
+		gameButtonsEnabled: false
 		color: "transparent"
 		centerItem: RowKeys {
 			keys: [

@@ -29,7 +29,7 @@ Scene0 {
 						name: "position"
 						buffer: Buffer {
 							type: Buffer.VertexBuffer
-							data: Float32Array([
+							data: new Float32Array([
 								0.5,  0.5, 0.0,  // Top Right
 								0.5, -0.5, 0.0,  // Bottom Right
 							   -0.5, -0.5, 0.0,  // Bottom Left

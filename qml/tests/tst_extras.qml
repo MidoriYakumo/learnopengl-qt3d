@@ -243,5 +243,29 @@ Loader {
 			randomFly();
 			afterTest("lighting_maps_diffuse", 0);
 		}
+
+		function test_lighting_maps_exercise1(){
+			beforeTest("lighting_maps-exercise1");
+			randomFly();
+			afterTest("lighting_maps-exercise1", 0);
+		}
+
+		function test_lighting_maps_exercise2(){
+			beforeTest("lighting_maps-exercise2");
+			randomFly();
+			afterTest("lighting_maps-exercise2", 0);
+		}
+
+		function test_lighting_maps_exercise3(){
+			beforeTest("lighting_maps-exercise3");
+			randomFly();
+			afterTest("lighting_maps-exercise3", 0);
+		}
+
+		function test_lighting_maps_exercise4(){
+			beforeTest("lighting_maps-exercise4");
+			randomFly();
+			afterTest("lighting_maps-exercise4", 0);
+		}
 	}
 }

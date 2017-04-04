@@ -12,7 +12,7 @@ Scene2 {
 	id: scene
 	children: VirtualKeys {
 		target: scene
-		enableGameButtons: false
+		gameButtonsEnabled: false
 		color: "transparent"
 		centerItem: RowKeys {
 			keys: [

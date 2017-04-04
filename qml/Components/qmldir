@@ -3,7 +3,7 @@ AssetCheck                  AssetCheck.qml
 singleton Examples          Examples.qml
 FpsLine                     FpsLine.qml
 FrameSwap                   FrameSwap.qml
-Geo                         geo.js
+Geo 1.0 geo.js
 NonUniformScaledCuboidMesh0 NonUniformScaledCuboidMesh0.qml
 OurCameraController         OurCameraController.qml
 OurCamera                   OurCamera.qml
@@ -22,4 +22,4 @@ TextureCubeMesh0            TextureCubeMesh0.qml
 TextureRectanglePlane0      TextureRectanglePlane0.qml
 Time                        Time.qml
 TrianglePlane0              TrianglePlane0.qml
-Utils                       utils.js
+Utils 1.0 utils.js

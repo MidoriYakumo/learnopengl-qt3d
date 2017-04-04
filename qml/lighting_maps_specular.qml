@@ -12,7 +12,7 @@ Scene2 {
 	id: scene
 	children: VirtualKeys {
 		target: scene
-		enableGameButtons: false
+		gameButtonsEnabled: false
 		color: "transparent"
 		centerItem: RowKeys {
 			keys: [
@@ -144,8 +144,10 @@ Scene2 {
 
 				id: qtMaterial
 				ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
-				diffuse: root.material.diffuseMap
-				specular: root.material.specularMap
+				diffuse: Resources.texture("container2.png")
+				specular: Resources.texture("container2_specular.png")
+				//diffuse: root.material.diffuseMap   // Qt5.9 ???
+				//specular: root.material.specularMap // Qt5.9 ???
 				shininess: root.material.shininess
 			}
 

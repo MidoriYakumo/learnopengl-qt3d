@@ -17,7 +17,7 @@ uniform mat4 modelMatrix;
 
 void main()
 {
-	gl_Position = mvp * vec4(vertexPosition, 1f);
+	gl_Position = mvp * vec4(vertexPosition, 1.);
 	normal = modelNormalMatrix * vertexNormal;
 	fragPos = vec3(modelMatrix * vec4(vertexPosition, 1.));
 	texCoord = vertexTexCoord;
