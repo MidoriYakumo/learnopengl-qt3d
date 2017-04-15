@@ -19,7 +19,7 @@ Scene1 {
 		Entity { // Our Camera type !
 			id: camera
 
-			property vector3d position: Qt.vector3d(10*Math.sin(time.value), 0, 10*Math.cos(time.value))
+			property vector3d position: Qt.vector3d(10.*Math.sin(time.value), 0, 10.*Math.cos(time.value))
 			property vector3d viewCenter: "0,0,0"
 			property vector3d upVector: "0,1,0"
 
@@ -66,7 +66,7 @@ Scene1 {
 			delegate: TextureCube0 { // Moved to Cube type
 				transform: Transform {
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
 				}
 				viewMatrix: camera.viewMatrix
 				projectionMatrix: camera.projectionMatrix

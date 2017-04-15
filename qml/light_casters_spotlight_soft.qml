@@ -27,7 +27,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: .5 / Units.dp
+			mouseSensitivity: 0.5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -40,12 +40,11 @@ Scene2 {
 			focus: true
 
 			onSpacePressed: {
-				root.useQtLight = !root.useQtLight;
-				console.log("useQtLight:", root.useQtLight);
+				root.useSoftSpot = !root.useSoftSpot;
 			}
 		}
 
-		property bool useQtLight: false
+		property bool useSoftSpot: true
 
 		property var cubePositions: [
 			Qt.vector3d( 0.0,  0.0,  0.0),
@@ -80,11 +79,21 @@ Scene2 {
 		QtObject {
 			id: light
 
-			property vector3d direction: "-0.2, -1.0, -0.3"
+			property vector3d position: renderInputSettings.camera.position
+			property vector3d direction: renderInputSettings.camera.frontVector
+			property real cutOff: Math.cos(Geo.deg2rad(12.5))
+			property real outerCutOff: Math.cos(Geo.deg2rad(17.5))
 
-			property vector3d ambient: "0.2, 0.2, 0.2"
-			property vector3d diffuse: "0.5, 0.5, 0.5"
-			property vector3d specular: "1.0, 1.0, 1.0"
+			// We set the diffuse intensity a bit higher; note that the right lighting conditions differ with each lighting method and environment.
+			// Each environment and lighting type requires some tweaking of these variables to get the best out of your environment.
+
+			property vector3d ambient: ".1, .1, .1"
+			property vector3d diffuse: ".8, .8, .8"
+			property vector3d specular: "1., 1., 1."
+
+			property real constantAttenuation: 1.0
+			property real linearAttenuation: 0.09
+			property real quadraticAttenuation: 0.032
 		}
 
 		CuboidMesh {
@@ -98,7 +107,9 @@ Scene2 {
 					renderPasses: RenderPass {
 						shaderProgram: ShaderProgram0 {
 							vertName: "lighting_maps"
-							fragName: "light_casters_directional"
+							fragName: root.useSoftSpot ?
+								"light_casters_spotlight_soft" :
+								"light_casters_spotlight_hard"
 						}
 						parameters: [
 							Parameter {
@@ -118,8 +129,20 @@ Scene2 {
 								value: root.material.shininess
 							},
 							Parameter {
+								name: "light.position"
+								value: light.position
+							},
+							Parameter {
 								name: "light.direction"
 								value: light.direction
+							},
+							Parameter {
+								name: "light.cutOff"
+								value: light.cutOff
+							},
+							Parameter {
+								name: "light.outerCutOff"
+								value: light.outerCutOff
 							},
 							Parameter {
 								name: "light.ambient"
@@ -132,6 +155,18 @@ Scene2 {
 							Parameter {
 								name: "light.specular"
 								value: light.specular
+							},
+							Parameter {
+								name: "light.constant"
+								value: light.constantAttenuation
+							},
+							Parameter {
+								name: "light.linear"
+								value: light.linearAttenuation
+							},
+							Parameter {
+								name: "light.quadratic"
+								value: light.quadraticAttenuation
 							}
 						]
 					}
@@ -139,37 +174,15 @@ Scene2 {
 			}
 		}
 
-		DiffuseSpecularMapMaterial {
-			id: qtMaterial
-			ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
-			diffuse: Resources.texture("container2.png")
-			specular: Resources.texture("container2_specular.png")
-			//diffuse: root.material.diffuseMap   // FIXME: Qt5.9 ???
-			//specular: root.material.specularMap // FIXME: Qt5.9 ???
-			shininess: root.material.shininess
-		}
-
 		NodeInstantiator {
 			model: root.cubePositions
 			delegate: Entity {
 				property Transform transform: Transform {
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
 				}
-				components: [mesh, root.useQtLight?qtMaterial:ourMaterial, transform]
+				components: [mesh, ourMaterial, transform]
 			}
-		}
-
-		Entity {
-			id: sun
-
-			DirectionalLight {
-				id: qtLight
-				color: root.lightColor
-				worldDirection: light.direction
-			}
-
-			components: [qtLight]
 		}
 	}
 }

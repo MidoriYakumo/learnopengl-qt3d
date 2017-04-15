@@ -16,7 +16,7 @@ ChartView {
 	property int vMargin: 6
 
 	property real span: d.span
-	property real maxMargin: 0.5
+	property real maxMargin: .5
 
 	function updateDt(dt) {
 		var t = d.t + dt;
@@ -33,7 +33,7 @@ ChartView {
 		avgSer.append(t - d.span, d.avg);
 		avgSer.append(t, d.avg);
 
-		// Math.max(...arr) for ES6
+		// TODO: Math.max(...arr) for ES6
 		yAxis.max = (d.avg + 1) * (1. + maxMargin);
 	}
 
@@ -117,8 +117,8 @@ ChartView {
 	}
 
 	onSpanChanged: {
-		if (span < 0.1)
-			d.span = 0.1;
+		if (span < .1)
+			d.span = .1;
 		else if (span > 60)
 			d.span = 60;
 		else

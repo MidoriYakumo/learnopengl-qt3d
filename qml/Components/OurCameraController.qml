@@ -14,19 +14,22 @@ Entity {
 		With Qt3D Logic aspect, we can handle various input devices more easily
 		the flag bits described with LogicalDevice, neat and tidy
 		Refer: qthelp://org.qt-project.qt3d.570/qt3d/qml-qt3d-input-logicaldevice.html
+
+		NOTE: Wheel Axis supported since Qt 5.8
+		See: http://lists.qt-project.org/pipermail/interest/2016-August/024010.html
+			and qt3d/src/input/backend/mousedevice.cpp
 	*/
 
 	property Entity camera
-	property real mouseSensitivity: 0.5 // Units.dp
+	property real mouseSensitivity: .5 // Units.dp
 	property real cameraSpeed: 5.
 
 	QtObject {
 		id: d
 
-		property real fineScale: fineModifier.active?0.1:1. // with shift key
+		property real fineScale: fineModifier.active ? .1 : 1. // with shift key
 		property real mouseSensitivity: root.mouseSensitivity*fineScale
 		property real cameraSpeed: root.cameraSpeed*fineScale
-		property real wAxisValue: 0
 		property bool lookActionActived: false
 		property bool orbitActionActived: false
 		property bool moveActionActived: false
@@ -42,14 +45,7 @@ Entity {
 	}
 
 	MouseHandler {
-		// Wheel LogicDevice would be supported in Qt 5.8
-		// See: http://lists.qt-project.org/pipermail/interest/2016-August/024010.html
-
 		sourceDevice: mouseDevice
-
-		onWheel:{
-			d.wAxisValue = wheel.angleDelta.y * 1e-3 * d.fineScale;
-		}
 	}
 
 	LogicalDevice {
@@ -137,10 +133,10 @@ Entity {
 			},
 			Axis {
 				id: wAxis
-//				AnalogAxisInput {
-//					sourceDevice: mouseDevice
-//					axis: MouseDevice.Wheel
-//				}
+				AnalogAxisInput {
+					sourceDevice: mouseDevice
+					axis: MouseDevice.WheelY
+				}
 			}
 		]
 	}
@@ -180,13 +176,10 @@ Entity {
 			}
 			d.moveActionActived = moveAction.active;
 
-			if (d.wAxisValue != 0) {
-				if (d.wAxisValue>0)
-					fov = Geo.mix(fov, 1., d.wAxisValue);
-				else
-					fov = Geo.mix(fov, 180., -d.wAxisValue);
-				d.wAxisValue = 0;
-			}
+			if (wAxis.value>0)
+				fov = Geo.mix(fov, 1., wAxis.value * 1e-1 * d.fineScale);
+			else
+				fov = Geo.mix(fov, 180., -wAxis.value * 1e-1 * d.fineScale);
 
 			root.camera.position = position;
 			root.camera.yaw = yaw;

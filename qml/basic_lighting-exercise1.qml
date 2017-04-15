@@ -26,7 +26,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -47,9 +47,9 @@ Scene2 {
 		property bool useGouraudShader: false
 
 		property vector3d lightPos: Qt.vector3d(
-			Math.cos(time.v1)*Math.cos(time.v2)*2.0,
-			Math.cos(time.v1)*Math.sin(time.v2)*2.0,
-			Math.sin(time.v1)*2.0
+			Math.cos(time.v1) * Math.cos(time.v2) * 2.,
+			Math.cos(time.v1) * Math.sin(time.v2) * 2.,
+			Math.sin(time.v1) * 2.
 		)
 		property vector3d viewPos: renderInputSettings.camera.position
 		property color lightColor: "white"

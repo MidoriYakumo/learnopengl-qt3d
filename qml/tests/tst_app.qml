@@ -241,5 +241,19 @@ Loader {
 			randomFly();
 			afterTest(idx, 0);
 		}
+
+		function test_light_casters_directional(){
+			var idx = 19;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
+
+		function test_light_casters_spotlight_soft(){
+			var idx = 20;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
 	}
 }

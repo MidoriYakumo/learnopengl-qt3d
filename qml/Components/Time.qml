@@ -1,6 +1,7 @@
 import QtQuick 2.7
 
 Item {
+	// NOTE: QtQuick animations are based on swapInterval, so time is required
 	id: time
 
 	property real value

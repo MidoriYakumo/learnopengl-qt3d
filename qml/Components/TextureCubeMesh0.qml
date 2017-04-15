@@ -16,7 +16,7 @@ GeometryRenderer {
 			byteStride: 4 * 5
 			name: typeof defaultPositionAttributeName === "function" ?
 					  defaultPositionAttributeName():
-					  defaultPositionAttributeName // Qt5.8 ???
+					  defaultPositionAttributeName // FIXME: Qt5.8 ???
 			buffer: vertexBuffer
 		}
 
@@ -29,7 +29,7 @@ GeometryRenderer {
 			byteStride: 4 * 5
 			name: typeof defaultTextureCoordinateAttributeName === "function" ?
 					  defaultTextureCoordinateAttributeName():
-					  defaultTextureCoordinateAttributeName // Qt5.8 ???
+					  defaultTextureCoordinateAttributeName // FIXME: Qt5.8 ???
 			buffer: vertexBuffer
 		}
 	}

@@ -74,7 +74,7 @@ Scene2 {
 				}
 			}
 
-			property real shininess: 64.0
+			property real shininess: 32.
 		}
 
 		QtObject {
@@ -180,7 +180,7 @@ Scene2 {
 			id: lamp
 
 			PointLight {
-				id: qtLamp
+				id: qtLight
 				color: root.lightColor
 				intensity: 1
 				constantAttenuation: light.constantAttenuation
@@ -189,13 +189,13 @@ Scene2 {
 			}
 
 			Transform {
-				id: lampTransform
+				id: lightTransform
 				translation: light.position
 				scale: .2
 			}
 
 			Material {
-				id: lampMaterial
+				id: lightMaterial
 				effect: Effect {
 					techniques: Technique {
 						renderPasses: RenderPass {
@@ -214,7 +214,7 @@ Scene2 {
 				}
 			}
 
-			components: [mesh, qtLamp, lampTransform, lampMaterial]
+			components: [mesh, qtLight, lightTransform, lightMaterial]
 		}
 	}
 }

@@ -22,7 +22,7 @@ GeometryRenderer {
 			byteStride: 4 * 6
 			name: typeof defaultPositionAttributeName === "function" ?
 					  defaultPositionAttributeName():
-					  defaultPositionAttributeName // Qt5.8 ???
+					  defaultPositionAttributeName // FIXME: Qt5.8 ???
 			buffer: vertexBuffer
 		}
 
@@ -36,7 +36,7 @@ GeometryRenderer {
 			byteStride: 4 * 6
 			name: typeof defaultNormalAttributeName === "function" ?
 					  defaultNormalAttributeName():
-					  defaultNormalAttributeName // Qt5.8 ???
+					  defaultNormalAttributeName // FIXME: Qt5.8 ???
 			buffer: vertexBuffer
 		}
 	}
@@ -90,7 +90,7 @@ GeometryRenderer {
 			]);
 
 			var i, idx, iStart, p;
-			// var m = Qt.matrix4x4(mesh.matrix); // BUG?
+			// var m = Qt.matrix4x4(mesh.matrix); // BUG ???
 			var m = Qt.matrix4x4(
 				mesh.matrix.m11, mesh.matrix.m12, mesh.matrix.m13, 0,
 				mesh.matrix.m21, mesh.matrix.m22, mesh.matrix.m23, 0,

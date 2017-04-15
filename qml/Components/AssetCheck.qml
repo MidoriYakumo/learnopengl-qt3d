@@ -3,7 +3,6 @@ import QtQuick.Controls 2.0
 
 import "."
 
-
 PathView {
 	id: control
 	anchors.bottom: parent.bottom
@@ -61,9 +60,9 @@ PathView {
 		opacity: PathView.iconOpactiy
 		fillMode: Image.PreserveAspectFit
 		source: modelData
-//		asynchronous: true // #BUG: fail to parse url scheme
+//		asynchronous: true // BUG: fail to parse url scheme
 		autoTransform: false
-//		cache: false // #BUG: failCount += 3
+//		cache: false // BUG: failCount += 3
 		mipmap: false
 
 		Label {
@@ -99,11 +98,11 @@ PathView {
 		startX: 0
 		startY: control.height/2
 		PathLine { x: 0; relativeY: 0; }
-		PathAttribute { name: "iconOpactiy"; value: 0.0; }
+		PathAttribute { name: "iconOpactiy"; value: 0.; }
 		PathLine { x: control.width/2; relativeY: 0; }
-		PathAttribute { name: "iconOpactiy"; value: 1.0; }
+		PathAttribute { name: "iconOpactiy"; value: 1.; }
 		PathLine { x: control.width; relativeY: 0; }
-		PathAttribute { name: "iconOpactiy"; value: 0.0; }
+		PathAttribute { name: "iconOpactiy"; value: 0.; }
 	}
 
 	Label {

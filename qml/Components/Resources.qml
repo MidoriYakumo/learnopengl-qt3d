@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick 2.7
 
 Item { // This is the global resource router
+	// FIXME: bad routine and different versions with format in C++
 
 	readonly property var os2Prefix: {
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,

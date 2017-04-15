@@ -21,7 +21,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		property vector3d lightPos: "1.2, 1.0, 2.0"

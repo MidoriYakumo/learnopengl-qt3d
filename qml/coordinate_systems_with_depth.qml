@@ -180,7 +180,7 @@ Scene2 {
 
 				matrix: { // modelMatrix
 					var m = Qt.matrix4x4();
-					m.rotate(time.value % 360 * 50, Qt.vector3d(.5, 1, 0));
+					m.rotate(time.value % 360 * 50, Qt.vector3d(0.5, 1.0, 0.0));
 					return m;
 				}
 

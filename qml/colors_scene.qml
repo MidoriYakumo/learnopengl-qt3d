@@ -36,7 +36,7 @@ Scene2 {
 
 		OurCameraController { // Our camera controller via Qt3D Logic
 			camera: root.camera
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -115,8 +115,8 @@ Scene2 {
 			projectionType: CameraLens.PerspectiveProjection
 			fieldOfView: 45  // Projection
 			aspectRatio: scene.width/scene.height
-			nearPlane : 0.1
-			farPlane : 100.0
+			nearPlane : .1
+			farPlane : 100.
 			position: "0,0,3"// View
 			viewCenter: position.plus(frontVector)
 			upVector: "0,1,0"

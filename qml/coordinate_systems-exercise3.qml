@@ -78,8 +78,8 @@ Scene2 {
 				property Transform transform: Transform {
 					translation: modelData
 					rotation: index%3?
-							fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index):
-							fromAxisAndAngle(Qt.vector3d(.5, 1, 0), time.value % 360 * 20 * index)
+							fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index):
+							fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), time.value % 360 * 20 * index)
 				}
 				components: [geometry, material, transform]
 			}

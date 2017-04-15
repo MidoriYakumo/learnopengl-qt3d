@@ -84,7 +84,7 @@ Scene2 {
 
 		MouseDevice {
 			id: mouseDevice
-			sensitivity: 0.5
+			sensitivity: .5
 		}
 
 		MouseHandler {
@@ -100,7 +100,7 @@ Scene2 {
 			}
 
 			onPositionChanged: {
-				var sensitivity = mouseDevice.sensitivity * 0.01;
+				var sensitivity = mouseDevice.sensitivity * .01;
 				if (mouse.modifiers & Qt.ShiftModifier)
 					sensitivity *= .1;
 
@@ -204,7 +204,7 @@ Scene2 {
 			delegate: TextureCube0 {
 				transform: Transform {
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
 				}
 				viewMatrix: camera.viewMatrix
 				projectionMatrix: camera.projectionMatrix

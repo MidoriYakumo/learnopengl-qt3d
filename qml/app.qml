@@ -21,9 +21,9 @@ ApplicationWindow {
 
 	header: ComboBox {
 		id: combobox
-		background.y: 0  // disable extra background (since 5.8)
+		background.y: 0  // WARNING: disable extra background (since 5.8)
 		background.height: height
-		opacity: height/20
+		opacity: height / 20
 		focusPolicy: Qt.NoFocus
 		textRole: "text"
 		model: Examples

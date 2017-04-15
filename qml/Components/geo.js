@@ -23,7 +23,15 @@ function clamp(v, l, h) {
 }
 
 function mix(a, b, u) {
-	return a*(1.-u)+b*u;
+	return a*(1. - u) + b * u;
+}
+
+function deg2rad(deg) {
+	return deg * Math.PI / 180;
+}
+
+function rad2deg(rad) {
+	return rad * 180 / Math.PI;
 }
 
 var Vector2D = function(x, y) {

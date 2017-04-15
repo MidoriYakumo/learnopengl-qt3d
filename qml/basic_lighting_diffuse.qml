@@ -25,7 +25,7 @@ Scene2 {
 		id: root
 
 		RenderInputSettings0 {
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {

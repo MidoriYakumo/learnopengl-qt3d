@@ -52,7 +52,7 @@ Scene0 {
 					*/
 
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
 				}
 				components: [geometry, material, transform]
 			}

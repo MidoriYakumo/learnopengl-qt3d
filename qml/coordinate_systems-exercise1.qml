@@ -40,11 +40,11 @@ Scene3 {
 		KeyboardHandler {
 			focus: true
 			onUpPressed: {
-				root.fov = Geo.mix(root.fov, 0, 0.1);
+				root.fov = Geo.mix(root.fov, 0., 0.1);
 				console.log("fov:", root.fov);
 			}
 			onDownPressed: {
-				root.fov = Geo.mix(root.fov, 180, 0.1);
+				root.fov = Geo.mix(root.fov, 180., 0.1);
 				console.log("fov:", root.fov);
 			}
 			onLeftPressed: {
@@ -78,7 +78,7 @@ Scene3 {
 			delegate: Entity {
 				property Transform transform: Transform {
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
 				}
 				components: [geometry, material, transform]
 			}

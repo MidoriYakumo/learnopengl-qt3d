@@ -16,8 +16,8 @@ Camera {
 	projectionType: CameraLens.PerspectiveProjection
 	fieldOfView: 45  // Projection
 	aspectRatio: scene.width/scene.height
-	nearPlane : 0.1
-	farPlane : 100.0
+	nearPlane : .1
+	farPlane : 100.
 	position: "0,0,3"// View
 	viewCenter: position.plus(frontVector)
 	upVector: "0,1,0"
