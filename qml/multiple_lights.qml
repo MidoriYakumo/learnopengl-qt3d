@@ -86,16 +86,40 @@ Scene2 {
 			},
 			"pointLights": [
 				{
-					"position": Qt.vector3d( 0.7,  0.2,  2.0),
+					"position": Qt.vector3d(0.7,  0.2,  2.0),
+					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"constant": 1.,
+					"linear": .09,
+					"quadratic": .032,
 				},
 				{
-					"position": Qt.vector3d( 2.3, -3.3, -4.0),
+					"position": Qt.vector3d(2.3, -3.3, -4.0),
+					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"constant": 1.,
+					"linear": .09,
+					"quadratic": .032,
 				},
 				{
 					"position": Qt.vector3d(-4.0,  2.0, -12.0),
+					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"constant": 1.,
+					"linear": .09,
+					"quadratic": .032,
 				},
 				{
 					"position": Qt.vector3d(-0.0,  0.0, -3.0),
+					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"constant": 1.,
+					"linear": .09,
+					"quadratic": .032,
 				},
 			],
 //			"spotLight": { }
@@ -110,9 +134,17 @@ Scene2 {
 			effect: Effect {
 				techniques: Technique {
 					renderPasses: RenderPass {
+						id: ourRenderpass
+
+						Component {
+							id: parameterComponent
+
+							Parameter {}
+						}
+
 						shaderProgram: ShaderProgram0 {
 							vertName: "lighting_maps"
-							fragName: "light_casters_point"
+							fragName: "multiple_lights"
 						}
 						parameters: [
 							Parameter {
@@ -132,34 +164,39 @@ Scene2 {
 								value: root.material.shininess
 							},
 							Parameter {
-								name: "light.position"
-								value: light.position
+								name: "dirLight.direction"
+								value: root.lights.dirLight.direction
 							},
 							Parameter {
-								name: "light.ambient"
-								value: light.ambient
+								name: "dirLight.ambient"
+								value: root.lights.dirLight.ambient
 							},
 							Parameter {
-								name: "light.diffuse"
-								value: light.diffuse
+								name: "dirLight.diffuse"
+								value: root.lights.dirLight.diffuse
 							},
 							Parameter {
-								name: "light.specular"
-								value: light.specular
+								name: "dirLight.specular"
+								value: root.lights.dirLight.specular
 							},
 							Parameter {
-								name: "light.constant"
-								value: light.constantAttenuation
-							},
-							Parameter {
-								name: "light.linear"
-								value: light.linearAttenuation
-							},
-							Parameter {
-								name: "light.quadratic"
-								value: light.quadraticAttenuation
+								name: "pointLightCount"
+								value: root.lights.pointLights.length
 							}
 						]
+
+						Component.onCompleted: {
+							var pList = Array.prototype.concat.apply([], parameters);
+							root.lights.pointLights.forEach(function (light, i){
+								for (var p in light) {
+									pList.push(parameterComponent.createObject(ourRenderpass, {
+										name: "pointLights[%1].%2".arg(i).arg(p),
+										value: light[p]
+									}))
+								}
+							})
+							parameters = pList;
+						}
 					}
 				}
 			}
@@ -167,7 +204,9 @@ Scene2 {
 
 		DiffuseSpecularMapMaterial {
 			id: qtMaterial
-			ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
+			ambient: Qt.rgba(root.lights.dirLight.ambient.x,
+				root.lights.dirLight.ambient.y,
+				root.lights.dirLight.ambient.z, 1.) // ...
 			diffuse: Resources.texture("container2.png")
 			specular: Resources.texture("container2_specular.png")
 			//diffuse: root.material.diffuseMap   // Qt5.9 ???
@@ -187,44 +226,50 @@ Scene2 {
 		}
 
 		Entity {
-			id: lamp
+			id: sun
 
-			PointLight {
-				id: qtLight
-				color: root.lightColor
-				intensity: 1.
-				constantAttenuation: light.constantAttenuation
-				linearAttenuation: light.linearAttenuation
-				quadraticAttenuation: light.quadraticAttenuation
+			components: DirectionalLight {
+				color: "white"
+				worldDirection: root.lights.dirLight.direction
 			}
+		}
 
-			Transform {
-				id: lightTransform
-				translation: light.position
-				scale: .2
-			}
-
-			Material {
-				id: lightMaterial
-				effect: Effect {
-					techniques: Technique {
-						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
-								vertName: "basic_lighting"
-								fragName: "shaders-uniform"
-							}
-							parameters: [
-								Parameter {
-									name: "ourColor"
-									value: root.lightColor
-								}
-							]
+		Material {
+			id: lightMaterial
+			effect: Effect {
+				techniques: Technique {
+					renderPasses: RenderPass {
+						shaderProgram: ShaderProgram0 {
+							vertName: "basic_lighting"
+							fragName: "shaders-uniform"
 						}
+						parameters: [
+							Parameter {
+								name: "ourColor"
+								value: root.lightColor
+							}
+						]
 					}
 				}
 			}
+		}
 
-			components: [mesh, qtLight, lightTransform, lightMaterial]
+		NodeInstantiator {
+			model: root.lights.pointLights
+			delegate: Entity {
+				property PointLight light: PointLight {
+					color: "white"
+					intensity: 1.
+					constantAttenuation: modelData.constant
+					linearAttenuation: modelData.linear
+					quadraticAttenuation: modelData.quadratic
+				}
+				property Transform transform: Transform {
+					translation: modelData.position
+					scale: .2
+				}
+				components: [mesh, light, transform, lightMaterial]
+			}
 		}
 	}
 }

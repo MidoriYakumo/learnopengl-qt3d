@@ -53,7 +53,7 @@ ListModel {
 	ListElement { text: "Directional Light"				; source: "light_casters_directional"}
 //	ListElement { text: "Point Light"					; source: "light_casters_point"}
 	ListElement { text: "Spot Light"					; source: "light_casters_spotlight_soft"}
-	ListElement { text: "Multiple Lights"				; source: "multiple_lightsx"}
+	ListElement { text: "Multiple Lights"				; source: "multiple_lights"}
 	ListElement { text: "Import Models"					; source: "model"}
 	ListElement { text: "Stencil Testing"				; source: "stencil_testing"}
 	ListElement { text: "Discard Blend"					; source: "blending_discard"}
