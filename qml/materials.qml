@@ -56,7 +56,7 @@ Scene2 {
 				text: name.setCharAt(0, name[0].toUpperCase())
 				leftPadding: rightPadding + thumbSize
 
-				property real thumbSize: height - topPadding*2
+				property real thumbSize: height - topPadding * 2
 
 				Item {
 					x: parent.rightPadding / 2
@@ -168,7 +168,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -194,7 +194,7 @@ Scene2 {
 			property vector3d ambient: "1.0, 0.5, 0.31"
 			property vector3d diffuse: "1.0, 0.5, 0.31"
 			property vector3d specular: "0.5, 0.5, 0.5"
-			property real shininess: 32.0
+			property real shininess: 32.
 		}
 
 		QtObject {
@@ -202,8 +202,8 @@ Scene2 {
 
 			property vector3d position: "1.2, 1.0, 2.0"
 
-			property vector3d ambient: diffuse.times(0.2)
-			property vector3d diffuse: Qt.vector3d(root.lightColor.r, root.lightColor.g, root.lightColor.b).times(0.5)
+			property vector3d ambient: diffuse.times(.2)
+			property vector3d diffuse: Qt.vector3d(root.lightColor.r, root.lightColor.g, root.lightColor.b).times(.5)
 			property vector3d specular: "1.0, 1.0, 1.0"
 		}
 
@@ -302,7 +302,7 @@ Scene2 {
 
 				id: qtLamp
 				color: root.lightColor
-				intensity: 1
+				intensity: 1.
 			}
 
 			Transform {

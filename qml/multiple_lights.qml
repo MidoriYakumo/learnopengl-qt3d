@@ -77,18 +77,28 @@ Scene2 {
 			property real shininess: 32.
 		}
 
-		QtObject {
-			id: light
-
-			property vector3d position: "1.2, 1.0, 2.0"
-
-			property vector3d ambient: "0.2, 0.2, 0.2"
-			property vector3d diffuse: "0.5, 0.5, 0.5"
-			property vector3d specular: "1.0, 1.0, 1.0"
-
-			property real constantAttenuation: 1.
-			property real linearAttenuation: .09
-			property real quadraticAttenuation: .032
+		property var lights: {
+			"dirLight": {
+				"direction": Qt.vector3d(-0.2, -1.0, -0.3),
+				"ambient": Qt.vector3d(0.05, 0.05, 0.05),
+				"diffuse": Qt.vector3d(0.4, 0.4, 0.4),
+				"specular": Qt.vector3d(0.5, 0.5, 0.5),
+			},
+			"pointLights": [
+				{
+					"position": Qt.vector3d( 0.7,  0.2,  2.0),
+				},
+				{
+					"position": Qt.vector3d( 2.3, -3.3, -4.0),
+				},
+				{
+					"position": Qt.vector3d(-4.0,  2.0, -12.0),
+				},
+				{
+					"position": Qt.vector3d(-0.0,  0.0, -3.0),
+				},
+			],
+//			"spotLight": { }
 		}
 
 		CuboidMesh {

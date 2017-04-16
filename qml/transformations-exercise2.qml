@@ -97,7 +97,7 @@ Scene2 {
 										name: "transform"
 										value: {
 											var m = Qt.matrix4x4();
-											m.translate(Qt.vector3d(.5, -.5, 0));
+											m.translate(Qt.vector3d(0.5, -0.5, 0));
 											m.rotate(time.value % 360  * 10, Qt.vector3d(0, 0, 1));
 											return m;
 										}
@@ -115,7 +115,7 @@ Scene2 {
 									name: "transform"
 									value: {
 										var m = Qt.matrix4x4();
-										m.translate(Qt.vector3d(-.5, .5, 0));
+										m.translate(Qt.vector3d(-0.5, 0.5, 0));
 										m.scale(Math.sin(time.value));
 										return m;
 									}

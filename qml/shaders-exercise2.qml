@@ -39,7 +39,7 @@ Scene1 {
 						name: "ourColor"
 						value: Qt.rgba(0, greenValue, 0, 1)
 
-						property real greenValue: (Math.sin(time.value) / 2.) + 0.5
+						property real greenValue: (Math.sin(time.value) / 2.) + .5
 					},
 					Parameter {
 						name: "xOffset"

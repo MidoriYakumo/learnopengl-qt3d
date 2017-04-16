@@ -100,7 +100,7 @@ Scene2 {
 						value: { // Order changed
 							var m = Qt.matrix4x4();
 							m.rotate(time.value % 360 * 50, Qt.vector3d(0, 0, 1));
-							m.translate(Qt.vector3d(.5, -.5, 0));
+							m.translate(Qt.vector3d(0.5, -0.5, 0.0));
 							return m;
 						}
 

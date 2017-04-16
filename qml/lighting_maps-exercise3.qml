@@ -27,7 +27,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -62,7 +62,7 @@ Scene2 {
 				}
 			}
 
-			property real shininess: 64.0
+			property real shininess: 32.
 		}
 
 		QtObject {
@@ -70,9 +70,9 @@ Scene2 {
 
 			property vector3d position: "1.2, 1.0, 2.0"
 
-			property vector3d ambient: ".2, .2, .2"
-			property vector3d diffuse: ".5, .5, .5"
-			property vector3d specular: "1., 1., 1."
+			property vector3d ambient: "0.2, 0.2, 0.2"
+			property vector3d diffuse: "0.5, 0.5, 0.5"
+			property vector3d specular: "1.0, 1.0, 1.0"
 		}
 
 		CuboidMesh {
@@ -158,7 +158,7 @@ Scene2 {
 			PointLight {
 				id: qtLamp
 				color: root.lightColor
-				intensity: 1
+				intensity: 1.
 			}
 
 			Transform {

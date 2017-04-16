@@ -28,7 +28,7 @@ Scene2 {
 		RenderInputSettings0 {
 			id: renderInputSettings
 
-			mouseSensitivity: 0.5 / Units.dp
+			mouseSensitivity: .5 / Units.dp
 		}
 
 		KeyboardDevice {
@@ -92,13 +92,13 @@ Scene2 {
 			// We set the diffuse intensity a bit higher; note that the right lighting conditions differ with each lighting method and environment.
 			// Each environment and lighting type requires some tweaking of these variables to get the best out of your environment.
 
-			property vector3d ambient: ".1, .1, .1"
-			property vector3d diffuse: ".8, .8, .8"
-			property vector3d specular: "1., 1., 1."
+			property vector3d ambient: "0.1, 0.1, 0.1"
+			property vector3d diffuse: "0.8, 0.8, 0.8"
+			property vector3d specular: "1.0, 1.0, 1.0"
 
-			property real constantAttenuation: 1.0
-			property real linearAttenuation: 0.09
-			property real quadraticAttenuation: 0.032
+			property real constantAttenuation: 1.
+			property real linearAttenuation: .09
+			property real quadraticAttenuation: .032
 		}
 
 		CuboidMesh {
@@ -188,7 +188,7 @@ Scene2 {
 			delegate: Entity {
 				property Transform transform: Transform {
 					translation: modelData
-					rotation: fromAxisAndAngle(Qt.vector3d(.5, 1, 0), 20 * index)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.5, 1.0, 0.0), 20 * index)
 				}
 				components: [mesh, root.useQtLight?qtMaterial:ourMaterial, transform]
 			}
@@ -202,7 +202,7 @@ Scene2 {
 				color: root.lightColor
 				localDirection: light.direction
 				cutOffAngle: Math.sin(time.value) * 30. + 30.
-				intensity: 1
+				intensity: 1.
 				constantAttenuation: light.constantAttenuation
 				linearAttenuation: light.linearAttenuation
 				quadraticAttenuation: light.quadraticAttenuation
