@@ -86,5 +86,9 @@
         <file>shared/shaders/gl33/lighting_maps_specular.frag</file>
         <file>shared/shaders/gl33/lighting_maps.vert</file>
         <file>qml/Components/geo.js</file>
+        <file>qml/light_casters_directional.qml</file>
+        <file>qml/light_casters_spotlight_soft.qml</file>
+        <file>qml/model.qml</file>
+        <file>qml/multiple_lights.qml</file>
     </qresource>
 </RCC>

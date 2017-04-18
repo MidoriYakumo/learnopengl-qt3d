@@ -123,7 +123,18 @@ Scene2 {
 					"quadratic": .032,
 				},
 			],
-//			"spotLight": { }
+			"spotLight": {
+				"position": renderInputSettings.camera.position, // not a binding
+				"direction": renderInputSettings.camera.frontVector, // not a binding
+				"cutOff": Math.cos(Geo.deg2rad(12.5)),
+				"outerCutOff": Math.cos(Geo.deg2rad(17.5)),
+				"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+				"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+				"specular": Qt.vector3d(1.0, 1.0, 1.0),
+				"constant": 1.,
+				"linear": .09,
+				"quadratic": .032,
+			}
 		}
 
 		CuboidMesh {
@@ -147,9 +158,10 @@ Scene2 {
 							id: time
 						}
 
+
 						shaderProgram: ShaderProgram0 {
 							vertName: "lighting_maps"
-							fragName: "multiple_lights"
+							fragName: "multiple_lights-exercise1"
 						}
 						parameters: [
 							Parameter {
@@ -183,6 +195,46 @@ Scene2 {
 							Parameter {
 								name: "dirLight.specular"
 								value: root.lights.dirLight.specular
+							},
+							Parameter {
+								name: "spotLight.position"
+								value: renderInputSettings.camera.position
+							},
+							Parameter {
+								name: "spotLight.direction"
+								value: renderInputSettings.camera.frontVector
+							},
+							Parameter {
+								name: "spotLight.cutOff"
+								value: root.lights.spotLight.cutOff
+							},
+							Parameter {
+								name: "spotLight.outerCutOff"
+								value: root.lights.spotLight.outerCutOff
+							},
+							Parameter {
+								name: "spotLight.ambient"
+								value: root.lights.spotLight.ambient
+							},
+							Parameter {
+								name: "spotLight.diffuse"
+								value: root.lights.spotLight.diffuse
+							},
+							Parameter {
+								name: "spotLight.specular"
+								value: root.lights.spotLight.specular
+							},
+							Parameter {
+								name: "spotLight.constant"
+								value: root.lights.spotLight.constant
+							},
+							Parameter {
+								name: "spotLight.linear"
+								value: root.lights.spotLight.linear
+							},
+							Parameter {
+								name: "spotLight.quadratic"
+								value: root.lights.spotLight.quadratic
 							},
 							Parameter {
 								id: pointLightCount
@@ -244,6 +296,25 @@ Scene2 {
 				color: "white"
 				worldDirection: root.lights.dirLight.direction
 			}
+		}
+
+		Entity {
+			id: torch
+
+			components: [
+				SpotLight {
+					color: "white"
+					localDirection: renderInputSettings.camera.frontVector
+					cutOffAngle: 12.5
+					intensity: 1.
+					constantAttenuation: root.lights.spotLight.constant
+					linearAttenuation: root.lights.spotLight.linear
+					quadraticAttenuation: root.lights.spotLight.quadratic
+				},
+				Transform {
+					translation: renderInputSettings.camera.position
+				}
+			]
 		}
 
 		Material {

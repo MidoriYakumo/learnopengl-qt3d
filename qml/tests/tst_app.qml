@@ -255,5 +255,12 @@ Loader {
 			randomFly();
 			afterTest(idx, 0);
 		}
+
+		function test_multiple_lights(){
+			var idx = 21;
+			beforeTest(idx);
+			randomFly();
+			afterTest(idx, 0);
+		}
 	}
 }

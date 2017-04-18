@@ -1,3 +1,5 @@
+// Scene desert
+
 import QtQuick 2.7
 
 import Qt3D.Core 2.0
@@ -25,9 +27,34 @@ Scene2 {
 	Entity {
 		id: root
 
-		RenderInputSettings0 {
-			id: renderInputSettings
+		RenderSettings {
+			activeFrameGraph: ClearBuffers {
+				buffers: ClearBuffers.ColorDepthBuffer
+				clearColor: "#b27c47"
+				RenderSurfaceSelector {
+					CameraSelector {
+						camera: ourCamera
 
+						RenderStateSet {
+							renderStates: DepthTest {
+								depthFunction: DepthTest.Less
+							}
+						}
+					}
+				}
+			}
+		}
+
+		InputSettings {}
+
+		OurCamera {
+			id: ourCamera
+		}
+
+		OurCameraController {
+			id: cameraController
+
+			camera: ourCamera
 			mouseSensitivity: .5 / Units.dp
 		}
 
@@ -60,7 +87,7 @@ Scene2 {
 			Qt.vector3d( 1.5,  0.2, -1.5),
 			Qt.vector3d(-1.3,  1.0, -1.5),
 		]
-		property vector3d viewPos: renderInputSettings.camera.position
+		property vector3d viewPos: ourCamera.position
 		property color lightColor: "white"
 		property Entity material: Entity {
 			property Texture2D diffuseMap: Texture2D {
@@ -81,25 +108,25 @@ Scene2 {
 		property var lights: {
 			"dirLight": {
 				"direction": Qt.vector3d(-0.2, -1.0, -0.3),
-				"ambient": Qt.vector3d(0.05, 0.05, 0.05),
+				"ambient": Qt.vector3d(0.5, 0.5, 0.05),
 				"diffuse": Qt.vector3d(0.4, 0.4, 0.4),
 				"specular": Qt.vector3d(0.5, 0.5, 0.5),
 			},
 			"pointLights": [
 				{
 					"position": Qt.vector3d(0.7,  0.2,  2.0),
-					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"ambient": Qt.vector3d(0.23, 0.18 ,0.05),
 					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
-					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"specular": Qt.rgba(0.95703125, 0.56640625, 0.109375, 1.0),
 					"constant": 1.,
 					"linear": .09,
 					"quadratic": .032,
 				},
 				{
 					"position": Qt.vector3d(2.3, -3.3, -4.0),
-					"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+					"ambient": Qt.vector3d(0.2, 0.05 ,0.05),
 					"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
-					"specular": Qt.vector3d(1.0, 1.0, 1.0),
+					"specular": Qt.rgba(0.94140625, 0.08203125, 0.109375, 1.0),
 					"constant": 1.,
 					"linear": .09,
 					"quadratic": .032,
@@ -123,7 +150,18 @@ Scene2 {
 					"quadratic": .032,
 				},
 			],
-//			"spotLight": { }
+			"spotLight": {
+				"position": ourCamera.position, // not a binding
+				"direction": ourCamera.frontVector, // not a binding
+				"cutOff": Math.cos(Geo.deg2rad(12.5)),
+				"outerCutOff": Math.cos(Geo.deg2rad(17.5)),
+				"ambient": Qt.vector3d(0.05, 0.05 ,0.05),
+				"diffuse": Qt.vector3d(0.8, 0.8, 0.8),
+				"specular": Qt.vector3d(1.0, 1.0, 1.0),
+				"constant": 1.,
+				"linear": .09,
+				"quadratic": .032,
+			}
 		}
 
 		CuboidMesh {
@@ -147,9 +185,10 @@ Scene2 {
 							id: time
 						}
 
+
 						shaderProgram: ShaderProgram0 {
 							vertName: "lighting_maps"
-							fragName: "multiple_lights"
+							fragName: "multiple_lights-exercise1"
 						}
 						parameters: [
 							Parameter {
@@ -183,6 +222,46 @@ Scene2 {
 							Parameter {
 								name: "dirLight.specular"
 								value: root.lights.dirLight.specular
+							},
+							Parameter {
+								name: "spotLight.position"
+								value: ourCamera.position
+							},
+							Parameter {
+								name: "spotLight.direction"
+								value: ourCamera.frontVector
+							},
+							Parameter {
+								name: "spotLight.cutOff"
+								value: root.lights.spotLight.cutOff
+							},
+							Parameter {
+								name: "spotLight.outerCutOff"
+								value: root.lights.spotLight.outerCutOff
+							},
+							Parameter {
+								name: "spotLight.ambient"
+								value: root.lights.spotLight.ambient
+							},
+							Parameter {
+								name: "spotLight.diffuse"
+								value: root.lights.spotLight.diffuse
+							},
+							Parameter {
+								name: "spotLight.specular"
+								value: root.lights.spotLight.specular
+							},
+							Parameter {
+								name: "spotLight.constant"
+								value: root.lights.spotLight.constant
+							},
+							Parameter {
+								name: "spotLight.linear"
+								value: root.lights.spotLight.linear
+							},
+							Parameter {
+								name: "spotLight.quadratic"
+								value: root.lights.spotLight.quadratic
 							},
 							Parameter {
 								id: pointLightCount
@@ -246,24 +325,23 @@ Scene2 {
 			}
 		}
 
-		Material {
-			id: lightMaterial
-			effect: Effect {
-				techniques: Technique {
-					renderPasses: RenderPass {
-						shaderProgram: ShaderProgram0 {
-							vertName: "basic_lighting"
-							fragName: "shaders-uniform"
-						}
-						parameters: [
-							Parameter {
-								name: "ourColor"
-								value: root.lightColor
-							}
-						]
-					}
+		Entity {
+			id: torch
+
+			components: [
+				SpotLight {
+					color: "white"
+					localDirection: ourCamera.frontVector
+					cutOffAngle: 12.5
+					intensity: 1.
+					constantAttenuation: root.lights.spotLight.constant
+					linearAttenuation: root.lights.spotLight.linear
+					quadraticAttenuation: root.lights.spotLight.quadratic
+				},
+				Transform {
+					translation: ourCamera.position
 				}
-			}
+			]
 		}
 
 		NodeInstantiator {
@@ -280,7 +358,26 @@ Scene2 {
 					translation: modelData.position
 					scale: .2
 				}
-				components: [mesh, light, transform, lightMaterial]
+
+				property Material material: Material {
+					effect: Effect {
+						techniques: Technique {
+							renderPasses: RenderPass {
+								shaderProgram: ShaderProgram0 {
+									vertName: "basic_lighting"
+									fragName: "shaders-uniform"
+								}
+								parameters: [
+									Parameter {
+										name: "ourColor"
+										value: modelData.specular
+									}
+								]
+							}
+						}
+					}
+				}
+				components: [mesh, light, transform, material]
 			}
 		}
 	}
