@@ -28,18 +28,83 @@ Scene2 {
 			mouseSensitivity: .5 / Units.dp
 		}
 
-		SceneLoader {
-			id: model
-
-			source: Resources.model("nanosuit.obj")
-
-			onStatusChanged: {
-				console.log(status);
-			}
+		Entity {
+			id: plane
+			components: [
+				PlaneMesh {
+					width: 100
+					height: 100
+				},
+				Transform {
+					translation: Qt.vector3d(0.0, -1.0, 0.0)
+				},
+				PhongMaterial {
+					ambient: "black"
+					diffuse: "coral"
+				}
+			]
 		}
 
 		Entity {
-			components: [model]
+			id: wireframeEntity
+			components: [
+				Mesh {
+					source: Resources.model("nanosuit.obj")
+					primitiveType: GeometryRenderer.Lines
+				},
+				Transform {
+					translation: Qt.vector3d(-1.0, -1.0, 0.0)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.0 ,1.0 ,0.0), 30.0)
+					scale: 0.1
+				},
+				NormalDiffuseSpecularMapMaterial {
+					diffuse: Resources.model("body_dif.png")
+					normal: Resources.model("body_showroom_ddn.png")
+					specular: Resources.model("body_showroom_spec.png")
+				}
+			]
+		}
+
+		Entity {
+			id: meshEntity
+			components: [
+				Mesh {
+					source: Resources.model("nanosuit.obj")
+				},
+				Transform {
+					translation: Qt.vector3d(0.0, -1.0, 0.0)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.0 ,1.0 ,0.0), 0.0)
+					scale: 0.1
+				},
+				NormalDiffuseSpecularMapMaterial {
+					diffuse: Resources.model("body_dif.png")
+					normal: Resources.model("body_showroom_ddn.png")
+					specular: Resources.model("body_showroom_spec.png")
+				}
+			]
+		}
+
+		Entity {
+			id: modelEntity
+			components: [
+				SceneLoader {
+					source: Resources.model("nanosuit.obj")
+				},
+				Transform {
+					translation: Qt.vector3d(1.0, -1.0, 0.0)
+					rotation: fromAxisAndAngle(Qt.vector3d(0.0, 1.0, 0.0), -30.0)
+					scale: 0.1
+				}
+			]
+		}
+
+		Entity {
+			id: light
+			components: DirectionalLight {
+				color: "white"
+				intensity: 3
+				worldDirection: Qt.vector3d(0.0, -1.0, -1.0)
+			}
 		}
 	}
 }

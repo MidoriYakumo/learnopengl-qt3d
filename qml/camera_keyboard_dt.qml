@@ -165,8 +165,6 @@ Scene2 {
 				projectionMatrix: camera.projectionMatrix
 			}
 		}
-
-
 	}
 }
 

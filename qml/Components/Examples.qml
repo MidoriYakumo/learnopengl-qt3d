@@ -55,6 +55,7 @@ ListModel {
 	ListElement { text: "Spot Light"					; source: "light_casters_spotlight_soft"}
 	ListElement { text: "Multiple Lights"				; source: "multiple_lights"}
 	ListElement { text: "Import Models"					; source: "model"}
+	ListElement { text: "Depth Testing"					; source: "depth_testing"}
 	ListElement { text: "Stencil Testing"				; source: "stencil_testing"}
 	ListElement { text: "Discard Blend"					; source: "blending_discard"}
 	ListElement { text: "Alpha Blend"					; source: "blending_alpha"}
