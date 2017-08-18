@@ -22,6 +22,22 @@ Scene2 {
 	Entity {
 		id: root
 
+		property Texture2D diffuseMap: Texture2D {
+			TextureImage {
+				source: Resources.model("body_dif.png")
+			}
+		}
+		property Texture2D normalMap: Texture2D {
+			TextureImage {
+				source: Resources.model("body_showroom_ddn.png")
+			}
+		}
+		property Texture2D specularMap: Texture2D {
+			TextureImage {
+				source: Resources.model("body_showroom_spec.png")
+			}
+		}
+
 		RenderInputSettings0 {
 			id: renderInputSettings
 
@@ -58,9 +74,9 @@ Scene2 {
 					scale: 0.1
 				},
 				NormalDiffuseSpecularMapMaterial {
-					diffuse: Resources.model("body_dif.png")
-					normal: Resources.model("body_showroom_ddn.png")
-					specular: Resources.model("body_showroom_spec.png")
+					diffuse: root.diffuseMap
+					normal: root.normalMap
+					specular: root.specularMap
 				}
 			]
 		}
@@ -77,9 +93,9 @@ Scene2 {
 					scale: 0.1
 				},
 				NormalDiffuseSpecularMapMaterial {
-					diffuse: Resources.model("body_dif.png")
-					normal: Resources.model("body_showroom_ddn.png")
-					specular: Resources.model("body_showroom_spec.png")
+					diffuse: root.diffuseMap
+					normal: root.normalMap
+					specular: root.specularMap
 				}
 			]
 		}

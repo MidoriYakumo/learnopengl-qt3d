@@ -1,13 +1,15 @@
 #version 330 core
 
+float CkSize = 1.0f/9.0f;
+
 in vec2 texCoord;
+
+out vec4 color;
 
 void main()
 {
-	float ckSize = 1.0f/9.0f;
 	int ckValue =
-			((mod(texCoord.x, ckSize*2.0f) > ckSize)?0:1) +
-			((mod(texCoord.y, ckSize*2.0f) > ckSize)?0:1);
-	vec3 color = vec3(ckValue/3.0f);
-	gl_FragColor = vec4(color, 1.0f);
+			((mod(texCoord.x, CkSize*2.0f) > CkSize)?0:1) +
+			((mod(texCoord.y, CkSize*2.0f) > CkSize)?0:1);
+	color = vec4(vec3(ckValue/3.0f), 1.0f);
 }

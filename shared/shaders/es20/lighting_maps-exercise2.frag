@@ -37,7 +37,7 @@ void main()
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.), material.shininess);
 	vec3 specular = light.specular * spec *
-		(vec3(1.f) - vec3(texture2D(material.specular, texCoord)));
+		(vec3(1.) - vec3(texture2D(material.specular, texCoord)));
 
 	vec3 result = ambient + diffuse + specular;
 	gl_FragColor = vec4(result, 1.);

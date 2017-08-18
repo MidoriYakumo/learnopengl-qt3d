@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick 2.7
+import QtQuick 2.9
 
 ListModel {
 	ListElement { text: "Hello Window"					; source: "hellowindow"}
@@ -73,7 +73,7 @@ ListModel {
 	ListElement { text: "TEST/INSTANCED"				; source: "test_instanced"}
 	ListElement { text: "TEST/PLASMA"					; source: "test_plasma"}
 	ListElement { text: "Exit"; }
-	
+
 	Component.onCompleted: console.log("In total %1 samples.".arg(count-1))
 }
 

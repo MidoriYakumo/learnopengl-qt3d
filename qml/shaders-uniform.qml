@@ -36,9 +36,9 @@ Scene1 {
 
 				id: material
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "shaders-uniform"
 								fragName: "shaders-uniform"
 							}

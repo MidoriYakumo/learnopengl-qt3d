@@ -2,7 +2,7 @@
 * This is the start up QML for QML Creator
 */
 
-import QtQuick 2.7
+import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
 
@@ -79,22 +79,22 @@ Item {
 				color: "white"
 				anchors.centerIn: parent
 				text: "Open%4 %1.%2 %3".arg(
-					OpenGLInfo.majorVersion).arg(
-					OpenGLInfo.minorVersion).arg({
+					GraphicsInfo.majorVersion).arg(
+					GraphicsInfo.minorVersion).arg({
 						0: "NoProfile",
 						1: "CoreProfile",
 						2: "CompatibilityProfile"
-					}[OpenGLInfo.profile]).arg({
+					}[GraphicsInfo.profile]).arg({
 						0: "Unspecified",
 						1: "GL",
 						2: "GLES"
-					}[OpenGLInfo.renderableType])
+					}[GraphicsInfo.renderableType])
 				styleColor: "#8b8b8b"
 				style: Text.Sunken
 				font.pointSize: 24
 
 				onTextChanged: {
-					Resources.setGlInfo(OpenGLInfo);
+					Resources.setGlInfo(GraphicsInfo);
 				}
 			}
 

@@ -1,3 +1,5 @@
+import QtQuick 2.9
+
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 
@@ -78,6 +80,11 @@ Scene0 {
 						/*
 							Technique = GL API, shader, renderpass filter/router
 						*/
+
+						graphicsApiFilter {
+							profile: GraphicsInfo.profile === GraphicsInfo.CoreProfile ?
+								GraphicsApiFilter.CoreProfile : GraphicsApiFilter.NoProfile;
+						}
 
 						renderPasses: RenderPass {
 							/*

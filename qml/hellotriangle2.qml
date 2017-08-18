@@ -57,7 +57,7 @@ Scene0 {
 			Material {
 				id: material
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
 							/*
 								By default Qt3D culls back faces, here we need to disable it

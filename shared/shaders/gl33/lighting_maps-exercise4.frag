@@ -49,5 +49,5 @@ void main()
 		vec3(texture(material.emission, texCoord + vec2(0.0f, time))) : vec3(0.0f);
 
 	vec3 result = ambient + diffuse + specular + emission;
-	gl_FragColor = vec4(result, 1.0f);
+	color = vec4(result, 1.0f);
 }

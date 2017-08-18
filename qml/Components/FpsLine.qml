@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 import QtCharts 2.1
 
 ChartView {
@@ -9,8 +9,10 @@ ChartView {
 		top: vMargin
 		right: hMargin
 	}
-	width: 160
-	height: 94
+	width: 180
+	height: 108
+
+	Drag.active: dragger.drag.active
 
 	property int hMargin: 6
 	property int vMargin: 6
@@ -49,10 +51,10 @@ ChartView {
 	animationOptions: ChartView.NoAnimation
 	backgroundColor: "#801b813e"
 	backgroundRoundness: 0
-	margins.top: 0
-	margins.bottom: 0
-	margins.left: 0
-	margins.right: 0
+	margins.top: 2
+	margins.bottom: 2
+	margins.left: 2
+	margins.right: 2
 	legend.visible: false
 	antialiasing: true
 	smooth: true
@@ -73,7 +75,7 @@ ChartView {
 		minorGridVisible: false
 		minorTickCount: 0
 		shadesVisible: false
-		labelsFont.pixelSize: 18
+		labelsFont.pixelSize: 10
 		labelFormat: "%2d"
 
 //		Behavior on max {  // may impact fps
@@ -107,13 +109,28 @@ ChartView {
 
 	Text {
 		id: realtime
-		x: app.plotArea.x - 4
-		y: app.height - 30
+		x: app.plotArea.x + 2
+		y: app.height - 36
 		color: "white"
 		font.pixelSize: 16
 		text: d.avg.toFixed(1) + "fps"
 		smooth: false
 		antialiasing: false
+	}
+
+	MouseArea {
+		id: dragger
+		anchors.fill: parent
+		drag.target: parent
+
+		drag.onActiveChanged: {
+			if (!drag.acitve) {
+				parent.anchors.left = undefined;
+				parent.anchors.top = undefined;
+				parent.anchors.right = undefined;
+				parent.anchors.bottom = undefined;
+			}
+		}
 	}
 
 	onSpanChanged: {

@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
@@ -109,9 +109,9 @@ Scene2 {
 		Material {
 			id: ourMaterial
 			effect: Effect {
-				techniques: Technique {
+				techniques: AutoTechnique {
 					renderPasses: RenderPass {
-						shaderProgram: ShaderProgram0 {
+						shaderProgram: AutoShaderProgram {
 							vertName: "lighting_maps"
 							fragName: "light_casters_spotlight_hard"
 						}
@@ -177,10 +177,7 @@ Scene2 {
 		DiffuseSpecularMapMaterial {
 			id: qtMaterial
 			ambient: Qt.rgba(light.ambient.x, light.ambient.y, light.ambient.z, 1.) // ...
-			diffuse: Resources.texture("container2.png")
-			specular: Resources.texture("container2_specular.png")
 			//diffuse: root.material.diffuseMap   // Qt5.9 ???
-			//specular: root.material.specularMap // Qt5.9 ???
 			shininess: root.material.shininess
 		}
 

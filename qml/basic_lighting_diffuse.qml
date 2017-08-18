@@ -81,9 +81,9 @@ Scene2 {
 			Material {
 				id: objectMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "basic_lighting"
 								fragName: "basic_lighting_diffuse"
 							}
@@ -133,9 +133,9 @@ Scene2 {
 			Material {
 				id: lampMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "basic_lighting"
 								fragName: "shaders-uniform"
 							}

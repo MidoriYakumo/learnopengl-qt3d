@@ -5,7 +5,6 @@
         <file>qml/Components/Examples.qml</file>
         <file>qml/Components/qmldir</file>
         <file>qml/Components/Resources.qml</file>
-        <file>qml/Components/ShaderProgram0.qml</file>
         <file>qml/Components/utils.js</file>
         <file>qml/Components/Scene0.qml</file>
         <file>qml/Components/RenderSettings0.qml</file>
@@ -90,5 +89,7 @@
         <file>qml/light_casters_spotlight_soft.qml</file>
         <file>qml/model.qml</file>
         <file>qml/multiple_lights.qml</file>
+        <file>qml/Components/AutoTechnique.qml</file>
+        <file>qml/Components/AutoShaderProgram.qml</file>
     </qresource>
 </RCC>

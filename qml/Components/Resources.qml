@@ -1,14 +1,12 @@
 pragma Singleton
 
-import QtQuick 2.7
+import QtQuick 2.9
 
 Item { // This is the global resource router
-	// FIXME: bad routine and different versions with format in C++
-
 	readonly property var os2Prefix: {
+		// Compatibility for QML Creator
 		"android"	: "file:/sdcard/Documents/QML Projects/Examples" ,
 		// "android"	: "assets://" ,
-		// Compatibility for QML Creator
 		"linux"		: "file:.." ,
 		"osx"		: "file:.." ,
 		"unix"		: "file:.." ,
@@ -19,7 +17,7 @@ Item { // This is the global resource router
 	property bool assetsRcEnabled: false
 
 	function setGlInfo(info) {
-		if (info.profile === 1) {
+		if (info.profile === GraphicsInfo.OpenGLCoreProfile) {
 			shaderType = "gl33";
 		} else {
 			if (info.majorVersion >= 3) {
@@ -41,7 +39,7 @@ Item { // This is the global resource router
 			}[info.renderableType])
 		;
 
-		console.log("[Resources] GL format: %1".arg(text));
+		console.log("[Resources] format: %1".arg(text));
 		console.log("[Resources] shaderType: %1".arg(shaderType));
 	}
 
@@ -70,6 +68,6 @@ Item { // This is the global resource router
 	}
 
 	Component.onCompleted: {
-		setGlInfo(OpenGLInfo);
+		setGlInfo(GraphicsInfo);
 	}
 }

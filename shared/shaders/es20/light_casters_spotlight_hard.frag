@@ -51,7 +51,7 @@ void main()
 
 		// Attenuation
 		float distance = length(vecToLight);
-		float attenuation = 1.0f / (light.constant + distance * (light.linear + distance * light.quadratic));
+		float attenuation = 1. / (light.constant + distance * (light.linear + distance * light.quadratic));
 
 		result += (diffuse + specular) * attenuation;
 	}

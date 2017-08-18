@@ -51,11 +51,11 @@ Scene2 {
 			Material {
 				id: material
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: [ // Two render passes
 							RenderPass {
 								renderStates: CullFace { mode: CullFace.NoCulling }
-								shaderProgram: ShaderProgram0 {
+								shaderProgram: AutoShaderProgram {
 									vertName: "transformations"
 									fragName: "textures_combined"
 								}
@@ -106,7 +106,7 @@ Scene2 {
 							},
 							RenderPass {
 								renderStates: CullFace { mode: CullFace.NoCulling }
-								shaderProgram: ShaderProgram0 {
+								shaderProgram: AutoShaderProgram {
 									vertName: "transformations"
 									fragName: "textures_combined"
 								}

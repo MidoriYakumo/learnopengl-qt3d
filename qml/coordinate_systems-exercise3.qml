@@ -166,9 +166,9 @@ Scene2 {
 		Material {
 			id: material
 			effect: Effect {
-				techniques: Technique {
+				techniques: AutoTechnique {
 					renderPasses: RenderPass {
-						shaderProgram: ShaderProgram0 {
+						shaderProgram: AutoShaderProgram {
 							vertName: "coordinate_systems_qt3d_transform"
 							fragName: "textures_combined"
 						}

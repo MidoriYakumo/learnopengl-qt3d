@@ -305,8 +305,7 @@ Vector2D.prototype.normalized = function(b) {
 }
 
 Vector2D.prototype.projectTo = function(axis, o) {
-	if (o === undefined)
-		o = new Vector2D().zeros();
+	o = o || new Vector2D().zeros();
 
 	var uaxis = axis.normalized();
 	return uaxis.times(uaxis.dotProduct(this.minus(o))).plus(o);

@@ -43,5 +43,5 @@ void main()
 		(vec3(1.f) - vec3(texture2D(material.specular, texCoord)));
 
 	vec3 result = ambient + diffuse + specular;
-	gl_FragColor = vec4(result, 1.0f);
+	color = vec4(result, 1.0f);
 }

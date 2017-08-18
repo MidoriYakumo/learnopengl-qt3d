@@ -1,5 +1,7 @@
 
 AssetCheck                  AssetCheck.qml
+AutoShaderProgram           AutoShaderProgram.qml
+AutoTechnique               AutoTechnique.qml
 singleton Examples          Examples.qml
 FpsLine                     FpsLine.qml
 FrameSwap                   FrameSwap.qml
@@ -16,7 +18,6 @@ Scene0                      Scene0.qml
 Scene1                      Scene1.qml
 Scene2                      Scene2.qml
 Scene3                      Scene3.qml
-ShaderProgram0              ShaderProgram0.qml
 TextureCube0                TextureCube0.qml
 TextureCubeMesh0            TextureCubeMesh0.qml
 TextureRectanglePlane0      TextureRectanglePlane0.qml

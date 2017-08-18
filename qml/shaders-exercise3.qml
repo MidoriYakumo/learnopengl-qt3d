@@ -19,9 +19,9 @@ Scene0 {
 			Material {
 				id: material
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "shaders-exercise3"
 								fragName: "shaders-interpolated"
 							}

@@ -21,10 +21,10 @@ Scene1 {
 			Material {
 				id: material
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
 							renderStates: CullFace { mode: CullFace.NoCulling }
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "shaders-exercise2"
 								fragName: "shaders-uniform"
 							}

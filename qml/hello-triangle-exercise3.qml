@@ -56,7 +56,7 @@ Scene0 {
 		Material {
 			id: material0
 			effect: Effect {
-				techniques: Technique {
+				techniques: AutoTechnique {
 					renderPasses: RenderPass {
 						shaderProgram: ShaderProgram {
 							vertexShaderCode: loadSource(Resources.shader("hellotriangle.vert"))
@@ -70,7 +70,7 @@ Scene0 {
 		Material {
 			id: material1
 			effect: Effect {
-				techniques: Technique {
+				techniques: AutoTechnique {
 					renderPasses: RenderPass {
 						shaderProgram: ShaderProgram {
 							// ShaderCodes are bytes! We need javascript strings!

@@ -5,14 +5,16 @@
 
 precision lowp float;
 
+float CkSize = 1.0f/9.0f;
+
 in vec2 texCoord;
+
+out vec4 color;
 
 void main()
 {
-	float ckSize = 1./9.;
 	int ckValue =
-			((mod(texCoord.x, ckSize*2.) > ckSize)?0:1) +
-			((mod(texCoord.y, ckSize*2.) > ckSize)?0:1);
-	vec3 color = vec3(ckValue/3.);
-	gl_FragColor = vec4(color, 1.);
+			((mod(texCoord.x, CkSize*2.) > CkSize)?0:1) +
+			((mod(texCoord.y, CkSize*2.) > CkSize)?0:1);
+	color = vec4(vec3(ckValue/3.), 1.);
 }

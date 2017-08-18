@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
@@ -81,9 +81,9 @@ Scene2 {
 			Material {
 				id: ourMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "lighting_maps"
 								fragName: "lighting_maps-exercise4"
 							}
@@ -149,9 +149,9 @@ Scene2 {
 			Material {
 				id: lampMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "basic_lighting"
 								fragName: "shaders-uniform"
 							}

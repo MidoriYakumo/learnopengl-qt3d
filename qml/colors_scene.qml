@@ -158,9 +158,9 @@ Scene2 {
 			Material {
 				id: objectMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "lighting"
 								fragName: "lighting"
 							}
@@ -210,9 +210,9 @@ Scene2 {
 			Material {
 				id: lampMaterial
 				effect: Effect {
-					techniques: Technique {
+					techniques: AutoTechnique {
 						renderPasses: RenderPass {
-							shaderProgram: ShaderProgram0 {
+							shaderProgram: AutoShaderProgram {
 								vertName: "lighting"
 								fragName: "shaders-uniform" // pure color light source
 							}
