@@ -1,13 +1,13 @@
 learnopengl-qt3d
 ================
 
-Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.8. I created this repo aiming to understand how Qt3D works.
+Qt3D version of [LearnOpenGL](http://learnopengl.com/) examples, currently works with Qt5.9. I created this repo aiming to understand how Qt3D works.
 
 ![](doc/img/sc-qt3d-desktop.gif)
 
 Pure QML version, use qmlscene to run with default OpenGL Context:
 
-~~**Try it with Qt5.7+:**~~
+**Try it with Qt5.9+:**
 
 ```shell
 	qmlscene -I https://raw.githubusercontent.com/MidoriYakumo/qml-virtualkey/master/ https://raw.githubusercontent.com/MidoriYakumo/learnopengl-qt3d/master/qml/app.qml
@@ -65,3 +65,4 @@ Content
 2.	[Basic Lighting](doc/Basic-Lighting.md) : works
 3.	[Materials](doc/Materials.md) : works
 4.	[Lighting-maps](doc/Lighting-maps.md) : works
+5.	[Light-casters](doc/Light-casters.md) : works
