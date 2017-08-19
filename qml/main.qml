@@ -34,6 +34,7 @@ Item {
 
 	ComboBox {
 		id: combo
+		wheelEnabled: true
 		background.y: 0  // disable extra background (since 5.8)
 		background.height: height
 		focusPolicy: Qt.NoFocus

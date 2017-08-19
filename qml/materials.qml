@@ -16,6 +16,7 @@ Scene2 {
 	children: [
 		ComboBox {
 			id: materialSelector
+			wheelEnabled: true
 			anchors.top: parent.top
 			anchors.left: parent.left
 			anchors.topMargin: 8

@@ -20,6 +20,7 @@ ApplicationWindow {
 
 	header: ComboBox {
 		id: combobox
+		wheelEnabled: true
 		background.y: 0  // WARNING: disable extra background (since 5.8)
 		background.height: height
 		opacity: height / 20

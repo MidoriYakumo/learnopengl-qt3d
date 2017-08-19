@@ -91,5 +91,13 @@
         <file>qml/multiple_lights.qml</file>
         <file>qml/Components/AutoTechnique.qml</file>
         <file>qml/Components/AutoShaderProgram.qml</file>
+        <file>shared/shaders/es30/light_casters_directional.frag</file>
+        <file>shared/shaders/gl33/light_casters_directional.frag</file>
+        <file>shared/shaders/gl33/light_casters_spotlight_hard.frag</file>
+        <file>shared/shaders/gl33/light_casters_spotlight_soft.frag</file>
+        <file>shared/shaders/gl33/multiple_lights.frag</file>
+        <file>shared/shaders/es30/light_casters_spotlight_hard.frag</file>
+        <file>shared/shaders/es30/light_casters_spotlight_soft.frag</file>
+        <file>shared/shaders/es30/multiple_lights.frag</file>
     </qresource>
 </RCC>
