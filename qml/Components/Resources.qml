@@ -11,6 +11,7 @@ Item { // This is the global resource router
 		"osx"		: "file:.." ,
 		"unix"		: "file:.." ,
 		"windows"	: "file:.." ,
+		"winrt"		: "file:." ,
 	}
 
 	property bool appRcEnabled: false
